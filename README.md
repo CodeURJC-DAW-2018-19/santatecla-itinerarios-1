@@ -3,9 +3,9 @@
 ## "Description"
 We must make some prototipes of different views of our website etc..
 
-## Team Members
+## Miembros del equipo
 
-Name | University email | GitHub Account
+Nombre | Correo universitario | Usuario de GitHub
 ------------ | ------------------------- | -------------
 ShuXiang Gao | s.gao.2016@alumnos.urjc.es | vitaminac
 ZiYao Zhan | z.zhan.2016@alumnos.urjc.es | 13757851340x
