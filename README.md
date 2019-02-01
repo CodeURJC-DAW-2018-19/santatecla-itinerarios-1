@@ -17,16 +17,8 @@ Rubén Zarapuz Juárez | r.zarapuz.2016@alumnos.urjc.es | Ruben98Z
 
 **Our Trello:** [Link to the board](https://trello.com/invite/b/CFMjhg2A/1ff5190ce7e6a0f923e44a404e82d269/daw-g8)
 
-```javascript
-function fancyAlert(arg) {
-  if(arg) {
-    $.facebox({div:'#foo'})
-  }
-}
-```
 
-I think you should use an
-`<addr>` element here instead.
+
 
 As Kanye West said:
 
@@ -38,6 +30,6 @@ http://github.com - automatic!
 
 Phase 0:
 - [x] Make a team
-- [ ] Choose work for each one.
+- [x] Choose work for each one.
 - [ ] Merge all the work
 
