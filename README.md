@@ -17,15 +17,6 @@ Rubén Zarapuz Juárez | r.zarapuz.2016@alumnos.urjc.es | Ruben98Z
 
 **Nuestro Trello:** [Link to the board](https://trello.com/invite/b/CFMjhg2A/1ff5190ce7e6a0f923e44a404e82d269/daw-g8)
 
-
-As Kanye West said:
-
-> We're living the future so
-> the present is our past.
-
-http://github.com - automatic!
-[GitHub](http://github.com)
-
 Fase 0:
 - [x] Formar equipo
 
