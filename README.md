@@ -1,6 +1,6 @@
 # "Gestor de Itinerarios"
 
-## "Description"
+## "Descripción"
 We must make some prototipes of different views of our website etc..
 
 ## Miembros del equipo
@@ -15,9 +15,7 @@ Rubén Zarapuz Juárez | r.zarapuz.2016@alumnos.urjc.es | Ruben98Z
 
 
 
-**Our Trello:** [Link to the board](https://trello.com/invite/b/CFMjhg2A/1ff5190ce7e6a0f923e44a404e82d269/daw-g8)
-
-
+**Nuestro Trello:** [Link to the board](https://trello.com/invite/b/CFMjhg2A/1ff5190ce7e6a0f923e44a404e82d269/daw-g8)
 
 
 As Kanye West said:
@@ -28,8 +26,12 @@ As Kanye West said:
 http://github.com - automatic!
 [GitHub](http://github.com)
 
-Phase 0:
-- [x] Make a team
-- [x] Choose work for each one.
-- [ ] Merge all the work
+Fase 0:
+- [x] Formar equipo
 
+
+Fase 1:
+- [x] Repartir tareas a cada uno en trello
+- [x] Choose work for each one.
+- [x] [Requisitos Fase 1](https://docs.google.com/document/d/1cW3UCiqWrq4Fk3JF0MOUjiyEdfOuw9rs257IqyN8ILs/edit?usp=sharing)
+- [ ] Merge all the work
