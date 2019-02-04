@@ -1,6 +1,6 @@
-# "Gestor de Itinerarios"
+# Gestor de Itinerarios
 
-## "Descripción"
+## Descripción
 We must make some prototipes of different views of our website etc..
 
 ## Miembros del equipo
@@ -17,12 +17,13 @@ Rubén Zarapuz Juárez | r.zarapuz.2016@alumnos.urjc.es | Ruben98Z
 
 **Nuestro Trello:** [Link to the board](https://trello.com/invite/b/CFMjhg2A/1ff5190ce7e6a0f923e44a404e82d269/daw-g8)
 
-Fase 0:
+## Tareas
+### Fase 0:
 - [x] Formar equipo
 
 
-Fase 1:
+### Fase 1:
 - [x] Repartir tareas a cada uno en trello
-- [x] Choose work for each one.
 - [x] [Requisitos Fase 1](https://docs.google.com/document/d/1cW3UCiqWrq4Fk3JF0MOUjiyEdfOuw9rs257IqyN8ILs/edit?usp=sharing)
-- [ ] Merge all the work
+- [x] Choose work for each one.
+- [ ] Mergear todo el trabajo
