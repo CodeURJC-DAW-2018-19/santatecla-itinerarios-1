@@ -32,3 +32,12 @@ Rubén Zarapuz Juárez | r.zarapuz.2016@alumnos.urjc.es | Ruben98Z
 - [x] [Requisitos Fase 1](https://docs.google.com/document/d/1cW3UCiqWrq4Fk3JF0MOUjiyEdfOuw9rs257IqyN8ILs/edit?usp=sharing)
 - [x] Choose work for each one.
 - [ ] Mergear todo el trabajo
+
+## Vistas del trabajo (Screenshots)
+
+https://ibb.co/hZJVKKy
+https://ibb.co/58NvfmY
+https://ibb.co/nQPGJ9X
+https://ibb.co/7pPt64c
+https://ibb.co/x29LB9Z //General
+Markup : ![picture alt](http://www.brightlightpictures.com/assets/images/portfolio/thethaw_header.jpg "Title is optional")
