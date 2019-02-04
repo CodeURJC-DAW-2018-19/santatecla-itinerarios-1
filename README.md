@@ -39,4 +39,4 @@ https://ibb.co/hZJVKKy
 https://ibb.co/58NvfmY
 https://ibb.co/nQPGJ9X
 https://ibb.co/7pPt64c
-![picture alt](https://ibb.co/x29LB9Z "Descripción de las vistas")
+![picture alt](https://i.ibb.co/NFDCJDR/Fase1.jpg "Descripción de las vistas")
