@@ -39,5 +39,4 @@ https://ibb.co/hZJVKKy
 https://ibb.co/58NvfmY
 https://ibb.co/nQPGJ9X
 https://ibb.co/7pPt64c
-https://ibb.co/x29LB9Z //General
-Markup : ![picture alt](http://www.brightlightpictures.com/assets/images/portfolio/thethaw_header.jpg "Title is optional")
+![picture alt](https://ibb.co/x29LB9Z "Descripción de las vistas")
