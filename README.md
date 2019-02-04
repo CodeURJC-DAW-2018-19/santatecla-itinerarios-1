@@ -34,9 +34,8 @@ Rubén Zarapuz Juárez | r.zarapuz.2016@alumnos.urjc.es | Ruben98Z
 - [ ] Mergear todo el trabajo
 
 ## Vistas del trabajo (Screenshots)
-
-![picture alt](https://ibb.co/hZJVKKy/Captura-de-pantalla-2019-02-05-a-las-0-18-42.png "")
-![picture alt](https://ibb.co/58NvfmY/index.png "")
-![picture alt](https://ibb.co/nQPGJ9X/inicial.png "")
-![picture alt](https://ibb.co/7pPt64c/unidades.png "")
 ![picture alt](https://i.ibb.co/NFDCJDR/Fase1.jpg "Descripción de las vistas")
+![picture alt](https://i.ibb.co/txTDbb4/Captura-de-pantalla-2019-02-05-a-las-0-18-42.png)
+![picture alt](https://i.ibb.co/vP7mKps/index.png "")
+![picture alt](https://i.ibb.co/Jr31JVY/inicial.png "")
+![picture alt](https://i.ibb.co/pKcj9yD/unidades.png "")
