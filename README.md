@@ -35,8 +35,8 @@ Rubén Zarapuz Juárez | r.zarapuz.2016@alumnos.urjc.es | Ruben98Z
 
 ## Vistas del trabajo (Screenshots)
 
-https://ibb.co/hZJVKKy
-https://ibb.co/58NvfmY
-https://ibb.co/nQPGJ9X
-https://ibb.co/7pPt64c
+![picture alt](https://ibb.co/hZJVKKy/Captura-de-pantalla-2019-02-05-a-las-0-18-42.png)
+![picture alt](https://ibb.co/58NvfmY/index.png)
+![picture alt](https://ibb.co/nQPGJ9X/inicial.png)
+![picture alt](https://ibb.co/7pPt64c/unidades.png)
 ![picture alt](https://i.ibb.co/NFDCJDR/Fase1.jpg "Descripción de las vistas")
