@@ -2,11 +2,11 @@
 
 ## Descripción
 Debemos crear un sitio web, un "Gestor de Itinearios", el desarrollo de la práctica se hará por fases, siendo la distribución de las mismas de la siguiente manera:
-• Fase 0: Formación del equipo de desarrollo (No evaluable)
-• Fase 1: Maquetación de páginas con HTML y Bootstrap CSS (No evaluable)
-• Fase 2: Implementación de la web con HTML generado en servidor y AJAX.
-• Fase 3: Incorporación de API REST a la aplicación web y despliegue con docker
-• Fase 4: Implementación de la web con arquitectura SPA
+* Fase 0: Formación del equipo de desarrollo (No evaluable)
+* Fase 1: Maquetación de páginas con HTML y Bootstrap CSS (No evaluable)
+* Fase 2: Implementación de la web con HTML generado en servidor y AJAX.
+* Fase 3: Incorporación de API REST a la aplicación web y despliegue con docker
+* Fase 4: Implementación de la web con arquitectura SPA
 
 ## Miembros del equipo
 
