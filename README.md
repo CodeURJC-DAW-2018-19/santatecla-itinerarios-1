@@ -30,7 +30,7 @@ Rubén Zarapuz Juárez | r.zarapuz.2016@alumnos.urjc.es | Ruben98Z
 ### Fase 1:
 - [x] Repartir tareas a cada uno en trello
 - [x] [Requisitos Fase 1](https://docs.google.com/document/d/1cW3UCiqWrq4Fk3JF0MOUjiyEdfOuw9rs257IqyN8ILs/edit?usp=sharing)
-- [x] Choose work for each one.
+- [x] Subir código a GitHub
 - [ ] Mergear todo el trabajo
 
 ## Vistas del trabajo (Screenshots)
