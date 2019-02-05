@@ -99,20 +99,22 @@ const units = [
                         {
                             "unit": "JavaScript",
                             "form": "¿Quién?"
-                        },
-                        {
-                            "unit": "Año 1989",
-                            "form": "Resumen"
-                        },
-                        {
-                            "unit": "CERN",
-                            "form": "Introducción"
-                        },
-                        {
-                            "unit": "Tim Berners-Lee",
-                            "form": "Biografía"
                         }
                     ]
+                ],
+                "references": [
+                    {
+                        "unit": "Año 1989",
+                        "form": "Resumen"
+                    },
+                    {
+                        "unit": "CERN",
+                        "form": "Introducción"
+                    },
+                    {
+                        "unit": "Tim Berners-Lee",
+                        "form": "Biografía"
+                    }
                 ]
             }
         ]
@@ -226,7 +228,7 @@ $(document).ready(function () {
                     <div class="row align-items-center">
                         <div class="col-2">
                             <div class="card">
-                                JavaScript-Contexto-¿Cuándo?
+                                hola
                             </div>
                         </div>
                         <div class="col-2">
@@ -326,16 +328,7 @@ $(document).ready(function () {
                                                             <div class="card">
                                                                 <div class="card-header card-header-text">
                                                                     <h4 class="card-title">HTML</h4>
-                                                                    <div class="card">
-                                                                        <div class="card-body">CERN-Logros</div>
-                                                                    </div>
-                                                                    <div class="card">
-                                                                        <div class="card-body">Tim Berners-Lee-Datos</div>
-                                                                    </div>
-                                                                    <div class="card">
-                                                                        <div class="card-body">JavaScript-¿Dónde?</div>
-                                                                    </div>
-                                                                </div>
+                                                                    <div class="card-body html-host"></div>
                                                             </div>
                                                         </div>
                                                     </div>`
@@ -352,6 +345,7 @@ $(document).ready(function () {
                                 </td>
                              </tr>`
                             );
+                            $(view_node).find(".html-host").append(`<div class="card"><div class="card-header"><h4 class="card-title">${form_ref.unit}-${form_ref.form}</h4></div></div></div></div>`);
                         });
                         $(itinerary_view).find(`#${views_host_id}`).append(view_node);
                     });
