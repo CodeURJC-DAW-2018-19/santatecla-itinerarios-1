@@ -385,4 +385,11 @@ $(document).ready(function () {
         }
         $(".units-tabs > .card-body > .tab-content").append(unit_content);
     });
+
+    $(".dropdown").each((idx, e) => {
+        $(e).find(".dropdown-menu a").click(function () {
+            $(e).find(".btn").text($(this).text());
+            $(e).find(".btn").val($(this).text());
+        });
+    });
 });
