@@ -4,56 +4,19 @@ const units = [
         "forms": [
             {
                 "title": "Eventos",
-                "description": `
-Nace el PP (20-I). 
-Alianza Popular cambia de nombre en el congreso del partido. Ahora será Partido Popular. Manuel Fraga vuelve a la presidencia transitoriamente, en espera de que una nueva generación tome el relevo en la dirección.
-
-Tregua de ETA (22-I). Anuncia una tregua de dos meses y la formación de un comité negociador en Argel.
-
-Primer triunfo de Yeltsin (26-III). Obtine la victoria en las primeras elecciones democráticas en la URSS.
-
-Matanza de Tiananmen (3-VI). 
-El Ejército chino carga contra los estudiantes concentrados en la plaza de Tiananmen en Beijing. Se producen cientos de muertes.
-
-Suspendidos los debates electorales en RTVE (7-VI). El motivo es la proximidad de las elecciones al Parlamento Europeo. El PSOE consigue la mayoría.
-
-La fuga del &laqno;Dioni» (28-VII). 
-El vigilante jurado Dionisio Fernández se fuga con un furgón de la empresa de seguridad Candi con 320 millones de pesetas. Es detenido en Brasil el 21 de septiembre.
-
-Fin del monopolio televisivo (25-VIII). 
-El Consejo de Ministros decide conceder tres canales privados de televisión a Tele 5, Antena 3 TV y Canal Plus.
-
-Accidente nuclear en Valdellos 1 (19-X). 
-La central nuclear, situada en Tarragona, sufre el accidente más grave jamás ocurrido en España.
-
-Nace EL MUNDO (23-X). 
-Sale a la calle el primer número del diario.
-
-El PSOE obteniene su tercera mayoria (29-X). 
-Renueva la mayoría absoluta con 176 escaños. José María Aznar, al frente del PP, mantiene los votos de su partido y se consolida al frente de la derecha española.
-
-Cae el muro de berlin (9-XI). 
-Adiós al último símbolo de la Guerra Fría.
-
-Es asesinado Josu Muguruza (20-XI). 
-El miembro de HB muere durante una cena en la que también resulta herido el diputado de la misma formación Iñaki Esnaola. El atentado se atribuye al hijo del comandante Ynestrillas, asesinado por ETA.
-
-Camilo Jose Cela, Premio Nobel de Literatura (10-XII). &laqno;Por una prosa rica e intensa, que con refrenada compasión configura una visión provocadora del desamparado ser humano».
-
-Invasion de panama (20-XII). El Gobierno de Estados Unidos invade Panamá en una operación militar denominada &laqno;causa justa».
-
-Ceaucescu es ejecutado (25-XII). Se da muerte al dictador rumano y a su mujer, en cumplimiento de una condena dictada por un tribunal extraordinario que dictaminaba su pena de muerte.
-`
+                "description": "bra bra bra"
             }
         ],
         "itineraries": [
             {
                 "title": "Resumen",
                 "views": [
-                    {
-                        "unit": "Año 1989",
-                        "form": "Eventos"
-                    }
+                    [
+                        {
+                            "unit": "Año 1989",
+                            "form": "Eventos"
+                        }
+                    ]
                 ]
             }
         ]
@@ -69,10 +32,12 @@ Ceaucescu es ejecutado (25-XII). Se da muerte al dictador rumano y a su mujer, e
             {
                 "title": "Introduccion",
                 "views": [
-                    {
-                        "unit": "CERN",
-                        "form": "Logros"
-                    }
+                    [
+                        {
+                            "unit": "CERN",
+                            "form": "Logros"
+                        }
+                    ]
                 ]
             }
         ]
@@ -88,10 +53,12 @@ Ceaucescu es ejecutado (25-XII). Se da muerte al dictador rumano y a su mujer, e
             {
                 "title": "Biografia",
                 "views": [
-                    {
-                        "unit": "Tim Berners-Lee",
-                        "form": "Datos"
-                    }
+                    [
+                        {
+                            "unit": "Tim Berners-Lee",
+                            "form": "Datos"
+                        }
+                    ]
                 ]
             }
         ]
@@ -120,30 +87,32 @@ Ceaucescu es ejecutado (25-XII). Se da muerte al dictador rumano y a su mujer, e
             {
                 "title": "Contexto",
                 "views": [
-                    {
-                        "unit": "JavaScript",
-                        "form": "¿Cuándo?"
-                    },
-                    {
-                        "unit": "JavaScript",
-                        "form": "¿Dónde?"
-                    },
-                    {
-                        "unit": "JavaScript",
-                        "form": "¿Quién?"
-                    },
-                    {
-                        "unit": "Año 1989",
-                        "form": "Resumen"
-                    },
-                    {
-                        "unit": "CERN",
-                        "form": "Introducción"
-                    },
-                    {
-                        "unit": "Tim Berners-Lee",
-                        "form": "Biografía"
-                    }
+                    [
+                        {
+                            "unit": "JavaScript",
+                            "form": "¿Cuándo?"
+                        },
+                        {
+                            "unit": "JavaScript",
+                            "form": "¿Dónde?"
+                        },
+                        {
+                            "unit": "JavaScript",
+                            "form": "¿Quién?"
+                        },
+                        {
+                            "unit": "Año 1989",
+                            "form": "Resumen"
+                        },
+                        {
+                            "unit": "CERN",
+                            "form": "Introducción"
+                        },
+                        {
+                            "unit": "Tim Berners-Lee",
+                            "form": "Biografía"
+                        }
+                    ]
                 ]
             }
         ]
@@ -173,7 +142,7 @@ $(document).ready(function () {
                     </div>
                     <div class="card-body">
                         <div class="tab-content text-center">
-                            <div class="tab-pane active" id="${forms_id}"></div>
+                            <div class="tab-pane active" id="${forms_id}"><div class="container"></div></div>
                         </div>
                     </div>
                 </div>
@@ -181,37 +150,243 @@ $(document).ready(function () {
         );
         if (unit.itineraries) {
             unit.itineraries.forEach((itinerary, index) => {
-                const itinerary_id = `${unit_id}_itinerary${index};`;
+                const itinerary_id = `${unit_id}_itinerary${index}`;
                 $(unit_content).find(".nav.nav-tabs").append(`<li class="nav-item"><a class="nav-link" href="#${itinerary_id}" data-toggle="tab">${itinerary.title}</a></li>`);
-                $(unit_content).find(".tab-content").append(`<div class="tab-pane" id="${itinerary_id}">${itinerary.title}</div>`);
+                const views_host_id = `${itinerary_id}_views_host`;
+                const itinerary_view = $(
+                    `<div class="tab-pane" id="${itinerary_id}">
+    <div class="container">
+        <div class="row">
+            <div class="card">
+                <div class="card-header card-header-text card-header-primary">
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="card-text">
+                                <h4 class="card-title">Vista</h4>
+                            </div>
+                        </div>
+                        <div class="col-1 ml-auto">
+                            <button type="button"
+                                    class="btn btn-fab  btn-fab-mini btn-round">
+                                <i class="material-icons">delete</i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="container" id="${views_host_id}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="card">
+                <div class="card-header card-header-text">
+                    <h4 class="card-title">Itinerio</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-1">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle"
+                                        type="button" id="dropdownMenuButton3"
+                                        data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                    JavaScript
+                                </button>
+                                <div class="dropdown-menu"
+                                     aria-labelledby="dropdownMenuButton3">
+                                    <a class="dropdown-item" href="#">Tim Berners-Lee</a>
+                                    <a class="dropdown-item" href="#">CERN</a>
+                                    <a class="dropdown-item" href="#">Año 1989</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-1">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle"
+                                        type="button" id="dropdownMenuButton4"
+                                        data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                    Contexto
+                                </button>
+                                <div class="dropdown-menu"
+                                     aria-labelledby="dropdownMenuButton4">
+                                    <a class="dropdown-item" href="#">Resumen</a>
+                                    <a class="dropdown-item" href="#">Bibliografía</a>
+                                    <a class="dropdown-item" href="#">Introducción</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-1 ml-auto">
+                            <button type="button"
+                                    class="btn btn-fab  btn-fab-mini btn-round">
+                                <i class="material-icons">delete</i></button>
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-2">
+                            <div class="card">
+                                JavaScript-Contexto-¿Cuándo?
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="card">
+                                JavaScript-Contexto-¿Dónde?
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="card">
+                                JavaScript-Contexto-¿Quién?
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="card">
+                                JavaScript-Contexto-¿Por qué?
+                            </div>
+                        </div>
+                        <div class="col-1 ml-auto">
+                            <button type="button"
+                                    class="btn btn-fab  btn-fab-mini btn-round">
+                                <i class="material-icons">chevron_right</i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1 ml-auto">
+                <div class="radio">
+                    <label><input type="radio" name="optradio" checked>Vista</label>
+                </div>
+            </div>
+            <div class="col-1">
+                <div class="radio">
+                    <label><input type="radio" name="optradio">Itinerario</label>
+                </div>
+            </div>
+            <div class="col-1">
+                <button type="button" class="btn btn-fab  btn-fab-mini btn-round">
+                    <i class="material-icons">add_circle</i></button>
+            </div>
+        </div>
+    </div>
+</div>`
+                );
+                if (itinerary.views) {
+                    itinerary.views.forEach((view, index) => {
+                        var view_node = $(
+                            `<div class="row">
+                                                        <div class="col-6">
+                                                            <table class="table" >
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td class="text-center"><div class="dropdown">
+                                                                        <button class="btn btn-secondary dropdown-toggle"
+                                                                                type="button" id="dropdownMenuButton1"
+                                                                                data-toggle="dropdown" aria-haspopup="true"
+                                                                                aria-expanded="false">
+                                                                            Buscar..
+                                                                        </button>
+                                                                        <div class="dropdown-menu"
+                                                                             aria-labelledby="dropdownMenuButton2">
+                                                                            <a class="dropdown-item" href="#">Años 1989</a>
+                                                                            <a class="dropdown-item" href="#">CERN</a>
+                                                                            <a class="dropdown-item" href="#">Tim Berners-Lee</a>
+                                                                            <a class="dropdown-item" href="#">JavaScript</a>
+                                                                        </div>
+                                                                    </div></td>
+                                                                    <td class="text-center"><div class="dropdown">
+                                                                        <button class="btn btn-secondary dropdown-toggle"
+                                                                                type="button" id="dropdownMenuButton2"
+                                                                                data-toggle="dropdown" aria-haspopup="true"
+                                                                                aria-expanded="false">
+                                                                            Buscar..
+                                                                        </button>
+                                                                        <div class="dropdown-menu"
+                                                                             aria-labelledby="dropdownMenuButton2">
+                                                                            <a class="dropdown-item" href="#">Evento</a>
+                                                                            <a class="dropdown-item" href="#">Logro</a>
+                                                                            <a class="dropdown-item" href="#">Dato</a>
+                                                                            <a class="dropdown-item" href="#">Cuándo</a>
+                                                                            <a class="dropdown-item" href="#">Dónde</a>
+                                                                            <a class="dropdown-item" href="#">Quién</a>
+                                                                            <a class="dropdown-item" href="#">Por qué</a>
+                                                                        </div>
+                                                                    </div></td>
+                                                                    <td class="td-actions text-right">
+                                                                        <button type="button"
+                                                                                class="btn btn-fab  btn-fab-mini btn-round">
+                                                                            <i class="material-icons">add_circle</i></button>
+                                                                    </td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="card">
+                                                                <div class="card-header card-header-text">
+                                                                    <h4 class="card-title">HTML</h4>
+                                                                    <div class="card">
+                                                                        <div class="card-body">CERN-Logros</div>
+                                                                    </div>
+                                                                    <div class="card">
+                                                                        <div class="card-body">Tim Berners-Lee-Datos</div>
+                                                                    </div>
+                                                                    <div class="card">
+                                                                        <div class="card-body">JavaScript-¿Dónde?</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>`
+                        );
+                        view.forEach((form_ref, index) => {
+                            $(view_node).find("table > tbody").prepend(
+                                `<tr>
+                                <td class="text-center">${form_ref.unit}</td>
+                                <td class="text-center">${form_ref.form}</td>
+                                <td class="td-actions text-right">
+                                    <button type="button"
+                                            class="btn btn-fab btn-fab-mini btn-round">
+                                        <i class="material-icons">delete</i></button>
+                                </td>
+                             </tr>`
+                            );
+                        });
+                        $(itinerary_view).find(`#${views_host_id}`).append(view_node);
+                    });
+                }
+                $(unit_content).find(".tab-content").append(itinerary_view);
             });
         }
         if (unit.forms) {
             unit.forms.forEach((form, index) => {
                 const formCard = $(
-                    `<div class="card">
-                        <div class="card-header card-header-text card-header-primary">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-2">
-                                        <div class="card-text">
-                                            <h4 class="card-title"></h4>
+                    `<div class="row">
+                                        <div class="card">
+                                            <div class="card-header card-header-text card-header-primary">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-2">
+                                                            <div class="card-text">
+                                                                <h4 class="card-title"></h4>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-1 ml-auto">
+                                                            <button type="button"
+                                                                    class="btn btn-fab btn-fab-mini btn-round">
+                                                                <i class="material-icons">delete</i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body"></div>
                                         </div>
-                                    </div>
-                                    <div class="col-1 ml-auto">
-                                        <button type="button"
-                                                class="btn btn-fab btn-fab-mini btn-round">
-                                            <i class="material-icons">delete</i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body"></div>
-                    </div>`
+                                    </div>`
                 );
                 $(formCard).find(".card-body").text(form.description || "");
                 $(formCard).find(".card-title").text(form.title || "");
-                $(unit_content).find(`#${forms_id}`).append(formCard);
+                $(unit_content).find(`#${forms_id} > .container`).append(formCard);
             });
         }
         $(".units-tabs > .card-body > .tab-content").append(unit_content);
