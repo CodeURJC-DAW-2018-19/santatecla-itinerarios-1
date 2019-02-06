@@ -1,3 +1,42 @@
+:root { 
+    --bodyColor: #ffffff 
+}
+
 .card-nav-tabs .card-header {
     margin-top: 0 !important;
 }
+
+/* search bar styles */
+
+.search-bar-centered{
+    margin-top: 150px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-search-centered {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+}
+
+/* lists and sublists styles */
+
+.u-list{
+    list-style: none;
+}
+
+.u-list > li{
+    display: flex;
+    justify-content: space-between;
+    border-style:solid;
+    border-color: var(--bodyColor) ; 
+    border-width:1px; 
+    background-color: #00000003;
+}
+
+.first-menu-tab{
+    display: flex;
+    justify-content: space-between; 
+} 
