@@ -37,3 +37,19 @@ Rubén Zarapuz Juárez | r.zarapuz.2016@alumnos.urjc.es | Ruben98Z
 ![picture alt](https://i.ibb.co/vP7mKps/index.png "Unidades")
 ![picture alt](https://i.ibb.co/Jr31JVY/inicial.png "Inicio")
 ![picture alt](https://i.ibb.co/pKcj9yD/unidades.png "Login")
+
+# MySQL Configuration
+
+## Start up
+
+docker-compose up
+
+## Connections Parameters
+
+### Database name
+
+daw
+
+### Password
+
+daw_grupo_7
