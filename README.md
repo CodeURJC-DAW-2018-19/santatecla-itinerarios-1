@@ -50,6 +50,10 @@ docker-compose up
 
 daw
 
+### Username
+
+daw
+
 ### Password
 
 daw_grupo_7
