@@ -24,7 +24,7 @@ public class WebApplication {
             ItineraryRepository itineraryRepository) {
         return (args) -> {
             unitRepository.deleteAll();
-            Unit unit = new Unit("Año 1989");
+            Unit unit = new Unit("Anio 1990");
             unitRepository.save(unit);
             Form form = new Form("Eventos", "bra bra bra");
             View view = new View();
