@@ -4,11 +4,15 @@
         <div class="nav-tabs-navigation">
             <div class="nav-tabs-wrapper">
                 <ul class="nav nav-tabs units-tabs" data-tabs="tabs">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#Units" data-toggle="tab">Unidades</a>
-                    </li>
+                    {{^unit}}
+                    <li class="nav-item"><a class="nav-link active" href="/">Unidades</a></li>
+                    {{/unit}}
+                    {{#unit}}
+                    <li class="nav-item"><a class="nav-link" href="/">Unidades</a></li>
+                    {{/unit}}
                     {{#units}}
-                    <li class="nav-item"><a class="nav-link" href="#unit{{-index}}" data-toggle="tab">{{title}}</a></li>
+                    <!--<li class="nav-item"><a class="nav-link" href="/{{id}}" data-toggle="tab">{{title}}</a></li>-->
+                    <li class="nav-item"><a class="nav-link" href="/{{id}}">{{title}}</a></li>
                     {{/units}}
                 </ul>
             </div>
@@ -16,7 +20,12 @@
     </div>
     <div class="card-body ">
         <div class="tab-content">
+            {{^unit}}
             {{>units}}
+            {{/unit}}
+            {{#unit}}
+            {{>unit}}
+            {{/unit}}
         </div>
     </div>
 </div>

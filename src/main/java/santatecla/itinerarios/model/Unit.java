@@ -29,7 +29,8 @@ public class Unit {
     @JoinColumn
     private Set<Form> forms;
 
-    public Unit(String title) {
+    public Unit(Long id, String title) {
+        this.id = id;
         this.title = title;
     }
 }

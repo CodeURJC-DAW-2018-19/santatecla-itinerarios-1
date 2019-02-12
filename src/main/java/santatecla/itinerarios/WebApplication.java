@@ -17,7 +17,8 @@ public class WebApplication {
     @Bean
     public CommandLineRunner addTestData(UnitRepository repository) {
         return (args) -> {
-            repository.save(new Unit("Hola Mundo"));
+            repository.save(new Unit(1L, "Hola Mundo"));
+            repository.save(new Unit(2L, "Adios"));
         };
     }
 }
