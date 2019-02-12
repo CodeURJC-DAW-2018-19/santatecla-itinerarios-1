@@ -12,7 +12,7 @@
                         <li class="nav-item"><a class="nav-link" href="/{{unit.id}}">Fichas</a></li>
                         {{/itinerary}}
                         {{#plans}}
-                        <li class="nav-item"><a class="nav-link" href="/{{id}}">{{title}}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/{{unit.id}}/{{id}}">{{title}}</a></li>
                         {{/plans}}
                     </ul>
                 </div>
@@ -21,7 +21,14 @@
         <div class="card-body">
             <div class="tab-content text-center">
                 <div class="tab-pane active" id="${forms_id}">
-                    <div class="container"></div>
+                    <div class="container">
+                        {{#itinerary}}
+                        {{>itinerary}}
+                        {{/itinerary}}
+                        {{^itinerary}}
+                        {{>forms}}
+                        {{/itinerary}}
+                    </div>
                 </div>
             </div>
         </div>
