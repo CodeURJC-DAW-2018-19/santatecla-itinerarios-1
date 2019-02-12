@@ -1,6 +1,7 @@
 package santatecla.itinerarios.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,6 +14,7 @@ import java.util.Set;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class Itinerary {
     @Id
     private Long id;
@@ -28,7 +30,13 @@ public class Itinerary {
     @JoinColumn
     private Set<View> views;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn
     private Unit unit;
+
+    public Itinerary(Long id, String title, Unit unit) {
+        this.id = id;
+        this.title = title;
+        this.unit = unit;
+    }
 }

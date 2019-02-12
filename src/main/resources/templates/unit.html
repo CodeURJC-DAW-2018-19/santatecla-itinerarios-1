@@ -1,14 +1,19 @@
-<div class="tab-pane active" id="${unit_id}">
+<div class="tab-pane active" id="unit{{id}}">
     <div class="card card-nav-tabs card-plain">
         <div class="card-header card-header-danger">
             <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
             <div class="nav-tabs-navigation">
                 <div class="nav-tabs-wrapper">
                     <ul class="nav nav-tabs" data-tabs="tabs">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#${forms_id}"
-                               data-toggle="tab">Fichas</a>
-                        </li>
+                        {{^itinerary}}
+                        <li class="nav-item"><a class="nav-link active" href="/{{unit.id}}">Fichas</a></li>
+                        {{/itinerary}}
+                        {{#itinerary}}
+                        <li class="nav-item"><a class="nav-link" href="/{{unit.id}}">Fichas</a></li>
+                        {{/itinerary}}
+                        {{#plans}}
+                        <li class="nav-item"><a class="nav-link" href="/{{id}}">{{title}}</a></li>
+                        {{/plans}}
                     </ul>
                 </div>
             </div>
