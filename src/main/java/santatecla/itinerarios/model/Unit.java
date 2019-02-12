@@ -43,4 +43,11 @@ public class Unit {
         }
         this.itineraries.add(itinerary);
     }
+
+    public void addForm(Form form){
+        if(this.forms == null){
+            this.forms = new HashSet<>();
+        }
+        this.forms.add(form);
+    }
 }
