@@ -22,9 +22,9 @@ public class FormController {
         this.repository = repository;
     }
 
-    @GetMapping("/{title}")
-    public Form findByTitle(@PathVariable String title) {
-        return this.repository.findById(title).orElseThrow(() -> new EntityNotFoundException(Form.class.getName() + " not found with id " + title));
+    @GetMapping("/{id}")
+    public Form findByTitle(@PathVariable Long id) {
+        return this.repository.findById(id).orElseThrow(() -> new EntityNotFoundException(Form.class.getName() + " not found with id " + id));
     }
 
     @PostMapping
