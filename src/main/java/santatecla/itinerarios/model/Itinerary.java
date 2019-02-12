@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.Set;
 
@@ -26,4 +27,8 @@ public class Itinerary {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn
     private Set<View> views;
+
+    @ManyToOne
+    @JoinColumn
+    private Unit unit;
 }

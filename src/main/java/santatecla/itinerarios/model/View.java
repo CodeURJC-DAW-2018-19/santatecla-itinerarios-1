@@ -5,8 +5,8 @@ import lombok.Data;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import java.util.Set;
 
 @Entity
@@ -15,7 +15,7 @@ public class View {
     @Id
     private Long id;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable
     private Set<Form> forms;
 }
