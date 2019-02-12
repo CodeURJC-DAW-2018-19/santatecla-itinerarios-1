@@ -7,13 +7,16 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="#Units" data-toggle="tab">Unidades</a>
                     </li>
+                    {{#units}}
+                        <li class="nav-item"><a class="nav-link active" href="#{{-index}}" data-toggle="tab">{{title}}</a></li>
+                    {{/units}}
                 </ul>
             </div>
         </div>
     </div>
     <div class="card-body ">
         <div class="tab-content">
-            {{>units}}}
+            {{>units}}
         </div>
     </div>
 </div>

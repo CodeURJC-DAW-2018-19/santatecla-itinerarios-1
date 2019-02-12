@@ -1,6 +1,7 @@
 package santatecla.itinerarios.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,6 +13,7 @@ import java.util.Set;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class Unit {
     @Id
     @Column(length = 30)
@@ -24,4 +26,8 @@ public class Unit {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn
     private Set<Form> forms;
+
+    public Unit(String title) {
+        this.title = title;
+    }
 }

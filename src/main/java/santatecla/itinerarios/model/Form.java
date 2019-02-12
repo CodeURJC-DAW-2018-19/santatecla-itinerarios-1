@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-@Data
+@Data // Id change id to Long type
 public class Form {
     @Id
     @Column(length = 30)
