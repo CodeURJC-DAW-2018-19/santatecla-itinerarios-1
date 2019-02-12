@@ -13,7 +13,7 @@ import santatecla.itinerarios.repo.ItineraryRepository;
 import javax.persistence.EntityNotFoundException;
 
 @RestController
-@RequestMapping("itinerarys")
+@RequestMapping("itineraries")
 public class ItineraryController {
     private ItineraryRepository repository;
 
