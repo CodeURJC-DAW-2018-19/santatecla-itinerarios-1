@@ -25,9 +25,9 @@ public class UnitController {
         this.repository = repository;
     }
 
-    @GetMapping("/{title}")
-    public Unit findByTitle(@PathVariable String title) {
-        return this.repository.findById(title).orElseThrow(() -> new EntityNotFoundException(Unit.class.getName() + " not found with id " + title));
+    @GetMapping("/{id}")
+    public Unit findByTitle(@PathVariable Long id) {
+        return this.repository.findById(id).orElseThrow(() -> new EntityNotFoundException(Unit.class.getName() + " not found with id " + id));
     }
 
     @PostMapping

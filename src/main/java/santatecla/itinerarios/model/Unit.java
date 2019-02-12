@@ -16,7 +16,9 @@ import java.util.Set;
 @NoArgsConstructor
 public class Unit {
     @Id
-    @Column(length = 30)
+    private Long id;
+
+    @Column
     private String title;
 
     @OneToMany(cascade = CascadeType.ALL)
