@@ -33,4 +33,7 @@ public class Unit {
         this.id = id;
         this.title = title;
     }
+
+    public Unit() {
+    }
 }

@@ -39,4 +39,7 @@ public class Itinerary {
         this.title = title;
         this.unit = unit;
     }
+
+    public Itinerary() {
+    }
 }
