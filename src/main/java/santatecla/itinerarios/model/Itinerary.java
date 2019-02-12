@@ -1,22 +1,23 @@
 package santatecla.itinerarios.model;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Data
-@NoArgsConstructor
 public class Itinerary {
     @Id
+    @GeneratedValue
     private Long id;
 
     @Column
@@ -30,16 +31,17 @@ public class Itinerary {
     @JoinColumn
     private Set<View> views;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn
-    private Unit unit;
-
-    public Itinerary(Long id, String title, Unit unit) {
-        this.id = id;
-        this.title = title;
-        this.unit = unit;
+    public Itinerary() {
     }
 
-    public Itinerary() {
+    public Itinerary(String title) {
+        this.title = title;
+    }
+
+    public void addView(View view) {
+        if (this.views == null) {
+            this.views = new HashSet<>();
+        }
+        this.views.add(view);
     }
 }

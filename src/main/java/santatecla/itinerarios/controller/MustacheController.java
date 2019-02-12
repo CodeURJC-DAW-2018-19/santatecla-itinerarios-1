@@ -36,8 +36,6 @@ public class MustacheController {
         final Optional<Unit> unit = this.unitRepository.findById(unit_id);
         unit.ifPresent((value) -> {
             model.addAttribute("unit", value);
-            final List<Itinerary> itineraries = this.itineraryRepository.findAllByUnit(value);
-            model.addAttribute("plans", itineraries);
         });
 
         return index(model);

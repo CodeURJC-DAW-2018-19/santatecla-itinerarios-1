@@ -4,8 +4,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import santatecla.itinerarios.model.Form;
 import santatecla.itinerarios.model.Itinerary;
 import santatecla.itinerarios.model.Unit;
+import santatecla.itinerarios.model.View;
 import santatecla.itinerarios.repo.ItineraryRepository;
 import santatecla.itinerarios.repo.UnitRepository;
 
@@ -17,15 +19,21 @@ public class WebApplication {
     }
 
     @Bean
-    public CommandLineRunner addTestData(UnitRepository unitRepository, ItineraryRepository itineraryRepository) {
+    public CommandLineRunner addTestData(
+            UnitRepository unitRepository,
+            ItineraryRepository itineraryRepository) {
         return (args) -> {
-            Unit unit = new Unit(1L, "Python");
+            unitRepository.deleteAll();
+            Unit unit = new Unit("Año 1989");
             unitRepository.save(unit);
-            Itinerary itinerary1 = new Itinerary(1L, "Hola Mundo", unit);
-            itineraryRepository.save(itinerary1);
-            Itinerary itinerary2 = new Itinerary(2L, "Adios", unit);
-            itineraryRepository.save(itinerary2);
-            unitRepository.save(new Unit(2L, "Adios"));
+            Form form = new Form("Eventos", "bra bra bra");
+            View view = new View();
+            view.addForm(form);
+            Itinerary itinerary = new Itinerary("Resumen");
+            itinerary.addView(view);
+            itineraryRepository.save(itinerary);
+            unit.addItinerary(itinerary);
+            unitRepository.save(unit);
         };
     }
 }
