@@ -34,6 +34,8 @@ public class WebApplication {
             itinerary.addView(view);
             itineraryRepository.save(itinerary);
             unit.addItinerary(itinerary);
+            Form form1 = new Form("Prueba","Por favor funciona");
+            unit.addForm(form1);
             unitRepository.save(unit);
         };
     }
