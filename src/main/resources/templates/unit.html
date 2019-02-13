@@ -6,13 +6,13 @@
                 <div class="nav-tabs-wrapper">
                     <ul class="nav nav-tabs" data-tabs="tabs">
                         {{^itinerary}}
-                        <li class="nav-item"><a class="nav-link active" href="/{{unit.id}}">Fichas</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="/home/{{unit.id}}">Fichas</a></li>
                         {{/itinerary}}
                         {{#itinerary}}
-                        <li class="nav-item"><a class="nav-link" href="/{{unit.id}}">Fichas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/home/{{unit.id}}">Fichas</a></li>
                         {{/itinerary}}
                         {{#unit.itineraries}}
-                        <li class="nav-item"><a class="nav-link" href="/{{unit.id}}/{{id}}">{{title}}</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/home/{{unit.id}}/{{id}}">{{title}}</a></li>
                         {{/unit.itineraries}}
                     </ul>
                 </div>
