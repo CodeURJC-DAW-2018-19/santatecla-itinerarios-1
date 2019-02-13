@@ -3,13 +3,16 @@
         <ul class="nav">
             <ul class="nav nav-pills nav-pills-primary " role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#link1" role="tablist" aria-expanded="true">
-                        SIGN IN
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="">
-                    </a>
+                    <form action="/logout" method="post">
+                        <input type="hidden" name="_csrf" value="{{token}}">
+                        <button type="submit" class="btn btn-primary pull-center">Logout</button>
+                    </form>
+                    {{#isAdmin}}
+                    <div>Es Profesor</div>
+                    {{/isAdmin}}
+                    {{^isAdmin}}
+                    <div>Es Estudiante</div>
+                    {{/isAdmin}}
                 </li>
             </ul>
         </ul>
