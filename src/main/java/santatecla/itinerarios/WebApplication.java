@@ -29,6 +29,7 @@ public class WebApplication {
             Form form = new Form("Eventos", "bra bra bra");
             View view = new View();
             view.addForm(form);
+            form.setUnit(unit);
             Itinerary itinerary = new Itinerary("Resumen");
             itinerary.addView(view);
             itineraryRepository.save(itinerary);

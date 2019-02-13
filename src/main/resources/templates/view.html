@@ -2,17 +2,17 @@
     <div class="col-6">
         <table class="table">
             <tbody>
-            {{#itinerary.views}}
+            {{#forms}}
             <tr>
-                <td class="text-center">${form_ref.unit}</td>
-                <td class="text-center">${form_ref.form}</td>
+                <td class="text-center">{{unitTitle}}</td>
+                <td class="text-center">{{title}}</td>
                 <td class="td-actions text-right">
                     <button type="button"
                             class="btn btn-fab btn-fab-mini btn-round">
                         <i class="material-icons">delete</i></button>
                 </td>
             </tr>
-            {{/itinerary.views}}
+            {{/forms}}
             <tr>
                 <td class="text-center">
                     <div class="dropdown">

@@ -43,4 +43,8 @@ public class Unit {
         }
         this.itineraries.add(itinerary);
     }
+
+    public String getTitle() {
+        return title;
+    }
 }
