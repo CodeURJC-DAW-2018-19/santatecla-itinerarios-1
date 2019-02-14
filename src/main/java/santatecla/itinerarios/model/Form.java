@@ -36,10 +36,6 @@ public class Form {
         this.description = description;
     }
 
-    public String getUnitTitle() {
-        return this.unit.getTitle();
-    }
-
     public void setUnit(Unit unit) {
         this.unit = unit;
     }
