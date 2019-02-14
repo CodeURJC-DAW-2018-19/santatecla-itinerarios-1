@@ -49,9 +49,7 @@ public class MustacheController {
     @GetMapping("/home/{unit_id}")
     public String home(Model model, @PathVariable Long unit_id) {
         final Optional<Unit> unit = this.unitRepository.findById(unit_id);
-        unit.ifPresent((value) -> {
-            model.addAttribute("unit", value);
-        });
+        unit.ifPresent((value) -> model.addAttribute("unit", value));
 
         return home(model);
     }
@@ -60,6 +58,7 @@ public class MustacheController {
     public String home(Model model, @PathVariable Long unit_id, @PathVariable Long itinerary_id) {
         final Optional<Itinerary> itinerary = this.itineraryRepository.findById(itinerary_id);
         itinerary.ifPresent((value) -> model.addAttribute("itinerary", value));
+
         return home(model, unit_id);
     }
 }

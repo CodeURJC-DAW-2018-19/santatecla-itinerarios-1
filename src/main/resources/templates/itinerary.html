@@ -1,40 +1,22 @@
 <div class="tab-pane">
     <div class="container">
         <div class="row">
-            <div class="card">
-                <div class="card-header card-header-text card-header-primary">
-                    <div class="row">
-                        <div class="col-2">
-                            <div class="card-text">
-                                <h4 class="card-title">Vista</h4>
-                            </div>
-                        </div>
-                        <div class="col-1 ml-auto">
-                            <button type="button"
-                                    class="btn btn-fab  btn-fab-mini btn-round">
-                                <i class="material-icons">delete</i></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="container">
-                        {{#views}}
-                        {{>view}}
-                        {{/views}}
-                    </div>
-                </div>
-            </div>
+            {{#items}}
+            {{#items}}
+            {{>view}}
+            {{/items}}
+            {{^items}}
+            {{>sub_itinerary}}
+            {{/items}}
+            {{/items}}
         </div>
-        {{#subItineraries}}
-        {{>sub_itineraries}}
-        {{/subItineraries}}
         <div class="row">
             <div class="col-1 ml-auto">
                 <div class="radio">
                     <label><input type="radio" name="optradio" checked>Vista</label>
                 </div>
             </div>
-            <div class="col-1">
+            <div class="col-2">
                 <div class="radio">
                     <label><input type="radio" name="optradio">Itinerario</label>
                 </div>

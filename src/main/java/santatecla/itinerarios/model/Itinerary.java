@@ -3,32 +3,18 @@ package santatecla.itinerarios.model;
 import lombok.Data;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
-public class Itinerary {
-    @Id
-    @GeneratedValue
-    private Long id;
-
-    @Column
+public class Itinerary extends Item {
     private String title;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn
-    private Set<Itinerary> subItineraries;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn
-    private Set<View> views;
+    private List<Item> items;
 
     public Itinerary() {
     }
@@ -37,10 +23,10 @@ public class Itinerary {
         this.title = title;
     }
 
-    public void addView(View view) {
-        if (this.views == null) {
-            this.views = new HashSet<>();
+    public void addItem(Item item) {
+        if (this.items == null) {
+            this.items = new ArrayList<>();
         }
-        this.views.add(view);
+        this.items.add(item);
     }
 }
