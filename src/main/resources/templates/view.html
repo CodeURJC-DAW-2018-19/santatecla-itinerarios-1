@@ -22,12 +22,10 @@
                                 aria-expanded="false">
                             Buscar..
                         </button>
-                        <div class="dropdown-menu"
-                             aria-labelledby="dropdownMenuButton2">
-                            <a class="dropdown-item" href="#">Años 1989</a>
-                            <a class="dropdown-item" href="#">CERN</a>
-                            <a class="dropdown-item" href="#">Tim Berners-Lee</a>
-                            <a class="dropdown-item" href="#">JavaScript</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                            {{#units}}
+                            <a class="dropdown-item" href="#">{{title}}</a>
+                            {{/units}}
                         </div>
                     </div>
                 </td>
