@@ -27,7 +27,6 @@ public class WebApplication {
             view.addForm(form);
             Itinerary itinerary = new Itinerary("Resumen");
             itinerary.addItem(view);
-            // TODO: cascade save view with unitRepository
             unit.addItinerary(itinerary);
             Form form1 = new Form("Prueba", "Por favor funciona");
             unit.addForm(form1);
