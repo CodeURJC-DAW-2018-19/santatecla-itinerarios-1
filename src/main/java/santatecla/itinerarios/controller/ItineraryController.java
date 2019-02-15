@@ -1,6 +1,5 @@
 package santatecla.itinerarios.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +16,6 @@ import javax.persistence.EntityNotFoundException;
 public class ItineraryController {
     private ItineraryRepository repository;
 
-    @Autowired
     public ItineraryController(ItineraryRepository repository) {
         this.repository = repository;
     }

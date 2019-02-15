@@ -1,6 +1,5 @@
 package santatecla.itinerarios.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +17,6 @@ public class MustacheController {
     private UnitRepository unitRepository;
     private ItineraryRepository itineraryRepository;
 
-    @Autowired
     public MustacheController(UnitRepository unitRepository, ItineraryRepository itineraryRepository) {
         this.unitRepository = unitRepository;
         this.itineraryRepository = itineraryRepository;
