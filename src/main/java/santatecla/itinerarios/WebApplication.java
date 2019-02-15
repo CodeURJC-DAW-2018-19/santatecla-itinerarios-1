@@ -7,8 +7,10 @@ import org.springframework.context.annotation.Bean;
 import santatecla.itinerarios.model.Form;
 import santatecla.itinerarios.model.Itinerary;
 import santatecla.itinerarios.model.Unit;
+import santatecla.itinerarios.model.User;
 import santatecla.itinerarios.model.View;
 import santatecla.itinerarios.repo.UnitRepository;
+import santatecla.itinerarios.repo.UserRepository;
 
 @SpringBootApplication
 public class WebApplication {
@@ -18,8 +20,16 @@ public class WebApplication {
     }
 
     @Bean
-    public CommandLineRunner addTestData(UnitRepository unitRepository) {
+    public CommandLineRunner addTestData(UnitRepository unitRepository, UserRepository userRepository) {
         return (args) -> {
+            userRepository.deleteAll();
+            final User user = new User("user", "pass");
+            user.addRole("user");
+            userRepository.save(user);
+            final User admin = new User("admin", "pass");
+            admin.addRole("admin");
+            userRepository.save(admin);
+
             unitRepository.deleteAll();
             Unit unit = new Unit("Anio 1990");
             Form form = new Form("Eventos", "bra bra bra");

@@ -9,10 +9,17 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import santatecla.itinerarios.service.UserService;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    private UserService userService;
+
+    public WebSecurityConfig(UserService userService) {
+        this.userService = userService;
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -37,11 +44,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        // TODO MySQL
-        auth.inMemoryAuthentication().withUser("user").password("pass").roles("USER");
-
-        auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");
+    protected void configure(AuthenticationManagerBuilder builder) throws Exception {
+        builder.userDetailsService(this.userService);
     }
 
     @Bean
