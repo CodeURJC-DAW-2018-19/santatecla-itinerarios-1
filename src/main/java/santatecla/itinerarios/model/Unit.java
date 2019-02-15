@@ -3,6 +3,7 @@ package santatecla.itinerarios.model;
 import lombok.Data;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,6 +18,7 @@ public class Unit {
     @GeneratedValue
     private Long id;
 
+    @Column(nullable = false)
     private String title;
 
     @OneToMany(cascade = CascadeType.ALL)
