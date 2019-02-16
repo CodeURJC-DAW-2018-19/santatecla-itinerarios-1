@@ -54,6 +54,14 @@
                                 </div>
                                 <input type="hidden" name="_csrf" value="{{token}}">
                                 <button type="submit" class="btn btn-primary pull-center">Entrar</button>
+
+                                {{#loginErrorMsg}}
+                                <p class="p-2 mb-2 mt-3 bg-danger text-white">
+                                    <span class=" px-1" >
+                                        <i class="material-icons">error</i>
+                                    </span> <strong>ERROR:  </strong> contraseña o usuario no válidos.
+                                </p>
+                                {{/loginErrorMsg}}
                             </form>
                         </div>
                     </div>

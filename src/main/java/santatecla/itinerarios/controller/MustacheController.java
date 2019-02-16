@@ -40,8 +40,10 @@ public class MustacheController {
     }
 
     @GetMapping("/login_error")
-    public String loginError() {
-        return "login_error";
+    public String loginError(Model model) {
+        //return "login_error";
+        model.addAttribute("loginErrorMsg", "true");
+        return "login";
     }
 
     @GetMapping("/home/{unit_id}")
