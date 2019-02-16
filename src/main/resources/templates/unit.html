@@ -1,9 +1,6 @@
-<div class="tab-pane active" id="unit{{id}}">
-    <div class="card card-nav-tabs card-plain">
-        <div class="card-header card-header-danger">
-            <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
-            <div class="nav-tabs-navigation">
-                <div class="nav-tabs-wrapper">
+<div class="tab-pane active px-3" id="unit{{id}}">
+    <div class="card">
+        <div class="card-header card-header-rose">
                     <ul class="nav nav-tabs" data-tabs="tabs">
                         {{^itinerary}}
                         <li class="nav-item"><a class="nav-link active" href="/home/{{unit.id}}">Fichas</a></li>
@@ -15,12 +12,10 @@
                         <li class="nav-item"><a class="nav-link" href="/home/{{unit.id}}/{{id}}">{{title}}</a></li>
                         {{/unit.itineraries}}
                     </ul>
-                </div>
-            </div>
         </div>
         <div class="card-body">
             <div class="tab-content text-center">
-                <div class="tab-pane active" id="${forms_id}">
+                <div class="tab-pane active active px-1" id="${forms_id}">
                     <div class="container">
                         {{#itinerary}}
                         {{>itinerary}}
