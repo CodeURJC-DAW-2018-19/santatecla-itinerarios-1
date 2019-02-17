@@ -68,4 +68,10 @@ public class MustacheController {
         unit.ifPresent((value) -> model.addAttribute("dropdown_unit", value));
         return "formsDropdown";
     }
+
+    @GetMapping("/signUp")
+    public String SignUp(Model model) {
+        model.addAttribute("login", true);
+        return "login";
+    }
 }
