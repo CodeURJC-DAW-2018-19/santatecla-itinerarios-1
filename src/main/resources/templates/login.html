@@ -26,12 +26,16 @@
             </div>
             {{^login}}
             <div class="col-md-12">
-                <a href="/signUp"><button type="button" class="btn btn-primary pull-right">Registrar</button></a>
+                <a href="/signUp">
+                    <button type="button" class="btn btn-primary pull-right">Registrar</button>
+                </a>
             </div>
             {{/login}}
             {{#login}}
             <div class="col-md-12">
-                <a href="/login"><button type="button" class="btn btn-primary pull-right">Login</button></a>
+                <a href="/login">
+                    <button type="button" class="btn btn-primary pull-right">Login</button>
+                </a>
             </div>
             {{/login}}
             <div class="container-fluid col-md-5">
@@ -46,7 +50,7 @@
                             {{/login}}
                         </div>
                         <div class="card-body">
-                            <form action="{{^login}}/login{{/login}}{{#login}}/signUp{{/login}}" method="POST">
+                            <form action="{{^login}}/login{{/login}}{{#login}}/signUp{{/login}}" method="POST" modelAttribute="user">
                                 <div class="row">
                                     <div class="col-md-10">
                                         <div class="form-group">
@@ -69,16 +73,16 @@
                                 {{/login}}
                                 {{#login}}
                                 <div class="row">
-                                    <label><input type="radio" name="roles">Profesor</label>
-                                    <label><input type="radio" name="roles">Alumno</label>
+                                    <label><input type="radio" name="roles" value="admin">Profesor</label>
+                                    <label><input type="radio" name="roles" value="user">Alumno</label>
                                 </div>
                                 <button type="submit" class="btn btn-primary pull-center">Registrar</button>
                                 {{/login}}
                                 {{#loginErrorMsg}}
                                 <p class="p-2 mb-2 mt-3 bg-danger text-white">
-                                    <span class=" px-1" >
+                                    <span class=" px-1">
                                         <i class="material-icons">error</i>
-                                    </span> <strong>ERROR:  </strong> contraseña o usuario no válidos.
+                                    </span> <strong>ERROR: </strong> contraseña o usuario no válidos.
                                 </p>
                                 {{/loginErrorMsg}}
                             </form>
