@@ -42,7 +42,7 @@ public class WebApplication {
             unitRepository.save(unit);
 
             Unit unit1 = new Unit("CERN");
-            Form form1= new Form ("Logros","description");
+            Form form1 = new Form("Logros", "description");
             View view1 = new View();
             view1.addForm(form1);
             Itinerary itinerary1 = new Itinerary("Introduccion");
@@ -52,7 +52,7 @@ public class WebApplication {
             unitRepository.save(unit1);
 
             Unit unit2 = new Unit("Tim Berners Lee");
-            Form form2 = new Form ("Datos","description");
+            Form form2 = new Form("Datos", "description");
             View view2 = new View();
             view2.addForm(form2);
             Itinerary itinerary2 = new Itinerary("Bibliografia");
@@ -62,10 +62,10 @@ public class WebApplication {
             unitRepository.save(unit2);
 
             Unit unit3 = new Unit("Javascript");
-            Form form3 = new Form ("Cuándo","description");
-            Form form4 = new Form ("Dónde","description");
-            Form form5 = new Form ("Quién","description");
-            Form form6 = new Form ("Por qué","description");
+            Form form3 = new Form("Cuándo", "description");
+            Form form4 = new Form("Dónde", "description");
+            Form form5 = new Form("Quién", "description");
+            Form form6 = new Form("Por qué", "description");
             View view3 = new View();
             view3.addForm(form3);
             view3.addForm(form4);
@@ -73,14 +73,17 @@ public class WebApplication {
             view3.addForm(form6);
             Itinerary itinerary3 = new Itinerary("Contexto");
             itinerary3.addItem(view3);
-//            itinerary3.addItem(itinerary);
-//            itinerary3.addItem(itinerary1);
-//            itinerary3.addItem(itinerary2);
             unit3.addItinerary(itinerary3);
             unit3.addForm(form3);
             unit3.addForm(form4);
             unit3.addForm(form5);
             unit3.addForm(form6);
+            unitRepository.save(unit3);
+
+            // TODO: why i need to add later
+            itinerary3.addItem(itinerary);
+            itinerary3.addItem(itinerary1);
+            itinerary3.addItem(itinerary2);
             unitRepository.save(unit3);
         };
     }

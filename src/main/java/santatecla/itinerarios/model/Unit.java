@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,9 +23,11 @@ public class Unit {
     private String title;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn
     private Set<Itinerary> itineraries;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn
     private Set<Form> forms;
 
     public Unit(String title) {
