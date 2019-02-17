@@ -1,56 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-    <meta charset="UTF-8">
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport'/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-
-    <title>Login</title>
-
-    <!--     Fonts and icons     -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"/>
-
-    <!-- Material Dashboard CSS -->
-    <link rel="stylesheet" href="/assets/css/material-dashboard.css">
-
-</head>
-
-<body>
 <div class="content">
     <div class="container-fluid">
         <div class="card">
             <div class="card-header card-header-primary">
                 <h4 class="card-title">Welcome!</h4>
             </div>
-            {{^login}}
+            {{#isLogin}}
             <div class="col-md-12">
                 <a href="/signUp">
                     <button type="button" class="btn btn-primary pull-right">Registrar</button>
                 </a>
             </div>
-            {{/login}}
-            {{#login}}
+            {{/isLogin}}
+            {{#isSignUp}}
             <div class="col-md-12">
                 <a href="/login">
                     <button type="button" class="btn btn-primary pull-right">Login</button>
                 </a>
             </div>
-            {{/login}}
+            {{/isSignUp}}
             <div class="container-fluid col-md-5">
                 <div class="col-md-12">
                     <div class="card col-md-10">
                         <div class="card-header card-header-primary">
-                            {{^login}}
+                            {{#isLogin}}
                             <h4 class="card-title"><i class="material-icons">person</i>Login</h4>
-                            {{/login}}
-                            {{#login}}
+                            {{/isLogin}}
+                            {{#isSignUp}}
                             <h4 class="card-title"><i class="material-icons">person</i>Registrar</h4>
-                            {{/login}}
+                            {{/isSignUp}}
                         </div>
                         <div class="card-body">
-                            <form action="{{^login}}/login{{/login}}{{#login}}/signUp{{/login}}" method="POST" modelAttribute="user">
+                            <form action="{{#isLogin}}/login{{/isLogin}}{{#isSignUp}}/signUp{{/isSignUp}}" method="POST" modelAttribute="user">
                                 <div class="row">
                                     <div class="col-md-10">
                                         <div class="form-group">
@@ -68,16 +48,16 @@
                                     </div>
                                 </div>
                                 <input type="hidden" name="_csrf" value="{{token}}">
-                                {{^login}}
+                                {{#isLogin}}
                                 <button type="submit" class="btn btn-primary pull-center">Entrar</button>
-                                {{/login}}
-                                {{#login}}
+                                {{/isLogin}}
+                                {{#isSignUp}}
                                 <div class="row">
                                     <label><input type="radio" name="roles" value="admin">Profesor</label>
                                     <label><input type="radio" name="roles" value="user">Alumno</label>
                                 </div>
                                 <button type="submit" class="btn btn-primary pull-center">Registrar</button>
-                                {{/login}}
+                                {{/isSignUp}}
                                 {{#loginErrorMsg}}
                                 <p class="p-2 mb-2 mt-3 bg-danger text-white">
                                     <span class=" px-1">
@@ -93,6 +73,3 @@
         </div>
     </div>
 </div>
-
-</body>
-</html>

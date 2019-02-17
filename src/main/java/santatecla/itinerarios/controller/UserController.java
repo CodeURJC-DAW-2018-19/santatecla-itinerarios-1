@@ -19,6 +19,6 @@ public class UserController {
     @PostMapping("/signUp")
     public String signUp(@Valid @ModelAttribute("user") User user) {
         this.repo.save(user);
-        return "login";
+        return "redirect:/login";
     }
 }

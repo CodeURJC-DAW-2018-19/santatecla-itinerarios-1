@@ -31,19 +31,28 @@ public class MustacheController {
     public String home(Model model) {
         final List<Unit> units = this.unitRepository.findAll();
         model.addAttribute("units", units);
+        model.addAttribute("isHome", true);
         return "index";
     }
 
     @GetMapping("/login")
-    public String login() {
-        return "login";
+    public String login(Model model) {
+        model.addAttribute("isLogin", true);
+        return "index";
     }
 
     @GetMapping("/login_error")
     public String loginError(Model model) {
         //return "login_error";
         model.addAttribute("loginErrorMsg", "true");
-        return "login";
+        model.addAttribute("isLogin", true);
+        return "index";
+    }
+
+    @GetMapping("/signUp")
+    public String SignUp(Model model) {
+        model.addAttribute("isSignUp", true);
+        return "index";
     }
 
     @GetMapping("/home/{unit_id}")
@@ -68,11 +77,5 @@ public class MustacheController {
         unit.ifPresent((value) -> model.addAttribute("dropdown_unit", value));
 
         return "formsDropdown";
-    }
-
-    @GetMapping("/signUp")
-    public String SignUp(Model model) {
-        model.addAttribute("login", true);
-        return "login";
     }
 }
