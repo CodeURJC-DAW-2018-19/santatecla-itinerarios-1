@@ -20,7 +20,7 @@ public class CSRFHandlerConfiguration implements WebMvcConfigurer {
                                final ModelAndView modelAndView) {
 
             CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
-            if (token != null) {
+            if (token != null && modelAndView != null) {
                 modelAndView.addObject("token", token.getToken());
             }
         }
