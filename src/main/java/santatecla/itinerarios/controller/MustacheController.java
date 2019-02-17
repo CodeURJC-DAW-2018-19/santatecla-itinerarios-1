@@ -66,6 +66,7 @@ public class MustacheController {
     public String unitForm(Model model, @PathVariable Long unit_id) {
         final Optional<Unit> unit = this.unitRepository.findById(unit_id);
         unit.ifPresent((value) -> model.addAttribute("dropdown_unit", value));
+
         return "formsDropdown";
     }
 }
