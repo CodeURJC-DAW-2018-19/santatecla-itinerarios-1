@@ -2,12 +2,15 @@
     <div class="container">
         <div class="row">
             {{#items}}
-            {{#items}}
+            {{^isItinerary}}
             {{>view}}
+            {{/isItinerary}}
             {{/items}}
-            {{^items}}
+
+            {{#items}}
+            {{#isItinerary}}
             {{>sub_itinerary}}
-            {{/items}}
+            {{/isItinerary}}
             {{/items}}
         </div>
         <div class="row" style="align-items: center">

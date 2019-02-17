@@ -12,4 +12,9 @@ public class Item {
     @Id
     @GeneratedValue
     private Long id;
+
+    public boolean getIsItinerary() {
+        // TODO: i don't line
+        return false;
+    }
 }
