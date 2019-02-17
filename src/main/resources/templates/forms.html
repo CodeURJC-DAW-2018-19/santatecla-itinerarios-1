@@ -1,6 +1,6 @@
 {{#unit.forms}}
 <div class="row">
-    <div class="card">
+    <div class="card" id="form1">
         <div class="card-header card-header-text card-header-primary">
             <div class="container">
                 <div class="row">
@@ -10,7 +10,7 @@
                         </div>
                     </div>
                     <div class="col-1 ml-auto">
-                        <button type="button"
+                        <button type="button" onclick="deleteById(id)"
                                 class="btn btn-fab btn-fab-mini btn-round">
                             <i class="material-icons">delete</i></button>
                     </div>
@@ -20,6 +20,10 @@
         <div class="card-body">
                {{description}}
         </div>
+    </div>
+    <div class="col-1 ml-auto">
+        <button type="submit" class="btn btn-primary btn-fab btn-fab-mini btn-round pull-right" data-toggle="modal" data-target="#new_itinerary" onclick='anadirContenido(".container")'>
+            <i class="material-icons"  style="color:white">add</i></button>
     </div>
 </div>
 {{/unit.forms}}
