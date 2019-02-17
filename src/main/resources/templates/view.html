@@ -41,30 +41,13 @@
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
                                         {{#units}}
-                                        <a class="dropdown-item" href="#">{{title}}</a>
+                                        <a class="dropdown-item" onclick="updateDropdown({{id}})">{{title}}</a>
                                         {{/units}}
                                     </div>
                                 </div>
                             </td>
                             <td class="text-center">
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle"
-                                            type="button" id="dropdownMenuButton2"
-                                            data-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">
-                                        Buscar..
-                                    </button>
-                                    <div class="dropdown-menu"
-                                         aria-labelledby="dropdownMenuButton2">
-                                        <a class="dropdown-item" href="#">Evento</a>
-                                        <a class="dropdown-item" href="#">Logro</a>
-                                        <a class="dropdown-item" href="#">Dato</a>
-                                        <a class="dropdown-item" href="#">Cuándo</a>
-                                        <a class="dropdown-item" href="#">Dónde</a>
-                                        <a class="dropdown-item" href="#">Quién</a>
-                                        <a class="dropdown-item" href="#">Por qué</a>
-                                    </div>
-                                </div>
+                                {{>formsDropdown}}
                             </td>
                             <td class="td-actions text-right">
                                 <button type="button"
