@@ -38,9 +38,50 @@ public class WebApplication {
             Itinerary itinerary = new Itinerary("Resumen");
             itinerary.addItem(view);
             unit.addItinerary(itinerary);
-            Form form1 = new Form("Prueba", "Por favor funciona");
-            unit.addForm(form1);
+            unit.addForm(form);
             unitRepository.save(unit);
+
+            Unit unit1 = new Unit("CERN");
+            Form form1= new Form ("Logros","description");
+            View view1 = new View();
+            view1.addForm(form1);
+            Itinerary itinerary1 = new Itinerary("Introduccion");
+            itinerary1.addItem(view1);
+            unit1.addItinerary(itinerary1);
+            unit1.addForm(form1);
+            unitRepository.save(unit1);
+
+            Unit unit2 = new Unit("Tim Berners Lee");
+            Form form2 = new Form ("Datos","description");
+            View view2 = new View();
+            view2.addForm(form2);
+            Itinerary itinerary2 = new Itinerary("Bibliografia");
+            itinerary2.addItem(view2);
+            unit2.addItinerary(itinerary2);
+            unit2.addForm(form2);
+            unitRepository.save(unit2);
+
+            Unit unit3 = new Unit("Javascript");
+            Form form3 = new Form ("Cuándo","description");
+            Form form4 = new Form ("Dónde","description");
+            Form form5 = new Form ("Quién","description");
+            Form form6 = new Form ("Por qué","description");
+            View view3 = new View();
+            view3.addForm(form3);
+            view3.addForm(form4);
+            view3.addForm(form5);
+            view3.addForm(form6);
+            Itinerary itinerary3 = new Itinerary("Contexto");
+            itinerary3.addItem(view3);
+//            itinerary3.addItem(itinerary);
+//            itinerary3.addItem(itinerary1);
+//            itinerary3.addItem(itinerary2);
+            unit3.addItinerary(itinerary3);
+            unit3.addForm(form3);
+            unit3.addForm(form4);
+            unit3.addForm(form5);
+            unit3.addForm(form6);
+            unitRepository.save(unit3);
         };
     }
 }
