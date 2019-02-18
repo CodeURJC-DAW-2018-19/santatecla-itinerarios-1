@@ -1,5 +1,8 @@
 package santatecla.itinerarios.controller;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,17 +19,23 @@ import javax.persistence.EntityNotFoundException;
 public class ViewController {
     private ViewRepository repository;
 
-    public ViewController(ViewRepository repository){
-        this.repository= repository;
+    public ViewController(ViewRepository repository) {
+        this.repository = repository;
     }
 
     @GetMapping("/{id}")
-    public View findByID(@PathVariable Long id){
-        return this.repository.findById(id).orElseThrow(()-> new EntityNotFoundException(View.class.getName() + " not found with id " + id));
+    public View findByID(@PathVariable Long id) {
+        return this.repository.findById(id).orElseThrow(() -> new EntityNotFoundException(View.class.getName() + " not found with id " + id));
     }
 
     @PostMapping
     public void addView(@RequestBody View view) {
         this.repository.save(view);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable Long id) {
+        this.repository.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }

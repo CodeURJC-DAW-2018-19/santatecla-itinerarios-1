@@ -12,19 +12,29 @@ $(document).ready(function () {
             "url": $(this).attr("action"),
             "method": "POST",
             "data": $(this).serialize()
-        }).done(function () {
-            $.ajax({
-                "url": window.location.pathname,
-                "method": "GET"
-            }).done(function (data) {
-                var newDoc = document.open("text/html", "replace");
-                newDoc.write(data);
-                newDoc.close();
-            });
-        });
+        }).done(refreshPage);
     });
 });
 
+function refreshPage() {
+    $.ajax({
+        "url": window.location.pathname,
+        "method": "GET"
+    }).done(function (data) {
+        var newDoc = document.open("text/html", "replace");
+        newDoc.write(data);
+        newDoc.close();
+    });
+}
+
 function updateDropdown(id) {
     $("#select_form").load("/unit_option/" + id);
+}
+
+function deleteView(id, token) {
+    $.ajax({
+        "url": "/views/" + id,
+        "method": "DELETE",
+        "data": "_csrf=" + token
+    }).done(refreshPage);
 }
