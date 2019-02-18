@@ -8,22 +8,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import santatecla.itinerarios.model.Form;
-import santatecla.itinerarios.model.Unit;
 import santatecla.itinerarios.repo.FormRepository;
-import santatecla.itinerarios.repo.UnitRepository;
 
 import javax.persistence.EntityNotFoundException;
-import java.util.Optional;
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("forms")
 public class FormController {
     private FormRepository repository;
-    private UnitRepository unitRepository;
 
-    public FormController(FormRepository repository, UnitRepository unitRepository) {
+    public FormController(FormRepository repository) {
         this.repository = repository;
-        this.unitRepository = unitRepository;
     }
 
     @GetMapping("/{id}")
@@ -32,10 +28,8 @@ public class FormController {
     }
 
 
-    @PostMapping("/{unit_id}") // TODO: i don't like unit_id
-    public Form addForm(@ModelAttribute Form form, @PathVariable Long unit_id) {
-        final Optional<Unit> unit = this.unitRepository.findById(unit_id);
-        unit.ifPresent(form::setUnit);
+    @PostMapping
+    public Form addForm(@Valid @ModelAttribute Form form) {
         return this.repository.save(form);
     }
 

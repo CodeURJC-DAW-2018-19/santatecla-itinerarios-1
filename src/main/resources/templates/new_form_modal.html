@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="/forms/{{#unit}}{{id}}{{/unit}}" method="post">
+                <form action="/forms" method="post">
                     <div class="form-group">
                         <label for="itinerary_title">Título</label>
                         <input id="itinerary_title" name="title" type="text" class="form-control" placeholder="Introduzca un título">
@@ -18,6 +18,7 @@
                         <textarea class="form-control" id="itinerary_description" name="description" rows="15"></textarea>
                     </div>
                     <input type="hidden" name="_csrf" value="{{token}}">
+                    <input type="hidden" name="unit" value="{{#unit}}{{id}}{{/unit}}">
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Aceptar</button>
