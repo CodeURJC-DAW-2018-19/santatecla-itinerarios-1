@@ -25,8 +25,7 @@ public class Unit {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "unit")
     private Set<Itinerary> itineraries;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "unit")
     private Set<Form> forms;
 
     public Unit(String title) {

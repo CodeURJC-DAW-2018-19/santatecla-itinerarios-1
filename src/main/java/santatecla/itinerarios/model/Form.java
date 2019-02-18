@@ -1,14 +1,19 @@
 package santatecla.itinerarios.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Data
+@EqualsAndHashCode(exclude = {"unit"})
 public class Form {
     @Id
     @GeneratedValue
@@ -19,11 +24,21 @@ public class Form {
 
     private String description;
 
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    @JsonIgnore
+    private Unit unit;
+
     public Form() {
     }
 
-    public Form(String title, String description) {
+    public Form(String title, String description, Unit unit) {
         this.title = title;
         this.description = description;
+        this.unit = unit;
+    }
+
+    public void setUnit(Unit unit) {
+        this.unit = unit;
     }
 }
