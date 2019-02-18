@@ -5,8 +5,26 @@ $(document).ready(function () {
             $(e).find(".btn").val($(this).text());
         });
     });
+
+    $("form").submit(function (e) {
+        e.preventDefault();
+        $.ajax({
+            "url": $(this).attr("action"),
+            "method": "POST",
+            "data": $(this).serialize()
+        }).done(function () {
+            $.ajax({
+                "url": window.location.pathname,
+                "method": "GET"
+            }).done(function (data) {
+                var newDoc = document.open("text/html", "replace");
+                newDoc.write(data);
+                newDoc.close();
+            });
+        });
+    });
 });
 
-function updateDropdown(id){
+function updateDropdown(id) {
     $("#select_form").load("/unit_option/" + id);
 }
