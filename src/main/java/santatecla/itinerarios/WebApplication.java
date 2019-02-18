@@ -32,7 +32,7 @@ public class WebApplication {
 
             unitRepository.deleteAll();
             Unit unit = new Unit("Anio 1990");
-            Form form = new Form("Eventos", "bra bra bra");
+            Form form = new Form("Eventos", "bra bra bra", unit);
             View view = new View();
             view.addForm(form);
             Itinerary itinerary = new Itinerary("Resumen");
@@ -42,7 +42,7 @@ public class WebApplication {
             unitRepository.save(unit);
 
             Unit unit1 = new Unit("CERN");
-            Form form1 = new Form("Logros", "description");
+            Form form1 = new Form("Logros", "description", unit1);
             View view1 = new View();
             view1.addForm(form1);
             Itinerary itinerary1 = new Itinerary("Introduccion");
@@ -52,7 +52,7 @@ public class WebApplication {
             unitRepository.save(unit1);
 
             Unit unit2 = new Unit("Tim Berners Lee");
-            Form form2 = new Form("Datos", "description");
+            Form form2 = new Form("Datos", "description", unit2);
             View view2 = new View();
             view2.addForm(form2);
             Itinerary itinerary2 = new Itinerary("Bibliografia");
@@ -62,10 +62,10 @@ public class WebApplication {
             unitRepository.save(unit2);
 
             Unit unit3 = new Unit("Javascript");
-            Form form3 = new Form("Cuándo", "description");
-            Form form4 = new Form("Dónde", "description");
-            Form form5 = new Form("Quién", "description");
-            Form form6 = new Form("Por qué", "description");
+            Form form3 = new Form("Cuándo", "description", unit3);
+            Form form4 = new Form("Dónde", "description", unit3);
+            Form form5 = new Form("Quién", "description", unit3);
+            Form form6 = new Form("Por qué", "description", unit3);
             View view3 = new View();
             view3.addForm(form3);
             view3.addForm(form4);

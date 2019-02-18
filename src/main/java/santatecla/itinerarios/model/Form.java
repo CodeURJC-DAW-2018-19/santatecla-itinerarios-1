@@ -25,16 +25,17 @@ public class Form {
     private String description;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(nullable = false)
     @JsonIgnore
     private Unit unit;
 
     public Form() {
     }
 
-    public Form(String title, String description) {
+    public Form(String title, String description, Unit unit) {
         this.title = title;
         this.description = description;
+        this.unit = unit;
     }
 
     public void setUnit(Unit unit) {
