@@ -1,13 +1,23 @@
 package santatecla.itinerarios.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Data
+@EqualsAndHashCode(exclude = "unit")
+@ToString(exclude = "unit")
 public class Itinerary extends Item {
     @Column(nullable = false)
     private String title;
@@ -16,13 +26,16 @@ public class Itinerary extends Item {
     private List<Item> items;
 
     @ManyToOne
+    @JoinColumn
+    @JsonIgnore
     private Unit unit;
 
     public Itinerary() {
     }
 
-    public Itinerary(String title) {
+    public Itinerary(String title, Unit unit) {
         this.title = title;
+        this.unit = unit;
     }
 
     public void addItem(Item item) {

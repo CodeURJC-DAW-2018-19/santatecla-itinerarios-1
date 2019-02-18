@@ -10,11 +10,13 @@
                             type="button" id="dropdownMenuButton3"
                             data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
-                        {{unit}}
+                        {{#unit}}{{title}}{{/unit}}
                     </button>
                     <div class="dropdown-menu"
                          aria-labelledby="dropdownMenuButton3">
+                        {{#units}}
                         <a class="dropdown-item" href="#{{id}}">{{unit}}</a>
+                        {{/units}}
                     </div>
                 </div>
             </div>
@@ -39,26 +41,13 @@
             </div>
         </div>
         <div class="row align-items-center">
+            {{#items}}
             <div class="col-2">
                 <div class="card">
-                    hola
+                    {{#unit}}{{title}}{{/unit}} - {{title}} - {{#isItinerary}}{{title}}{{/isItinerary}}{{^isItinerary}}view {{-index}}{{/isItinerary}}
                 </div>
             </div>
-            <div class="col-2">
-                <div class="card">
-                    JavaScript-Contexto-¿Dónde?
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="card">
-                    JavaScript-Contexto-¿Quién?
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="card">
-                    JavaScript-Contexto-¿Por qué?
-                </div>
-            </div>
+            {{/items}}
             <div class="col-1 ml-auto">
                 <button type="button"
                         class="btn btn-fab  btn-fab-mini btn-round">
