@@ -1,11 +1,7 @@
 package santatecla.itinerarios.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import santatecla.itinerarios.model.Form;
 import santatecla.itinerarios.repo.FormRepository;
 
@@ -25,8 +21,15 @@ public class FormController {
         return this.repository.findById(id).orElseThrow(() -> new EntityNotFoundException(Form.class.getName() + " not found with id " + id));
     }
 
-    @PostMapping
-    public void addForm(@RequestBody Form form) {
+
+    @PostMapping("/")
+    public void addForm(@ModelAttribute("form") Form form) {
         this.repository.save(form);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteForm(@PathVariable Long id){
+        this.repository.deleteById(id);
+    }
+
 }
