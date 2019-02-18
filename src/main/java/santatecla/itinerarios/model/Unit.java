@@ -22,8 +22,7 @@ public class Unit {
     @Column(nullable = false)
     private String title;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "unit")
     private Set<Itinerary> itineraries;
 
     @OneToMany(cascade = CascadeType.ALL)

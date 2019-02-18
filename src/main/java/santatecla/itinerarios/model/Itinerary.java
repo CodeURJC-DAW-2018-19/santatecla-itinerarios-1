@@ -2,10 +2,7 @@ package santatecla.itinerarios.model;
 
 import lombok.Data;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +14,9 @@ public class Itinerary extends Item {
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Item> items;
+
+    @ManyToOne
+    private Unit unit;
 
     public Itinerary() {
     }
