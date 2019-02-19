@@ -1,19 +1,20 @@
 package santatecla.itinerarios.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class Unit {
     @Id
     @GeneratedValue
@@ -30,9 +31,6 @@ public class Unit {
 
     public Unit(String title) {
         this.title = title;
-    }
-
-    public Unit() {
     }
 
     public void addItinerary(Itinerary itinerary) {

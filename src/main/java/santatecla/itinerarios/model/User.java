@@ -1,6 +1,7 @@
 package santatecla.itinerarios.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -13,6 +14,7 @@ import java.util.Set;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class User {
     @Id
     @GeneratedValue
@@ -45,9 +47,6 @@ public class User {
             this.roles = new HashSet<>();
         }
         this.roles.add(role);
-    }
-
-    public User() {
     }
 
     public User(String username, String password) {

@@ -3,6 +3,7 @@ package santatecla.itinerarios.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.Column;
@@ -16,6 +17,7 @@ import javax.persistence.ManyToOne;
 @Data
 @EqualsAndHashCode(exclude = {"unit"})
 @ToString(exclude = {"unit"})
+@NoArgsConstructor
 public class Form {
     @Id
     @GeneratedValue
@@ -30,9 +32,6 @@ public class Form {
     @JoinColumn(nullable = false)
     @JsonIgnore
     private Unit unit;
-
-    public Form() {
-    }
 
     public Form(String title, String description, Unit unit) {
         this.title = title;

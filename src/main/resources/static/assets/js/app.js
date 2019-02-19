@@ -43,7 +43,7 @@ function deleteByIdForm(id, token)
 {
     $.ajax({
         "method": "DELETE",
-        "url": "/form/"+ id,
+        "url": "/forms/"+ id,
         "data": "_csrf="+ token
     }).done(refreshPage);
 }

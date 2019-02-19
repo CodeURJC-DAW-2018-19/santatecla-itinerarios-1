@@ -3,6 +3,7 @@ package santatecla.itinerarios.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.CascadeType;
@@ -18,6 +19,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(exclude = "unit")
 @ToString(exclude = "unit")
+@NoArgsConstructor
 public class Itinerary extends Item {
     @Column(nullable = false)
     private String title;
@@ -29,9 +31,6 @@ public class Itinerary extends Item {
     @JoinColumn
     @JsonIgnore
     private Unit unit;
-
-    public Itinerary() {
-    }
 
     public Itinerary(String title, Unit unit) {
         this.title = title;
