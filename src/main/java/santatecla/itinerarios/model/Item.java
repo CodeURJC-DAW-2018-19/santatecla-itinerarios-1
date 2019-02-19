@@ -1,17 +1,26 @@
 package santatecla.itinerarios.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@NoArgsConstructor
 public class Item {
     @Id
     @GeneratedValue
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    @JsonIgnore
+    private Itinerary itinerary;
+
+    public Item(Itinerary itinerary) {
+        this.itinerary = itinerary;
+    }
 
     public boolean getIsItinerary() {
         // TODO: i don't line

@@ -1,11 +1,7 @@
 package santatecla.itinerarios.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import santatecla.itinerarios.model.Itinerary;
 import santatecla.itinerarios.repo.ItineraryRepository;
 
@@ -28,5 +24,11 @@ public class ItineraryController {
     @PostMapping
     public void addItinerary(@RequestBody Itinerary itinerary) {
         this.repository.save(itinerary);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable Long id) {
+        this.repository.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }

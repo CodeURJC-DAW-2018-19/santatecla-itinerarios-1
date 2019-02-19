@@ -4,7 +4,7 @@
     </div>
     <div class="card-body">
         <div class="row align-items-center">
-            <div class="col-1">
+            <div class="col-2">
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle"
                             type="button" id="dropdownMenuButton3"
@@ -20,7 +20,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-1">
+            <div class="col-2">
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle"
                             type="button" id="dropdownMenuButton4"
@@ -36,7 +36,7 @@
             </div>
             <div class="col-1 ml-auto">
                 <button type="button"
-                        class="btn btn-fab  btn-fab-mini btn-round">
+                        class="btn btn-fab  btn-fab-mini btn-round" onclick="deleteItinerary({{id}}, '{{token}}')">
                     <i class="material-icons">delete</i></button>
             </div>
         </div>
@@ -44,7 +44,10 @@
             {{#items}}
             <div class="col-2">
                 <div class="card">
+                    <br>
                     {{#unit}}{{title}}{{/unit}} - {{title}} - {{#isItinerary}}{{title}}{{/isItinerary}}{{^isItinerary}}view {{-index}}{{/isItinerary}}
+                    <br>
+                    <br>
                 </div>
             </div>
             {{/items}}

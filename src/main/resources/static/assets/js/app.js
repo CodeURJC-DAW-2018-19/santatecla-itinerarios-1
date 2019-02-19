@@ -39,11 +39,27 @@ function deleteView(id, token) {
     }).done(refreshPage);
 }
 
-function deleteByIdForm(id, token)
-{
+function deleteItinerary(id, token) {
     $.ajax({
+        "url": "/itineraries/" + id,
         "method": "DELETE",
-        "url": "/forms/"+ id,
-        "data": "_csrf="+ token
+        "data": "_csrf=" + token
     }).done(refreshPage);
 }
+
+function deleteByIdForm(id, token) {
+    $.ajax({
+        "method": "DELETE",
+        "url": "/forms/" + id,
+        "data": "_csrf=" + token
+    }).done(refreshPage);
+}
+
+function addView(id, token) {
+    $.ajax({
+        "method": "POST",
+        "url": "/views/",
+        "data": "_csrf=" + token + "&itinerary=" + id
+    }).done(refreshPage);
+}
+
