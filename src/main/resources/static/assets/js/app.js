@@ -38,3 +38,12 @@ function deleteView(id, token) {
         "data": "_csrf=" + token
     }).done(refreshPage);
 }
+
+function deleteByIdForm(id, token)
+{
+    $.ajax({
+        "method": "DELETE",
+        "url": "/form/"+ id,
+        "data": "_csrf="+ token
+    }).done(refreshPage);
+}

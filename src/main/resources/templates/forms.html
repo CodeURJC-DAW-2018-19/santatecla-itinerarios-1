@@ -1,6 +1,6 @@
 {{#unit.forms}}
 <div class="row">
-    <div class="card" id="form1">
+    <div class="card">
         <div class="card-header card-header-text card-header-primary">
             <div class="container">
                 <div class="row">
@@ -10,7 +10,7 @@
                         </div>
                     </div>
                     <div class="col-1 ml-auto">
-                        <button type="button" onclick="deleteById(id)"
+                        <button type="button" onclick="deleteByIdForm({{id}}, '{{token}}')"
                                 class="btn btn-fab btn-fab-mini btn-round">
                             <i class="material-icons">delete</i></button>
                     </div>
