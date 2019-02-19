@@ -39,6 +39,14 @@ function deleteView(id, token) {
     }).done(refreshPage);
 }
 
+function deleteItinerary(id, token) {
+    $.ajax({
+        "url": "/itineraries/" + id,
+        "method": "DELETE",
+        "data": "_csrf=" + token
+    }).done(refreshPage);
+}
+
 function deleteByIdForm(id, token)
 {
     $.ajax({
@@ -47,3 +55,4 @@ function deleteByIdForm(id, token)
         "data": "_csrf="+ token
     }).done(refreshPage);
 }
+
