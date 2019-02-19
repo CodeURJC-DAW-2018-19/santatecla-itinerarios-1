@@ -24,7 +24,7 @@ public class Itinerary extends Item {
     @Column(nullable = false)
     private String title;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "itinerary")
     private List<Item> items;
 
     @ManyToOne
@@ -32,7 +32,8 @@ public class Itinerary extends Item {
     @JsonIgnore
     private Unit unit;
 
-    public Itinerary(String title, Unit unit) {
+    public Itinerary(String title, Unit unit ,Itinerary itinerary) {
+        super(itinerary);
         this.title = title;
         this.unit = unit;
     }
