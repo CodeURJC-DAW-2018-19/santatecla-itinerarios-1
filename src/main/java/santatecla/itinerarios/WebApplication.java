@@ -33,9 +33,9 @@ public class WebApplication {
             unitRepository.deleteAll();
             Unit unit = new Unit("Anio 1990");
             Form form = new Form("Eventos", "bra bra bra", unit);
+            Itinerary itinerary = new Itinerary("Resumen", unit);
             View view = new View();
             view.addForm(form);
-            Itinerary itinerary = new Itinerary("Resumen", unit);
             itinerary.addItem(view);
             unit.addItinerary(itinerary);
             unit.addForm(form);
@@ -43,9 +43,9 @@ public class WebApplication {
 
             Unit unit1 = new Unit("CERN");
             Form form1 = new Form("Logros", "description", unit1);
+            Itinerary itinerary1 = new Itinerary("Introduccion", unit1);
             View view1 = new View();
             view1.addForm(form1);
-            Itinerary itinerary1 = new Itinerary("Introduccion", unit1);
             itinerary1.addItem(view1);
             unit1.addItinerary(itinerary1);
             unit1.addForm(form1);
@@ -53,9 +53,9 @@ public class WebApplication {
 
             Unit unit2 = new Unit("Tim Berners Lee");
             Form form2 = new Form("Datos", "description", unit2);
+            Itinerary itinerary2 = new Itinerary("Bibliografia", unit2);
             View view2 = new View();
             view2.addForm(form2);
-            Itinerary itinerary2 = new Itinerary("Bibliografia", unit2);
             itinerary2.addItem(view2);
             unit2.addItinerary(itinerary2);
             unit2.addForm(form2);
@@ -66,12 +66,12 @@ public class WebApplication {
             Form form4 = new Form("Dónde", "description", unit3);
             Form form5 = new Form("Quién", "description", unit3);
             Form form6 = new Form("Por qué", "description", unit3);
+            Itinerary itinerary3 = new Itinerary("Contexto", unit3);
             View view3 = new View();
             view3.addForm(form3);
             view3.addForm(form4);
             view3.addForm(form5);
             view3.addForm(form6);
-            Itinerary itinerary3 = new Itinerary("Contexto", unit3);
             itinerary3.addItem(view3);
             unit3.addItinerary(itinerary3);
             unit3.addForm(form3);

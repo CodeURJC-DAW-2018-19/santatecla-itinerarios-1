@@ -10,8 +10,9 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +25,8 @@ public class Itinerary extends Item {
     @Column(nullable = false)
     private String title;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "itinerary")
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "itinerary_has_items")
     private List<Item> items;
 
     @ManyToOne
@@ -32,8 +34,7 @@ public class Itinerary extends Item {
     @JsonIgnore
     private Unit unit;
 
-    public Itinerary(String title, Unit unit ,Itinerary itinerary) {
-        super(itinerary);
+    public Itinerary(String title, Unit unit) {
         this.title = title;
         this.unit = unit;
     }
