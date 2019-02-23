@@ -11,7 +11,7 @@ import java.util.Set;
 @Entity
 @Data
 public class View extends Item {
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.PERSIST)
     private Set<Form> forms;
 
     public void addForm(Form form) {

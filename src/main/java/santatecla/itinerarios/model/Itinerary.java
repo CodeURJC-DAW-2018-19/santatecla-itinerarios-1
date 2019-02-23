@@ -25,7 +25,7 @@ public class Itinerary extends Item {
     @Column(nullable = false)
     private String title;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "itinerary_has_items")
     private List<Item> items;
 
