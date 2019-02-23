@@ -10,7 +10,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import java.util.ArrayList;
@@ -26,7 +25,6 @@ public class Itinerary extends Item {
     private String title;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "itinerary_has_items")
     private List<Item> items;
 
     @ManyToOne
