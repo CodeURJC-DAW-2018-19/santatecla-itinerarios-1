@@ -11,7 +11,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Data
@@ -24,9 +26,13 @@ public class Form {
     private Long id;
 
     @Column(nullable = false)
+    @NotNull
     private String title;
 
     private String description;
+
+    @Lob
+    private byte[] image;
 
     @ManyToOne
     @JoinColumn(nullable = false)
@@ -41,5 +47,9 @@ public class Form {
 
     public void setUnit(Unit unit) {
         this.unit = unit;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }

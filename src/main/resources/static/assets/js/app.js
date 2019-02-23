@@ -7,17 +7,34 @@ function updateDrpdownText() {
     });
 }
 
-$(document).ready(function () {
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#preview').attr('src', e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 
+$(document).ready(function () {
     updateDrpdownText();
 
     $("form").submit(function (e) {
         e.preventDefault();
+        var formData = new FormData($(this)[0]);
         $.ajax({
             "url": $(this).attr("action"),
             "method": $(this).attr("method") || "POST",
-            "data": $(this).serialize()
+            "data": formData,
+            "cache": false,
+            "contentType": false,
+            "processData": false
         }).done(refreshPage);
+    });
+
+    $("#upload_image").change(function () {
+        readURL(this);
     });
 });
 
