@@ -7,7 +7,7 @@
                     Unidad : {{title}}
                     <i class="material-icons">keyboard_arrow_down</i>
                 </a>
-                <i class="material-icons" style="color:red">delete</i>
+                <i class="material-icons">delete</i>
             </h5>
         </div>
 
@@ -15,9 +15,14 @@
             <div class="card-body">
                 <ul class="u-list">
                     {{#itineraries}}
-                    <li><a href="/units/{{unit.id}}/{{id}}">{{title}}</a><i class="material-icons" style="color:red">delete</i></li>
-                    {{/itineraries}}
                     <li>
+                        <a href="/units/{{unit.id}}/{{id}}">{{title}}</a>
+                        <button type="button"
+                                class="btn btn-fab  btn-fab-mini btn-round" onclick="deleteItinerary({{id}}, '{{token}}')">
+                            <i class="material-icons">delete</i>
+                        </button>
+                    <li>
+                    {{/itineraries}}
                         <!-- Add Element button -->
                         <button class="btn btn-primary btn-fab btn-fab-mini btn-round" data-toggle="modal"
                                 data-target="#new_itinerary" onclick="$('#new_itinerary_unit').val('{{id}}');">
