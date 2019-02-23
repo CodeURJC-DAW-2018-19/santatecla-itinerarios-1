@@ -1,11 +1,13 @@
 package santatecla.itinerarios.controller;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import santatecla.itinerarios.model.Form;
 import santatecla.itinerarios.model.Itinerary;
 import santatecla.itinerarios.model.Unit;
 import santatecla.itinerarios.repo.FormRepository;
@@ -61,10 +63,17 @@ public class MustacheController {
     }
 
     @GetMapping("/home/{unit_id}")
-    public String home(Model model, @PathVariable Long unit_id, @PageableDefault(value = 5) Pageable page) {
+    public String home(Model model, @PathVariable Long unit_id, @PageableDefault(value = 5) Pageable pageable) {
         final Optional<Unit> unit = this.unitRepository.findById(unit_id);
         unit.ifPresent((value) -> model.addAttribute("unit", value));
-        model.addAttribute("unit_forms", this.formRepository.findAllByUnit_Id(unit_id, page));
+        final Page<Form> forms = this.formRepository.findAllByUnit_Id(unit_id, pageable);
+        model.addAttribute("unit_forms", forms);
+        if (pageable.getPageNumber() > 0) {
+            model.addAttribute("prev_page", pageable.getPageNumber() - 1);
+        }
+        if (pageable.getPageNumber() < forms.getTotalPages() - 1) {
+            model.addAttribute("next_page", pageable.getPageNumber() + 1);
+        }
         return home(model);
     }
 
