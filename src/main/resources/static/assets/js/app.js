@@ -1,10 +1,14 @@
-$(document).ready(function () {
-    $(".dropdown").each((idx, e) => {
+function updateDrpdownText() {
+    $(".dropdown").each(function (idx, e) {
         $(e).find(".dropdown-menu a").click(function () {
             $(e).find(".btn").text($(this).text());
             $(e).find(".btn").val($(this).text());
         });
     });
+}
+$(document).ready(function () {
+
+    updateDrpdownText();
 
     $("form").submit(function (e) {
         e.preventDefault();
@@ -29,6 +33,7 @@ function refreshPage() {
 
 function updateDropdown(id) {
     $("#select_form").load("/unit_option/" + id);
+    updateDrpdownText();
 }
 
 function deleteView(id, token) {
