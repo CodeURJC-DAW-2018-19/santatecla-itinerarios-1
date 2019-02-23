@@ -53,6 +53,14 @@ function deleteItinerary(id, token) {
     }).done(refreshPage);
 }
 
+function deleteUnit(id, token) {
+    $.ajax({
+        "url": "/units/" + id,
+        "method": "DELETE",
+        "data": "_csrf=" + token
+    }).done(refreshPage);
+}
+
 function deleteByIdForm(id, token) {
     $.ajax({
         "method": "DELETE",

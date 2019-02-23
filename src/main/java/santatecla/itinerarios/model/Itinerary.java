@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.PreRemove;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,13 +25,21 @@ public class Itinerary extends Item {
     @Column(nullable = false)
     private String title;
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Item> items;
 
     @ManyToOne
     @JoinColumn
     @JsonIgnore
     private Unit unit;
+
+    @PreRemove
+    public void onRemove() {
+        // skip cascade operation to itineraries
+        if (this.items != null) {
+            this.items.removeIf(item -> item instanceof Itinerary);
+        }
+    }
 
     public Itinerary(String title, Unit unit) {
         this.title = title;
