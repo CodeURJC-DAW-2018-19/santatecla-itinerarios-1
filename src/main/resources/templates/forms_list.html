@@ -1,0 +1,32 @@
+{{#unit_forms}}
+<div class="row">
+    <div class="card">
+        <div class="card-header card-header-text card-header-primary">
+            <div class="container">
+                <div class="row">
+                    <div class="col-2">
+                        <div class="card-text">
+                            <h4 class="card-title">{{title}}</h4>
+                        </div>
+                    </div>
+                    <div class="col-1 ml-auto">
+                        <button type="button" onclick="deleteByIdForm({{id}}, '{{token}}')"
+                                class="btn btn-fab btn-fab-mini btn-round">
+                            <i class="material-icons">delete</i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            {{description}}
+        </div>
+    </div>
+</div>
+{{/unit_forms}}
+
+{{#next_page}}
+<div class="row">
+    <button type="button" class="btn btn-primary" style="margin-left: auto; margin-right: auto;" onclick="more(this, '/units/{{id}}/forms', {{next_page}})">Cargar Más
+    </button>
+</div>
+{{/next_page}}

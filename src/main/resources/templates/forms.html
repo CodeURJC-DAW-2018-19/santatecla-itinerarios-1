@@ -1,28 +1,4 @@
-{{#unit_forms}}
-<div class="row">
-    <div class="card">
-        <div class="card-header card-header-text card-header-primary">
-            <div class="container">
-                <div class="row">
-                    <div class="col-2">
-                        <div class="card-text">
-                            <h4 class="card-title">{{title}}</h4>
-                        </div>
-                    </div>
-                    <div class="col-1 ml-auto">
-                        <button type="button" onclick="deleteByIdForm({{id}}, '{{token}}')"
-                                class="btn btn-fab btn-fab-mini btn-round">
-                            <i class="material-icons">delete</i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card-body">
-            {{description}}
-        </div>
-    </div>
-</div>
-{{/unit_forms}}
+{{>forms_list}}
 <div class="row">
     <div class="col-1 ml-auto">
         <button type="submit" class="btn btn-primary btn-fab btn-fab-mini btn-round pull-right" data-toggle="modal"
@@ -30,18 +6,4 @@
                 onclick='anadirContenido(".container")'>
             <i class="material-icons" style="color:white">add</i></button>
     </div>
-
-    {{#prev_page}}
-    <div class="col-1 ml">
-        <a class="btn btn-fab  btn-fab-mini btn-round" href="/home/{{id}}?page={{prev_page}}">
-            <i class="material-icons">chevron_left</i></a>
-    </div>
-    {{/prev_page}}
-
-    {{#next_page}}
-    <div class="col-1">
-        <a class="btn btn-fab  btn-fab-mini btn-round" href="/home/{{id}}?page={{next_page}}">
-            <i class="material-icons">chevron_right</i></a>
-    </div>
-    {{/next_page}}
 </div>

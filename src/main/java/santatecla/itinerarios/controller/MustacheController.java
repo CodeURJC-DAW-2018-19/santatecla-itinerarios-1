@@ -1,6 +1,7 @@
 package santatecla.itinerarios.controller;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
@@ -63,26 +64,29 @@ public class MustacheController {
     }
 
     @GetMapping("/home/{unit_id}")
-    public String home(Model model, @PathVariable Long unit_id, @PageableDefault(value = 5) Pageable pageable) {
+    public String home(Model model, @PathVariable Long unit_id) {
         final Optional<Unit> unit = this.unitRepository.findById(unit_id);
         unit.ifPresent((value) -> model.addAttribute("unit", value));
-        final Page<Form> forms = this.formRepository.findAllByUnit_Id(unit_id, pageable);
-        model.addAttribute("unit_forms", forms);
-        if (pageable.getPageNumber() > 0) {
-            model.addAttribute("prev_page", pageable.getPageNumber() - 1);
-        }
-        if (pageable.getPageNumber() < forms.getTotalPages() - 1) {
-            model.addAttribute("next_page", pageable.getPageNumber() + 1);
-        }
+        this.findAllByUnit_Id(model, unit_id, PageRequest.of(0, 10));
         return home(model);
     }
 
+    @GetMapping("/units/{unit_id}/forms")
+    public String findAllByUnit_Id(Model model, @PathVariable Long unit_id, @PageableDefault Pageable pageable) {
+        final Page<Form> forms = this.formRepository.findAllByUnit_Id(unit_id, pageable);
+        model.addAttribute("unit_forms", forms);
+        if (pageable.getPageNumber() < forms.getTotalPages() - 1) {
+            model.addAttribute("next_page", pageable.getPageNumber() + 1);
+        }
+        return "forms_list";
+    }
+
     @GetMapping("/home/{unit_id}/{itinerary_id}")
-    public String home(Model model, @PathVariable Long unit_id, @PathVariable Long itinerary_id, @PageableDefault(value = 5) Pageable page) {
+    public String home(Model model, @PathVariable Long unit_id, @PathVariable Long itinerary_id) {
         final Optional<Itinerary> itinerary = this.itineraryRepository.findById(itinerary_id);
         itinerary.ifPresent((value) -> model.addAttribute("itinerary", value));
 
-        return home(model, unit_id, page);
+        return home(model, unit_id);
     }
 
     @GetMapping("/unit_option/{unit_id}")

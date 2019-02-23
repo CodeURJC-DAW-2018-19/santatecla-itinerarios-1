@@ -1,5 +1,9 @@
 package santatecla.itinerarios.controller;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,10 +27,9 @@ public class FormController {
     }
 
     @GetMapping("/{id}")
-    public Form findByTitle(@PathVariable Long id) {
+    public Form findById(@PathVariable Long id) {
         return this.repository.findById(id).orElseThrow(() -> new EntityNotFoundException(Form.class.getName() + " not found with id " + id));
     }
-
 
     @PostMapping
     public Form addForm(@Valid @ModelAttribute Form form) {

@@ -66,6 +66,15 @@ public class WebApplication {
             Form form4 = new Form("Dónde", "description", unit3);
             Form form5 = new Form("Quién", "description", unit3);
             Form form6 = new Form("Por qué", "description", unit3);
+            Form form7 = new Form("7", "description", unit3);
+            Form form8 = new Form("8", "description", unit3);
+            Form form9 = new Form("9", "description", unit3);
+            Form form10 = new Form("10", "description", unit3);
+            Form form11 = new Form("11", "description", unit3);
+            Form form12 = new Form("12", "description", unit3);
+            Form form13 = new Form("13", "description", unit3);
+            Form form14 = new Form("14", "description", unit3);
+            Form form15 = new Form("15", "description", unit3);
             Itinerary itinerary3 = new Itinerary("Contexto", unit3);
             View view3 = new View();
             view3.addForm(form3);
@@ -78,6 +87,15 @@ public class WebApplication {
             unit3.addForm(form4);
             unit3.addForm(form5);
             unit3.addForm(form6);
+            unit3.addForm(form7);
+            unit3.addForm(form8);
+            unit3.addForm(form9);
+            unit3.addForm(form10);
+            unit3.addForm(form11);
+            unit3.addForm(form12);
+            unit3.addForm(form13);
+            unit3.addForm(form14);
+            unit3.addForm(form15);
             unitRepository.save(unit3);
 
             // TODO: why i need to add later

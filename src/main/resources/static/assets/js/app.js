@@ -63,3 +63,11 @@ function addView(id, token) {
     }).done(refreshPage);
 }
 
+function more(element, api, page) {
+    $.ajax({
+        "method": "GET",
+        "url": api + "?page=" + page,
+    }).done(function (html) {
+        $(element).parent().replaceWith(html);
+    });
+}
