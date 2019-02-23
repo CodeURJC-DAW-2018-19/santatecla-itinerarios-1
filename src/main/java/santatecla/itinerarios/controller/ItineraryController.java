@@ -6,6 +6,7 @@ import santatecla.itinerarios.model.Itinerary;
 import santatecla.itinerarios.repo.ItineraryRepository;
 
 import javax.persistence.EntityNotFoundException;
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("itineraries")
@@ -22,7 +23,7 @@ public class ItineraryController {
     }
 
     @PostMapping
-    public void addItinerary(@RequestBody Itinerary itinerary) {
+    public void addItinerary(@Valid @ModelAttribute Itinerary itinerary) {
         this.repository.save(itinerary);
     }
 
