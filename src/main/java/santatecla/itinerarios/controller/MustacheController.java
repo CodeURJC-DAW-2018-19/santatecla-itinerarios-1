@@ -15,6 +15,7 @@ import santatecla.itinerarios.repo.FormRepository;
 import santatecla.itinerarios.repo.ItineraryRepository;
 import santatecla.itinerarios.repo.UnitRepository;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,8 +36,8 @@ public class MustacheController {
         return "redirect:/home";
     }
 
-    @GetMapping("/home")
-    public String home(Model model) {
+    @GetMapping("/units")
+    public String index(Model model) {
         final List<Unit> units = this.unitRepository.findAll();
         model.addAttribute("units", units);
         model.addAttribute("isHome", true);
@@ -63,12 +64,12 @@ public class MustacheController {
         return "index";
     }
 
-    @GetMapping("/home/{unit_id}")
-    public String home(Model model, @PathVariable Long unit_id) {
-        final Optional<Unit> unit = this.unitRepository.findById(unit_id);
-        unit.ifPresent((value) -> model.addAttribute("unit", value));
-        this.findAllByUnit_Id(model, unit_id, PageRequest.of(0, 10));
-        return home(model);
+    @GetMapping("/units/{id}")
+    public String index(Model model, @PathVariable Long id) {
+        final Unit unit = this.unitRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(Unit.class.getName() + " not found with id " + id));
+        model.addAttribute("unit", unit);
+        this.findAllByUnit_Id(model, id, PageRequest.of(0, 10));
+        return index(model);
     }
 
     @GetMapping("/units/{unit_id}/forms")
@@ -81,12 +82,12 @@ public class MustacheController {
         return "forms_list";
     }
 
-    @GetMapping("/home/{unit_id}/{itinerary_id}")
-    public String home(Model model, @PathVariable Long unit_id, @PathVariable Long itinerary_id) {
+    @GetMapping("/units/{unit_id}/{itinerary_id}")
+    public String index(Model model, @PathVariable Long unit_id, @PathVariable Long itinerary_id) {
         final Optional<Itinerary> itinerary = this.itineraryRepository.findById(itinerary_id);
         itinerary.ifPresent((value) -> model.addAttribute("itinerary", value));
 
-        return home(model, unit_id);
+        return index(model, unit_id);
     }
 
     @GetMapping("/unit_option/{unit_id}")

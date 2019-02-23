@@ -6,6 +6,7 @@ function updateDrpdownText() {
         });
     });
 }
+
 $(document).ready(function () {
 
     updateDrpdownText();
@@ -14,7 +15,7 @@ $(document).ready(function () {
         e.preventDefault();
         $.ajax({
             "url": $(this).attr("action"),
-            "method": "POST",
+            "method": $(this).attr("method") || "POST",
             "data": $(this).serialize()
         }).done(refreshPage);
     });

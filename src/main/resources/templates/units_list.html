@@ -1,0 +1,32 @@
+<div id="accordion" role="tablist">
+    {{#units}}
+    <div class="card card-collapse ">
+        <div class="card-header " role="tab" id="unit_{{id}}_heading">
+            <h5 class="mb-0 first-menu-tab">
+                <a class="collapsed" data-toggle="collapse" href="#collapse_unit_{{id}}" aria-expanded="false" aria-controls="collapseOne">
+                    Unidad : {{title}}
+                    <i class="material-icons">keyboard_arrow_down</i>
+                </a>
+                <i class="material-icons" style="color:red">delete</i>
+            </h5>
+        </div>
+
+        <div id="collapse_unit_{{id}}" class="collapse show" role="tabpanel" aria-labelledby="unit_{{id}}_heading" data-parent="#accordion">
+            <div class="card-body">
+                <ul class="u-list">
+                    {{#itineraries}}
+                    <li><a href="/units/{{unit.id}}/{{id}}">{{title}}</a><i class="material-icons" style="color:red">delete</i></li>
+                    {{/itineraries}}
+                    <li>
+                        <!-- Add Element button -->
+                        <button class="btn btn-primary btn-fab btn-fab-mini btn-round" data-toggle="modal"
+                                data-target="#new_itinerary" onclick="$('#new_itinerary_unit').val('{{id}}');">
+                            <i class="material-icons" style="color:white">add</i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {{/units}}
+</div>

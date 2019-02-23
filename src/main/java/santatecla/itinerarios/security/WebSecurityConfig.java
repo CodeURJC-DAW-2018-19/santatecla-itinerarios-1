@@ -26,12 +26,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/login", "/login_error", "/logout", "/signUp").permitAll()
-                .antMatchers("/home/**").authenticated()
+                .antMatchers("/units/**").authenticated()
                 .anyRequest().hasRole("admin")
                 .and()
                 .formLogin()
                 .loginPage("/login").permitAll()
-                .defaultSuccessUrl("/home", true)
+                .defaultSuccessUrl("/units", true)
                 .failureUrl("/login_error")
                 .and()
                 .logout().logoutUrl("/logout").logoutSuccessUrl("/").permitAll();
