@@ -74,14 +74,15 @@ daw_grupo_7
 ![picture alt](https://i.ibb.co/Jr31JVY/inicial.png "Inicio")
 ![picture alt](https://i.ibb.co/pKcj9yD/unidades.png "Login")
 
-# Views in Phase 2 (Screenshots)
+
+
+ # Falta:
+ # Views in Phase 2 (Screenshots)
 ![picture alt](url "Descripción de las vistas")
 ![picture alt](url "Itinerarios")
 ![picture alt](url "Unidades")
 ![picture alt](url "Inicio")
 ![picture alt](url "Login")
-
- # Falta:
 # Diagrama de navegacion
 # Diagrama de la base de datos
 # Captura pantalla error
