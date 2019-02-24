@@ -2,11 +2,11 @@
 
 ## Description
 We must create a website, a "Gestor de Itinearios", the development of this work will be evaluated by phases, being the distribution of them as follow:
-* Fase 0: Formación del equipo de desarrollo (No evaluable)
-* Fase 1: Maquetación de páginas con HTML y Bootstrap CSS (No evaluable)
-* Fase 2: Implementación de la web con HTML generado en servidor y AJAX.
-* Fase 3: Incorporación de API REST a la aplicación web y despliegue con docker
-* Fase 4: Implementación de la web con arquitectura SPA
+* Phase 0: Form the development team (Not evaluable)
+* Phase 1: Layout of pages with HTML and CSS Bootstrap (Not evaluable)
+* Phase 2: Implementation of the web with HTML generated in server and AJAX.
+* Phase 3: Incorporation of REST API to the web application and deployment with docker
+* Phase 4: Implementation of the web with SPA architecture
 
 ## Team Members
 
@@ -39,10 +39,10 @@ daw_grupo_7
 - [x] Form a team
 
 ### Phase 1:
-- [x] Repartir tareas a cada uno en trello
-- [x] [Requisitos Fase 1](https://docs.google.com/document/d/1cW3UCiqWrq4Fk3JF0MOUjiyEdfOuw9rs257IqyN8ILs/edit?usp=sharing)
-- [x] Subir código a GitHub
-- [x] Mergear todo el trabajo
+- [x] Distribute tasks to each one in trello
+- [x] [Phase 1 Requirements] (https://docs.google.com/document/d/1cW3UCiqWrq4Fk3JF0MOUjiyEdfOuw9rs257IqyN8ILs/edit?usp=sharing)
+- [x] Upload code to GitHub
+- [x] Merge all the work
 
 ### Phase 2:
 - [x] Complete functionality for visitors
