@@ -33,7 +33,7 @@ public class MustacheController {
 
     @GetMapping("/")
     public String index() {
-        return "redirect:/home";
+        return "redirect:/units";
     }
 
     @GetMapping("/units")
