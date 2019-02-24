@@ -7,10 +7,12 @@
                     Unidad : {{title}}
                     <i class="material-icons">keyboard_arrow_down</i>
                 </a>
+                {{#isAdmin}}
                 <button type="button"
                         class="btn btn-fab  btn-fab-mini btn-round" onclick="deleteUnit({{id}}, '{{token}}')">
                     <i class="material-icons">delete</i>
                 </button>
+                {{/isAdmin}}
             </h5>
         </div>
 
@@ -20,17 +22,21 @@
                     {{#itineraries}}
                     <li>
                         <a href="/units/{{unit.id}}/{{id}}">{{title}}</a>
+                        {{#isAdmin}}
                         <button type="button"
                                 class="btn btn-fab  btn-fab-mini btn-round" onclick="deleteItinerary({{id}}, '{{token}}')">
                             <i class="material-icons">delete</i>
                         </button>
+                        {{/isAdmin}}
                     <li>
                     {{/itineraries}}
                         <!-- Add Element button -->
+                        {{#isAdmin}}
                         <button class="btn btn-primary btn-fab btn-fab-mini btn-round" data-toggle="modal"
                                 data-target="#new_itinerary" onclick="$('#new_itinerary_unit').val('{{id}}');">
                             <i class="material-icons" style="color:white">add</i>
                         </button>
+                        {{/isAdmin}}
                     </li>
                 </ul>
             </div>

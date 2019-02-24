@@ -35,9 +35,12 @@
                 </div>
             </div>
             <div class="col-1 ml-auto">
+                {{#isAdmin}}
                 <button type="button"
                         class="btn btn-fab  btn-fab-mini btn-round" onclick="deleteItinerary({{id}}, '{{token}}')">
-                    <i class="material-icons">delete</i></button>
+                    <i class="material-icons">delete</i>
+                </button>
+                {{/isAdmin}}
             </div>
         </div>
         <div class="row align-items-center">

@@ -7,9 +7,12 @@
                 </div>
             </div>
             <div class="col-1 ml-auto">
+                {{#isAdmin}}
                 <button type="button"
                         class="btn btn-fab  btn-fab-mini btn-round" onclick="deleteView({{id}}, '{{token}}')">
-                    <i class="material-icons">delete</i></button>
+                    <i class="material-icons">delete</i>
+                </button>
+                {{/isAdmin}}
             </div>
         </div>
     </div>
@@ -24,9 +27,12 @@
                             <td class="text-center">{{#unit}}{{title}}{{/unit}}</td>
                             <td class="text-center">{{title}}</td>
                             <td class="td-actions text-right">
+                                {{#isAdmin}}
                                 <button type="button"
                                         class="btn btn-fab btn-fab-mini btn-round">
-                                    <i class="material-icons">delete</i></button>
+                                    <i class="material-icons">delete</i>
+                                </button>
+                                {{/isAdmin}}
                             </td>
                         </tr>
                         {{/forms}}
@@ -50,9 +56,12 @@
                                 {{>formsDropdown}}
                             </td>
                             <td class="td-actions text-right">
+                                {{#isAdmin}}
                                 <button type="button"
                                         class="btn btn-fab  btn-fab-mini btn-round">
-                                    <i class="material-icons">add_circle</i></button>
+                                    <i class="material-icons">add_circle</i>
+                                </button>
+                                {{/isAdmin}}
                             </td>
                         </tr>
                         </tbody>

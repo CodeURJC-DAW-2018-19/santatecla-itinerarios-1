@@ -10,9 +10,12 @@
                         </div>
                     </div>
                     <div class="col-1 ml-auto">
+                        {{#isAdmin}}
                         <button type="button" onclick="deleteByIdForm({{id}}, '{{token}}')"
                                 class="btn btn-fab btn-fab-mini btn-round">
-                            <i class="material-icons">delete</i></button>
+                            <i class="material-icons">delete</i>
+                        </button>
+                        {{/isAdmin}}
                     </div>
                 </div>
             </div>
