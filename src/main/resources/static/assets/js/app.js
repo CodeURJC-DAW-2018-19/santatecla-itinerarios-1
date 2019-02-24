@@ -59,12 +59,22 @@ function updateFormsDropdown(id, element) {
     });
 }
 
-function updateItinerariesDropdown(id, element) {
+function updateItinerariesDropdown(id, element, itinerary_id, original_id, token) {
     $.ajax({
         "url": "/dropdown/itineraries/" + id,
         "success": function (html) {
             $(element).parents(".dropdown-group").find(".select_itinerary").replaceWith(html);
             updateDrpdownText();
+            $(element).parents(".dropdown-group").find(".select_itinerary").find("a").click(function (e) {
+                e.preventDefault();
+                var new_id = $(this).attr("href");
+                $.ajax({
+                    "url": "/itineraries/" + itinerary_id + "/items/" + original_id + "?newSubItinerary=" + new_id,
+                    "method": "PUT",
+                    "data": "_csrf=" + token,
+                    "success": refreshPage
+                });
+            });
         }
     });
 }
@@ -89,6 +99,14 @@ function deleteView(id, token) {
 function deleteItinerary(id, token) {
     $.ajax({
         "url": "/itineraries/" + id,
+        "method": "DELETE",
+        "data": "_csrf=" + token
+    }).done(refreshPage);
+}
+
+function removeItinerary(itinerary_id, id, token) {
+    $.ajax({
+        "url": "/itineraries/" + itinerary_id + "/items/" + id,
         "method": "DELETE",
         "data": "_csrf=" + token
     }).done(refreshPage);

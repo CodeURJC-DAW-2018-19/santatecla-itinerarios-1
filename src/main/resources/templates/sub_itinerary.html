@@ -7,15 +7,15 @@
             <div class="col-2">
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle"
-                            type="button" id="dropdownMenuButton3"
+                            type="button" id="dropdown_select_unit_{{id}}"
                             data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
                         {{#unit}}{{title}}{{/unit}}
                     </button>
                     <div class="dropdown-menu"
-                         aria-labelledby="dropdownMenuButton3">
+                         aria-labelledby="dropdown_select_unit_{{id}}" data-id="{{id}}">
                         {{#units}}
-                        <a class="dropdown-item" onclick="updateItinerariesDropdown({{id}}, this)">{{title}}</a>
+                        <a class="dropdown-item" onclick="updateItinerariesDropdown({{id}}, this, {{itinerary.id}}, $(this).parent().data('id'),'{{token}}')">{{title}}</a>
                         {{/units}}
                     </div>
                 </div>
@@ -24,7 +24,7 @@
             <div class="col-1 ml-auto">
                 {{#isAdmin}}
                 <button type="button"
-                        class="btn btn-fab  btn-fab-mini btn-round" onclick="deleteItinerary({{id}}, '{{token}}')">
+                        class="btn btn-fab  btn-fab-mini btn-round" onclick="removeItinerary({{itinerary.id}},{{id}}, '{{token}}')">
                     <i class="material-icons">delete</i>
                 </button>
                 {{/isAdmin}}
