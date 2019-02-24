@@ -47,10 +47,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="hidden" name="_csrf" value="{{token}}">
-                                {{#isLogin}}
-                                <button type="submit" class="btn btn-danger pull-center">Entrar</button>
-                                {{/isLogin}}
                                 {{#isSignUp}}
                                 <div class="input-group">
                                     <div class="form-check-inline">
@@ -64,8 +60,15 @@
                                         </label>
                                     </div>
                                 </div>
+                                {{/isSignUp}}
+                                <input type="hidden" name="_csrf" value="{{token}}">
+                                {{#isLogin}}
+                                <button type="submit" class="btn btn-danger pull-center">Entrar</button>
+                                {{/isLogin}}
+                                {{#isSignUp}}
                                 <button type="submit" class="btn btn-danger pull-center">Registrar</button>
                                 {{/isSignUp}}
+                                <a href="/" class="btn btn-danger pull-center">Acceso invitado</a>
                                 {{#loginErrorMsg}}
                                 <p class="p-2 mb-2 mt-3 bg-danger text-white">
                                     <span class=" px-1">
