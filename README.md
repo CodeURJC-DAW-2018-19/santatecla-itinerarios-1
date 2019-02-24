@@ -76,14 +76,36 @@ daw_grupo_7
 
 
 
- # Falta:
- # Views in Phase 2 (Screenshots)
-![picture alt](url "Descripción de las vistas")
-![picture alt](url "Itinerarios")
-![picture alt](url "Unidades")
-![picture alt](url "Inicio")
-![picture alt](url "Login")
+# Falta:
+# Views in Phase 2 (Screenshots)
+
+## Overview
+
+![Overview](doc/overview.png)
+
+## Unit
+
+![Unit](doc/unit.png)
+
+## Itinerary
+
+![Itinerary](doc/itinerary.png)
+
+## Login
+
+![Login](doc/login.png)
+
+## Register
+
+![Register](doc/register.png)
+
+## Error Page
+
+![Error Page](doc/error_page.png)
+
 # Diagrama de navegacion
+
 # Diagrama de la base de datos
-# Captura pantalla error
+
+
 
