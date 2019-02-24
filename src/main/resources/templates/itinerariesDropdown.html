@@ -7,6 +7,6 @@
         Buscar..
     </button>
     <div class="dropdown-menu" aria-labelledby="formDropdown">
-        {{#dropdown_itineraries}} <a class="dropdown-item" onclick="$(this).parent().children('input').val({{id}})">{{title}}</a> {{/dropdown_itineraries}}
+        {{#dropdown_itineraries}} <a class="dropdown-item" onclick="$(this).parents('.select_itinerary').children('input').val({{id}})">{{title}}</a> {{/dropdown_itineraries}}
     </div>
 </div>
