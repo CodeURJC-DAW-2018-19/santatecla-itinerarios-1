@@ -55,6 +55,7 @@ function updateFormsDropdown(id, element) {
         "success": function (html) {
             $(element).parents(".dropdown-group").find(".select_form").replaceWith(html);
             updateDrpdownText();
+            $(element).parents(".dropdown-group").find(".select_form .dropdown-menu").attr("style", "");
         }
     });
 }
@@ -80,7 +81,7 @@ function updateItinerariesDropdown(id, element, itinerary_id, original_id, token
 }
 
 function add_form_to_view(id, token, element) {
-    var form_id = $(element).parents(".dropdown-group").find(".select_form > input").val();
+    var form_id = $(element).parents(".dropdown-group").find(".select_form").prev("input").val();
     $.ajax({
         "url": "/views/" + id + "/forms",
         "method": "POST",

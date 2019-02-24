@@ -34,12 +34,12 @@
                             <td class="text-center">
                                 <div class="dropdown">
                                     <button class="btn btn-secondary dropdown-toggle"
-                                            type="button" id="dropdownMenuButton1"
+                                            type="button" id="dropdownFormMenuButton_{id}"
                                             data-toggle="dropdown" aria-haspopup="true"
                                             aria-expanded="false">
                                         Buscar..
                                     </button>
-                                    <div class="dropdown-menu dropdownPosition" aria-labelledby="dropdownMenuButton2">
+                                    <div class="dropdown-menu dropdownPosition" aria-labelledby="dropdownFormMenuButton_{id}">
                                         {{#units}}
                                         <a class="dropdown-item" onclick="updateFormsDropdown({{id}}, this)">{{title}}</a>
                                         {{/units}}
