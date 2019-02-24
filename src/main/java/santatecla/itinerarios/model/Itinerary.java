@@ -10,9 +10,11 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.PreRemove;
+import javax.persistence.UniqueConstraint;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +28,7 @@ public class Itinerary extends Item {
     private String title;
 
     @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(uniqueConstraints = {@UniqueConstraint(columnNames = {"itinerary_id", "items_id"})})
     private List<Item> items;
 
     @ManyToOne

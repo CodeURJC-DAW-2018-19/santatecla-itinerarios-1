@@ -94,6 +94,14 @@ function addView(id, token) {
     }).done(refreshPage);
 }
 
+function addSubitinerary(id, token) {
+    $.ajax({
+        "method": "POST",
+        "url": "/itineraries/" + id,
+        "data": "_csrf=" + token + "&id=" + id
+    }).done(refreshPage);
+}
+
 function more(element, api, page) {
     $.ajax({
         "method": "GET",

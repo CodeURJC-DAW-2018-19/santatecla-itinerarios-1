@@ -27,6 +27,12 @@ public class ItineraryController {
         this.repository.save(itinerary);
     }
 
+    @PostMapping("/{itinerary}")
+    public void addSubItinerary(@Valid @ModelAttribute Itinerary subItinerary, @PathVariable Itinerary itinerary) {
+        itinerary.addItem(subItinerary);
+        this.repository.save(itinerary);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
         this.repository.deleteById(id);
