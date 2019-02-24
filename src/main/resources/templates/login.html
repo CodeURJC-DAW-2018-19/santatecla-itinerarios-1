@@ -52,9 +52,17 @@
                                 <button type="submit" class="btn btn-danger pull-center">Entrar</button>
                                 {{/isLogin}}
                                 {{#isSignUp}}
-                                <div class="row">
-                                    <label><input type="radio" name="roles" value="admin">Profesor</label>
-                                    <label><input type="radio" name="roles" value="user">Alumno</label>
+                                <div class="input-group">
+                                    <div class="form-check-inline">
+                                        <label class="form-check-label">
+                                            <input type="radio" name="roles" value="admin">Profesor
+                                        </label>
+                                    </div>
+                                    <div class="form-check-inline">
+                                        <label class="form-check-label">
+                                            <input type="radio" name="roles" value="user">Alumno
+                                        </label>
+                                    </div>
                                 </div>
                                 <button type="submit" class="btn btn-danger pull-center">Registrar</button>
                                 {{/isSignUp}}
