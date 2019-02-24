@@ -7,7 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,10 +16,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class User {
     @Id
-    @GeneratedValue
-    private Long id;
-
-    @Column(nullable = false, unique = true)
+    @Column(length = 64)
     private String username;
 
     @Column(nullable = false)

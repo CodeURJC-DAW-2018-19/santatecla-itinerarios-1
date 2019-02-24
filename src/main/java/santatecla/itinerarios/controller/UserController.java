@@ -7,6 +7,7 @@ import santatecla.itinerarios.model.User;
 import santatecla.itinerarios.repo.UserRepository;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 @Controller
 public class UserController {
@@ -17,8 +18,12 @@ public class UserController {
     }
 
     @PostMapping("/signUp")
-    public String signUp(@Valid @ModelAttribute("user") User user) {
-        this.repo.save(user);
-        return "redirect:/login";
+    public String signUp(@Valid @NotNull @ModelAttribute("user") User user) {
+        if (this.repo.existsByUsername(user.getUsername())) {
+            return "redirect:/signUp";
+        } else {
+            this.repo.save(user);
+            return "redirect:/login";
+        }
     }
 }
