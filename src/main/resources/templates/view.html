@@ -16,7 +16,7 @@
             </div>
         </div>
     </div>
-    <div class="card-body">
+    <div class="card-body dropdown-group">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -47,7 +47,7 @@
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
                                         {{#units}}
-                                        <a class="dropdown-item" onclick="updateDropdown({{id}})">{{title}}</a>
+                                        <a class="dropdown-item" onclick="updateFormsDropdown({{id}}, this)">{{title}}</a>
                                         {{/units}}
                                     </div>
                                 </div>

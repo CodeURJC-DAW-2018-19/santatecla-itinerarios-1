@@ -17,7 +17,7 @@ import santatecla.itinerarios.repo.UnitRepository;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
-import java.util.Optional;
+import java.util.Set;
 
 @Controller
 public class MustacheController {
@@ -84,16 +84,23 @@ public class MustacheController {
 
     @GetMapping("/units/{unit_id}/{itinerary_id}")
     public String index(Model model, @PathVariable Long unit_id, @PathVariable Long itinerary_id) {
-        final Optional<Itinerary> itinerary = this.itineraryRepository.findById(itinerary_id);
-        itinerary.ifPresent((value) -> model.addAttribute("itinerary", value));
+        final Itinerary itinerary = this.itineraryRepository.findById(itinerary_id).orElseThrow(() -> new EntityNotFoundException(Itinerary.class.getName() + " not found with id " + itinerary_id));
+        model.addAttribute("itinerary", itinerary);
 
         return index(model, unit_id);
     }
 
-    @GetMapping("/unit_option/{unit_id}")
-    public String unitForm(Model model, @PathVariable Long unit_id) {
-        final Optional<Unit> unit = this.unitRepository.findById(unit_id);
-        unit.ifPresent(value -> model.addAttribute("dropdown_unit", value));
+    @GetMapping("/dropdown/forms/{unit_id}")
+    public String unitForms(Model model, @PathVariable Long unit_id) {
+        final Set<FormRepository.Basic> forms = this.formRepository.findAllByUnit_Id(unit_id);
+        model.addAttribute("dropdown_forms", forms);
         return "formsDropdown";
+    }
+
+    @GetMapping("/dropdown/itineraries/{unit_id}")
+    public String unitItineraries(Model model, @PathVariable Long unit_id) {
+        final Set<ItineraryRepository.Basic> itineraries = this.itineraryRepository.findAllByUnit_Id(unit_id);
+        model.addAttribute("dropdown_itineraries", itineraries);
+        return "itinerariesDropdown";
     }
 }
