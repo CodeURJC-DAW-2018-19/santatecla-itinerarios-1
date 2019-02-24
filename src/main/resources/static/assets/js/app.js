@@ -89,8 +89,8 @@ function deleteByIdForm(id, token) {
 function addView(id, token) {
     $.ajax({
         "method": "POST",
-        "url": "/views/",
-        "data": "_csrf=" + token + "&itinerary=" + id
+        "url": "/views/" + id,
+        "data": "_csrf=" + token
     }).done(refreshPage);
 }
 
