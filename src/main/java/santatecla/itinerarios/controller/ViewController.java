@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import santatecla.itinerarios.model.Form;
 import santatecla.itinerarios.model.Itinerary;
 import santatecla.itinerarios.model.View;
 import santatecla.itinerarios.repo.ItineraryRepository;
@@ -42,5 +43,11 @@ public class ViewController {
     public ResponseEntity<?> delete(@PathVariable Long id) {
         this.repository.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/{view}/forms")
+    public void addFormToView(@ModelAttribute Form form, @PathVariable View view) {
+        view.addForm(form);
+        this.repository.save(view);
     }
 }

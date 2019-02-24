@@ -50,9 +50,9 @@
                                 {{>formsDropdown}}
                             </td>
                             <td class="td-actions text-right">
-                                <button type="button"
-                                        class="btn btn-fab  btn-fab-mini btn-round">
-                                    <i class="material-icons">add_circle</i></button>
+                                <button type="button" class="btn btn-fab  btn-fab-mini btn-round" onclick="add_form_to_view({{id}}, '{{token}}', this)">
+                                    <i class="material-icons">add_circle</i>
+                                </button>
                             </td>
                         </tr>
                         </tbody>

@@ -1,4 +1,5 @@
 <div class="dropdown select_form">
+    <input type="hidden">
     <button class="btn btn-secondary dropdown-toggle"
             type="button" id="formDropdown"
             data-toggle="dropdown" aria-haspopup="true"
@@ -6,6 +7,6 @@
         Buscar..
     </button>
     <div class="dropdown-menu" aria-labelledby="formDropdown">
-        {{#dropdown_forms}} <a class="dropdown-item" href="#{{id}}">{{title}}</a> {{/dropdown_forms}}
+        {{#dropdown_forms}} <a class="dropdown-item" onclick="$(this).parent().children('input').val({{id}})">{{title}}</a> {{/dropdown_forms}}
     </div>
 </div>
