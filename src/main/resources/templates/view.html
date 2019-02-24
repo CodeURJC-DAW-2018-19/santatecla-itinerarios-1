@@ -13,7 +13,7 @@
             </div>
         </div>
     </div>
-    <div class="card-body">
+    <div class="card-body dropdown-group">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -41,7 +41,7 @@
                                     </button>
                                     <div class="dropdown-menu dropdownPosition" aria-labelledby="dropdownMenuButton2">
                                         {{#units}}
-                                        <a class="dropdown-item" onclick="updateDropdown({{id}})">{{title}}</a>
+                                        <a class="dropdown-item" onclick="updateFormsDropdown({{id}}, this)">{{title}}</a>
                                         {{/units}}
                                     </div>
                                 </div>
@@ -50,9 +50,12 @@
                                 {{>formsDropdown}}
                             </td>
                             <td class="td-actions text-right">
-                                <button type="button"
-                                        class="btn btn-fab  btn-fab-mini btn-round">
-                                    <i class="material-icons">add_circle</i></button>
+                                {{#isAdmin}}
+                                <button type="button" class="btn btn-fab  btn-fab-mini btn-round"
+                                        onclick="add_form_to_view({{id}}, '{{token}}', this)">
+                                    <i class="material-icons">add_circle</i>
+                                </button>
+                                {{/isAdmin}}
                             </td>
                         </tr>
                         </tbody>

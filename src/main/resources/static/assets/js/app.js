@@ -49,9 +49,33 @@ function refreshPage() {
     });
 }
 
-function updateDropdown(id) {
-    $("#select_form").load("/unit_option/" + id);
-    updateDrpdownText();
+function updateFormsDropdown(id, element) {
+    $.ajax({
+        "url": "/dropdown/forms/" + id,
+        "success": function (html) {
+            $(element).parents(".dropdown-group").find(".select_form").replaceWith(html);
+            updateDrpdownText();
+        }
+    });
+}
+
+function updateItinerariesDropdown(id, element) {
+    $.ajax({
+        "url": "/dropdown/itineraries/" + id,
+        "success": function (html) {
+            $(element).parents(".dropdown-group").find(".select_itinerary").replaceWith(html);
+            updateDrpdownText();
+        }
+    });
+}
+
+function add_form_to_view(id, token, element) {
+    var form_id = $(element).parents(".dropdown-group").find(".select_form > input").val();
+    $.ajax({
+        "url": "/views/" + id + "/forms",
+        "method": "POST",
+        "data": "_csrf=" + token + "&id=" + form_id
+    }).done(refreshPage);
 }
 
 function deleteView(id, token) {

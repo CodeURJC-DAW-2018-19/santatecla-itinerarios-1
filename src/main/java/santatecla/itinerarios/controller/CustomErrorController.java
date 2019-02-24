@@ -14,7 +14,7 @@ public class CustomErrorController implements ErrorController {
 
     @RequestMapping(PATH)
     public String handleError(Model model, HttpServletResponse response) {
-        Integer status = response.getStatus();
+        int status = response.getStatus();
         final HttpStatus httpStatus = HttpStatus.valueOf(status);
         model.addAttribute("status", httpStatus.toString());
         model.addAttribute("isError", true);

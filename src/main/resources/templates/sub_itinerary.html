@@ -2,7 +2,7 @@
     <div class="card-header card-header-text">
         <h4 class="card-title">Itinerio</h4>
     </div>
-    <div class="card-body">
+    <div class="card-body dropdown-group">
         <div class="row align-items-center">
             <div class="col-2">
                 <div class="dropdown">
@@ -15,29 +15,19 @@
                     <div class="dropdown-menu"
                          aria-labelledby="dropdownMenuButton3">
                         {{#units}}
-                        <a class="dropdown-item" href="#{{id}}">{{title}}</a>
+                        <a class="dropdown-item" onclick="updateItinerariesDropdown({{id}}, this)">{{title}}</a>
                         {{/units}}
                     </div>
                 </div>
             </div>
-            <div class="col-2">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle"
-                            type="button" id="dropdownMenuButton4"
-                            data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                        {{title}}
-                    </button>
-                    <div class="dropdown-menu"
-                         aria-labelledby="dropdownMenuButton4">
-                        <a class="dropdown-item" href="#{{id}}">{{title}}</a>
-                    </div>
-                </div>
-            </div>
+            <div class="col-2">{{>itinerariesDropdown}}</div>
             <div class="col-1 ml-auto">
+                {{#isAdmin}}
                 <button type="button"
                         class="btn btn-fab  btn-fab-mini btn-round" onclick="deleteItinerary({{id}}, '{{token}}')">
-                    <i class="material-icons">delete</i></button>
+                    <i class="material-icons">delete</i>
+                </button>
+                {{/isAdmin}}
             </div>
         </div>
         <div class="row align-items-center">
