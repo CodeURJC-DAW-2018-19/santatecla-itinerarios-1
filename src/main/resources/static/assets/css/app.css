@@ -40,3 +40,36 @@
     display: flex;
     justify-content: space-between; 
 }
+
+.dropdownPosition {
+    /*position: static !important;
+    top: 0px !important;
+    right: inherit !important;
+    left: inherit !important;
+    box-sizing: border-box !important;*/
+
+
+
+}
+
+
+@media (max-width: 767px) {
+    .table-responsive .dropdown-menu {
+        min-height:100% !important;
+        position: absolute !important;
+        transform: translate3d(0px, 38px, 0px) !important;
+        top: 0px !important;
+        left: 0px !important;
+        will-change: transform !important;
+    }
+
+    .table-responsive{
+        overflow-y: visible !important;
+        overflow-x: auto !important;
+    }
+}
+@media (min-width: 768px) {
+    .table-responsive {
+        overflow: visible;
+    }
+}
