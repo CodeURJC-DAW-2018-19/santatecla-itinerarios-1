@@ -1,27 +1,27 @@
 <div class="content">
     <div class="container-fluid">
         <div class="card">
-            <div class="card-header card-header-primary">
+            <div class="card-header card-header-danger">
                 <h4 class="card-title">Welcome!</h4>
             </div>
             {{#isLogin}}
             <div class="col-md-12">
                 <a href="/signUp">
-                    <button type="button" class="btn btn-primary pull-right">Registrar</button>
+                    <button type="button" class="btn btn-danger pull-right">Registrar</button>
                 </a>
             </div>
             {{/isLogin}}
             {{#isSignUp}}
             <div class="col-md-12">
                 <a href="/login">
-                    <button type="button" class="btn btn-primary pull-right">Login</button>
+                    <button type="button" class="btn btn-danger pull-right">Login</button>
                 </a>
             </div>
             {{/isSignUp}}
             <div class="container-fluid col-md-5">
                 <div class="col-md-12">
                     <div class="card col-md-10">
-                        <div class="card-header card-header-primary">
+                        <div class="card-header card-header-danger">
                             {{#isLogin}}
                             <h4 class="card-title"><i class="material-icons">person</i>Login</h4>
                             {{/isLogin}}
@@ -49,14 +49,14 @@
                                 </div>
                                 <input type="hidden" name="_csrf" value="{{token}}">
                                 {{#isLogin}}
-                                <button type="submit" class="btn btn-primary pull-center">Entrar</button>
+                                <button type="submit" class="btn btn-danger pull-center">Entrar</button>
                                 {{/isLogin}}
                                 {{#isSignUp}}
                                 <div class="row">
                                     <label><input type="radio" name="roles" value="admin">Profesor</label>
                                     <label><input type="radio" name="roles" value="user">Alumno</label>
                                 </div>
-                                <button type="submit" class="btn btn-primary pull-center">Registrar</button>
+                                <button type="submit" class="btn btn-danger pull-center">Registrar</button>
                                 {{/isSignUp}}
                                 {{#loginErrorMsg}}
                                 <p class="p-2 mb-2 mt-3 bg-danger text-white">
