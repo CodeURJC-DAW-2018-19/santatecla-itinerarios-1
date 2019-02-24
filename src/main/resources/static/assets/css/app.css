@@ -41,18 +41,8 @@
     justify-content: space-between; 
 }
 
-.dropdownPosition {
-    /*position: static !important;
-    top: 0px !important;
-    right: inherit !important;
-    left: inherit !important;
-    box-sizing: border-box !important;*/
 
-
-
-}
-
-
+/* responsive-table style fixes */
 @media (max-width: 767px) {
     .table-responsive .dropdown-menu {
         min-height:100% !important;
@@ -72,4 +62,8 @@
     .table-responsive {
         overflow: visible;
     }
+}
+
+.margin-fixed{
+    margin-right:15px;
 }
