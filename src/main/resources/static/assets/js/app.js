@@ -49,9 +49,16 @@ function refreshPage() {
     });
 }
 
-function updateDropdown(id) {
-    $("#select_form").load("/unit_option/" + id);
-    updateDrpdownText();
+function updateFormsDropdown(id, element) {
+    $(element).parents(".dropdown-group").find(".select_form").load("/dropdown/forms/" + id, function () {
+        updateDrpdownText();
+    });
+}
+
+function updateItinerariesDropdown(id, element) {
+    $(element).parents(".dropdown-group").find(".select_itinerary").load("/dropdown/itineraries/" + id, function () {
+        updateDrpdownText();
+    });
 }
 
 function deleteView(id, token) {

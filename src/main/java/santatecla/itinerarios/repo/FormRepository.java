@@ -6,6 +6,16 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.web.PageableDefault;
 import santatecla.itinerarios.model.Form;
 
+import java.util.Set;
+
 public interface FormRepository extends JpaRepository<Form, Long> {
     Page<Form> findAllByUnit_Id(Long id, @PageableDefault Pageable page);
+
+    interface Basic {
+        Long getId();
+
+        String getTitle();
+    }
+
+    Set<Basic> findAllByUnit_Id(Long id);
 }
