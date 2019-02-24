@@ -1,5 +1,6 @@
 package santatecla.itinerarios.controller;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,7 +43,8 @@ public class FormController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteForm(@PathVariable Long id) {
+    public ResponseEntity<?> deleteForm(@PathVariable Long id) {
         this.repository.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }
