@@ -17,8 +17,13 @@ public class RoleHandlerConfiguration implements WebMvcConfigurer {
         public void postHandle(final HttpServletRequest request,
                                final HttpServletResponse response, final Object handler,
                                final ModelAndView modelAndView) {
-            if (request.getUserPrincipal() != null && modelAndView != null) {
-                modelAndView.addObject("isAdmin", request.isUserInRole("admin"));
+            if (modelAndView != null) {
+                if (request.getUserPrincipal() != null) {
+                    modelAndView.addObject("hasLogin", true);
+                    modelAndView.addObject("isAdmin", request.isUserInRole("admin"));
+                } else {
+                    modelAndView.addObject("hasLogin", false);
+                }
             }
         }
     }

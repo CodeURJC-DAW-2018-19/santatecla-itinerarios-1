@@ -10,9 +10,11 @@
                     {{^unit}}
                     <li class="nav-item"><a class="nav-link active" href="/units">Unidades</a></li>
                     {{/unit}}
+                    {{#hasLogin}}
                     {{#units}}
                     <li class="nav-item"><a class="nav-link" href="/units/{{id}}">{{title}}</a></li>
                     {{/units}}
+                    {{/hasLogin}}
                 </ul>
             </div>
         </div>

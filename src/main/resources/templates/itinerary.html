@@ -13,6 +13,7 @@
             {{/isItinerary}}
             {{/items}}
         </div>
+        {{#isAdmin}}
         <div class="row" style="align-items: center">
             <div class="col-1 ml-auto">
                 <div class="radio">
@@ -25,12 +26,11 @@
                 </div>
             </div>
             <div class="col-1">
-                {{#isAdmin}}
                 <button type="button" class="btn btn-fab  btn-fab-mini btn-round" onclick="if ($('input[name=type]:checked').val() === 'view') {addView({{id}}, '{{token}}') } else {addSubitinerary({{id}}, '{{token}}')}">
                     <i class="material-icons">add_circle</i>
                 </button>
-                {{/isAdmin}}
             </div>
         </div>
+        {{/isAdmin}}
     </div>
 </div>
