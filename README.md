@@ -34,9 +34,9 @@ daw
 ### Password
 daw_grupo_7
 
-## Tareas
+## Tasks
 ### Phase 0:
-- [x] Formar equipo
+- [x] Form a team
 
 ### Phase 1:
 - [x] Repartir tareas a cada uno en trello
@@ -45,21 +45,21 @@ daw_grupo_7
 - [x] Mergear todo el trabajo
 
 ### Phase 2:
-- [x] Funcionalidad completa para visitantes
-- [x] Funcionalidad completa para estudiantes
-- [x] Funcionalidad completa para el profesor
-- [ ] La aplicación contiene errores
-- [x] Los listados de más de 10 elementos están paginados con "cargar más" (AJAX)
-- [x] Se permite la subida de imágenes
-- [x] La aplicación es accesible por https
-- [x] Existe control de acceso por rol y URL (los estudiantes no pueden acceder a las URLs del administrador)
-- [x] El código y los comentarios están en inglés
-- [x] El código tiene un formato y estilo adecuado?
-- [x] La página de error cuando se pone una URL incorrecta tiene el mismo estilo que las demás?
-- [x] La documentación contiene un diagrama de navegación con las capturas actualizadas
-- [x] La documentación contiene un diagrama con las entidades de la base de datos?
-- [x] La documentación contiene un diagrama con las clases (controladores, servicios, repositorios, etc...)
-- [x] La documentación contiene una sección con instrucciones sobre cómo configurar el entorno de desarrollo y cómo desarrollar la aplicación
+- [x] Complete functionality for visitors
+- [x] Complete functionality for students
+- [x] Complete functionality for the teacher
+- [ ] The application contains errors
+- [x] Lists of more than 10 items are paged with "load more" (AJAX)
+- [x] Image upload is allowed
+- [x] The application is accessible by https
+- [x] There is access control by role and URL (students can not access administrator URLs)
+- [x] The code and comments are in English
+- [x] The code has an appropriate format and style?
+- [x] The error page when you put an incorrect URL has the same style as the others?
+- [x] The documentation contains a navigation diagram with updated screenshots
+- [x] Does the documentation contain a diagram with the entities in the database?
+- [x] The documentation contains a diagram with the classes (drivers, services, repositories, etc ...)
+- [x] The documentation contains a section with instructions on how to configure the development environment and how to develop the application
 
 ## Views in Phase 1 (Screenshots)
 ![picture alt](https://i.ibb.co/NFDCJDR/Fase1.jpg "Descripción de las vistas")
