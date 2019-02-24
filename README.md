@@ -67,10 +67,22 @@ daw_grupo_7
 - [x] The documentation contains a diagram with the classes (drivers, services, repositories, etc ...)
 - [x] The documentation contains a section with instructions on how to configure the development environment and how to develop the application
 
-## Views in Phase 1 (Screenshots)
+# Views in Phase 1 (Screenshots)
 ![picture alt](https://i.ibb.co/NFDCJDR/Fase1.jpg "Descripción de las vistas")
 ![picture alt](https://i.ibb.co/txTDbb4/Captura-de-pantalla-2019-02-05-a-las-0-18-42.png "Itinerarios")
 ![picture alt](https://i.ibb.co/vP7mKps/index.png "Unidades")
 ![picture alt](https://i.ibb.co/Jr31JVY/inicial.png "Inicio")
 ![picture alt](https://i.ibb.co/pKcj9yD/unidades.png "Login")
+
+# Views in Phase 2 (Screenshots)
+![picture alt](url "Descripción de las vistas")
+![picture alt](url "Itinerarios")
+![picture alt](url "Unidades")
+![picture alt](url "Inicio")
+![picture alt](url "Login")
+
+ # Falta:
+# Diagrama de navegacion
+# Diagrama de la base de datos
+# Captura pantalla error
 
