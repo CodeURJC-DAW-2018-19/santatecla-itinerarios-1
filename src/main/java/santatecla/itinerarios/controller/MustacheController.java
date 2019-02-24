@@ -101,6 +101,7 @@ public class MustacheController {
     public String unitItineraries(Model model, @PathVariable Long unit_id) {
         final Set<ItineraryRepository.Basic> itineraries = this.itineraryRepository.findAllByUnit_Id(unit_id);
         model.addAttribute("dropdown_itineraries", itineraries);
+        model.addAttribute("title", "Buscar..");
         return "itinerariesDropdown";
     }
 }

@@ -20,7 +20,7 @@ import java.util.List;
 
 @Entity
 @Data
-@EqualsAndHashCode(exclude = "unit")
+@EqualsAndHashCode(of = "id")
 @ToString(exclude = "unit")
 @NoArgsConstructor
 public class Itinerary extends Item {
@@ -54,6 +54,12 @@ public class Itinerary extends Item {
             this.items = new ArrayList<>();
         }
         this.items.add(item);
+    }
+
+    public void removeItem(Item item) {
+        if (this.items != null) {
+            this.items.remove(item);
+        }
     }
 
     @Override
