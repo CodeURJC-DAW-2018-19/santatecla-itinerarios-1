@@ -79,6 +79,8 @@ daw_grupo_7
 # Falta:
 # Views in Phase 2 (Screenshots)
 
+# Navigation diagram
+
 ## Overview
 
 ![Overview](doc/overview.png)
@@ -103,9 +105,9 @@ daw_grupo_7
 
 ![Error Page](doc/error_page.png)
 
-# Diagrama de navegacion
+# Entity diagram
 
-# Diagrama de la base de datos
+![Database Diagram](doc/entity_diagram.png)
 
 
 
