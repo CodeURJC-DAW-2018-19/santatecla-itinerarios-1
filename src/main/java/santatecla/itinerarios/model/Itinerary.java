@@ -20,7 +20,7 @@ import java.util.List;
 
 @Entity
 @Data
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode(exclude = "unit")
 @ToString(exclude = "unit")
 @NoArgsConstructor
 public class Itinerary extends Item {
