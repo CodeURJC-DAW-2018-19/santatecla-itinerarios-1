@@ -159,7 +159,5 @@ function editForm(id, token) {
         "method": "GET",
         "url": "/forms/" + id,
         "data": "_csrf=" + token,
-        "data-toggle":"modal",
-        "data-target":"#edit_form",
     });
 }
