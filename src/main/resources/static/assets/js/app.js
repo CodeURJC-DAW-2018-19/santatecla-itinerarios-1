@@ -153,3 +153,13 @@ function more(element, api, page) {
         $(element).parent().replaceWith(html);
     });
 }
+
+function editForm(id, token) {
+    $.ajax({
+        "method": "GET",
+        "url": "/forms/" + id,
+        "data": "_csrf=" + token,
+        "data-toggle":"modal",
+        "data-target":"#edit_form",
+    });
+}
