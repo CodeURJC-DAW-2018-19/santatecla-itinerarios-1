@@ -28,16 +28,15 @@
                             <i class="material-icons">delete</i>
                         </button>
                         {{/isAdmin}}
-                    <li>
-                    {{/itineraries}}
-                        <!-- Add Element button -->
-                        {{#isAdmin}}
-                        <button class="btn btn-primary btn-fab btn-fab-mini btn-round" data-toggle="modal"
-                                data-target="#new_itinerary" onclick="$('#new_itinerary_unit').val('{{id}}');">
-                            <i class="material-icons" style="color:white">add</i>
-                        </button>
-                        {{/isAdmin}}
+                        {{/itineraries}}
                     </li>
+                    <!-- Add Element button -->
+                    {{#isAdmin}}
+                    <button class="btn btn-primary btn-fab btn-fab-mini btn-round" data-toggle="modal"
+                            data-target="#new_itinerary" onclick="$('#new_itinerary form').attr('action', '/units/itineraries/{{id}}');">
+                        <i class="material-icons" style="color:white">add</i>
+                    </button>
+                    {{/isAdmin}}
                 </ul>
             </div>
         </div>

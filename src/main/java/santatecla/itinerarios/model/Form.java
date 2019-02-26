@@ -6,14 +6,17 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -31,8 +34,8 @@ public class Form {
 
     private String description;
 
-    @Lob
-    private byte[] image;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id.form")
+    private Set<Image> images;
 
     @ManyToOne
     @JoinColumn(nullable = false)
@@ -49,7 +52,10 @@ public class Form {
         this.unit = unit;
     }
 
-    public void setImage(byte[] image) {
-        this.image = image;
+    public void addImage(Image image) {
+        if (this.images == null) {
+            this.images = new HashSet<>();
+        }
+        this.images.add(image);
     }
 }

@@ -7,8 +7,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import santatecla.itinerarios.model.Itinerary;
 import santatecla.itinerarios.model.Unit;
 import santatecla.itinerarios.repo.UnitRepository;
+
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 @RestController
 @RequestMapping("units")
@@ -29,5 +33,11 @@ public class UnitController {
     public ResponseEntity<?> deleteByid(@PathVariable Long id) {
         this.repository.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/itineraries/{unit}")
+    public void addItinerary(@ModelAttribute @Valid @NotNull Itinerary itinerary, @PathVariable @NotNull Unit unit) {
+        unit.addItinerary(itinerary);
+        this.repository.save(unit);
     }
 }

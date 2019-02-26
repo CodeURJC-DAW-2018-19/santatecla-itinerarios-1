@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import santatecla.itinerarios.model.Form;
+import santatecla.itinerarios.model.Image;
 import santatecla.itinerarios.repo.FormRepository;
 
 import javax.persistence.EntityNotFoundException;
@@ -34,10 +35,11 @@ public class FormController {
         return this.repository.findById(id).orElseThrow(() -> new EntityNotFoundException(Form.class.getName() + " not found with id " + id));
     }
 
-    @PostMapping
+    @PostMapping // TODO: search if it's posible to map file to form
     public Form addForm(@Valid @ModelAttribute Form form, @RequestParam("upload_image") MultipartFile file) throws IOException {
+        form = this.repository.save(form);
         if (file != null) {
-            form.setImage(file.getBytes());
+            form.addImage(new Image(file.getName(),form,file.getBytes()));
         }
         return this.repository.save(form);
     }
