@@ -154,10 +154,3 @@ function more(element, api, page) {
     });
 }
 
-function editForm(id, token) {
-    $.ajax({
-        "method": "GET",
-        "url": "/forms/" + id,
-        "data": "_csrf=" + token,
-    });
-}
