@@ -35,7 +35,7 @@ public class FormController {
         return this.repository.findById(id).orElseThrow(() -> new EntityNotFoundException(Form.class.getName() + " not found with id " + id));
     }
 
-    @PostMapping
+    @PostMapping // TODO: search if it's posible to map file to form
     public Form addForm(@Valid @ModelAttribute Form form, @RequestParam("upload_image") MultipartFile file) throws IOException {
         form = this.repository.save(form);
         if (file != null) {
