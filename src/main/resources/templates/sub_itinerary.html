@@ -1,8 +1,13 @@
 <div class="card">
-    <div class="card-header card-header-text">
-        <h4 class="card-title">Itinerio</h4>
+    <div class="card-header card-header-text card-header-primary">
+        <div class="col-2">
+            <div class="card-text">
+                <h4 class="card-title">Itinerario</h4>
+            </div>
+        </div>
     </div>
     <div class="card-body dropdown-group">
+        {{#isAdmin}}
         <div class="row align-items-center">
             <div class="col-2">
                 <div class="dropdown">
@@ -30,6 +35,13 @@
                 {{/isAdmin}}
             </div>
         </div>
+        {{/isAdmin}}
+        {{^isAdmin}}
+            <div class="row ml-3">
+                {{#unit}}{{title}}{{/unit}}-
+                {{#itinerary}}{{title}}{{/itinerary}}
+            </div>
+        {{/isAdmin}}
         <div class="row align-items-center">
             {{#items}}
             <div class="col-2">
