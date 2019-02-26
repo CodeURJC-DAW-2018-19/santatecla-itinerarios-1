@@ -38,7 +38,3 @@ dependencies {
     // https://mvnrepository.com/artifact/org.projectlombok/lombok
     compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.4'
 }
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.10.2' //version required
-}
