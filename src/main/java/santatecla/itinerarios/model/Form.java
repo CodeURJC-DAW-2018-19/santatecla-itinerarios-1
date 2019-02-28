@@ -20,8 +20,8 @@ import java.util.Set;
 
 @Entity
 @Data
-@EqualsAndHashCode(exclude = {"unit"})
-@ToString(exclude = {"unit"})
+@EqualsAndHashCode(exclude = {"unit", "images"})
+@ToString(exclude = {"unit", "images"})
 @NoArgsConstructor
 public class Form {
     @Id
@@ -57,5 +57,9 @@ public class Form {
             this.images = new HashSet<>();
         }
         this.images.add(image);
+    }
+
+    public Long getId() {
+        return id;
     }
 }
