@@ -39,7 +39,7 @@ public class FormController {
     public Form addForm(@Valid @ModelAttribute Form form, @RequestParam("upload_image") MultipartFile file) throws IOException {
         form = this.repository.save(form);
         if (file != null) {
-            form.addImage(new Image(file.getName(),form,file.getBytes()));
+            form.addImage(new Image(file.getOriginalFilename(), form, file.getBytes()));
         }
         return this.repository.save(form);
     }
