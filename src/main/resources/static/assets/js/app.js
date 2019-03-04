@@ -91,7 +91,7 @@ function add_form_to_view(id, token, element) {
 
 function deleteView(id, token) {
     $.ajax({
-        "url": "/views/" + id,
+        "url": "/api/views/" + id,
         "method": "DELETE",
         "data": "_csrf=" + token
     }).done(refreshPage);
