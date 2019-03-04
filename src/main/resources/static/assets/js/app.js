@@ -99,7 +99,7 @@ function deleteView(id, token) {
 
 function deleteItinerary(id, token) {
     $.ajax({
-        "url": "/itineraries/" + id,
+        "url": "/api/itineraries/" + id,
         "method": "DELETE",
         "data": "_csrf=" + token
     }).done(refreshPage);

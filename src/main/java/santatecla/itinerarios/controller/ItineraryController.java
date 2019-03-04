@@ -36,12 +36,6 @@ public class ItineraryController {
         this.repository.save(itinerary);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Long id) {
-        this.repository.deleteById(id);
-        return ResponseEntity.noContent().build();
-    }
-
     @DeleteMapping("/{itinerary}/items/{subItinerary}")
     public ResponseEntity<?> deleteSubItinerary(@PathVariable Itinerary itinerary, @PathVariable Itinerary subItinerary) {
         itinerary.removeItem(subItinerary);
