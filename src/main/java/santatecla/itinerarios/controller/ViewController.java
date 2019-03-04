@@ -39,12 +39,6 @@ public class ViewController {
         this.itineraryRepository.save(itinerary);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Long id) {
-        this.repository.deleteById(id);
-        return ResponseEntity.noContent().build();
-    }
-
     @PostMapping("/{view}/forms")
     public void addFormToView(@ModelAttribute Form form, @PathVariable View view) {
         view.addForm(form);

@@ -9,13 +9,12 @@
                 </a>
                 {{#isAdmin}}
                 <button type="button"
-                        class="btn btn-fab  btn-fab-mini btn-round" onclick="deleteUnit({{id}}, '{{token}}')">
-                    <i class="material-icons">delete</i>
+                        class="btn btn-fab  btn-fab-mini btn-round" data-toggle="modal" data-target="#confirmationModal">
+                    <i class="material-icons" onclick="$('#confirmButton').click(function() {deleteUnit({{id}}, '{{token}}')})">delete</i>
                 </button>
                 {{/isAdmin}}
             </h5>
         </div>
-
         <div id="collapse_unit_{{id}}" class="collapse show" role="tabpanel" aria-labelledby="unit_{{id}}_heading" data-parent="#accordion">
             <div class="card-body">
                 <ul class="u-list">
@@ -24,8 +23,8 @@
                         <a href="/units/{{unit.id}}/{{id}}">{{title}}</a>
                         {{#isAdmin}}
                         <button type="button"
-                                class="btn btn-fab  btn-fab-mini btn-round" onclick="deleteItinerary({{id}}, '{{token}}')">
-                            <i class="material-icons">delete</i>
+                                class="btn btn-fab  btn-fab-mini btn-round" data-toggle="modal" data-target="#confirmationModal">
+                            <i class="material-icons" onclick="$('#confirmButton').click(function() {deleteItinerary({{id}}, '{{token}}')})">delete</i>
                         </button>
                         {{/isAdmin}}
                         {{/itineraries}}
