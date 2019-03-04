@@ -91,7 +91,7 @@ function add_form_to_view(id, token, element) {
 
 function deleteView(id, token) {
     $.ajax({
-        "url": "/views/" + id,
+        "url": "/api/views/" + id,
         "method": "DELETE",
         "data": "_csrf=" + token
     }).done(refreshPage);
@@ -99,7 +99,7 @@ function deleteView(id, token) {
 
 function deleteItinerary(id, token) {
     $.ajax({
-        "url": "/itineraries/" + id,
+        "url": "/api/itineraries/" + id,
         "method": "DELETE",
         "data": "_csrf=" + token
     }).done(refreshPage);
@@ -115,7 +115,7 @@ function removeItinerary(itinerary_id, id, token) {
 
 function deleteUnit(id, token) {
     $.ajax({
-        "url": "/units/" + id,
+        "url": "/api/units/" + id,
         "method": "DELETE",
         "data": "_csrf=" + token
     }).done(refreshPage);
@@ -124,7 +124,7 @@ function deleteUnit(id, token) {
 function deleteByIdForm(id, token) {
     $.ajax({
         "method": "DELETE",
-        "url": "/forms/" + id,
+        "url": "/api/forms/" + id,
         "data": "_csrf=" + token
     }).done(refreshPage);
 }

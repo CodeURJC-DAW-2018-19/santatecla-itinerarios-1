@@ -1,7 +1,5 @@
 package santatecla.itinerarios.controller;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,12 +25,6 @@ public class UnitController {
     @PostMapping
     public void addUnit(@ModelAttribute Unit unit) {
         this.repository.save(unit);
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteByid(@PathVariable Long id) {
-        this.repository.deleteById(id);
-        return ResponseEntity.noContent().build();
     }
 
     @PostMapping("/itineraries/{unit}")
