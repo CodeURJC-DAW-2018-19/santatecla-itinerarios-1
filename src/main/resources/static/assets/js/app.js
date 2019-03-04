@@ -107,7 +107,7 @@ function deleteItinerary(id, token) {
 
 function removeItinerary(itinerary_id, id, token) {
     $.ajax({
-        "url": "/itineraries/" + itinerary_id + "/items/" + id,
+        "url": "/api/itineraries/" + itinerary_id + "/items/" + id,
         "method": "DELETE",
         "data": "_csrf=" + token
     }).done(refreshPage);
