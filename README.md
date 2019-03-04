@@ -80,6 +80,7 @@ daw_grupo_7
 # Views in Phase 2 (Screenshots)
 
 # Navigation diagram
+![Web navigation diagram](http://i66.tinypic.com/11lis5c.png)
 
 ## Overview
 
