@@ -115,7 +115,7 @@ function removeItinerary(itinerary_id, id, token) {
 
 function deleteUnit(id, token) {
     $.ajax({
-        "url": "/units/" + id,
+        "url": "/api/units/" + id,
         "method": "DELETE",
         "data": "_csrf=" + token
     }).done(refreshPage);
