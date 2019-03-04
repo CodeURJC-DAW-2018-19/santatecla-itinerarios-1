@@ -124,7 +124,7 @@ function deleteUnit(id, token) {
 function deleteByIdForm(id, token) {
     $.ajax({
         "method": "DELETE",
-        "url": "/forms/" + id,
+        "url": "/api/forms/" + id,
         "data": "_csrf=" + token
     }).done(refreshPage);
 }

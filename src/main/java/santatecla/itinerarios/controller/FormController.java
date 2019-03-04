@@ -43,10 +43,4 @@ public class FormController {
         }
         return this.repository.save(form);
     }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteForm(@PathVariable Long id) {
-        this.repository.deleteById(id);
-        return ResponseEntity.noContent().build();
-    }
 }
