@@ -32,8 +32,8 @@ public class WebApplication {
 
             unitRepository.deleteAll();
             Unit unit = new Unit("Anio 1990");
-            Form form = new Form("Eventos", "bra bra bra", unit);
-            Itinerary itinerary = new Itinerary("Resumen", unit);
+            Form form = new Form("Eventos", "bra bra bra");
+            Itinerary itinerary = new Itinerary("Resumen");
             View view = new View();
             view.addForm(form);
             itinerary.addItem(view);
@@ -42,8 +42,8 @@ public class WebApplication {
             unitRepository.save(unit);
 
             Unit unit1 = new Unit("CERN");
-            Form form1 = new Form("Logros", "description", unit1);
-            Itinerary itinerary1 = new Itinerary("Introduccion", unit1);
+            Form form1 = new Form("Logros", "description");
+            Itinerary itinerary1 = new Itinerary("Introduccion");
             View view1 = new View();
             view1.addForm(form1);
             itinerary1.addItem(view1);
@@ -52,8 +52,8 @@ public class WebApplication {
             unitRepository.save(unit1);
 
             Unit unit2 = new Unit("Tim Berners Lee");
-            Form form2 = new Form("Datos", "description", unit2);
-            Itinerary itinerary2 = new Itinerary("Bibliografia", unit2);
+            Form form2 = new Form("Datos", "description");
+            Itinerary itinerary2 = new Itinerary("Bibliografia");
             View view2 = new View();
             view2.addForm(form2);
             itinerary2.addItem(view2);
@@ -62,20 +62,20 @@ public class WebApplication {
             unitRepository.save(unit2);
 
             Unit unit3 = new Unit("Javascript");
-            Form form3 = new Form("Cuándo", "description", unit3);
-            Form form4 = new Form("Dónde", "description", unit3);
-            Form form5 = new Form("Quién", "description", unit3);
-            Form form6 = new Form("Por qué", "description", unit3);
-            Form form7 = new Form("7", "description", unit3);
-            Form form8 = new Form("8", "description", unit3);
-            Form form9 = new Form("9", "description", unit3);
-            Form form10 = new Form("10", "description", unit3);
-            Form form11 = new Form("11", "description", unit3);
-            Form form12 = new Form("12", "description", unit3);
-            Form form13 = new Form("13", "description", unit3);
-            Form form14 = new Form("14", "description", unit3);
-            Form form15 = new Form("15", "description", unit3);
-            Itinerary itinerary3 = new Itinerary("Contexto", unit3);
+            Form form3 = new Form("Cuándo", "description");
+            Form form4 = new Form("Dónde", "description");
+            Form form5 = new Form("Quién", "description");
+            Form form6 = new Form("Por qué", "description");
+            Form form7 = new Form("7", "description");
+            Form form8 = new Form("8", "description");
+            Form form9 = new Form("9", "description");
+            Form form10 = new Form("10", "description");
+            Form form11 = new Form("11", "description");
+            Form form12 = new Form("12", "description");
+            Form form13 = new Form("13", "description");
+            Form form14 = new Form("14", "description");
+            Form form15 = new Form("15", "description");
+            Itinerary itinerary3 = new Itinerary("Contexto");
             View view3 = new View();
             view3.addForm(form3);
             view3.addForm(form4);

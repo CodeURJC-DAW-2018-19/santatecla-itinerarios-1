@@ -15,6 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.PreRemove;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +35,7 @@ public class Itinerary extends Item {
     @ManyToOne
     @JoinColumn
     @JsonIgnore
+    @NotNull
     private Unit unit;
 
     @PreRemove
@@ -44,9 +46,8 @@ public class Itinerary extends Item {
         }
     }
 
-    public Itinerary(String title, Unit unit) {
+    public Itinerary(String title) {
         this.title = title;
-        this.unit = unit;
     }
 
     public void addItem(Item item) {
@@ -65,5 +66,9 @@ public class Itinerary extends Item {
     @Override
     public boolean getIsItinerary() {
         return true;
+    }
+
+    public void setUnit(Unit unit) {
+        this.unit = unit;
     }
 }

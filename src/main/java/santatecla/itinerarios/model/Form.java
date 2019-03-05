@@ -40,12 +40,12 @@ public class Form {
     @ManyToOne
     @JoinColumn(nullable = false)
     @JsonIgnore
+    @NotNull
     private Unit unit;
 
-    public Form(String title, String description, Unit unit) {
+    public Form(String title, String description) {
         this.title = title;
         this.description = description;
-        this.unit = unit;
     }
 
     public void setUnit(Unit unit) {
