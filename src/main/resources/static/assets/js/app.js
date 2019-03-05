@@ -121,6 +121,14 @@ function deleteUnit(id, token) {
     }).done(refreshPage);
 }
 
+function removeForm(view_id,id, token) {
+    $.ajax({
+            "url":"/views/" + view_id +"/"+ id,
+            "method" : "DELETE",
+            "data" : "_csrf=" + token
+        }).done(refreshPage)
+}
+
 function deleteByIdForm(id, token) {
     $.ajax({
         "method": "DELETE",
