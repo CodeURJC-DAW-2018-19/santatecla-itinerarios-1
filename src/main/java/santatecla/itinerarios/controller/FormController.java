@@ -12,6 +12,7 @@ import santatecla.itinerarios.repo.FormRepository;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.List;
 
 //@RestController
 @Controller
@@ -24,11 +25,21 @@ public class FormController {
     }
 
     @PostMapping // TODO: search if it's posible to map file to form
-    public Form addForm(@Valid @ModelAttribute Form form, @RequestParam("upload_image") MultipartFile file) throws IOException {
+    public Form addForm(@Valid @ModelAttribute Form form, @RequestParam("upload_image") List<MultipartFile> files) throws IOException {
+
+
         form = this.repository.save(form);
-        if (file != null) {
-            form.addImage(new Image(file.getOriginalFilename(), form, file.getBytes()));
+
+        for(MultipartFile file: files){
+           if(file != null){
+               form.addImage(new Image(file.getOriginalFilename(), form, file.getBytes()));
+           }
         }
+
+        /*if (file != null) {
+
+            form.addImage(new Image(file.getOriginalFilename(), form, file.getBytes()));
+        }*/
         return this.repository.save(form);
     }
 }
