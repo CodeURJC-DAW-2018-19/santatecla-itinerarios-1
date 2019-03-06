@@ -1,0 +1,86 @@
+<div class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header card-header-danger">
+                <h4 class="card-title">Welcome!</h4>
+            </div>
+            {{#isLogin}}
+            <div class="col-md-12">
+                <a href="/signUp">
+                    <button type="button" class="btn btn-danger pull-right">Registrar</button>
+                </a>
+            </div>
+            {{/isLogin}}
+            {{#isSignUp}}
+            <div class="col-md-12">
+                <a href="/login">
+                    <button type="button" class="btn btn-danger pull-right">Login</button>
+                </a>
+            </div>
+            {{/isSignUp}}
+            <div class="container-fluid col-md-5">
+                <div class="col-md-12">
+                    <div class="card col-md-10">
+                        <div class="card-header card-header-danger">
+                            {{#isLogin}}
+                            <h4 class="card-title"><i class="material-icons">person</i>Login</h4>
+                            {{/isLogin}}
+                            {{#isSignUp}}
+                            <h4 class="card-title"><i class="material-icons">person</i>Registrar</h4>
+                            {{/isSignUp}}
+                        </div>
+                        <div class="card-body">
+                            <form action="{{#isLogin}}/login{{/isLogin}}{{#isSignUp}}/signUp{{/isSignUp}}" method="POST" modelAttribute="user">
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating" for="username">Nombre</label>
+                                            <input type="text" class="form-control" name="username" id="username" maxlength="64">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating" for="password">Contraseña</label>
+                                            <input type="password" class="form-control" name="password" id="password">
+                                        </div>
+                                    </div>
+                                </div>
+                                {{#isSignUp}}
+                                <div class="input-group">
+                                    <div class="form-check-inline">
+                                        <label class="form-check-label">
+                                            <input type="radio" name="roles" value="admin">Profesor
+                                        </label>
+                                    </div>
+                                    <div class="form-check-inline">
+                                        <label class="form-check-label">
+                                            <input type="radio" name="roles" value="user" checked>Alumno
+                                        </label>
+                                    </div>
+                                </div>
+                                {{/isSignUp}}
+                                <input type="hidden" name="_csrf" value="{{token}}">
+                                {{#isLogin}}
+                                <button type="submit" class="btn btn-danger pull-center">Entrar</button>
+                                {{/isLogin}}
+                                {{#isSignUp}}
+                                <button type="submit" class="btn btn-danger pull-center">Registrar</button>
+                                {{/isSignUp}}
+                                <a href="/" class="btn btn-danger pull-center">Acceso invitado</a>
+                                {{#loginErrorMsg}}
+                                <p class="p-2 mb-2 mt-3 bg-danger text-white">
+                                    <span class=" px-1">
+                                        <i class="material-icons">error</i>
+                                    </span> <strong>ERROR: </strong> contraseña o usuario no válidos.
+                                </p>
+                                {{/loginErrorMsg}}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

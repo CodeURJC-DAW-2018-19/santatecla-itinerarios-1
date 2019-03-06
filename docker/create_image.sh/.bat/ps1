@@ -1,0 +1,19 @@
+#!/bin/bash
+
+
+echo "----------"
+echo "Building..."
+echo "----------"
+./gradlew build
+echo "----------"
+echo "Building finished."
+echo "----------"
+echo "----------"
+echo "Building file .jar ..."
+echo "----------"
+./gradlew bootJar
+echo "----------"
+echo "File .jar created in builds/libs/."
+echo "----------"
+
+

@@ -10,12 +10,18 @@ buildscript {
     }
 }
 
+
+
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
+bootJar {
+    baseName = 'santatecla.itinerarios'
+    version =  '0.1.0'
+}
+
 group = 'santatecla.itinerarios'
-version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 compileJava.options.encoding = 'UTF-8'
 

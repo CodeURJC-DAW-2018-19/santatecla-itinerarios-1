@@ -1,0 +1,64 @@
+<div class="card">
+    <div class="card-header card-header-text card-header-primary">
+        <div class="col-2">
+            <div class="card-text">
+                <h4 class="card-title">Itinerario</h4>
+            </div>
+        </div>
+    </div>
+    <div class="card-body dropdown-group">
+        {{#isAdmin}}
+        <div class="row align-items-center">
+            <div class="col-2">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle"
+                            type="button" id="dropdown_select_unit_{{id}}"
+                            data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                        {{#unit}}{{title}}{{/unit}}
+                    </button>
+                    <div class="dropdown-menu"
+                         aria-labelledby="dropdown_select_unit_{{id}}" data-id="{{id}}">
+                        {{#units}}
+                        <a class="dropdown-item" onclick="updateItinerariesDropdown({{id}}, this, {{itinerary.id}}, $(this).parent().data('id'),'{{token}}')">{{title}}</a>
+                        {{/units}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">{{>itinerariesDropdown}}</div>
+            <div class="col-1 ml-auto">
+                {{#isAdmin}}
+                <button type="button"
+                        class="btn btn-fab  btn-fab-mini btn-round" onclick="removeItinerary({{itinerary.id}},{{id}}, '{{token}}')">
+                    <i class="material-icons">delete</i>
+                </button>
+
+                {{/isAdmin}}
+            </div>
+        </div>
+        {{/isAdmin}}
+        {{^isAdmin}}
+            <div class="row ml-3">
+                {{#unit}}{{title}}{{/unit}}-
+                {{#itinerary}}{{title}}{{/itinerary}}
+            </div>
+        {{/isAdmin}}
+        <div class="row align-items-center">
+            {{#items}}
+            <div class="col-2">
+                <div class="card">
+                    <br>
+                    {{#unit}}{{title}}{{/unit}} - {{title}} - {{#isItinerary}}{{title}}{{/isItinerary}}{{^isItinerary}}view {{-index}}{{/isItinerary}}
+                    <br>
+                    <br>
+                </div>
+            </div>
+            {{/items}}
+            <div class="col-1 ml-auto">
+                <button type="button"
+                        class="btn btn-fab  btn-fab-mini btn-round">
+                    <i class="material-icons">chevron_right</i></button>
+            </div>
+        </div>
+    </div>
+</div>

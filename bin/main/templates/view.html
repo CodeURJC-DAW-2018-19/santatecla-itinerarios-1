@@ -1,0 +1,85 @@
+<div class="card">
+    <div class="card-header card-header-text card-header-primary">
+        <div class="row">
+            <div class="col-2">
+                <div class="card-text">
+                    <h4 class="card-title">Vista</h4>
+                </div>
+            </div>
+            <div class="col-1 ml-auto">
+                {{#isAdmin}}
+                <button type="button"
+                        class="btn btn-fab  btn-fab-mini btn-round" onclick="deleteView({{id}}, '{{token}}')">
+                    <i class="material-icons">delete</i></button>
+                {{/isAdmin}}
+            </div>
+        </div>
+    </div>
+    <div class="card-body dropdown-group">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <table class="table-responsive">
+                        <tbody>
+                        {{#forms}}
+                        <tr>
+                            <td class="text-center">{{#unit}}{{title}}{{/unit}}</td>
+                            <td class="text-center">{{title}}</td>
+                            {{#isAdmin}}
+                            <td class="td-actions text-right">
+                                <button type="button"
+                                        class="btn btn-fab btn-fab-mini btn-round">
+                                    <i class="material-icons">delete</i></button>
+                            </td>
+                            {{/isAdmin}}
+                        </tr>
+                        {{/forms}}
+                        <tr>
+                            <td class="text-center">
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle"
+                                            type="button" id="dropdownFormMenuButton_{id}"
+                                            data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                        Buscar..
+                                    </button>
+                                    <div class="dropdown-menu dropdownPosition" aria-labelledby="dropdownFormMenuButton_{id}">
+                                        {{#units}}
+                                        <a class="dropdown-item" onclick="updateFormsDropdown({{id}}, this)">{{title}}</a>
+                                        {{/units}}
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                {{>formsDropdown}}
+                            </td>
+                            {{#isAdmin}}
+                            <td class="td-actions text-right">
+                                <button type="button" class="btn btn-fab  btn-fab-mini btn-round"
+                                        onclick="add_form_to_view({{id}}, '{{token}}', this)">
+                                    <i class="material-icons">add_circle</i>
+                                </button>
+                            </td>
+                            {{/isAdmin}}
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">HTML</h4>
+                        </div>
+                        <div class="card-body html-host">
+                            {{#forms}}
+                            <h3>{{title}}</h3>
+                            <p>{{description}}</p>
+                            <br/>
+                            {{/forms}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
