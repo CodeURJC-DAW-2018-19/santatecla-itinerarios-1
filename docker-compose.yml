@@ -17,5 +17,20 @@ services:
     volumes:
       - db_data:/var/lib/mysql
 
+  spring-boot-jpa-docker-webapp:
+    image: webapp
+    depends_on:
+      - db
+    ports:
+      - "8080:443"
+      - "9000:5000"
+    restart: always
+    environment:
+      DATABASE_HOST: db
+      DATABASE_USER: daw
+      DATABASE_PASSWORD: daw_grupo_7
+      DATABASE_NAME: daw
+      DATABASE_PORT: 3306
+
 volumes:
   db_data: {}
