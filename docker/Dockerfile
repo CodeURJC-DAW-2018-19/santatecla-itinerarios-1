@@ -5,10 +5,10 @@ FROM openjdk:8-jdk-alpine
 WORKDIR /app
 
 # Folder inside alpine
-COPY ./build/libs/web-0.0.1-SNAPSHOT.jar app.jar
+COPY ./webapp/web-0.0.1-SNAPSHOT.jar app.jar
 
 # Expose PORT
 EXPOSE 8443
 
 # Start image
-ENTRYPOINT ["java", "-jar", "app.jar"]
+CMD ["java", "-jar", "app.jar"]
