@@ -21,7 +21,7 @@ Rubén Zarapuz Juárez | r.zarapuz.2016@alumnos.urjc.es | Ruben98Z
 **Our Trello:** [Link to the board](https://trello.com/invite/b/CFMjhg2A/1ff5190ce7e6a0f923e44a404e82d269/daw-g8)
 
 # Start-up of the application
-For running the application, you need to download this folder, unzip them and run the application with some development environment wich one have implemented the libraries that Spring needs, later you must change the port of your BBDD to 3306, the web server is already implemented if you use STS in the port 443. If you use another one, just change the port of your web server to this.
+For running the application, you need to download this folder, unzip them and run the application with some development environment wich one have implemented the libraries that Spring needs, later you musthave a BBDD with port 80 (default), when your BBDD server is up, just launch the application and open an URL like https://localhost OR https://localhost/api if you want to access to the API.
 
 The project must be imported like a new gradle project.
 You must create a database with the following parameters.
