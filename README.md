@@ -28,7 +28,7 @@ You must create a database with the following parameters.
 
 # MySQL Configuration
 ## Start up
-To run the application using docker compose you have to go to docker directory and run the command: docker-compose up
+To run the application using docker compose you have to go to docker directory using your terminal and run the command: docker-compose up
 Then the images will be created and the containers will be up
 
 ## Connections Parameters
