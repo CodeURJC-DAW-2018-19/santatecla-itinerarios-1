@@ -77,7 +77,6 @@ daw_grupo_7
 
 
 
-# Falta:
 # Views in Phase 2 (Screenshots)
 
 # Navigation diagram
