@@ -138,6 +138,7 @@ Our objects are:
 ### URLs
     
     All our URLs will start with: https://localhost
+
     Then all our URLs related to the REST API will have the following format: first, it will be / api and then it will be / (the entity to which you want to access).
 
 ## api
@@ -166,3 +167,6 @@ This URL shows users list
 - https://localhost/api/views/136                One view
 - https://localhost/api/views/1366/forms         Forms of this view
 
+
+    All our URLs will start with: https://localhost .
+    Then all our URLs related to the REST API will have the following format: first, it will be /api and then it will be / (the entity to which you want to access).
