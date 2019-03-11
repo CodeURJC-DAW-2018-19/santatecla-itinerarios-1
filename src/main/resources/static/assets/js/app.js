@@ -14,9 +14,9 @@ function readURL(input) {
 
         for (i = 0; i < filesAmount; i++) {
             var reader = new FileReader();
-
+            var filename = input.files[i].name;
             reader.onload = function (e) {
-                var $img = $('<img style="max-width:100%;max-height:100%;">');
+                var $img = $(`<img style="max-width:100%;max-height:100%;" title="${filename}">`);
                 $img.attr('src', e.target.result);
                 $($img).appendTo('.imageForm');
                /* $('#preview').attr('src', e.target.result);*/
