@@ -8,7 +8,7 @@ WORKDIR /webapp
 COPY ./app.jar app.jar
 
 # Expose PORT
-EXPOSE 443
+EXPOSE 8443
 
 # Start image
 CMD ["java" ,"-jar"  ,"app.jar"]
