@@ -135,8 +135,8 @@ Our objects are:
     - Image
     - User
     
-    ### URLs
+   ### URLs
     
-    All our URLs will start with: https: // localhost
+    All our URLs will start with: https://localhost
     
-    Then all our URLs related to the REST API will have the following format: first, it will be / api and then it will be / (the entity to which you want to access).
+    Then all our URLs related to the REST API will have the following format: first, it will be /api and then it will be / (the entity to which you want to access).
