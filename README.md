@@ -108,8 +108,7 @@ daw_grupo_7
 
 # Entity diagram
 
-![Database Diagram](doc/entity.png)
-![Template Diagram](doc/template.png)
+![Database Diagram](https://i.ibb.co/wSG5gmS/Untitled-Diagram.png)
 
 
 # Phase 3:
