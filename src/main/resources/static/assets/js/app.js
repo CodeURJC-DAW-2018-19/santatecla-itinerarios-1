@@ -19,12 +19,19 @@ function readURL(input) {
                 var $img = $('<img style="max-width:100%;max-height:100%;">');
                 $img.attr('src', e.target.result);
                 $($img).appendTo('.imageForm');
-               /* $('#preview').attr('src', e.target.result);*/
+                /* $('#preview').attr('src', e.target.result);*/
             };
 
             reader.readAsDataURL(input.files[i]);
         }
     }
+}
+
+function refreshMarkdown() {
+    $(".mark-down").each(function (index, element) {
+        marked.setOptions({'baseUrl': '/api/forms/' + $(element).data("id") + '/images/'});
+        $(element).html(marked($(element).text()));
+    });
 }
 
 $(document).ready(function () {
@@ -46,6 +53,8 @@ $(document).ready(function () {
     $("#upload_image").change(function () {
         readURL(this);
     });
+
+    refreshMarkdown();
 });
 
 function refreshPage() {
@@ -131,12 +140,12 @@ function deleteUnit(id, token) {
     }).done(refreshPage);
 }
 
-function removeForm(view_id,id, token) {
+function removeForm(view_id, id, token) {
     $.ajax({
-            "url":"/views/" + view_id +"/"+ id,
-            "method" : "DELETE",
-            "data" : "_csrf=" + token
-        }).done(refreshPage)
+        "url": "/views/" + view_id + "/" + id,
+        "method": "DELETE",
+        "data": "_csrf=" + token
+    }).done(refreshPage)
 }
 
 function deleteByIdForm(id, token) {
@@ -169,6 +178,6 @@ function more(element, api, page) {
         "url": api + "?page=" + page,
     }).done(function (html) {
         $(element).parent().replaceWith(html);
+        refreshMarkdown();
     });
 }
-

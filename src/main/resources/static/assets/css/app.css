@@ -1,5 +1,10 @@
-:root { 
-    --bodyColor: #ffffff 
+.mark-down img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+:root {
+    --bodyColor: #ffffff
 }
 
 .card-nav-tabs .card-header {
@@ -8,7 +13,7 @@
 
 /* search bar styles */
 
-.search-bar-centered{
+.search-bar-centered {
     text-align: center;
     display: flex;
     justify-content: center;
@@ -22,29 +27,29 @@
 
 /* lists and sublists styles */
 
-.u-list{
+.u-list {
     list-style: none;
 }
 
-.u-list > li{
+.u-list > li {
     display: flex;
     justify-content: space-between;
-    border-style:solid;
-    border-color: var(--bodyColor) ; 
-    border-width:1px; 
+    border-style: solid;
+    border-color: var(--bodyColor);
+    border-width: 1px;
     background-color: #00000003;
 }
 
-.first-menu-tab{
+.first-menu-tab {
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
 }
 
 
 /* responsive-table style fixes */
 @media (max-width: 767px) {
     .table-responsive .dropdown-menu {
-        min-height:100% !important;
+        min-height: 100% !important;
         position: absolute !important;
         transform: translate3d(0px, 38px, 0px) !important;
         top: 0px !important;
@@ -52,17 +57,18 @@
         will-change: transform !important;
     }
 
-    .table-responsive{
+    .table-responsive {
         overflow-y: visible !important;
         overflow-x: auto !important;
     }
 }
+
 @media (min-width: 768px) {
     .table-responsive {
         overflow: visible;
     }
 }
 
-.margin-fixed{
-    margin-right:15px;
+.margin-fixed {
+    margin-right: 15px;
 }
