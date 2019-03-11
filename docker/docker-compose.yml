@@ -20,8 +20,6 @@ services:
     networks:
       - app
 
-
-
   webapp:
     build:
       context: ./
@@ -31,18 +29,12 @@ services:
     depends_on:
       - db
     ports:
-      - "8080:8443"
+      - "8443:8443"
     restart: always
-    environment:
-        SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/daw?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-        SPRING_DATASOURCE_USERNAME: daw
-        SPRING_DATASOURCE_PASSWORD: daw_grupo_7
     networks:
       - app
 networks:
   app:
-
-
 
 volumes:
   db_data: {}
