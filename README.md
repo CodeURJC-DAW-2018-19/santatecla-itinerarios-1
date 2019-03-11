@@ -169,3 +169,10 @@ This URL can POST the user that you want to create.
     All our URLs will start with: https://localhost .
     Then all our URLs related to the REST API will have the following format: first, it will be /api and then it will be / (the entity to which you want to access).
 
+## How to install docker
+
+- Go to docker website
+- Depending on your system, download docker toolbox
+- Select in which folder will be installed docker toolbox
+- In settings, select components you need to install
+- Install it and docker will be ready to use
