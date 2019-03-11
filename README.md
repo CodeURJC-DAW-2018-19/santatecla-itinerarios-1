@@ -114,7 +114,7 @@ daw_grupo_7
 
 # Phase 3:
 ## Doc about API Rest
-[Para ver la documentación de la API, haga click aquí.] (https://github.com/CodeURJC-DAW-2018-19/santatecla-itinerarios-1/blob/master/API.md)
+Documentación sobre la API en la URL: https://github.com/CodeURJC-DAW-2018-19/santatecla-itinerarios-1/blob/master/API.md
 
 ## How to install docker
 
