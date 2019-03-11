@@ -115,5 +115,5 @@ daw_grupo_7
 
 # Phase 3:
 ## Doc about API Rest
- 
+ ![DocAPI](API-REST.md)
 
