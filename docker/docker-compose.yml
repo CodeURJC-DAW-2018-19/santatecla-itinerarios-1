@@ -28,8 +28,8 @@ services:
       - db
     depends_on:
       - db
-    expose:
-      - "8443"
+    ports:
+      - "8443:8443"
     restart: always
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/daw?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
