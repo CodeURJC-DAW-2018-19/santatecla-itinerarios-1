@@ -9,18 +9,20 @@
                             <h4 class="card-title">{{title}}</h4>
                         </div>
                     </div>
+                    {{#isAdmin}}
                     <div class="col-1 ml-auto">
-                        {{#isAdmin}}
                         <button type="button"
                                 class="btn btn-fab  btn-fab-mini btn-round" data-toggle="modal" data-target="#confirmationModal">
                             <i class="material-icons" onclick="$('#confirmButton').click(function() {deleteByIdForm({{id}}, '{{token}}')})">delete</i>
                         </button>
+                    </div>
+                    <div class="col-1">
                         <button type="submit" data-toggle="modal" data-target="#{{id}}"
                                 class="btn btn-fab btn-fab-mini btn-round">
                             <i class="material-icons">edit</i>
                         </button>
-                        {{/isAdmin}}
                     </div>
+                    {{/isAdmin}}
                 </div>
             </div>
         </div>
@@ -31,7 +33,8 @@
 
 {{#next_page}}
 <div class="row">
-    <button type="button" class="btn btn-primary" style="margin-left: auto; margin-right: auto;" onclick="more(this, '/units/{{id}}/forms', {{next_page}})">Cargar Más
+    <button type="button" class="btn btn-primary" style="margin-left: auto; margin-right: auto;"
+            onclick="more(this, '/units/{{id}}/forms', {{next_page}})">Cargar Más
     </button>
 </div>
 {{/next_page}}
