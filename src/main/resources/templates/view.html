@@ -9,8 +9,9 @@
             <div class="col-1 ml-auto">
                 {{#isAdmin}}
                 <button type="button"
-                        class="btn btn-fab  btn-fab-mini btn-round" onclick="deleteView({{id}}, '{{token}}')">
-                    <i class="material-icons">delete</i></button>
+                        class="btn btn-fab  btn-fab-mini btn-round" data-toggle="modal" data-target="#confirmationModal">
+                    <i class="material-icons" onclick="$('#confirmButton').click(function() {deleteView({{id}}, '{{token}}')})">delete</i>
+                </button>
                 {{/isAdmin}}
             </div>
         </div>
@@ -20,16 +21,17 @@
             <div class="row">
                 <div class="col-md-6">
                     <table class="table-responsive">
-                        <tbody>
+                        <tbody data-id="{{id}}">
                         {{#forms}}
-                        <tr>
+                        <tr >
                             <td class="text-center">{{#unit}}{{title}}{{/unit}}</td>
                             <td class="text-center">{{title}}</td>
                             {{#isAdmin}}
                             <td class="td-actions text-right">
                                 <button type="button"
-                                        class="btn btn-fab btn-fab-mini btn-round">
-                                    <i class="material-icons">delete</i></button>
+                                        class="btn btn-fab  btn-fab-mini btn-round" data-toggle="modal" data-target="#confirmationModal">
+                                    <i class="material-icons" onclick="$('#confirmButton').click(function() {removeForm($(this).parent().parent().parent().parent().data('id'),{{id}}, '{{token}}')})">delete</i>
+                                </button>
                             </td>
                             {{/isAdmin}}
                         </tr>

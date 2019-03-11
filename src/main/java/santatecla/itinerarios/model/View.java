@@ -20,4 +20,10 @@ public class View extends Item {
         }
         this.forms.add(form);
     }
+
+    public void removeForm(Form form) {
+        if (this.forms != null) {
+            this.forms.remove(form);
+        }
+    }
 }

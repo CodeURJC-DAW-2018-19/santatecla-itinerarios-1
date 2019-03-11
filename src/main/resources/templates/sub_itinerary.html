@@ -29,10 +29,9 @@
             <div class="col-1 ml-auto">
                 {{#isAdmin}}
                 <button type="button"
-                        class="btn btn-fab  btn-fab-mini btn-round" onclick="removeItinerary({{itinerary.id}},{{id}}, '{{token}}')">
-                    <i class="material-icons">delete</i>
+                        class="btn btn-fab  btn-fab-mini btn-round" data-toggle="modal" data-target="#confirmationModal">
+                    <i class="material-icons" onclick="$('#confirmButton').click(function() {removeItinerary({{itinerary.id}},{{id}}, '{{token}}')})">delete</i>
                 </button>
-
                 {{/isAdmin}}
             </div>
         </div>
