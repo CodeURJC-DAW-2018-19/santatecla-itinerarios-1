@@ -1,0 +1,48 @@
+version: "3.6"
+services:
+
+  # https://hub.docker.com/r/_/postgres/
+  db:
+    # replace username/repo:tag with your name and image details
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      # This image includes EXPOSE 5432 (the postgres port), so standard container linking will make it automatically available to the linked containers.
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: daw_grupo_7
+      MYSQL_DATABASE: daw
+      MYSQL_USER: daw
+      MYSQL_PASSWORD: daw_grupo_7
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - app
+
+
+
+  webapp:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    links:
+      - db
+    depends_on:
+      - db
+    ports:
+      - "8080:8443"
+    restart: always
+    environment:
+        SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/daw?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+        SPRING_DATASOURCE_USERNAME: daw
+        SPRING_DATASOURCE_PASSWORD: daw_grupo_7
+    networks:
+      - app
+networks:
+  app:
+
+
+
+volumes:
+  db_data: {}

@@ -21,14 +21,15 @@ Rubén Zarapuz Juárez | r.zarapuz.2016@alumnos.urjc.es | Ruben98Z
 **Our Trello:** [Link to the board](https://trello.com/invite/b/CFMjhg2A/1ff5190ce7e6a0f923e44a404e82d269/daw-g8)
 
 # Start-up of the application
-For running the application, you need to download this folder, unzip them and run the application with some development environment wich one have implemented the libraries that Spring needs, later you must change the port of your BBDD to 3306, the web server is already implemented if you use STS in the port 443. If you use another one, just change the port of your web server to this.
+For running the application, you need to download this folder, unzip them and run the application with some development environment wich one have implemented the libraries that Spring needs, later you musthave a BBDD with port 80 (default), when your BBDD server is up, just launch the application and open an URL like https://localhost OR https://localhost/api if you want to access to the API.
 
 The project must be imported like a new gradle project.
 You must create a database with the following parameters.
 
 # MySQL Configuration
 ## Start up
-docker-compose up
+To run the application using docker compose you have to go to docker directory using your terminal and run the command: docker-compose up
+Then the images will be created and the containers will be up
 
 ## Connections Parameters
 ### Database name
@@ -111,4 +112,30 @@ daw_grupo_7
 ![Database Diagram](doc/entity_diagram.png)
 
 
+# Phase 3:
+## Doc about API Rest
+ 
+To begin, we will explain the functioning of the REST API that we have developed:
 
+- For each type of entity that owns the application, the 4 main functionalities have been implemented: request (GET), create an object and add it to the database (POST), modify an object (PUT) and delete an object (DELETE) .
+
+- The result that we obtain from each request is the requested object, except when we are using images, for which the image is returned. The object is shown in Json format, and can show up to two depth levels with respect to dependencies that have some objects over others.
+
+- The data is passed to these methods as parameters that call the function or as attachments in the body of the request (with the annotation @RequestBody ...)
+
+
+
+Our objects are:
+    - View
+    - Unit
+    - Itinerary
+    - Image
+    - Form
+    - Image
+    - User
+    
+    ### URLs
+    
+    All our URLs will start with: https: // localhost
+    
+    Then all our URLs related to the REST API will have the following format: first, it will be / api and then it will be / (the entity to which you want to access).

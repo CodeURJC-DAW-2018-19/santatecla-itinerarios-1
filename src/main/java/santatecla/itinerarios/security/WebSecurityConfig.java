@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import santatecla.itinerarios.service.UserService;
 
 @Configuration
@@ -34,9 +35,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/units", true)
                 .failureUrl("/login_error")
                 .and()
-                .logout().logoutUrl("/logout").logoutSuccessUrl("/").permitAll();
-
+                .logout().logoutUrl("/logout").logoutSuccessUrl("/").permitAll()
+                .and().httpBasic();
+        
         http.requiresChannel().anyRequest().requiresSecure();
+        
+        http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
     }
 
     @Override

@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -45,5 +46,19 @@ public class Unit {
             this.forms = new HashSet<>();
         }
         this.forms.add(form);
+    }
+
+    @PrePersist
+    public void populateFormsAndItineraries() {
+        if (this.forms != null) {
+            for (Form form : this.forms) {
+                form.setUnit(this);
+            }
+        }
+        if (this.itineraries != null) {
+            for (Itinerary itinerary : this.itineraries) {
+                itinerary.setUnit(this);
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
 package santatecla.itinerarios.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -28,6 +29,7 @@ public class Image {
         private String filename;
 
         @ManyToOne
+        @JsonBackReference
         private Form form;
 
         public ImageId(String filename, Form form) {
