@@ -41,7 +41,7 @@ This URL shows an itineraries lists. FOR every itinerary you can GET, POST or DE
 ![Users](doc/users.PNG)
 This URL can POST the user that you want to create.
 
-######EX:
+###### EX:
 - https://localhost/api/units/1367               One unit
 - https://localhost/api/units/1367/forms         Form of this unit
 - https://localhost/api/units/1367/itineraries   Itineraries of this unit
