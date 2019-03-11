@@ -29,7 +29,9 @@ public class FormController {
     public ResponseEntity<Form> addImage(@Valid @PathVariable Form form, @RequestParam List<MultipartFile> images) throws IOException {
         for (MultipartFile image : images) {
             if (image != null) {
-                form.addImage(new Image(image.getOriginalFilename(), form, image.getBytes()));
+                if (image.getOriginalFilename() != null && !image.getOriginalFilename().equals("") && image.getBytes().length > 0) {
+                    form.addImage(new Image(image.getOriginalFilename(), form, image.getBytes()));
+                }
             }
         }
         return ResponseEntity.ok(this.repository.save(form));

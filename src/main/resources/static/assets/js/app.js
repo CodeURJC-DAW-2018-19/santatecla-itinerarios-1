@@ -30,7 +30,14 @@ function readURL(input) {
 function refreshMarkdown() {
     $(".mark-down").each(function (index, element) {
         marked.setOptions({'baseUrl': '/api/forms/' + $(element).data("id") + '/images/'});
+        $(element).data("description", $(element).text());
         $(element).html(marked($(element).text()));
+    });
+}
+
+function visualize_image() {
+    $("#upload_image").change(function () {
+        readURL(this);
     });
 }
 
@@ -50,9 +57,7 @@ $(document).ready(function () {
         }).done(refreshPage);
     });
 
-    $("#upload_image").change(function () {
-        readURL(this);
-    });
+    visualize_image();
 
     refreshMarkdown();
 });
@@ -180,4 +185,20 @@ function more(element, api, page) {
         $(element).parent().replaceWith(html);
         refreshMarkdown();
     });
+}
+
+function edit_form(element) {
+    clear_form();
+    $('#new_form input[name=id]').val($(element).parent().parent().parent().parent().parent().find('.mark-down').data("id"));
+    $('#new_form input[name=title]').val($(element).parent().parent().find('.card-title').text());
+    $('#new_form textarea[name=description]').val($(element).parent().parent().parent().parent().parent().find('.mark-down').data("description"));
+}
+
+function clear_form() {
+    $('#new_form input[name=id]').val(undefined);
+    $('#new_form input[name=title]').val(undefined);
+    $('#new_form textarea[name=description]').val(undefined);
+    var file = $('#new_form input[name=upload_image]')[0];
+    file.outerHTML = `<input type="file" class="custom-file-input" multiple="" id="upload_image" name="upload_image">`;
+    visualize_image();
 }

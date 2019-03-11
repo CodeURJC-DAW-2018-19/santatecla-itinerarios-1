@@ -15,10 +15,9 @@
                                 class="btn btn-fab  btn-fab-mini btn-round" data-toggle="modal" data-target="#confirmationModal">
                             <i class="material-icons" onclick="$('#confirmButton').click(function() {deleteByIdForm({{id}}, '{{token}}')})">delete</i>
                         </button>
-                    </div>
-                    <div class="col-1">
-                        <button type="submit" data-toggle="modal" data-target="#{{id}}"
-                                class="btn btn-fab btn-fab-mini btn-round">
+                        <button type="button" class="btn btn-fab  btn-fab-mini btn-round pull-right" data-toggle="modal" data-target="#new_form"
+                        onclick="edit_form(this)"
+                        >
                             <i class="material-icons">edit</i>
                         </button>
                     </div>
