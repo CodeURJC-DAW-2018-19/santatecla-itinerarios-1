@@ -113,7 +113,7 @@ daw_grupo_7
 
 
 # Phase 3:
-## Implementation of the REST API
+## Doc about API Rest
  
 To begin, we will explain the functioning of the REST API that we have developed:
 
