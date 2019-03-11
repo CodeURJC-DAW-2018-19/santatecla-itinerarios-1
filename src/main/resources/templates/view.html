@@ -75,7 +75,7 @@
                         <div class="card-body html-host">
                             {{#forms}}
                             <h3>{{title}}</h3>
-                            <p>{{description}}</p>
+                            <div onload="debugger;marked.setOptions({'baseUrl':'/api/forms/{{id}}/images/'}); this.innerHTML = marked($(this).text())">{{description}}</div>
                             <br/>
                             {{/forms}}
                         </div>
