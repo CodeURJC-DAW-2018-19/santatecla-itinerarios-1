@@ -110,7 +110,7 @@ daw_grupo_7
 # Entity diagram
 
 ![Database Diagram](doc/entity.png)
-![Database Diagram](doc/template.png)
+![Template Diagram](doc/template.png)
 
 
 # Phase 3:
@@ -140,3 +140,29 @@ Our objects are:
     All our URLs will start with: https: // localhost
     
     Then all our URLs related to the REST API will have the following format: first, it will be / api and then it will be / (the entity to which you want to access).
+
+## api
+![Api](doc/api.PNG)
+This URL shows diferent API REST
+![Views](doc/views.PNG)
+This URL shows a views lists 
+![Images](doc/image.PNG)
+This URL shows an images uploaded
+![Units](doc/units.PNG)
+This URL shows an units lists
+![Items](doc/iteams.PNG)
+This URL shows an items lists
+![Forms](doc/forms.PNG)
+This URL shows a forms lists
+![Itineraries](doc/itineraries.PNG)
+This URL shows an itineraries lists
+![Users](doc/users.PNG)
+This URL shows users list
+![Profile](doc/profile.PNG)
+######EX:
+- https://localhost/api/units/1367               One unit
+- https://localhost/api/units/1367/forms         Form of this unit
+- https://localhost/api/units/1367/itineraries   Itineraries of this unit
+
+- https://localhost/api/views/136                One view
+- https://localhost/api/views/1366/forms         Forms of this view
