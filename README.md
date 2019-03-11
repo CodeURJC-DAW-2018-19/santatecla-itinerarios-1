@@ -137,6 +137,6 @@ Our objects are:
     
 ### URLs
     
-    All our URLs will start with: https://localhost
-    
+    All our URLs will start with: https://localhost .
+   ______
     Then all our URLs related to the REST API will have the following format: first, it will be /api and then it will be / (the entity to which you want to access).
