@@ -112,4 +112,30 @@ daw_grupo_7
 ![Database Diagram](doc/entity_diagram.png)
 
 
+# Phase 3:
+## Implementation of the REST API
+ 
+To begin, we will explain the functioning of the REST API that we have developed:
 
+- For each type of entity that owns the application, the 4 main functionalities have been implemented: request (GET), create an object and add it to the database (POST), modify an object (PUT) and delete an object (DELETE) .
+
+- The result that we obtain from each request is the requested object, except when we are using images, for which the image is returned. The object is shown in Json format, and can show up to two depth levels with respect to dependencies that have some objects over others.
+
+- The data is passed to these methods as parameters that call the function or as attachments in the body of the request (with the annotation @RequestBody ...)
+
+
+
+Our objects are:
+    - View
+    - Unit
+    - Itinerary
+    - Image
+    - Form
+    - Image
+    - User
+    
+    ### URLs
+    
+    All our URLs will start with: https: // localhost
+    
+    Then all our URLs related to the REST API will have the following format: first, it will be / api and then it will be / (the entity to which you want to access).
