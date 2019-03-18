@@ -18,6 +18,7 @@ import {CovalentHttpModule} from "@covalent/http";
 import {CovalentJsonFormatterModule, CovalentLayoutModule, CovalentStepsModule} from "@covalent/core";
 import {ErrorComponent} from './error/error.component';
 import {AppRoutingModule} from "./app-routing.module";
+import { SubItineraryComponent } from './sub-itinerary/sub-itinerary.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {AppRoutingModule} from "./app-routing.module";
     LoginComponent,
     ItineraryComponent,
     UnitComponent,
-    ErrorComponent
+    ErrorComponent,
+    SubItineraryComponent
   ],
   imports: [
     AppRoutingModule,
