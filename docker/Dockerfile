@@ -1,14 +1,18 @@
 # JAVA 8 as BASE
-FROM openjdk:8-jdk-alpine
+FROM openjdk:8-alpine
 
-# Working directory for docker image
-WORKDIR /webapp
+# Set the working directory to
+WORKDIR ./
 
 # Folder inside alpine
-COPY ./app.jar app.jar
+RUN apk add --no-cache bash
+COPY ./app.jar ./wait-for-it.sh ./
+RUN chmod +x ./wait-for-it.sh
 
-# Expose PORT
+# Make port 8443 available to the world outside this container
 EXPOSE 8443
 
+ENTRYPOINT ["./wait-for-it.sh", "db:3306", "--"]
+
 # Start image
-CMD ["java" ,"-jar"  ,"app.jar"]
+CMD ["java" , "-jar", "app.jar"]

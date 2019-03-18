@@ -21,9 +21,7 @@ services:
       - app
 
   webapp:
-    build:
-      context: ./
-      dockerfile: Dockerfile
+    image: hellodalao/daw:fase3
     links:
       - db
     depends_on:
