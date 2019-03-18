@@ -132,6 +132,7 @@ install [node.js](https://nodejs.org/en/)
 cd into folder webapp run the following commands.
 
     npm install
+    npm install -g @angular/cli
 
 run the Spring server then
 
