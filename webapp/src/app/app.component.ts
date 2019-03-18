@@ -7,12 +7,12 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'daw';
+  json: string;
 
   constructor(private http: HttpClient) {
   }
 
   ngOnInit(): void {
-    this.http.get("/api/units").subscribe(data => this.title = JSON.stringify(data));
+    this.http.get("/api/units").subscribe(data => this.json = JSON.stringify(data));
   }
 }

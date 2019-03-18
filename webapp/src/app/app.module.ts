@@ -1,7 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
-import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AuthInterceptor} from "./interceptor/AuthInterceptor";
@@ -17,7 +15,8 @@ import {CovalentDynamicFormsModule} from "@covalent/dynamic-forms";
 import {CovalentMarkdownModule} from "@covalent/markdown";
 import {CovalentHighlightModule} from "@covalent/highlight";
 import {CovalentHttpModule} from "@covalent/http";
-import {CovalentLayoutModule, CovalentStepsModule} from "@covalent/core";
+import {CovalentJsonFormatterModule, CovalentLayoutModule, CovalentStepsModule} from "@covalent/core";
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -28,11 +27,11 @@ import {CovalentLayoutModule, CovalentStepsModule} from "@covalent/core";
     FilesComponent,
     LoginComponent,
     ItineraryComponent,
-    UnitComponent
+    UnitComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
     CovalentLayoutModule,
@@ -41,7 +40,8 @@ import {CovalentLayoutModule, CovalentStepsModule} from "@covalent/core";
     CovalentHttpModule.forRoot(),
     CovalentHighlightModule,
     CovalentMarkdownModule,
-    CovalentDynamicFormsModule
+    CovalentDynamicFormsModule,
+    CovalentJsonFormatterModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
