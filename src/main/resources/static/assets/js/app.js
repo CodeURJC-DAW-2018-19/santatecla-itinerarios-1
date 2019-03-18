@@ -193,7 +193,7 @@ function edit_form(element) {
     $('#new_form input[name=title]').val($(element).parent().parent().find('.card-title').text());
     $('#new_form textarea[name=description]').val($(element).parent().parent().parent().parent().parent().find('.mark-down').data("description"));
     $(element).find("span").each(function (idx, element) {
-        $(`<img src="/api/images/${$(element).data("image")}" style="max-width:100%;max-height:100%;">`).appendTo("#preview");
+        $(`<img src="/api/images/${$(element).data("image")}" title="${$(element).data("filename")}" style="max-width:100%;max-height:100%;">`).appendTo("#preview");
     });
 }
 
