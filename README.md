@@ -122,3 +122,17 @@ Documentation about API into URL: https://github.com/CodeURJC-DAW-2018-19/santat
 - Select in which folder will be installed docker toolbox
 - In settings, select components you need to install
 - Install it and docker will be ready to use
+
+# Phase 4
+
+## Configure development context
+
+install [node.js](https://nodejs.org/en/)
+
+cd into folder webapp run the following commands.
+
+    npm install
+
+run the Spring server then
+
+    ng serve
