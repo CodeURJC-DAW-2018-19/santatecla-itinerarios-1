@@ -39,7 +39,7 @@ public class FormController {
 
     @PostMapping // TODO: search if it's posible to map file to form
     public ResponseEntity<Form> addForm(@Valid @ModelAttribute Form form, @RequestParam("upload_image") List<MultipartFile> images) throws IOException {
-        form = this.repository.save(form);
+        if (form.getId() == null) form = this.repository.save(form);
         return this.addImage(form, images);
     }
 }

@@ -18,7 +18,7 @@ function readURL(input) {
             reader.onload = function (e) {
                 var $img = $('<img style="max-width:100%;max-height:100%;">');
                 $img.attr('src', e.target.result);
-                $($img).appendTo('.imageForm');
+                $($img).appendTo('#preview');
                 /* $('#preview').attr('src', e.target.result);*/
             };
 
@@ -189,16 +189,15 @@ function more(element, api, page) {
 
 function edit_form(element) {
     clear_form();
-    $('#new_form input[name=id]').val($(element).parent().parent().parent().parent().parent().find('.mark-down').data("id"));
+    $('#new_form input[name=id]').val($(element).data("id"));
     $('#new_form input[name=title]').val($(element).parent().parent().find('.card-title').text());
     $('#new_form textarea[name=description]').val($(element).parent().parent().parent().parent().parent().find('.mark-down').data("description"));
+    $(element).find("span").each(function (idx, element) {
+        $(`<img src="/api/images/${$(element).data("image")}" style="max-width:100%;max-height:100%;">`).appendTo("#preview");
+    });
 }
 
 function clear_form() {
-    $('#new_form input[name=id]').val(undefined);
-    $('#new_form input[name=title]').val(undefined);
-    $('#new_form textarea[name=description]').val(undefined);
-    var file = $('#new_form input[name=upload_image]')[0];
-    file.outerHTML = `<input type="file" class="custom-file-input" multiple="" id="upload_image" name="upload_image">`;
-    visualize_image();
+    $('#new_form form')[0].reset();
+    $('#new_form #preview').empty();
 }
