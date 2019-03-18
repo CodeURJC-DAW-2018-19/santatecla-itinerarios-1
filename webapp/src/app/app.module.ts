@@ -12,6 +12,12 @@ import {FilesComponent} from './files/files.component';
 import {LoginComponent} from './login/login.component';
 import {ItineraryComponent} from './itinerary/itinerary.component';
 import {UnitComponent} from './unit/unit.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {CovalentDynamicFormsModule} from "@covalent/dynamic-forms";
+import {CovalentMarkdownModule} from "@covalent/markdown";
+import {CovalentHighlightModule} from "@covalent/highlight";
+import {CovalentHttpModule} from "@covalent/http";
+import {CovalentLayoutModule, CovalentStepsModule} from "@covalent/core";
 
 @NgModule({
   declarations: [
@@ -27,7 +33,15 @@ import {UnitComponent} from './unit/unit.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    CovalentLayoutModule,
+    CovalentStepsModule,
+    // (optional) Additional Covalent Modules imports
+    CovalentHttpModule.forRoot(),
+    CovalentHighlightModule,
+    CovalentMarkdownModule,
+    CovalentDynamicFormsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
