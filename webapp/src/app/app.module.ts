@@ -20,6 +20,7 @@ import {ErrorComponent} from './error/error.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {SubItineraryComponent} from './sub-itinerary/sub-itinerary.component';
 import {FormsModule} from "@angular/forms";
+import {CredentialService} from "./service/credential.service";
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import {FormsModule} from "@angular/forms";
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
-    multi: true
+    multi: true,
+    deps: [CredentialService]
   }],
   bootstrap: [AppComponent]
 })
