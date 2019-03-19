@@ -6,6 +6,7 @@ import {ErrorComponent} from "./error/error.component";
 import {UnitComponent} from "./unit/unit.component";
 import {FilesComponent} from "./files/files.component";
 import {ItineraryComponent} from "./itinerary/itinerary.component";
+import {AccessGuard} from "./guard/access.guard";
 
 const routes: Routes = [
   {
@@ -15,12 +16,13 @@ const routes: Routes = [
   },
   {path: 'units', component: UnitsComponent},
   {
-    path: 'unit/:id', component: UnitComponent,
+    path: 'units/:id', component: UnitComponent,
     children: [
       {path: '', redirectTo: 'files', pathMatch: 'full'},
       {path: 'files', component: FilesComponent},
       {path: 'itinerary/:id', component: ItineraryComponent},
-    ]
+    ],
+    canActivate: [AccessGuard]
   },
   {path: 'login', component: LoginComponent},
   {path: '**', component: ErrorComponent, data: {error: 404}}

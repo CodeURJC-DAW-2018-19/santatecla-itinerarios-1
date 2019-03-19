@@ -18,7 +18,8 @@ import {CovalentHttpModule} from "@covalent/http";
 import {CovalentJsonFormatterModule, CovalentLayoutModule, CovalentStepsModule} from "@covalent/core";
 import {ErrorComponent} from './error/error.component';
 import {AppRoutingModule} from "./app-routing.module";
-import { SubItineraryComponent } from './sub-itinerary/sub-itinerary.component';
+import {SubItineraryComponent} from './sub-itinerary/sub-itinerary.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -34,10 +35,11 @@ import { SubItineraryComponent } from './sub-itinerary/sub-itinerary.component';
     SubItineraryComponent
   ],
   imports: [
-    AppRoutingModule,
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
     CovalentLayoutModule,
     CovalentStepsModule,
     // (optional) Additional Covalent Modules imports
