@@ -1,3 +1,8 @@
-<p>
-  units works!
-</p>
+<td-search-box backIcon="arrow_back" placeholder="Search here" [(ngModel)]="searchInputTerm" [showUnderline]="true" [debounce]="500" [alwaysVisible]="true" (searchDebounce)="searchInputTerm = $event" (search)="searchInputTerm = $event" (clear)="searchInputTerm = ''" (blur)="onBlurEvent()">
+</td-search-box>
+<mat-card>
+  <i class="material-icons">local_library</i>
+  <mat-card-title>
+    Unidades e itinerarios
+  </mat-card-title>
+</mat-card>
