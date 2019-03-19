@@ -15,17 +15,11 @@ import {CovalentDynamicFormsModule} from "@covalent/dynamic-forms";
 import {CovalentMarkdownModule} from "@covalent/markdown";
 import {CovalentHighlightModule} from "@covalent/highlight";
 import {CovalentHttpModule} from "@covalent/http";
-import {
-  CovalentJsonFormatterModule,
-  CovalentLayoutModule, CovalentSearchModule,
-  CovalentStepsModule,
-  CovalentTabSelectModule
-} from "@covalent/core";
+import {CovalentJsonFormatterModule, CovalentLayoutModule, CovalentStepsModule} from "@covalent/core";
 import {ErrorComponent} from './error/error.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {SubItineraryComponent} from './sub-itinerary/sub-itinerary.component';
 import {FormsModule} from "@angular/forms";
-import {MatCardModule} from "@angular/material";
 
 @NgModule({
   declarations: [
@@ -53,10 +47,7 @@ import {MatCardModule} from "@angular/material";
     CovalentHighlightModule,
     CovalentMarkdownModule,
     CovalentDynamicFormsModule,
-    CovalentJsonFormatterModule,
-    CovalentSearchModule,
-    CovalentTabSelectModule,
-    MatCardModule
+    CovalentJsonFormatterModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
