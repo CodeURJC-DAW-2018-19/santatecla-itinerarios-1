@@ -61,7 +61,8 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "proxyConfig": "proxy.conf.js",
-            "browserTarget": "daw:build"
+            "browserTarget": "daw:build",
+            "ssl": true
           },
           "configurations": {
             "production": {

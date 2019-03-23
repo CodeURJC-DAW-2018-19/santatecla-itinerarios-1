@@ -24,6 +24,7 @@ import {CredentialService} from "./service/credential.service";
 import {NavBarComponent} from './nav-bar/nav-bar.component';
 import {MatButtonModule, MatNativeDateModule, MatSlideToggleModule} from "@angular/material";
 
+
 @NgModule({
   declarations: [
     AppComponent,
