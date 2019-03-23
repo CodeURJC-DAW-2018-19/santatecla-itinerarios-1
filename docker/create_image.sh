@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
-.\gradlew bootJar
-cp .\build\libs\santatecla.itinerarios-0.1.0.jar .\docker\app.jar
+./gradlew bootJar
+cp ./build/libs/santatecla.itinerarios-1.0.0.jar ./docker/app.jar
 cd docker
-docker-machine start default
 docker build --tag=daw .
-docker tag daw hellodalao/daw:fase3
-docker push hellodalao/daw:fase3
+docker tag daw hellodalao/daw:fase4
+docker push hellodalao/daw:fase4

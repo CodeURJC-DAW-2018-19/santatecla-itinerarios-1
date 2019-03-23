@@ -1,12 +1,25 @@
-sudo: false
 language: java
-jdk: oraclejdk8
+sudo: false
+install: true
+
+jdk:
+  - oraclejdk8
+
+services:
+  - docker
+
 before_cache:
- - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
- - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
+cache:
+  directories:
+    - "$HOME/.m2/repository"
+    - "$HOME/.gradle"
+    - ".gradle"
+
+before_install:
+  - chmod +x ./docker/create_image.sh
 
 script:
-        - ./gradlew clean
-        
-before_install:
-          - chmod +x gradlew
+  - ./docker/create_image.sh
