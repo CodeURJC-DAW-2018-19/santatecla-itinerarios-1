@@ -10,16 +10,16 @@ export class AuthenticationService {
   constructor(private http: HttpClient, private credential: CredentialService) {
   }
 
-  private authenticate(callback?: () => void): void {
+  private authenticate(callback?: () => void, error?: () => void): void {
     this.http.get("/api").subscribe(response => {
       this.credential.save();
       return callback && callback();
-    });
+    }, error);
   }
 
-  login(credential: CredentialDTO, callback?: () => void): void {
+  login(credential: CredentialDTO, callback?: () => void, error?: () => void): void {
     this.credential.update(credential);
-    this.authenticate(callback);
+    this.authenticate(callback, error);
   }
 
   register(credential: CredentialDTO, callback?: () => void): void {
@@ -31,7 +31,7 @@ export class AuthenticationService {
   }
 
   logout(callback?: () => void) {
-    this.http.get("/logout").subscribe(() => {
+    this.http.post("/logout", null).subscribe(() => {
       this.credential.invalidate();
       return callback && callback();
     });

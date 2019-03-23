@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CredentialDTO} from "../model/credential-dto";
 import {AuthenticationService} from "../service/authentication.service";
 import {Location} from '@angular/common';
+import {TdDialogService} from "@covalent/core";
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,9 @@ import {Location} from '@angular/common';
 export class LoginComponent implements OnInit {
   private credential: CredentialDTO = {username: "", password: ""};
 
-  constructor(private auth: AuthenticationService, private location: Location) {
+  constructor(private auth: AuthenticationService,
+              private location: Location,
+              private dialogService: TdDialogService) {
   }
 
   ngOnInit() {
@@ -24,8 +27,14 @@ export class LoginComponent implements OnInit {
     this.location.back();
   }
 
+  private showError(): void {
+    this.dialogService.openAlert({
+      message: 'Login failed'
+    });
+  }
+
   login() {
-    this.auth.login(this.credential, this.goBack.bind(this));
+    this.auth.login(this.credential, this.goBack.bind(this), this.showError.bind(this));
   }
 
   get password(): string {

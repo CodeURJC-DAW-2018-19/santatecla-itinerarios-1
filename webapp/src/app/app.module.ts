@@ -15,12 +15,14 @@ import {CovalentDynamicFormsModule} from "@covalent/dynamic-forms";
 import {CovalentMarkdownModule} from "@covalent/markdown";
 import {CovalentHighlightModule} from "@covalent/highlight";
 import {CovalentHttpModule} from "@covalent/http";
-import {CovalentJsonFormatterModule, CovalentLayoutModule, CovalentStepsModule} from "@covalent/core";
+import {CovalentDialogsModule, CovalentJsonFormatterModule, CovalentLayoutModule, CovalentStepsModule} from "@covalent/core";
 import {ErrorComponent} from './error/error.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {SubItineraryComponent} from './sub-itinerary/sub-itinerary.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CredentialService} from "./service/credential.service";
+import {NavBarComponent} from './nav-bar/nav-bar.component';
+import {MatButtonModule, MatNativeDateModule, MatSlideToggleModule} from "@angular/material";
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import {CredentialService} from "./service/credential.service";
     ItineraryComponent,
     UnitComponent,
     ErrorComponent,
-    SubItineraryComponent
+    SubItineraryComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,12 @@ import {CredentialService} from "./service/credential.service";
     FormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+
+    MatButtonModule,
+    MatSlideToggleModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
+
     CovalentLayoutModule,
     CovalentStepsModule,
     // (optional) Additional Covalent Modules imports
@@ -48,7 +57,8 @@ import {CredentialService} from "./service/credential.service";
     CovalentHighlightModule,
     CovalentMarkdownModule,
     CovalentDynamicFormsModule,
-    CovalentJsonFormatterModule
+    CovalentJsonFormatterModule,
+    CovalentDialogsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
