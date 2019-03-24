@@ -46,7 +46,7 @@ public class ViewController {
     }
 
     @DeleteMapping("/{view}/{form}")
-    public ResponseEntity<?> removeForm (@PathVariable View view, @PathVariable Form form){
+    public ResponseEntity<?> removeForm(@PathVariable View view, @PathVariable Form form) {
         view.removeForm(form);
         this.repository.save(view);
         return ResponseEntity.noContent().build();
