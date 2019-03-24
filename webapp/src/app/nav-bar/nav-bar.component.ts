@@ -24,9 +24,8 @@ export class NavBarComponent implements OnInit {
     if (change.checked) {
       this.router.navigate(["/login"]);
     } else {
-      this.auth.logout(() => {
-        this.router.navigate(["/login"]);
-      });
+      this.auth.logout();
+      this.router.navigate(["/login"]);
     }
     change.source.checked = this.auth.authenticated;
   }

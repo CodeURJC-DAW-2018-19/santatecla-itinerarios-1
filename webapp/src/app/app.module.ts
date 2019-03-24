@@ -15,14 +15,21 @@ import {CovalentDynamicFormsModule} from "@covalent/dynamic-forms";
 import {CovalentMarkdownModule} from "@covalent/markdown";
 import {CovalentHighlightModule} from "@covalent/highlight";
 import {CovalentHttpModule} from "@covalent/http";
-import {CovalentDialogsModule, CovalentJsonFormatterModule, CovalentLayoutModule, CovalentStepsModule} from "@covalent/core";
+import {
+  CovalentDialogsModule,
+  CovalentJsonFormatterModule,
+  CovalentLayoutModule,
+  CovalentSearchModule,
+  CovalentStepsModule,
+  CovalentTabSelectModule
+} from "@covalent/core";
 import {ErrorComponent} from './error/error.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {SubItineraryComponent} from './sub-itinerary/sub-itinerary.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CredentialService} from "./service/credential.service";
 import {NavBarComponent} from './nav-bar/nav-bar.component';
-import {MatButtonModule, MatNativeDateModule, MatSlideToggleModule} from "@angular/material";
+import {MatButtonModule, MatCardModule, MatNativeDateModule, MatSlideToggleModule} from "@angular/material";
 
 
 @NgModule({
@@ -43,13 +50,15 @@ import {MatButtonModule, MatNativeDateModule, MatSlideToggleModule} from "@angul
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
+
     AppRoutingModule,
 
     MatButtonModule,
     MatSlideToggleModule,
     MatNativeDateModule,
-    ReactiveFormsModule,
+    MatCardModule,
 
     CovalentLayoutModule,
     CovalentStepsModule,
@@ -59,7 +68,9 @@ import {MatButtonModule, MatNativeDateModule, MatSlideToggleModule} from "@angul
     CovalentMarkdownModule,
     CovalentDynamicFormsModule,
     CovalentJsonFormatterModule,
-    CovalentDialogsModule
+    CovalentDialogsModule,
+    CovalentTabSelectModule,
+    CovalentSearchModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

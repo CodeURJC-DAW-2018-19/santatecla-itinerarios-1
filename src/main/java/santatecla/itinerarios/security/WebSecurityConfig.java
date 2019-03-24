@@ -2,11 +2,13 @@ package santatecla.itinerarios.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
@@ -35,11 +37,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/units", true)
                 .failureUrl("/login_error")
                 .and()
-                .logout().logoutUrl("/logout").logoutSuccessUrl("/").permitAll()
-                .and().httpBasic();
-        
+                .logout().logoutUrl("/logout").logoutSuccessUrl("/units").permitAll();
+
+        http
+                .httpBasic()
+                .and().authorizeRequests()
+                .antMatchers("/api", "/api/units").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/**").hasRole("admin")
+                .antMatchers(HttpMethod.DELETE, "/api/**").hasRole("admin")
+                .antMatchers(HttpMethod.PUT, "/api/**").hasRole("admin")
+                .antMatchers(HttpMethod.PATCH, "/api/**").hasRole("admin")
+                .antMatchers("/api/**").hasAnyRole("user", "admin")
+                .anyRequest().authenticated();
+        // TODO: .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
         http.requiresChannel().anyRequest().requiresSecure();
-        
+
         http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
     }
 

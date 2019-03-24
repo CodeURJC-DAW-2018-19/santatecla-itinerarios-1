@@ -1,4 +1,21 @@
-<td-search-box backIcon="arrow_back" placeholder="Search here" [(ngModel)]="searchInputTerm" [showUnderline]="true" [debounce]="500" [alwaysVisible]="true" (searchDebounce)="searchInputTerm = $event" (search)="searchInputTerm = $event" (clear)="searchInputTerm = ''" (blur)="onBlurEvent()">
+<td-tab-select>
+  <td-tab-option value="dogs">
+    Unidades
+  </td-tab-option>
+  <td-tab-option value="cats">
+    Javascript
+  </td-tab-option>
+  <td-tab-option value="bunnies">
+    TimBernersLee
+  </td-tab-option>
+  <td-tab-option value="hamsters">
+    CERN
+  </td-tab-option>
+</td-tab-select>
+{{json}}
+<td-search-box backIcon="arrow_back" placeholder="Search here" [(ngModel)]="searchInputTerm" [showUnderline]="true" [debounce]="500"
+               [alwaysVisible]="true" (searchDebounce)="searchInputTerm = $event" (search)="searchInputTerm = $event" (clear)="searchInputTerm = ''"
+               (blur)="onBlurEvent()">
 </td-search-box>
 <mat-card>
   <i class="material-icons">local_library</i>
