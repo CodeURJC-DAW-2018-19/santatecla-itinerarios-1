@@ -65,6 +65,7 @@ import {
 } from "@angular/material";
 import {CommonModule} from "@angular/common";
 import {NgxChartsModule} from "@swimlane/ngx-charts";
+import {ChartComponent} from './chart/chart.component';
 
 
 @NgModule({
@@ -79,7 +80,8 @@ import {NgxChartsModule} from "@swimlane/ngx-charts";
     UnitComponent,
     ErrorComponent,
     SubItineraryComponent,
-    NavBarComponent
+    NavBarComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,

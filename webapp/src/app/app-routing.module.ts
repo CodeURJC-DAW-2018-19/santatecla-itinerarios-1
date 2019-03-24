@@ -7,6 +7,7 @@ import {UnitComponent} from "./unit/unit.component";
 import {FilesComponent} from "./files/files.component";
 import {ItineraryComponent} from "./itinerary/itinerary.component";
 import {AccessGuard} from "./guard/access.guard";
+import {ChartComponent} from "./chart/chart.component";
 
 const routes: Routes = [
   {
@@ -25,6 +26,7 @@ const routes: Routes = [
     canActivate: [AccessGuard]
   },
   {path: 'login', component: LoginComponent},
+  {path: 'chart', component: ChartComponent},
   {path: '**', component: ErrorComponent, data: {error: 404}}
 ];
 
