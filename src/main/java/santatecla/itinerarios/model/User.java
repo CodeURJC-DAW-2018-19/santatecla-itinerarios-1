@@ -1,5 +1,6 @@
 package santatecla.itinerarios.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -20,6 +21,7 @@ public class User {
     private String username;
 
     @Column(nullable = false)
+    @JsonIgnore
     private String password;
 
     @ElementCollection(fetch = FetchType.EAGER)

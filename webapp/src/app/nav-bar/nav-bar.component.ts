@@ -18,6 +18,18 @@ export class NavBarComponent implements OnInit {
               private rest: ResourcesService) {
   }
 
+  get isAnonymous(): boolean {
+    return !this.auth.authenticated;
+  }
+
+  get isAdmin(): boolean {
+    return this.auth.hasRole("admin");
+  }
+
+  get isUser(): boolean {
+    return this.auth.hasRole("user");
+  }
+
   ngOnInit() {
     this.rest.fetchUnits().subscribe(units => this.units = units);
   }

@@ -1,6 +1,6 @@
 const PROXY_CONFIG = [
   {
-    "context": ["/api", "/logout", "/login"], // TODO
+    "context": ["/api", "/logout", "/auth"], // TODO
     "target": "https://localhost:8443",
     "secure": false,
     "changeOrigin": true,

@@ -5,7 +5,9 @@
      [routerLink]="'/units/' + unit.id">{{unit.title}}
   </a>
   <div class="flex-spacer"></div>
-  <span>Visitante</span>
+  <span *ngIf="isAnonymous">Visitante</span>
+  <span *ngIf="isUser">Estudiante</span>
+  <span *ngIf="isAdmin">Profesor</span>
   <mat-slide-toggle [(ngModel)]="checked" color="warn" (change)="toggle($event)">Logout</mat-slide-toggle>
 </nav>
 <nav class="navbar navbar-show-small">

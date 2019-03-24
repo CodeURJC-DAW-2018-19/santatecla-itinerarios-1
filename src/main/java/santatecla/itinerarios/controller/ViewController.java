@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import santatecla.itinerarios.model.Form;
 import santatecla.itinerarios.model.Itinerary;
-import santatecla.itinerarios.model.Unit;
 import santatecla.itinerarios.model.View;
 import santatecla.itinerarios.repo.ItineraryRepository;
 import santatecla.itinerarios.repo.ViewRepository;
