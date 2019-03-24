@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Unit} from "../model/unit";
 import {ResourcesService} from "../service/resources.service";
 
@@ -8,9 +8,7 @@ import {ResourcesService} from "../service/resources.service";
   styleUrls: ['./units.component.scss']
 })
 export class UnitsComponent implements OnInit {
-  @Input()
   units: Unit[];
-  json: string;
 
   constructor(private rest: ResourcesService) {
   }
@@ -18,7 +16,6 @@ export class UnitsComponent implements OnInit {
   ngOnInit(): void {
     this.rest.fetchUnits().subscribe(units => {
       this.units = units;
-      this.json = JSON.stringify(this.units);
     });
   }
 }
