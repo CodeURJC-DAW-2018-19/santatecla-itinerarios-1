@@ -1,18 +1,8 @@
-<td-tab-select>
-  <td-tab-option value="dogs">
-    Unidades
-  </td-tab-option>
-  <td-tab-option value="cats">
-    Javascript
-  </td-tab-option>
-  <td-tab-option value="bunnies">
-    TimBernersLee
-  </td-tab-option>
-  <td-tab-option value="hamsters">
-    CERN
-  </td-tab-option>
-</td-tab-select>
-{{json}}
+<mat-tab-group>
+  <mat-tab *ngFor="let unit of units" label="{{unit.title}}">{{unit.title}} </mat-tab>
+</mat-tab-group>
+<td-json-formatter [data]="units" key="root">
+</td-json-formatter>
 <td-search-box backIcon="arrow_back" placeholder="Search here" [(ngModel)]="searchInputTerm" [showUnderline]="true" [debounce]="500"
                [alwaysVisible]="true" (searchDebounce)="searchInputTerm = $event" (search)="searchInputTerm = $event" (clear)="searchInputTerm = ''"
                (blur)="onBlurEvent()">

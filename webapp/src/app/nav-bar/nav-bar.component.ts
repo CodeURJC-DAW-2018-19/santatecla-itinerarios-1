@@ -1,19 +1,25 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AuthenticationService} from "../service/authentication.service";
 import {Router} from "@angular/router";
 import {MatSlideToggleChange} from "@angular/material";
+import {Unit} from "../model/unit";
+import {ResourcesService} from "../service/resources.service";
 
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.css']
+  styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
+  units: Unit[];
+
   constructor(private auth: AuthenticationService,
-              private router: Router) {
+              private router: Router,
+              private rest: ResourcesService) {
   }
 
   ngOnInit() {
+    this.rest.fetchUnits().subscribe(units => this.units = units);
   }
 
   get checked(): boolean {

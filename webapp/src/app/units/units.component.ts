@@ -1,18 +1,24 @@
-import {Component, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {Component, Input, OnInit} from '@angular/core';
+import {Unit} from "../model/unit";
+import {ResourcesService} from "../service/resources.service";
 
 @Component({
   selector: 'app-units',
   templateUrl: './units.component.html',
-  styleUrls: ['./units.component.css']
+  styleUrls: ['./units.component.scss']
 })
 export class UnitsComponent implements OnInit {
+  @Input()
+  units: Unit[];
   json: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private rest: ResourcesService) {
   }
 
-  ngOnInit() {
-    this.http.get("/api/units").subscribe(data => this.json = JSON.stringify(data));
+  ngOnInit(): void {
+    this.rest.fetchUnits().subscribe(units => {
+      this.units = units;
+      this.json = JSON.stringify(this.units);
+    });
   }
 }

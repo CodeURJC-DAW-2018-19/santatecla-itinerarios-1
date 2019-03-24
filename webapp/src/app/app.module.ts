@@ -16,9 +16,18 @@ import {CovalentMarkdownModule} from "@covalent/markdown";
 import {CovalentHighlightModule} from "@covalent/highlight";
 import {CovalentHttpModule} from "@covalent/http";
 import {
+  CovalentCommonModule,
+  CovalentDataTableModule,
   CovalentDialogsModule,
+  CovalentExpansionPanelModule,
   CovalentJsonFormatterModule,
   CovalentLayoutModule,
+  CovalentLoadingModule,
+  CovalentMediaModule,
+  CovalentMenuModule,
+  CovalentMessageModule,
+  CovalentNotificationsModule,
+  CovalentPagingModule,
   CovalentSearchModule,
   CovalentStepsModule,
   CovalentTabSelectModule
@@ -29,7 +38,33 @@ import {SubItineraryComponent} from './sub-itinerary/sub-itinerary.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CredentialService} from "./service/credential.service";
 import {NavBarComponent} from './nav-bar/nav-bar.component';
-import {MatButtonModule, MatCardModule, MatNativeDateModule, MatSlideToggleModule} from "@angular/material";
+import {
+  MatAutocompleteModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule
+} from "@angular/material";
+import {CommonModule} from "@angular/common";
+import {NgxChartsModule} from "@swimlane/ngx-charts";
 
 
 @NgModule({
@@ -48,6 +83,7 @@ import {MatButtonModule, MatCardModule, MatNativeDateModule, MatSlideToggleModul
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
@@ -55,13 +91,46 @@ import {MatButtonModule, MatCardModule, MatNativeDateModule, MatSlideToggleModul
 
     AppRoutingModule,
 
+    /** Material Modules */
     MatButtonModule,
-    MatSlideToggleModule,
-    MatNativeDateModule,
+    MatListModule,
+    MatIconModule,
     MatCardModule,
+    MatMenuModule,
+    MatInputModule,
+    MatButtonToggleModule,
+    MatProgressSpinnerModule,
+    MatSelectModule,
+    MatSlideToggleModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    MatToolbarModule,
+    MatTabsModule,
+    MatSidenavModule,
+    MatTooltipModule,
+    MatRippleModule,
+    MatRadioModule,
+    MatGridListModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSliderModule,
+    MatAutocompleteModule,
+    MatNativeDateModule,
 
+    /** Covalent Modules */
+    CovalentCommonModule,
     CovalentLayoutModule,
+    CovalentMediaModule,
+    CovalentExpansionPanelModule,
     CovalentStepsModule,
+    CovalentDialogsModule,
+    CovalentLoadingModule,
+    CovalentSearchModule,
+    CovalentPagingModule,
+    CovalentNotificationsModule,
+    CovalentMenuModule,
+    CovalentDataTableModule,
+    CovalentMessageModule,
     // (optional) Additional Covalent Modules imports
     CovalentHttpModule.forRoot(),
     CovalentHighlightModule,
@@ -70,7 +139,9 @@ import {MatButtonModule, MatCardModule, MatNativeDateModule, MatSlideToggleModul
     CovalentJsonFormatterModule,
     CovalentDialogsModule,
     CovalentTabSelectModule,
-    CovalentSearchModule
+    CovalentSearchModule,
+    /** Additional **/
+    NgxChartsModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
