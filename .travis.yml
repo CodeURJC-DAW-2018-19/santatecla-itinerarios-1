@@ -20,6 +20,7 @@ cache:
 
 before_install:
   - chmod +x ./docker/create_image.sh
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 script:
   - ./docker/create_image.sh
