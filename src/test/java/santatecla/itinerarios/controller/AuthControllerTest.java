@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import santatecla.itinerarios.model.User;
@@ -38,7 +37,7 @@ public class AuthControllerTest {
 
     @Test
     public void test() throws Exception {
-        this.mockMvc.perform(get("/auth").secure(true).with(user("test"))
+        this.mockMvc.perform(get("/me").secure(true).with(user("test"))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
