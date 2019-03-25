@@ -21,7 +21,7 @@ const routes: Routes = [
     children: [
       {path: '', redirectTo: 'files', pathMatch: 'full'},
       {path: 'files', component: FilesComponent},
-      {path: 'itinerary/:id', component: ItineraryComponent},
+      {path: 'itineraries/:id', component: ItineraryComponent},
     ],
     canActivate: [AccessGuard]
   },
