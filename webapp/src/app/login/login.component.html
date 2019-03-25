@@ -1,10 +1,17 @@
-<form class="container">
-  <label for="uname"><b>Username</b></label>
-  <input type="text" placeholder="Enter Username" [(ngModel)]="username" id="uname" name="username" required>
+<mat-card>
+  <mat-card-title>
+    <i class="material-icons">person</i>Login
+  </mat-card-title>
+  <mat-card-content>
+    <form class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" [(ngModel)]="username" id="uname" name="username" required>
 
-  <label for="psw"><b>Password</b></label>
-  <input type="password" placeholder="Enter Password" id="psw" [(ngModel)]="password"
-         name="password" required>
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" id="psw" [(ngModel)]="password" name="password" required>
 
-  <button (click)="login()" type="submit">Log in</button>
-</form>
+      <button (click)="login()" type="submit">Log in</button>
+    </form>
+  </mat-card-content>
+</mat-card>
+
