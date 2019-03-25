@@ -1,9 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Unit} from "../model/unit";
-import {Resources} from "../model/Resources";
-import {Observable} from "rxjs";
-import {of} from "rxjs";
+import {Observable, of} from "rxjs";
 import {map} from "rxjs/operators";
 
 @Injectable({
@@ -15,12 +13,12 @@ export class ResourcesService {
   constructor(private http: HttpClient) {
   }
 
-  fetchUnits(): Observable<Unit[]> {
+  fetchUnitsSummary(): Observable<Unit[]> {
     if (this.units) {
       return of(this.units);
     } else {
-      return this.http.get<Resources>("/api/units").pipe(map(data => {
-        this.units = data._embedded.units;
+      return this.http.get<Unit[]>("/summary?units").pipe(map(data => {
+        this.units = data;
         return this.units;
       }));
     }

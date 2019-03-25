@@ -31,7 +31,7 @@ export class NavBarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.rest.fetchUnits().subscribe(units => this.units = units);
+    this.rest.fetchUnitsSummary().subscribe(units => this.units = units);
   }
 
   get checked(): boolean {

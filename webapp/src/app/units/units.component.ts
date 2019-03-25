@@ -14,7 +14,7 @@ export class UnitsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.rest.fetchUnits().subscribe(units => {
+    this.rest.fetchUnitsSummary().subscribe(units => {
       this.units = units;
     });
   }

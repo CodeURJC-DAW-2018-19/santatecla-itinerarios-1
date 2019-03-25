@@ -1,5 +1,6 @@
 package santatecla.itinerarios.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,13 +18,16 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 public class Unit {
+    @JsonView(SummaryView.class)
     @Id
     @GeneratedValue
     private Long id;
 
+    @JsonView(SummaryView.class)
     @Column(nullable = false)
     private String title;
 
+    @JsonView(SummaryView.class)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "unit")
     private Set<Itinerary> itineraries;
 

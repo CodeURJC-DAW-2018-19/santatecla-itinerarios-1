@@ -1,6 +1,7 @@
 package santatecla.itinerarios.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -26,6 +27,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Itinerary extends Item {
     @Column(nullable = false)
+    @JsonView(SummaryView.class)
     private String title;
 
     @ManyToMany(cascade = CascadeType.ALL)
