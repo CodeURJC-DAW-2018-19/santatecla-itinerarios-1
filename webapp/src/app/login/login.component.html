@@ -4,14 +4,19 @@
   </mat-card-title>
   <mat-card-content>
     <form class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" [(ngModel)]="username" id="uname" name="username" required>
-
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" id="psw" [(ngModel)]="password" name="password" required>
-
-      <button (click)="login()" type="submit">Log in</button>
+      <div layout="row">
+        <div>
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" [(ngModel)]="username" id="uname" name="username" required>
+        </div>
+        <div>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" id="psw" [(ngModel)]="password" name="password" required>
+        </div>
+        <button (click)="login()" type="submit">Log in</button>
+      </div>
     </form>
   </mat-card-content>
 </mat-card>
+
 
