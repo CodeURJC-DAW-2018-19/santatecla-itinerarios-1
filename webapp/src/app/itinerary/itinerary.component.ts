@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
+import {ResourcesService} from "../service/resources.service";
+import {Itinerary} from "../model/Itinerary";
 
 @Component({
   selector: 'app-itinerary',
@@ -8,13 +10,16 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ItineraryComponent implements OnInit {
   id: number;
+  itinerary: Itinerary;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private rest: ResourcesService,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.id = params['id'];
+      this.rest.fetchItinerary(this.id).subscribe(item => this.itinerary = item);
     });
   }
 }
