@@ -1,5 +1,6 @@
 export interface Itinerary {
-  title: string
+  id: number;
+  title: string;
   views: string[];
   subItinerary: string[];
 }
