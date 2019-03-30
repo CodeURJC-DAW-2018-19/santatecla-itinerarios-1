@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Itinerary } from '../model/Itinerary';
+import { Itinerary } from '../model/itinerary';
 import { ResourcesService } from '../service/resources.service';
 
 @Component({
@@ -19,7 +19,7 @@ export class UnitComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.id = parseInt(params.id);
+      this.id = Number(params.id);
       this.rest.fetchUnitsSummary().subscribe(units => {
         for (const unit of units) {
           if (unit.id === this.id) {

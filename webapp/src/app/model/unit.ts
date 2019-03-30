@@ -1,4 +1,4 @@
-import { Itinerary } from './Itinerary';
+import { Itinerary } from './itinerary';
 
 export class Unit {
   id: number;

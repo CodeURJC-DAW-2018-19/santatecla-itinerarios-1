@@ -1,6 +1,5 @@
 <p>
-  itinerary {{id}} {{itinerary.title}} works!
+    itinerary {{id}} {{itinerary.title}} works!
 </p>
-
-<app-sub-itinerary></app-sub-itinerary>
+<app-sub-itinerary *ngFor="let subItinerary of itinerary.subItinerary" [link]="subItinerary"></app-sub-itinerary>
 <app-view></app-view>

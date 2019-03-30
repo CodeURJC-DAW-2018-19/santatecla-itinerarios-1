@@ -29,3 +29,4 @@
 *.jar
 /bin
 .idea
+!/libs/**.jar

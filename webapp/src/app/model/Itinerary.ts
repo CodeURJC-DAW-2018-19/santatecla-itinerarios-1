@@ -1,6 +1,7 @@
-export interface Itinerary {
+import { Resource } from './resource';
+
+export class Itinerary extends Resource {
   id: number;
   title: string;
-  views: string[];
-  subItinerary: string[];
+  items: string; 
 }
