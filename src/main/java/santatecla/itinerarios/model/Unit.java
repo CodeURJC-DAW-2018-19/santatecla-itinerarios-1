@@ -18,16 +18,16 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 public class Unit {
-    @JsonView(SummaryView.class)
+    @JsonView(SummaryView.Unit.class)
     @Id
     @GeneratedValue
     private Long id;
 
-    @JsonView(SummaryView.class)
+    @JsonView(SummaryView.Unit.class)
     @Column(nullable = false)
     private String title;
 
-    @JsonView(SummaryView.class)
+    @JsonView(SummaryView.Unit.class)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "unit")
     private Set<Itinerary> itineraries;
 

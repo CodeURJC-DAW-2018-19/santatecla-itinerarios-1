@@ -27,10 +27,11 @@ import java.util.List;
 @NoArgsConstructor
 public class Itinerary extends Item {
     @Column(nullable = false)
-    @JsonView(SummaryView.class)
+    @JsonView(SummaryView.Unit.class)
     private String title;
 
     @ManyToMany(cascade = CascadeType.ALL)
+    @JsonView(SummaryView.Itinerary.class)
     @JoinTable(uniqueConstraints = {@UniqueConstraint(columnNames = {"itinerary_id", "items_id"})})
     private List<Item> items;
 

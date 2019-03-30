@@ -11,11 +11,11 @@ import javax.persistence.InheritanceType;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Item {
-    @JsonView(SummaryView.class)
+    @JsonView(SummaryView.Itinerary.class)
     @Id
     @GeneratedValue
     private Long id;
-
+    
     public boolean getIsItinerary() {
         // TODO: i don't line
         return false;
