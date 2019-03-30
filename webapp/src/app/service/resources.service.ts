@@ -4,6 +4,7 @@ import {Unit} from "../model/unit";
 import {Observable, of} from "rxjs";
 import {map} from "rxjs/operators";
 import {Itinerary} from "../model/Itinerary";
+import {Form} from "../model/file";
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class ResourcesService {
   private units: Unit[];
   private itineraries: Map<number, Itinerary> = new Map();
   private files: File[];
+  private filesMap: Map<number, Form> = new Map();
 
   constructor(private http: HttpClient) {
   }
@@ -33,6 +35,17 @@ export class ResourcesService {
     } else {
       return this.http.get<Itinerary>("/api/itineraries/" + id).pipe(map(data => {
         this.itineraries.set(id, data);
+        return data;
+      }));
+    }
+  }
+
+  fetchFile(id: number): Observable<Form> {
+    if(this.filesMap.get(id)){
+      return of (this.filesMap.get(id));
+    }else{
+      return this.http.get<Form>("/api/forms/"+id).pipe(map(data =>{
+        this.filesMap.set(id,data);
         return data;
       }));
     }
