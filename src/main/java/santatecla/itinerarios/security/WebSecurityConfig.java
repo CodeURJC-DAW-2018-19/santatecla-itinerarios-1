@@ -40,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .httpBasic()
-                .and().authorizeRequests()
+                .and().authorizeRequests() // TODO: remove summary
                 .antMatchers("/api", "/api/units", "/summary/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/users").permitAll()
                 .antMatchers(HttpMethod.POST, "/api/**").hasRole("admin")
