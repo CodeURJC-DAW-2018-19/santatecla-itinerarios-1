@@ -11,6 +11,7 @@ import {Itinerary} from "../model/Itinerary";
 export class ResourcesService {
   private units: Unit[];
   private itineraries: Map<number, Itinerary> = new Map();
+  private files: File[];
 
   constructor(private http: HttpClient) {
   }
@@ -33,6 +34,17 @@ export class ResourcesService {
       return this.http.get<Itinerary>("/api/itineraries/" + id).pipe(map(data => {
         this.itineraries.set(id, data);
         return data;
+      }));
+    }
+  }
+
+  fetchFilesSummary(id: number): Observable<File[]> {
+    if (this.files) {
+      return of(this.files);
+    } else {
+      return this.http.get<{_embedded}>("/api/units/"+id+"/forms/").pipe(map(data => {
+        this.files = data._embedded.forms;
+        return this.files;
       }));
     }
   }
