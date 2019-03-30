@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Angular",
+            "url": "https://localhost:4200",
+            "webRoot": "${workspaceFolder}/webapp"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-WebApplication<web>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "santatecla.itinerarios.WebApplication",
+            "projectName": "web",
+            "args": ""
+        }
+    ]
+}

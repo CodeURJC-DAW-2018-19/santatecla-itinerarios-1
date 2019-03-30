@@ -28,5 +28,4 @@
 
 *.jar
 /bin
-.vscode
 .idea

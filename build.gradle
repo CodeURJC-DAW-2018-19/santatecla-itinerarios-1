@@ -26,6 +26,7 @@ sourceCompatibility = '1.8'
 compileJava.options.encoding = 'UTF-8'
 
 repositories {
+    flatDir dirs: "${projectDir}/libs"
     mavenCentral()
 }
 
@@ -37,12 +38,11 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-mustache'
 
-    compileOnly 'org.projectlombok:lombok'
+    compileOnly name: 'lombok'
+    annotationProcessor name: 'lombok'
 
     runtimeOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'mysql:mysql-connector-java'
-
-    annotationProcessor 'org.projectlombok:lombok'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
