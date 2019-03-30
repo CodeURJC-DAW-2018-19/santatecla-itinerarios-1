@@ -20,7 +20,7 @@ public class SummaryController {
     }
 
     @JsonView(SummaryView.class)
-    @GetMapping(params = "units")
+    @GetMapping("units")
     public List<Unit> units() {
         return this.repository.findAll();
     }
