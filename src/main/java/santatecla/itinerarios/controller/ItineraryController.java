@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import santatecla.itinerarios.model.Itinerary;
+import santatecla.itinerarios.model.Unit;
 import santatecla.itinerarios.repo.ItineraryRepository;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 @RestController
 @RequestMapping("itineraries")
@@ -27,12 +29,19 @@ public class ItineraryController {
         itinerary.addItem(subItinerary);
         this.repository.save(itinerary);
     }
-    
+
     @PutMapping("/{itinerary}/items/{originalSubItinerary}")
-    public ResponseEntity<?> changeSubItinerary(@PathVariable Itinerary itinerary, @PathVariable Itinerary originalSubItinerary, @RequestParam Itinerary newSubItinerary) {
+    public ResponseEntity<?> changeSubItinerary(@PathVariable Itinerary itinerary,
+            @PathVariable Itinerary originalSubItinerary, @RequestParam Itinerary newSubItinerary) {
         itinerary.removeItem(originalSubItinerary);
         itinerary.addItem(newSubItinerary);
         this.repository.save(itinerary);
         return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/itineraries/{unit}")
+    public void addItinerary(@ModelAttribute @Valid @NotNull Itinerary itinerary, @PathVariable @NotNull Unit unit) {
+        itinerary.setUnit(unit);
+        this.repository.save(itinerary);
     }
 }

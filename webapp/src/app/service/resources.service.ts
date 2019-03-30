@@ -19,7 +19,7 @@ export class ResourcesService {
     if (this.units) {
       return of(this.units);
     } else {
-      return this.http.get<Unit[]>("/summary?units").pipe(map(data => {
+      return this.http.get<Unit[]>("/summary/units").pipe(map(data => {
         this.units = data;
         return this.units;
       }));
