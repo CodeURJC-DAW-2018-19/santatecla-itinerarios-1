@@ -37,7 +37,7 @@ public class AuthControllerTest {
 
     @Test
     public void test() throws Exception {
-        this.mockMvc.perform(get("/me").secure(true).with(user("test"))
+        this.mockMvc.perform(get("/users/me").secure(true).with(user("test"))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
