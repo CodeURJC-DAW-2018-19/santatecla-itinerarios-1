@@ -1,8 +1,7 @@
 package santatecla.itinerarios.model;
 
-import com.fasterxml.jackson.annotation.JsonView;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,23 +10,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
-import java.util.HashSet;
-import java.util.Set;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @NoArgsConstructor
 public class Unit {
-    @JsonView(SummaryView.Unit.class)
     @Id
     @GeneratedValue
     private Long id;
 
-    @JsonView(SummaryView.Unit.class)
     @Column(nullable = false)
     private String title;
 
-    @JsonView(SummaryView.Unit.class)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "unit")
     private Set<Itinerary> itineraries;
 

@@ -1,20 +1,9 @@
-<td-search-box backIcon="arrow_back" placeholder="Search here" [(ngModel)]="searchInputTerm" [showUnderline]="true"
-               [debounce]="500"
-               [alwaysVisible]="true" (searchDebounce)="searchInputTerm = $event" (search)="searchInputTerm = $event"
-               (clear)="searchInputTerm = ''"
-               (blur)="onBlurEvent()">
+<td-search-box backIcon="arrow_back" placeholder="Search here" [(ngModel)]="searchInputTerm" [showUnderline]="true" [debounce]="500" [alwaysVisible]="true" (searchDebounce)="searchInputTerm = $event" (search)="searchInputTerm = $event" (clear)="searchInputTerm = ''" (blur)="onBlurEvent()">
 </td-search-box>
-<mat-card>
-  <mat-card>
-    <mat-card-title>
-      <i class="material-icons">local_library</i> Unidades e itinerarios
-    </mat-card-title>
-    <mat-card *ngFor="let unit of units">
-      Unit:
-        <a [routerLink]="'/units/' + unit.id">{{unit.title}}</a>
-      <mat-list *ngFor="let itinerary of unit.itineraries">
-          <a [routerLink]="'/units/' + unit.id + '/itinerary/' + itinerary.id">{{itinerary.title}}</a>
-      </mat-list>
-    </mat-card>
-  </mat-card>
-</mat-card>
+<td-expansion-panel *ngFor="let unit of units" label="{{unit.title}}">
+    <div class="md-padding">
+        <mat-nav-list>
+            <a mat-list-item [routerLink]="'/units/' + unit.id + '/itineraries/' + itinerary.id" *ngFor="let itinerary of unit.itineraries | async"> {{itinerary.title}} </a>
+        </mat-nav-list>
+    </div>
+</td-expansion-panel>

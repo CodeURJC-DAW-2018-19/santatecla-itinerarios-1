@@ -1,11 +1,7 @@
 package santatecla.itinerarios.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonView;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,8 +13,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PreRemove;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data
@@ -27,12 +28,10 @@ import java.util.List;
 @NoArgsConstructor
 public class Itinerary extends Item {
     @Column(nullable = false)
-    @JsonView(SummaryView.Unit.class)
     private String title;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JsonView(SummaryView.Itinerary.class)
-    @JoinTable(uniqueConstraints = {@UniqueConstraint(columnNames = {"itinerary_id", "items_id"})})
+    @JoinTable(uniqueConstraints = { @UniqueConstraint(columnNames = { "itinerary_id", "items_id" }) })
     private List<Item> items;
 
     @ManyToOne
