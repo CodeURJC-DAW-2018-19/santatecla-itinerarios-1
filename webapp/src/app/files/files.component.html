@@ -1,7 +1,3 @@
-<mat-card>
-    <mat-card *ngFor="let file of files">
-      <app-file [id]="file.id"></app-file>
-    </mat-card>
+<mat-card *ngFor="let file of files">
+    <app-file [file]="file"></app-file>
 </mat-card>
-
-

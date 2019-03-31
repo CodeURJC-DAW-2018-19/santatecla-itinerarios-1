@@ -58,10 +58,10 @@ export class ResourcesService {
     }
 
     fetchFiles(id: number): Observable<File[]> {
-        return this.fetchResources('/api/units/' + id + '/files', 'files', File);
+        return this.fetchResources('/api/units/' + id + '/forms', 'forms', File);
     }
 
     fetchFile(id: number): Observable<File> {
-        return this.fetchResource('/api/file/' + id, File);
+        return this.fetchResource('/api/forms/' + id, File);
     }
 }
