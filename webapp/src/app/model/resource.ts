@@ -25,9 +25,13 @@ export class Resource {
         return this.rest.fetchResource(this._links[property], Entity);
     }
 
-    lazyLoadResources<T extends Resource>(property: string, Entity: new (raw: any, rest: ResourcesService) => T): Observable<T[]> {
+    lazyLoadResources<T extends Resource>(
+        property: string,
+        Entity: new (raw: any, rest: ResourcesService) => T,
+        ...resources: string[]
+    ): Observable<T[]> {
         if (typeof this._links[property] === 'string') {
-            this._links[property] = this.rest.fetchResources(this._links[property], Entity, property)
+            this._links[property] = this.rest.fetchResources(this._links[property], Entity, property, ...resources)
                 .pipe(
                     catchError(err => {
                         this._links[property] = null;

@@ -1,6 +1,6 @@
 import { Resource } from './resource';
 
-export class Items extends Resource {
+export class Item extends Resource {
     id: number;
     isItinerary: boolean;
 }

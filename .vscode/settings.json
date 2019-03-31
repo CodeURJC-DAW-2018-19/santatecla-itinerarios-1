@@ -1,6 +1,6 @@
 {
     "java.configuration.updateBuildConfiguration": "automatic",
     "java.jdt.ls.vmargs": "-javaagent:./libs/lombok.jar -Xbootclasspath/a:./libs/lombok.jar",
-    "editor.tabSize": 2,
+    "editor.tabSize": 4,
     "editor.insertSpaces": true,
 }

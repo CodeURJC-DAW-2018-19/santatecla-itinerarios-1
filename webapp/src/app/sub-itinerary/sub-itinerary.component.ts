@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Itinerary } from '../model/itinerary';
 
 @Component({
     selector: 'app-sub-itinerary',
@@ -7,10 +8,10 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SubItineraryComponent implements OnInit {
     @Input()
-    link: string;
+    itinerary: Itinerary;
+
     constructor() { }
 
     ngOnInit() {
     }
-
 }

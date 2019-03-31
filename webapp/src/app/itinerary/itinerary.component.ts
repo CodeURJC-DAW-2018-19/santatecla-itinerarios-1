@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Itinerary } from '../model/itinerary';
 import { ResourcesService } from '../service/resources.service';
-import { Items } from '../model/items';
+import { Item } from '../model/item';
 
 @Component({
     selector: 'app-itinerary',
@@ -10,9 +10,8 @@ import { Items } from '../model/items';
     styleUrls: ['./itinerary.component.css']
 })
 export class ItineraryComponent implements OnInit {
-    id: number;
     itinerary: Itinerary;
-    items: Items[];
+    items: Item[];
 
     constructor(
         private rest: ResourcesService,
@@ -21,10 +20,9 @@ export class ItineraryComponent implements OnInit {
 
     ngOnInit() {
         this.route.params.subscribe(params => {
-            this.id = params.id;
-            this.rest.fetchItinerary(this.id).subscribe(itinerary => {
+            this.rest.fetchItinerary(params.id).subscribe(itinerary => {
                 this.itinerary = itinerary;
-                this.rest.fetchResources(itinerary.items, Items, 'items').subscribe(items => this.items = items);
+                itinerary.items.subscribe(items => this.items = items);
             });
         });
     }

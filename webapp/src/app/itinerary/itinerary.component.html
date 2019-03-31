@@ -1,12 +1,17 @@
-<mat-card class="example-card">
+<mat-card>
     <mat-card-header>
-        <mat-card-title>{{itinerary.title}}</mat-card-title>
+        <mat-card-title>{{itinerary?.title}}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
         <ng-container *ngFor="let item of items">
             <ng-container *ngIf="item.isItinerary; then subItinerary else view"></ng-container>
-            <ng-template #subItinerary>Content to render when condition is true.</ng-template>
-            <ng-template #view>Content to render when condition is false.</ng-template>
+            <ng-template #subItinerary>
+                <app-sub-itinerary [itinerary]="item">
+                </app-sub-itinerary>
+            </ng-template>
+            <ng-template #view>
+                <app-view [view]="item"></app-view>
+            </ng-template>
         </ng-container>
     </mat-card-content>
 </mat-card>
