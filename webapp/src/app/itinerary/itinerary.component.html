@@ -1,5 +1,12 @@
-<p>
-    itinerary {{id}} {{itinerary.title}} works!
-</p>
-<app-sub-itinerary *ngFor="let subItinerary of itinerary.subItinerary" [link]="subItinerary"></app-sub-itinerary>
-<app-view></app-view>
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title>{{itinerary.title}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <ng-container *ngFor="let item of items">
+            <ng-container *ngIf="item.isItinerary; then subItinerary else view"></ng-container>
+            <ng-template #subItinerary>Content to render when condition is true.</ng-template>
+            <ng-template #view>Content to render when condition is false.</ng-template>
+        </ng-container>
+    </mat-card-content>
+</mat-card>

@@ -19,12 +19,20 @@ export class ResourcesService {
 
     fetchResources<T extends Resource>(
         url: string,
-        resource: string,
-        Entity: new (raw: any, rest: ResourcesService) => T
+        Entity: new (raw: any, rest: ResourcesService) => T,
+        ...resources: string[]
     ): Observable<T[]> {
         if (!this.cache.get(url)) {
             this.cache.set(url, this.http.get<{ _embedded: {} }>(url).pipe(
-                map<{ _embedded: {} }, T[]>(r => r._embedded[resource].map(raw => new Entity(raw, this))),
+                map<{ _embedded: {} }, T[]>(r => {
+                    return [].concat(...resources.map(resource => {
+                        if (r._embedded[resource]) {
+                            return r._embedded[resource].map(raw => new Entity(raw, this));
+                        } else {
+                            return [];
+                        }
+                    }));
+                }),
                 tap(entities => entities.forEach(entity => {
                     this.cache.set(entity.self, of(entity));
                 })),
@@ -46,7 +54,7 @@ export class ResourcesService {
     }
 
     fetchUnits(): Observable<Unit[]> {
-        return this.fetchResources(API_UNITS, 'units', Unit);
+        return this.fetchResources(API_UNITS, Unit, 'units');
     }
 
     fetchUnit(id: number): Observable<Unit> {
@@ -58,7 +66,7 @@ export class ResourcesService {
     }
 
     fetchFiles(id: number): Observable<File[]> {
-        return this.fetchResources('/api/units/' + id + '/forms', 'forms', File);
+        return this.fetchResources('/api/units/' + id + '/forms', File, 'forms');
     }
 
     fetchFile(id: number): Observable<File> {

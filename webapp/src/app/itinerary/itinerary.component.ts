@@ -24,7 +24,7 @@ export class ItineraryComponent implements OnInit {
             this.id = params.id;
             this.rest.fetchItinerary(this.id).subscribe(itinerary => {
                 this.itinerary = itinerary;
-                this.rest.fetchResources(itinerary.items, Items).subscribe(items => this.items = items);
+                this.rest.fetchResources(itinerary.items, Items, 'items').subscribe(items => this.items = items);
             });
         });
     }
