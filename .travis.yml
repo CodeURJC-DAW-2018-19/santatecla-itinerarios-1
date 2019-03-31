@@ -15,12 +15,21 @@ before_cache:
 cache:
   directories:
     - "$HOME/.m2/repository"
+    - "$HOME/.sonar/cache"
     - "$HOME/.gradle"
     - ".gradle"
+
+addons:
+  sonarcloud:
+    organization: "vitaminac-github"
+    token:
+      secure: "JZX9WkYGvjccUDtPaqiDviAo55RhmC+/7UVFJVhOICdap26wyqCMGtm0h5G8QjxHEbILoYWLbmVU1I0Uy35XTWqHZSqpNIlfknpkzRTMZ99j5zhtv2mIGTEYmHKSprOOH9VG88SdveyMLMPZVVbozhIxopa0Hj/VuXiF2xYGtcwuKVpM9czU7VHOS2nNopYSwnj/BOdGLnS7Qhqk2fBEJ9/XOTD7+HcxrN+givn0U07ediWioEufZ0WTc0yegkodDvNXSV24fJPPGw6rG5+l83OBx+oWNnmUhCaKKxfHuNSnHQ5qT4VBPEZ8sxLzS2exwxLOqnbZ4OpfZnz/4ZkfVSk4RXOG5RcQEDEDVVrGbuMrGVPblEcOQVMn7/SJEblzYbbaR1F+gkWeGmnneilVfSvVEorUCI6STEmrpaf+Za0IJJ1stVII6bOVJ09+FzW266uv8IS5byL0vOOiGIlFy4BXSiJm3/4Qnjm8jLgGZJfm52VxZBRViDZbmpqTDun7YnXKx1OVuw445XZtYB8Cv++OXOpyDDznl+ep6iLobyTcpwzl5/R07xArhjCCfqNBtuc46lVh1unvW5vnLDxqZydCeAkntFmq5HKK9JpGPQtVwLHGeZdd5fU0OiKE2jqjQ9CSxhPFHVjBzP80866UDC1oQVXEoaHe9A8alJzref0="
 
 before_install:
   - chmod +x ./docker/create_image.sh
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 script:
+  - ./gradlew clean
+  - ./gradlew sonarqube
   - ./docker/create_image.sh
