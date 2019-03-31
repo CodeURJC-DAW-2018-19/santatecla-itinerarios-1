@@ -8,6 +8,12 @@ jdk:
 services:
   - docker
 
+addons:
+  sonarcloud:
+    organization: "vitaminac-github"
+    token:
+      secure: "JZX9WkYGvjccUDtPaqiDviAo55RhmC+/7UVFJVhOICdap26wyqCMGtm0h5G8QjxHEbILoYWLbmVU1I0Uy35XTWqHZSqpNIlfknpkzRTMZ99j5zhtv2mIGTEYmHKSprOOH9VG88SdveyMLMPZVVbozhIxopa0Hj/VuXiF2xYGtcwuKVpM9czU7VHOS2nNopYSwnj/BOdGLnS7Qhqk2fBEJ9/XOTD7+HcxrN+givn0U07ediWioEufZ0WTc0yegkodDvNXSV24fJPPGw6rG5+l83OBx+oWNnmUhCaKKxfHuNSnHQ5qT4VBPEZ8sxLzS2exwxLOqnbZ4OpfZnz/4ZkfVSk4RXOG5RcQEDEDVVrGbuMrGVPblEcOQVMn7/SJEblzYbbaR1F+gkWeGmnneilVfSvVEorUCI6STEmrpaf+Za0IJJ1stVII6bOVJ09+FzW266uv8IS5byL0vOOiGIlFy4BXSiJm3/4Qnjm8jLgGZJfm52VxZBRViDZbmpqTDun7YnXKx1OVuw445XZtYB8Cv++OXOpyDDznl+ep6iLobyTcpwzl5/R07xArhjCCfqNBtuc46lVh1unvW5vnLDxqZydCeAkntFmq5HKK9JpGPQtVwLHGeZdd5fU0OiKE2jqjQ9CSxhPFHVjBzP80866UDC1oQVXEoaHe9A8alJzref0="
+
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
@@ -19,11 +25,8 @@ cache:
     - "$HOME/.gradle"
     - ".gradle"
 
-addons:
-  sonarcloud:
-    organization: "vitaminac-github"
-    token:
-      secure: "JZX9WkYGvjccUDtPaqiDviAo55RhmC+/7UVFJVhOICdap26wyqCMGtm0h5G8QjxHEbILoYWLbmVU1I0Uy35XTWqHZSqpNIlfknpkzRTMZ99j5zhtv2mIGTEYmHKSprOOH9VG88SdveyMLMPZVVbozhIxopa0Hj/VuXiF2xYGtcwuKVpM9czU7VHOS2nNopYSwnj/BOdGLnS7Qhqk2fBEJ9/XOTD7+HcxrN+givn0U07ediWioEufZ0WTc0yegkodDvNXSV24fJPPGw6rG5+l83OBx+oWNnmUhCaKKxfHuNSnHQ5qT4VBPEZ8sxLzS2exwxLOqnbZ4OpfZnz/4ZkfVSk4RXOG5RcQEDEDVVrGbuMrGVPblEcOQVMn7/SJEblzYbbaR1F+gkWeGmnneilVfSvVEorUCI6STEmrpaf+Za0IJJ1stVII6bOVJ09+FzW266uv8IS5byL0vOOiGIlFy4BXSiJm3/4Qnjm8jLgGZJfm52VxZBRViDZbmpqTDun7YnXKx1OVuw445XZtYB8Cv++OXOpyDDznl+ep6iLobyTcpwzl5/R07xArhjCCfqNBtuc46lVh1unvW5vnLDxqZydCeAkntFmq5HKK9JpGPQtVwLHGeZdd5fU0OiKE2jqjQ9CSxhPFHVjBzP80866UDC1oQVXEoaHe9A8alJzref0="
+env:
+  - VERSION=fase4
 
 before_install:
   - chmod +x ./docker/create_image.sh
@@ -33,3 +36,12 @@ script:
   - ./gradlew clean
   - ./gradlew sonarqube
   - ./docker/create_image.sh
+
+deploy:
+  provider: releases
+  api_key: 
+    secure: "JwjhLdt7us2AYaNtybPX86Zqqv/8hrcaXySfEQpazi/PXjo7dSRKgQg06DE904KuXQugT9pnYBN1LXNzZTD20y9OtkZ0dj7hI8rmKz+VY0ZoOXVtU9RQo4egX5eC7ufDkaV/H9y4y3yqQFlrlN5HAZ5eNkFsI8+i+RiiZXOJzq6FGKLGJ0UDHOVcfrYm+CQ5azi+xNh+/iqksA+b7sOspfVxo+9HcTRjubTTwGxTyFlSNiKcJp/SfYgDs8sbMvONaeMqTrNJMr0RBXNmEIuxDcV4R2+FLqaUQjpDACB4TXPeY410MIN8eIRIH8+0zmW4qjfLmFn7BqWD2QUQu1T93HpTTLQ9OhiPKfEcdK4fAUzEDT4lMFf2Ur7PMl3y62LwQA9ABjDjuCjbG1t0t+FDYk/DJx8n5+0cyVcr8XqdZFFrPelZryCHrHxqSMjrvOp/qrIb3KO1tKJ61t322nUwX0FTdQhGHu7FItcxv1W+mYDrzsrSTQJ2Ne5EoxzWwJBGvxm/WH+2h2DV0gNIU/VgQLpo4nVS4HnEonoMQvQmJfsR38AB6dpEqlq98HE6/SdDCUjmVHrS+E/rYzCoK780I9l301bfUhdM26Nxj5aULm05Lg3sPndiDXqzv7IVOmPW23O0UhzGXybn5lLx0e7a980KJpIfTziuzLdBNtyEn9Q="
+  file: "./docker/app.jar"
+  skip_cleanup: true
+  on:
+    tags: true

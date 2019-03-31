@@ -27,7 +27,6 @@ apply plugin: 'jacoco'
 
 bootJar {
     baseName = 'santatecla.itinerarios'
-    version = '1.0.0'
 }
 
 group = 'santatecla.itinerarios'
