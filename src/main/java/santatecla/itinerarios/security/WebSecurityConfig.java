@@ -8,10 +8,10 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+
 import santatecla.itinerarios.service.UserService;
 
 @Configuration
@@ -26,30 +26,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
-                .antMatchers("/login", "/login_error", "/logout", "/signUp", "/units", "/", "/error").permitAll()
-                .antMatchers("/units/**").authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/login").permitAll()
-                .defaultSuccessUrl("/units", true)
-                .failureUrl("/login_error")
-                .and()
-                .logout().logoutUrl("/logout").logoutSuccessUrl("/units").permitAll();
+        http.authorizeRequests().antMatchers("/login", "/login_error", "/logout", "/signUp", "/units", "/", "/error")
+                .permitAll().antMatchers("/units/**").authenticated().and().formLogin().loginPage("/login").permitAll()
+                .defaultSuccessUrl("/units", true).failureUrl("/login_error").and().logout().logoutUrl("/logout")
+                .logoutSuccessUrl("/units").permitAll();
 
-        http
-                .httpBasic()
-                .and().authorizeRequests() // TODO: remove summary
-                .antMatchers("/api", "/api/units", "/summary/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/users").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/**").hasRole("admin")
-                .antMatchers(HttpMethod.DELETE, "/api/**").hasRole("admin")
-                .antMatchers(HttpMethod.PUT, "/api/**").hasRole("admin")
-                .antMatchers(HttpMethod.PATCH, "/api/**").hasRole("admin")
-                .antMatchers("/api/**").hasAnyRole("user", "admin")
-                .anyRequest().authenticated();
-        // TODO: .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        http.httpBasic().and().authorizeRequests().antMatchers("/api", "/api/units", "/api/units/*/itineraries")
+                .permitAll().antMatchers(HttpMethod.POST, "/api/users").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/**").hasRole("admin").antMatchers(HttpMethod.DELETE, "/api/**")
+                .hasRole("admin").antMatchers(HttpMethod.PUT, "/api/**").hasRole("admin")
+                .antMatchers(HttpMethod.PATCH, "/api/**").hasRole("admin").antMatchers("/api/**")
+                .hasAnyRole("user", "admin").anyRequest().authenticated();
+        // TODO:
+        // .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         http.requiresChannel().anyRequest().requiresSecure();
 
