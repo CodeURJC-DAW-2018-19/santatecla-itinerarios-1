@@ -1,10 +1,10 @@
 <nav class="navbar-header">
-    <a mat-button class="navbar-hide-small" routerLink="/units/{{id}}/files">Fichas</a>
+    <a mat-button class="navbar-hide-small" [routerLink]="'/units/'+unit.id+'/files'">Fichas</a>
     <a mat-button class="navbar-hide-small" *ngFor="let itinerary of itineraries" [routerLink]="'/units/' + unit.id + '/itineraries/' + itinerary.id">{{itinerary.title}}
     </a>
 </nav>
 <nav class="navbar navbar-show-small">
-    <a mat-button class="navbar-link" routerLink="/units/{{id}}/files">Fichas</a>
+    <a mat-button class="navbar-link" [routerLink]="'/units/'+unit.id+'/files'">Fichas</a>
     <a mat-button class="navbar-link" *ngFor="let itinerary of itineraries" [routerLink]="'/units/' + unit.id + '/itineraries/' +itinerary.id">{{itinerary.title}}
     </a>
 </nav>
