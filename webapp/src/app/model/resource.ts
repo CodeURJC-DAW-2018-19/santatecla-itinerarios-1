@@ -27,17 +27,15 @@ export class Resource {
 
     lazyLoadResources<T extends Resource>(property: string, Entity: new (raw: any, rest: ResourcesService) => T): Observable<T[]> {
         if (typeof this._links[property] === 'string') {
-            return this.rest.fetchResources(this._links[property], property, Entity)
+            this._links[property] = this.rest.fetchResources(this._links[property], property, Entity)
                 .pipe(
-                    tap(resources => this._links[property] = resources),
                     catchError(err => {
                         this._links[property] = null;
                         return throwError(err);
                     })
                 );
-        } else {
-            return of(this._links[property]);
         }
+        return this._links[property];
     }
 
     public get self(): string {

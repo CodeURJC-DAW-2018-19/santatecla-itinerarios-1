@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map, tap, shareReplay } from 'rxjs/operators';
 import { Resource } from '../model/resource';
 import { Unit } from '../model/unit';
 import { API_UNITS } from '../config';
@@ -12,7 +12,7 @@ import { File } from '../model/file';
     providedIn: 'root'
 })
 export class ResourcesService {
-    private cache: Map<new (raw: any, rest: ResourcesService) => Resource, Map<any, any>> = new Map();
+    private cache: Map<string, Observable<any>> = new Map();
 
     constructor(private http: HttpClient) {
     }
@@ -22,29 +22,27 @@ export class ResourcesService {
         resource: string,
         Entity: new (raw: any, rest: ResourcesService) => T
     ): Observable<T[]> {
-        if (!this.cache.get(Entity)) { this.cache.set(Entity, new Map()); }
-        this.cache.set(Entity, new Map());
-        return this.http.get<{ _embedded: {} }>(url).pipe(
-            map<{ _embedded: {} }, T[]>(r => r._embedded[resource].map(raw => new Entity(raw, this))),
-            tap(entities => entities.forEach(entity => {
-                this.cache.get(Entity).set(entity.self, entity);
-            }))
-        );
+        if (!this.cache.get(url)) {
+            this.cache.set(url, this.http.get<{ _embedded: {} }>(url).pipe(
+                map<{ _embedded: {} }, T[]>(r => r._embedded[resource].map(raw => new Entity(raw, this))),
+                tap(entities => entities.forEach(entity => {
+                    this.cache.set(entity.self, of(entity));
+                })),
+                shareReplay(1)
+            ));
+        }
+        return this.cache.get(url);
     }
 
     fetchResource<T extends Resource>(url: string, Entity: new (raw: any, rest: ResourcesService) => T): Observable<T> {
-        if (!this.cache.get(Entity)) { this.cache.set(Entity, new Map()); }
-        if (this.cache.get(Entity).get(url)) {
-            return of(this.cache.get(Entity).get(url));
-        } else {
-            return this.http.get<T>(url).pipe(
+        if (!this.cache.get(url)) {
+            this.cache.set(url, this.http.get<T>(url).pipe(
                 map(raw => new Entity(raw, this)),
-                tap(entity => {
-                    this.cache.get(Entity).set(entity.self, entity);
-                    this.cache.get(Entity).set(url, entity);
-                })
-            );
+                tap(entity => this.cache.set(entity.self, of(entity))),
+                shareReplay(1)
+            ));
         }
+        return this.cache.get(url);
     }
 
     fetchUnits(): Observable<Unit[]> {

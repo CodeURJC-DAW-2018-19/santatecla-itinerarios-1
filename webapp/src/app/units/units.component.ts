@@ -18,9 +18,7 @@ export class UnitsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.rest.fetchUnits().subscribe(units => {
-            this.units = units;
-        });
+        this.rest.fetchUnits().subscribe(units => this.units = units);
     }
 
     get isAnonymous(): boolean {
