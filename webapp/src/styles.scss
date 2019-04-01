@@ -7,3 +7,11 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+// Adjust your logo position
+.mat-icon {
+    &.mat-icon-logo {
+      position: relative;
+      top: -4px;
+    }
+}
