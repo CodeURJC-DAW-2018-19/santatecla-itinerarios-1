@@ -8,6 +8,7 @@ import {ViewComponent} from './view/view.component';
 import {FileComponent} from './file/file.component';
 import {FilesComponent} from './files/files.component';
 import {LoginComponent} from './login/login.component';
+import {SignUpComponent} from './signUp/signUp.component';
 import {ItineraryComponent} from './itinerary/itinerary.component';
 import {UnitComponent} from './unit/unit.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -76,6 +77,7 @@ import {ChartComponent} from './chart/chart.component';
     FileComponent,
     FilesComponent,
     LoginComponent,
+    SignUpComponent,
     ItineraryComponent,
     UnitComponent,
     ErrorComponent,
