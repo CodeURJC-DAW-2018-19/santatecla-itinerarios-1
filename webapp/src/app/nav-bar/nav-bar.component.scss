@@ -1,10 +1,11 @@
 .navbar-header {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   padding: 8px 16px;
 
-  > .mat-button {
+  >.mat-button {
     &:last-child {
       margin-left: auto;
     }

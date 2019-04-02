@@ -1,20 +1,20 @@
-<nav class="navbar-header">
-  <a mat-button routerLink="/units">Unidades</a>
-  <ng-container *ngIf="!isAnonymous">
-    <a mat-button class="navbar-hide-small"
-       *ngFor="let unit of units"
-       [routerLink]="'/units/' + unit.id">{{unit.title}}
-    </a>
-  </ng-container>
-  <div class="flex-spacer"></div>
-  <span *ngIf="isAnonymous">Visitante</span>
-  <span *ngIf="isUser">Estudiante</span>
-  <span *ngIf="isAdmin">Profesor</span>
-  <mat-slide-toggle [(ngModel)]="checked" color="warn" (change)="toggle($event)">Logout</mat-slide-toggle>
-</nav>
-<nav class="navbar navbar-show-small" *ngIf="!isAnonymous">
-  <a mat-button class="navbar-link"
-     *ngFor="let unit of units"
-     [routerLink]="'/units/' + unit.id">{{unit.title}}
-  </a>
-</nav>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <nav class="navbar-header">
+            <a mat-button routerLink="/units">Unidades</a>
+            <ng-container *ngIf="!isAnonymous">
+                <a mat-button class="navbar-hide-small" *ngFor="let unit of units" [routerLink]="'/units/' + unit.id">{{unit.title}}
+                </a>
+            </ng-container>
+            <div class="flex-spacer"></div>
+            <span *ngIf="isAnonymous">Visitante</span>
+            <span *ngIf="isUser">Estudiante</span>
+            <span *ngIf="isAdmin">Profesor</span>
+            <mat-slide-toggle [(ngModel)]="checked" color="warn" (change)="toggle($event)">Logout</mat-slide-toggle>
+        </nav>
+        <nav class="navbar navbar-show-small" *ngIf="!isAnonymous">
+            <a mat-button class="navbar-link" *ngFor="let unit of units" [routerLink]="'/units/' + unit.id">{{unit.title}}
+            </a>
+        </nav>
+    </mat-toolbar-row>
+</mat-toolbar>
