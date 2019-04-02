@@ -1,4 +1,5 @@
 export interface CredentialDTO {
-  username: string,
-  password: string
+    username: string;
+    password: string;
+    roles?: string[];
 }

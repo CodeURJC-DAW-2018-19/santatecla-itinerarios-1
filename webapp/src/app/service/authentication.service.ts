@@ -8,22 +8,20 @@ import { API_LOG_OUT, API_AUTH, API_SIGN_UP } from '../config';
     providedIn: 'root'
 })
 export class AuthenticationService {
-    private roles: string[];
-
     constructor(private http: HttpClient, private credential: CredentialService) {
     }
 
     hasRole(role: string) {
-        if (this.roles != null) {
-            return this.roles.includes(role)
+        if (this.credential.user != null) {
+            return this.credential.user.roles.includes(role);
         }
         return false;
     }
 
     private authenticate(callback?: () => void, error?: () => void): void {
-        this.http.get<{ roles }>(API_AUTH).subscribe(auth => {
+        this.http.get<CredentialDTO>(API_AUTH).subscribe(auth => {
+            this.credential.update(auth);
             this.credential.save();
-            this.roles = auth.roles;
             return callback && callback();
         }, error);
     }

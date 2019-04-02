@@ -20,7 +20,6 @@ import { ItineraryComponent } from './itinerary/itinerary.component';
 import { UnitComponent } from './unit/unit.component';
 import { ErrorComponent } from './error/error.component';
 import { SubItineraryComponent } from './sub-itinerary/sub-itinerary.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ChartComponent } from './chart/chart.component';
 
 import {
@@ -89,7 +88,6 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
         UnitComponent,
         ErrorComponent,
         SubItineraryComponent,
-        NavBarComponent,
         ChartComponent
     ],
     imports: [

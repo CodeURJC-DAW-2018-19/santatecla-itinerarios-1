@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Unit } from '../model/unit';
-import { ResourcesService } from '../service/resources.service';
 import { AuthenticationService } from '../service/authentication.service';
+import { CredentialService } from '../service/credential.service';
+import { ResourcesService } from '../service/resources.service';
 
 @Component({
     selector: 'app-units',
@@ -12,8 +14,10 @@ export class UnitsComponent implements OnInit {
     units: Unit[];
 
     constructor(
+        private credential: CredentialService,
         private auth: AuthenticationService,
-        private rest: ResourcesService
+        private rest: ResourcesService,
+        private router: Router
     ) {
     }
 
@@ -23,5 +27,29 @@ export class UnitsComponent implements OnInit {
 
     get isAnonymous(): boolean {
         return !this.auth.authenticated;
+    }
+
+    get role(): string {
+        if (this.auth.authenticated) {
+            return this.credential.user.roles == null ? null : this.credential.user.roles[0];
+        } else {
+            return 'visitante';
+        }
+    }
+
+    get username(): string {
+        if (this.auth.authenticated) {
+            return this.credential.user.username;
+        } else {
+            return 'visitante';
+        }
+    }
+
+    logout() {
+        this.auth.logout();
+    }
+
+    login() {
+        this.router.navigate(['/login']);
     }
 }
