@@ -22,4 +22,11 @@ export class FilesComponent implements OnInit {
             });
         });
     }
+
+    public deleteFile(file: File): void{
+        let index = this.files.indexOf(file);
+		if(index > -1){
+			this.files.splice(index,1);
+		}
+    }
 }

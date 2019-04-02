@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { File } from '../model/file';
 
 @Component({
@@ -10,9 +10,17 @@ export class FileComponent implements OnInit {
     @Input()
     file: File;
 
+    @Output()
+	private remove = new EventEmitter<any>();
+
     constructor() {
     }
 
     ngOnInit() {
-    }
+    };
+
+
+	fileRemove() {
+		this.remove.emit();
+	}
 }
