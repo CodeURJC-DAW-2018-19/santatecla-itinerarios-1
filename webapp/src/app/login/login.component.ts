@@ -1,61 +1,62 @@
-import {Component, OnInit} from '@angular/core';
-import {CredentialDTO} from "../model/credential-dto";
-import {AuthenticationService} from "../service/authentication.service";
-import {Location} from '@angular/common';
-import {TdDialogService} from "@covalent/core";
-import {Router} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { CredentialDTO } from '../model/credential-dto';
+import { AuthenticationService } from '../service/authentication.service';
+import { Location } from '@angular/common';
+import { TdDialogService } from '@covalent/core';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  private credential: CredentialDTO = {username: "", password: ""};
+    private credential: CredentialDTO = { username: '', password: '' };
 
-  constructor(private auth: AuthenticationService,
-              private location: Location,
-              private dialogService: TdDialogService,
-              private router: Router) {
-  }
-
-  ngOnInit() {
-    if (this.auth.authenticated) {
-      this.goBack();
+    constructor(
+        private auth: AuthenticationService,
+        private location: Location,
+        private dialogService: TdDialogService,
+        private router: Router) {
     }
-  }
 
-  private goBack(): void {
-    this.location.back();
-  }
+    ngOnInit() {
+        if (this.auth.authenticated) {
+            this.goBack();
+        }
+    }
 
-  private showError(): void {
-    this.dialogService.openAlert({
-      message: 'Login failed'
-    });
-  }
+    private goBack(): void {
+        this.location.back();
+    }
 
-  login() {
-    this.auth.login(this.credential, this.goBack.bind(this), this.showError.bind(this));
-  }
+    private showError(): void {
+        this.dialogService.openAlert({
+            message: 'Login failed'
+        });
+    }
 
-  get password(): string {
-    return this.credential.password;
-  }
+    login() {
+        this.auth.login(this.credential, this.goBack.bind(this), this.showError.bind(this));
+    }
 
-  set password(password: string) {
-    this.credential.password = password;
-  }
+    get password(): string {
+        return this.credential.password;
+    }
 
-  get username(): string {
-    return this.credential.username;
-  }
+    set password(password: string) {
+        this.credential.password = password;
+    }
 
-  set username(username: string) {
-    this.credential.username = username;
-  }
+    get username(): string {
+        return this.credential.username;
+    }
 
-  gotoSignUp() {
-    this.router.navigate(['/signUp']);
-  }
+    set username(username: string) {
+        this.credential.username = username;
+    }
+
+    gotoSignUp() {
+        this.router.navigate(['/signUp']);
+    }
 }

@@ -1,39 +1,42 @@
-<td-layout-card-over cardTitle="Login" cardSubtitle="Introduzca datos">
-  <ng-template tdLoading="user.form">
+<div layout="column" layout-fill>
+  <mat-toolbar color="primary" class="mat-whiteframe-z1">
+    <mat-toolbar-row>
+      <span>Login</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <td-layout-card-over cardTitle="Login" cardSubtitle="Introduzca datos">
     <mat-card-content class="push-bottom-none">
       <form #userForm="ngForm">
         <div layout="row">
           <mat-form-field flex>
-            <input matInput #displayNameElement #displayNameControl="ngModel" type="text" placeholder="Username" [(ngModel)]="credential.username" name="username" required>
+            <input matInput #userElement #userControl="ngModel" type="text" placeholder="Username" [(ngModel)]="credential.username" name="username" required>
+            <span matPrefix>
+              <mat-icon>person</mat-icon>
+            </span>
             <mat-hint align="start">
-              <span [hidden]="displayNameControl.pristine" class="tc-red-600">
-                <span [hidden]="!displayNameControl.hasError('required')">Required</span>
-              </span>
+              <span [hidden]="!userControl.errors?.required || userControl.pristine" class="tc-red-600">Required</span>
             </mat-hint>
-            <mat-hint align="end">{{displayNameElement.value.length}}</mat-hint>
+            <mat-hint align="end">{{userElement.value.length}} / 30</mat-hint>
           </mat-form-field>
         </div>
         <div layout="row" class="push-top">
           <mat-form-field flex>
-            <input matInput #emailElement #emailControl="ngModel" type="password" placeholder="Password" [(ngModel)]="credential.password" name="password" required>
+            <input matInput #passElement #passControl="ngModel" type="password" placeholder="Password" [(ngModel)]="credential.password" name="password" required>
+            <span matPrefix>
+              <mat-icon>lock</mat-icon>
+            </span>
             <mat-hint align="start">
-              <span [hidden]="emailControl.pristine" class="tc-red-600">
-                <span [hidden]="!emailControl.hasError('required')">Required</span>
-                <span [hidden]="!emailControl.hasError('pattern')">incorrect pattern</span>
-              </span>
+              <span [hidden]="!passControl.errors?.required || passControl.pristine" class="tc-red-600">Required</span>
             </mat-hint>
-            <mat-hint align="end">{{emailElement.value.length}}</mat-hint>
+            <mat-hint align="end">Something hard to guess</mat-hint>
           </mat-form-field>
-        </div>
-        <div layout="row">
-          <mat-slide-toggle [(ngModel)]="admin" name="admin">Admin</mat-slide-toggle>
         </div>
       </form>
     </mat-card-content>
     <mat-divider></mat-divider>
-    <mat-card-actions>
-      <button mat-button [disabled]="!userForm.form.valid" color="primary" (click)="login()" type="submit">Login</button>
-      <button mat-button color="secondary" (click)="gotoSignUp()">Sign up</button>
+    <mat-card-actions layout="row">
+      <button flex mat-button [disabled]="!userForm.form.valid" color="primary" (click)="login()" type="submit">Login</button>
+      <button flex mat-button color="accent" (click)="gotoSignUp()">Sign up</button>
     </mat-card-actions>
-  </ng-template>
-</td-layout-card-over>
+  </td-layout-card-over>
+</div>
