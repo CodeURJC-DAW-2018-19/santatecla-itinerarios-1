@@ -27,6 +27,15 @@ export class FilesComponent implements OnInit {
         let index = this.files.indexOf(file);
 		if(index > -1){
 			this.files.splice(index,1);
-		}
+        }
     }
+
+    public addFile(title: string, description: string) {
+        let id ;
+        let file = new File('/api/forms/' + id,this.rest);
+        file.description= description;
+        file.title = title;
+		this.files.push(file);
+    }
+    
 }

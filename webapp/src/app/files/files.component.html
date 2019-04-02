@@ -1,3 +1,14 @@
 <mat-card *ngFor="let file of files">
     <app-file [file]="file" (remove)="deleteFile(file)"></app-file>
 </mat-card>
+
+<mat-card>
+    <mat-card-title>
+        Ficha nueva
+    </mat-card-title>
+    <p>Titulo</p>
+    <input #titl type='text'>
+    <p>Descripcion</p>
+    <input #desc type='text'>
+    <button (click)="addFile(titl.value, desc.value); titl.value=''; desc.value='' ">Añadir</button>
+</mat-card>
