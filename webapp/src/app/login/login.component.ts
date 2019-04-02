@@ -3,6 +3,7 @@ import {CredentialDTO} from "../model/credential-dto";
 import {AuthenticationService} from "../service/authentication.service";
 import {Location} from '@angular/common';
 import {TdDialogService} from "@covalent/core";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private auth: AuthenticationService,
               private location: Location,
-              private dialogService: TdDialogService) {
+              private dialogService: TdDialogService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -51,5 +53,9 @@ export class LoginComponent implements OnInit {
 
   set username(username: string) {
     this.credential.username = username;
+  }
+
+  gotoSignUp() {
+    this.router.navigate(['/signUp']);
   }
 }
