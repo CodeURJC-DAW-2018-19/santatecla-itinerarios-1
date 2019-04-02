@@ -21,6 +21,9 @@
           </button>
         </mat-form-field>
       </div>
+      <div layout="row">
+        <mat-slide-toggle [(ngModel)]="admin" name="admin">Admin</mat-slide-toggle>
+      </div>
     </mat-card-content>
 
     <mat-card-actions>
@@ -29,11 +32,10 @@
   </mat-card>
 </div>
 
-<div>
-  <p>
-    ¿Ya tienes una cuenta? <a [routerLink]="['/login']">Login</a>
-  </p>
-</div>
+
+  <div class="footer">
+    ¿Ya tienes una cuenta?<a mat-button [routerLink]="['/login']">Login</a>
+  </div>
 
 
 
