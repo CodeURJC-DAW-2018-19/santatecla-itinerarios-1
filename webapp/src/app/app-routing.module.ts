@@ -8,14 +8,10 @@ import { FilesComponent } from './files/files.component';
 import { ItineraryComponent } from './itinerary/itinerary.component';
 import { AccessGuard } from './guard/access.guard';
 import { ChartComponent } from './chart/chart.component';
-import { SignUpComponent } from './signUp/signUp.component';
 
 const routes: Routes = [
     {
         path: 'login', component: LoginComponent
-    },
-    {
-        path: 'signUp', component: SignUpComponent
     },
     {
         path: 'chart', component: ChartComponent

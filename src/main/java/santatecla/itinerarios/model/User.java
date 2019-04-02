@@ -1,6 +1,8 @@
 package santatecla.itinerarios.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,11 +19,10 @@ import java.util.Set;
 @NoArgsConstructor
 public class User {
     @Id
-    @Column(length = 64)
+    @Column(length = 32)
     private String username;
 
     @Column(nullable = false)
-    @JsonIgnore
     private String password;
 
     @ElementCollection(fetch = FetchType.EAGER)
@@ -31,14 +32,19 @@ public class User {
         return username;
     }
 
+    @JsonIgnore
     public String getPassword() {
         return password;
+    }
+
+    @JsonProperty
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Set<String> getRoles() {
         return roles;
     }
-
 
     public void addRole(String role) {
         if (this.roles == null) {

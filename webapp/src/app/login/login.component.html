@@ -9,14 +9,14 @@
       <form #userForm="ngForm">
         <div layout="row">
           <mat-form-field flex>
-            <input matInput #userElement #userControl="ngModel" type="text" placeholder="Username" [(ngModel)]="credential.username" name="username" required>
+            <input matInput #userElement #userControl="ngModel" type="text" maxlength="32" placeholder="Username" [(ngModel)]="credential.username" name="username" required>
             <span matPrefix>
               <mat-icon>person</mat-icon>
             </span>
             <mat-hint align="start">
               <span [hidden]="!userControl.errors?.required || userControl.pristine" class="tc-red-600">Required</span>
             </mat-hint>
-            <mat-hint align="end">{{userElement.value.length}} / 30</mat-hint>
+            <mat-hint align="end">{{userElement.value.length}} / 32</mat-hint>
           </mat-form-field>
         </div>
         <div layout="row" class="push-top">
@@ -31,12 +31,15 @@
             <mat-hint align="end">Something hard to guess</mat-hint>
           </mat-form-field>
         </div>
+        <div layout="row" *ngIf="!loginMode">
+          <mat-slide-toggle [(ngModel)]="admin" name="admin">Admin</mat-slide-toggle>
+        </div>
       </form>
     </mat-card-content>
     <mat-divider></mat-divider>
     <mat-card-actions layout="row">
-      <button flex mat-button [disabled]="!userForm.form.valid" color="primary" (click)="login()" type="submit">Login</button>
-      <button flex mat-button color="accent" (click)="gotoSignUp()">Sign up</button>
+      <button flex mat-button [disabled]="!userForm.form.valid" color="primary" (click)="login_signUp()" type="submit">{{mode}}</button>
+      <button flex mat-button color="accent" (click)="toggle()" style="float: right">Toggle mode</button>
     </mat-card-actions>
   </td-layout-card-over>
 </div>

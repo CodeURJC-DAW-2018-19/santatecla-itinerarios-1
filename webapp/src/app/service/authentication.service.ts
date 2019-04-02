@@ -31,8 +31,8 @@ export class AuthenticationService {
         this.authenticate(callback, error);
     }
 
-    register(credential: CredentialDTO, callback?: () => void): void {
-        this.http.post(API_SIGN_UP, credential).subscribe(r => this.login(credential, callback));
+    register(credential: CredentialDTO, callback?: () => void, error?: () => void): void {
+        this.http.post(API_SIGN_UP, credential).subscribe(r => this.login(credential, callback, error), error);
     }
 
     get authenticated(): boolean {

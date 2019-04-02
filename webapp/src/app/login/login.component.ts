@@ -1,9 +1,8 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { TdDialogService } from '@covalent/core';
 import { CredentialDTO } from '../model/credential-dto';
 import { AuthenticationService } from '../service/authentication.service';
-import { Location } from '@angular/common';
-import { TdDialogService } from '@covalent/core';
-import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-login',
@@ -11,19 +10,20 @@ import { Router } from '@angular/router';
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-    private credential: CredentialDTO = { username: '', password: '' };
+    credential: CredentialDTO = { username: '', password: '' };
+    loginMode: boolean;
 
     constructor(
         private auth: AuthenticationService,
         private location: Location,
-        private dialogService: TdDialogService,
-        private router: Router) {
+        private dialogService: TdDialogService) {
     }
 
     ngOnInit() {
         if (this.auth.authenticated) {
             this.goBack();
         }
+        this.loginMode = true;
     }
 
     private goBack(): void {
@@ -36,27 +36,35 @@ export class LoginComponent implements OnInit {
         });
     }
 
-    login() {
-        this.auth.login(this.credential, this.goBack.bind(this), this.showError.bind(this));
+    login_signUp() {
+        if (this.loginMode) {
+            this.auth.login(this.credential, this.goBack.bind(this), this.showError.bind(this));
+        } else {
+            this.auth.register(this.credential, this.goBack.bind(this), this.showError.bind(this));
+        }
     }
 
-    get password(): string {
-        return this.credential.password;
+    toggle() {
+        this.loginMode = !this.loginMode;
     }
 
-    set password(password: string) {
-        this.credential.password = password;
+    get mode(): string {
+        if (this.loginMode) {
+            return 'Login';
+        } else {
+            return 'Sign Up';
+        }
     }
 
-    get username(): string {
-        return this.credential.username;
+    get admin(): boolean {
+        return this.credential.roles && this.credential.roles[0] == 'admin';
     }
 
-    set username(username: string) {
-        this.credential.username = username;
-    }
-
-    gotoSignUp() {
-        this.router.navigate(['/signUp']);
+    set admin(isAdmin: boolean) {
+        if (isAdmin) {
+            this.credential.roles = ['admin'];
+        } else {
+            this.credential.roles = ['user'];
+        }
     }
 }
