@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { File } from '../model/file';
 import { ResourcesService } from '../service/resources.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 @Component({
     selector: 'app-files',
     templateUrl: './files.component.html',
@@ -24,34 +24,38 @@ export class FilesComponent implements OnInit {
         });
     }
 
-    public deleteFile(file: File): void{
+    public deleteFile(file: File): void {
         let index = this.files.indexOf(file);
-		if(index > -1){
-			this.files.splice(index,1);
+        if (index > -1) {
+            this.files.splice(index, 1);
         }
     }
 
     public addFile(title: string, description: string) {
-        let id ;
-        let file = new File('/api/forms/' + id,this.rest);
-        file.description= description;
+        let id;
+        let file = new File('/api/forms/' + id, this.rest);
+        file.description = description;
         file.title = title;
-		    this.files.push(file);
+        this.files.push(file);
     }
 
-    openDialog() {
-      const dialogRef = this.dialog.open(DialogAddFile);
-  
-      dialogRef.afterClosed().subscribe(result => {
-        console.log(`Dialog result: ${result}`);
-      });
+    openDialog(): void {
+        const dialogRef = this.dialog.open(EditFileDialog, { width: '250px' });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(`Dialog result: ${result}`);
+        });
     }
-
-
 }
 
 @Component({
-  selector: 'app-files',
-  templateUrl: 'dialogAddFile.component.html',
+    selector: 'app-add-file-dialog',
+    templateUrl: './edit-file-dialog.component.html',
 })
-export class DialogAddFile {}
+export class EditFileDialog {
+    constructor(public dialogRef: MatDialogRef<EditFileDialog>) { }
+
+    onNoClick(): void {
+        this.dialogRef.close();
+    }
+}
