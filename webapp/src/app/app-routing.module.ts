@@ -8,6 +8,7 @@ import { FilesComponent } from './files/files.component';
 import { ItineraryComponent } from './itinerary/itinerary.component';
 import { AccessGuard } from './guard/access.guard';
 import { ChartComponent } from './chart/chart.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
     {
@@ -21,15 +22,21 @@ const routes: Routes = [
         redirectTo: 'units',
         pathMatch: 'full'
     },
-    { path: 'units', component: UnitsComponent },
     {
-        path: 'units/:id', component: UnitComponent,
+        path: '',
+        component: DashboardComponent,
         children: [
-            { path: '', redirectTo: 'files', pathMatch: 'full' },
-            { path: 'files', component: FilesComponent },
-            { path: 'itineraries/:id', component: ItineraryComponent },
-        ],
-        canActivate: [AccessGuard]
+            { path: 'units', component: UnitsComponent },
+            {
+                path: 'units/:id', component: UnitComponent,
+                children: [
+                    { path: '', redirectTo: 'files', pathMatch: 'full' },
+                    { path: 'files', component: FilesComponent },
+                    { path: 'itineraries/:id', component: ItineraryComponent },
+                ],
+                canActivate: [AccessGuard]
+            },
+        ]
     },
     { path: '**', component: ErrorComponent, data: { error: 404 } }
 ];

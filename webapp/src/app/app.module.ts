@@ -72,6 +72,7 @@ import { CovalentHighlightModule } from '@covalent/highlight';
 import { CovalentHttpModule } from '@covalent/http';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -86,7 +87,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
         UnitComponent,
         ErrorComponent,
         SubItineraryComponent,
-        ChartComponent
+        ChartComponent,
+        DashboardComponent
     ],
     imports: [
         BrowserModule,
