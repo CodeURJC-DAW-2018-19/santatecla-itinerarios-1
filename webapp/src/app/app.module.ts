@@ -20,6 +20,7 @@ import { UnitComponent } from './unit/unit.component';
 import { ErrorComponent } from './error/error.component';
 import { SubItineraryComponent } from './sub-itinerary/sub-itinerary.component';
 import { ChartComponent } from './chart/chart.component';
+//import { DialogAddFile } from './files/files.component';
 
 import {
     MatAutocompleteModule,
@@ -88,7 +89,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         ErrorComponent,
         SubItineraryComponent,
         ChartComponent,
-        DashboardComponent
+        DashboardComponent,
+        //DialogAddFile
     ],
     imports: [
         BrowserModule,
@@ -158,7 +160,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         multi: true,
         deps: [CredentialService]
     }],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    //entryComponents: [DialogAddFile]
 })
 export class AppModule {
 }

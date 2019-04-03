@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Ficha nueva</h1>ç
+<mat-dialog-content class="mat-typography">
+  <mat-form-field>
+    <p>Titulo</p>
+    <input #titl type='text'>
+    <p>Descripcion</p>
+    <input #desc type='text'>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button (click)="addFile(titl.value, desc.value); titl.value=''; desc.value='' ">Añadir</button>
+</mat-dialog-content>
