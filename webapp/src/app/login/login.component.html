@@ -4,7 +4,7 @@
       <span>Login</span>
     </mat-toolbar-row>
   </mat-toolbar>
-  <td-layout-card-over cardTitle="Login" cardSubtitle="Introduzca datos">
+  <td-layout-card-over cardTitle={{mode}} cardSubtitle="Introduzca datos">
     <mat-card-content class="push-bottom-none">
       <form #userForm="ngForm">
         <div layout="row">
@@ -39,7 +39,7 @@
     <mat-divider></mat-divider>
     <mat-card-actions layout="row">
       <button flex mat-button [disabled]="!userForm.form.valid" color="primary" (click)="login_signUp()" type="submit">{{mode}}</button>
-      <button flex mat-button color="accent" (click)="toggle()" style="float: right">Toggle mode</button>
+      <button flex mat-button color="accent" (click)="toggle()" style="float: right">{{loginMode ? 'Sign up' : 'Login'}}</button>
     </mat-card-actions>
   </td-layout-card-over>
 </div>
