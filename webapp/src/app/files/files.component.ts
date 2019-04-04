@@ -7,7 +7,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 export interface DialogData {
     files: File[];
     rest: ResourcesService;
-  }
+}
 
 @Component({
     selector: 'app-files',
@@ -40,7 +40,7 @@ export class FilesComponent implements OnInit {
 
     openDialog(): void {
         const dialogRef = this.dialog.open(EditFileDialog, { 
-            width: '250px',
+            width: '25%',
             data:{files: this.files, rest: this.rest}});
 
         dialogRef.afterClosed().subscribe(result => {

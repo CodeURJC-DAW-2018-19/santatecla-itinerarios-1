@@ -1,11 +1,13 @@
 <h1 mat-dialog-title>Ficha nueva</h1>
 <mat-dialog-content class="mat-typography">
   <mat-form-field>
-    <p>Titulo</p>
-    <input #titl type='text'>
-    <p>Descripcion</p>
-    <input #desc type='text'>
+    <h1>Titulo</h1>
+    <input #titl placeholder="Titulo"type='text'>
   </mat-form-field>
+  <mat-form-field>
+    <h1>Descripcion</h1>
+      <input #desc placeholder="Descripcion" type='text'>
+    </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button (click)="onNoClick()">Cancelar</button>
