@@ -12,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UnitsComponent } from './units/units.component';
 import { ViewComponent } from './view/view.component';
-import { FileComponent } from './file/file.component';
+import { FileComponent, EditDialog } from './file/file.component';
 import { FilesComponent, EditFileDialog } from './files/files.component';
 import { LoginComponent } from './login/login.component';
 import { ItineraryComponent } from './itinerary/itinerary.component';
@@ -89,7 +89,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         SubItineraryComponent,
         ChartComponent,
         DashboardComponent,
-        EditFileDialog
+        EditFileDialog,
+        EditDialog
     ],
     imports: [
         BrowserModule,
@@ -160,7 +161,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         deps: [CredentialService]
     }],
     bootstrap: [AppComponent],
-    entryComponents: [AppComponent, EditFileDialog]
+    entryComponents: [AppComponent, EditFileDialog, EditDialog],
 })
 export class AppModule {
 }
