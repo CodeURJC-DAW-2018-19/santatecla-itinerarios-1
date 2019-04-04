@@ -10,6 +10,10 @@ export class ViewComponent implements OnInit {
     @Input()
     view: View;
 
+    units: Array<string>=['UNIDAD 1','UNIDAD2','UNIDAD 3'];
+    files: Array<string>=['FICHA 1','FICHA2'];
+
+
     constructor() { }
 
     ngOnInit() {

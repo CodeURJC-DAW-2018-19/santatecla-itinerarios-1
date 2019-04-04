@@ -1,3 +1,68 @@
 <p>
-    view {{view.id}} work!
+  view {{view.id}} work!
 </p>
+<div class="view">
+  <p>Final de la vista {{view.id}}</p>
+</div>
+
+<div>
+  <mat-card cardWidth="75">
+    <mat-card-title>Vista</mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <div layout-gt-sm="row" tdMediaToggle="gt-xs" [mediaClasses]="['push-sm']">
+        <div flex-gt-sm="60">
+          <mat-card>
+            <mat-card-content>
+              <mat-list>
+              </mat-list>
+              <mat-divider></mat-divider>
+              <span style="display: inline;">
+
+                <mat-form-field>
+                  <mat-label>UNIDAD</mat-label>
+                  <mat-select>
+                    <mat-option *ngFor="let unit of units" [value]="unit">
+                      {{unit}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <mat-label>UNIDAD</mat-label>
+                  <mat-select>
+                    <mat-option *ngFor="let unit of units" [value]="unit">
+                      {{unit}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              </span>
+            </mat-card-content>
+
+            <mat-card-actions>
+              <a mat-button color="accent" class="text-upper" [routerLink]="['/']">
+                <span>Añadir</span>
+              </a>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+        <div flex-gt-sm="40">
+          <mat-card>
+            <mat-card-title>HTML</mat-card-title>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+              HTML text
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-actions>
+      <button mat-button color="accent" class="text-upper">Edit</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+
