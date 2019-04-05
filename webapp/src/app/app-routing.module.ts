@@ -7,15 +7,12 @@ import { UnitComponent } from './unit/unit.component';
 import { FilesComponent } from './files/files.component';
 import { ItineraryComponent } from './itinerary/itinerary.component';
 import { AccessGuard } from './guard/access.guard';
-import { ChartComponent } from './chart/chart.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { environment } from 'src/environments/environment';
 
 const routes: Routes = [
     {
         path: 'login', component: LoginComponent
-    },
-    {
-        path: 'chart', component: ChartComponent
     },
     {
         path: '',
@@ -42,7 +39,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, { enableTracing: isDevMode() }),],
+    imports: [RouterModule.forRoot(routes, { enableTracing: !environment.production })],
     exports: [RouterModule]
 })
 export class AppRoutingModule {

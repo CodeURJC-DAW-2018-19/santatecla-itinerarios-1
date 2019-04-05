@@ -9,11 +9,16 @@ import { ResourcesService } from '../service/resources.service';
 })
 export class UnitsComponent implements OnInit {
     units: Unit[];
+    searchInputTerm: string;
 
     constructor(private rest: ResourcesService) {
     }
 
     ngOnInit(): void {
         this.rest.fetchUnits().subscribe(units => this.units = units);
+    }
+
+    onBlurEvent() {
+
     }
 }

@@ -30,3 +30,4 @@
 /bin
 .idea
 !/libs/**.jar
+/src/main/resources/static/app

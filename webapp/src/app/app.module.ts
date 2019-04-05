@@ -19,7 +19,6 @@ import { ItineraryComponent } from './itinerary/itinerary.component';
 import { UnitComponent } from './unit/unit.component';
 import { ErrorComponent } from './error/error.component';
 import { SubItineraryComponent } from './sub-itinerary/sub-itinerary.component';
-import { ChartComponent } from './chart/chart.component';
 //import { DialogAddFile } from './files/files.component';
 
 import {
@@ -72,7 +71,6 @@ import { CovalentMarkdownModule } from '@covalent/markdown';
 import { CovalentHighlightModule } from '@covalent/highlight';
 import { CovalentHttpModule } from '@covalent/http';
 
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 
@@ -88,7 +86,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         UnitComponent,
         ErrorComponent,
         SubItineraryComponent,
-        ChartComponent,
         DashboardComponent,
         EditFileDialog
     ],
@@ -151,8 +148,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         CovalentDialogsModule,
         CovalentTabSelectModule,
         CovalentSearchModule,
-        /** Additional **/
-        NgxChartsModule,
     ],
     providers: [{
         provide: HTTP_INTERCEPTORS,
