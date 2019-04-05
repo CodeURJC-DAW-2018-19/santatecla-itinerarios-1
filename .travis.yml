@@ -29,13 +29,13 @@ env:
   - VERSION=fase4
 
 before_install:
-  - chmod +x ./docker/create_image.sh
+  - chmod +x ./create_image.sh
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
 script:
   - ./gradlew clean
   - ./gradlew sonarqube
-  - ./docker/create_image.sh
+  - ./create_image.sh
 
 deploy:
   provider: releases

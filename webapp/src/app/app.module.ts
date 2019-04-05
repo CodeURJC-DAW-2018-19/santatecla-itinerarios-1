@@ -12,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UnitsComponent } from './units/units.component';
 import { ViewComponent } from './view/view.component';
-import { FileComponent } from './file/file.component';
+import { FileComponent, EditDialog } from './file/file.component';
 import { FilesComponent, EditFileDialog } from './files/files.component';
 import { LoginComponent } from './login/login.component';
 import { ItineraryComponent } from './itinerary/itinerary.component';
@@ -41,7 +41,7 @@ import {
     MatSidenavModule,
     MatSliderModule,
     MatSlideToggleModule,
-    MatSnackBarModule,
+    MatSnackBarModule, MatTableModule,
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule
@@ -72,6 +72,7 @@ import { CovalentHighlightModule } from '@covalent/highlight';
 import { CovalentHttpModule } from '@covalent/http';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -87,7 +88,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         ErrorComponent,
         SubItineraryComponent,
         DashboardComponent,
-        EditFileDialog
+        EditFileDialog,
+        EditDialog
     ],
     imports: [
         BrowserModule,
@@ -96,7 +98,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         FormsModule,
         ReactiveFormsModule,
         BrowserAnimationsModule,
-
+        FlexLayoutModule,
         AppRoutingModule,
 
         /** Material Modules */
@@ -124,6 +126,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         MatSliderModule,
         MatAutocompleteModule,
         MatNativeDateModule,
+        MatTableModule,
 
         /** Covalent Modules */
         CovalentCommonModule,
@@ -147,7 +150,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         CovalentJsonFormatterModule,
         CovalentDialogsModule,
         CovalentTabSelectModule,
-        CovalentSearchModule,
+        CovalentSearchModule
     ],
     providers: [{
         provide: HTTP_INTERCEPTORS,
@@ -156,7 +159,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
         deps: [CredentialService]
     }],
     bootstrap: [AppComponent],
-    entryComponents: [AppComponent, EditFileDialog]
+    entryComponents: [AppComponent, EditFileDialog, EditDialog],
 })
 export class AppModule {
 }

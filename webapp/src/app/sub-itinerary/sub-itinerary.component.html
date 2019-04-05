@@ -1,9 +1,32 @@
-<p>
-  <mat-card>
-    <mat-card-title>
-      Itinerary
-    </mat-card-title>
-    <mat-card-content>{{itinerary.title}}</mat-card-content>
-  </mat-card>
-    sub-itinerary {{itinerary.title}} work!
-</p>
+<mat-card>
+
+  <mat-card-title>
+    Itinerary
+  </mat-card-title>
+
+  <mat-card-content>
+    <div>
+      <mat-form-field layout-padding="40px">
+        <mat-label>UNIDAD</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let unit of units" [value]="unit">
+            {{unit.text}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field layout-padding="40px">
+        <mat-label>ITINERARIO</mat-label>
+        <mat-select>
+          <mat-option>
+            {{itinerary.title}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      CERN-Introduccion-View 1
+    </div>
+  </mat-card-content>
+</mat-card>
+
