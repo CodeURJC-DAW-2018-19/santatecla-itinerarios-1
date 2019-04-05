@@ -73,6 +73,7 @@ import { CovalentHttpModule } from '@covalent/http';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -99,7 +100,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-
+    FlexLayoutModule,
     AppRoutingModule,
 
     /** Material Modules */

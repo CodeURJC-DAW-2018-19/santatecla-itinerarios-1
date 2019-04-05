@@ -7,19 +7,27 @@
 
 <div>
   <mat-card cardWidth="75">
-    <mat-card-title>Vista</mat-card-title>
-    <mat-divider></mat-divider>
+    <mat-card-title>VISTA</mat-card-title>
     <mat-card-content>
-      <div layout-gt-sm="row" tdMediaToggle="gt-xs" [mediaClasses]="['push-sm']">
-        <div flex-gt-sm="60">
+
+      <div layout-gt-sm="row" tdMediaToggle="gt-xs">
+        <div flex-gt-sm="40">
           <mat-card>
             <mat-card-content>
-              <mat-list>
-              </mat-list>
-              <mat-divider></mat-divider>
-              <span style="display: inline;">
 
-                <mat-form-field>
+              <mat-grid-list cols="1" rowHeight="100px" gutterSize="20px">
+                <mat-grid-tile
+                  *ngFor="let tile of tiles"
+                  [colspan]="tile.cols"
+                  [rowspan]="tile.rows"
+                  [style.background]="tile.color">
+                  {{tile.text}}
+                </mat-grid-tile>
+              </mat-grid-list>
+
+
+              <div align="center">
+                <mat-form-field layout-padding="40px">
                   <mat-label>UNIDAD</mat-label>
                   <mat-select>
                     <mat-option *ngFor="let unit of units" [value]="unit">
@@ -28,7 +36,7 @@
                   </mat-select>
                 </mat-form-field>
 
-                <mat-form-field>
+                <mat-form-field layout-padding="40px">
                   <mat-label>UNIDAD</mat-label>
                   <mat-select>
                     <mat-option *ngFor="let unit of units" [value]="unit">
@@ -37,17 +45,17 @@
                   </mat-select>
                 </mat-form-field>
 
-              </span>
+                <a mat-button color="accent" class="text-upper" (click)="addFileReference">
+                  <span>Añadir</span>
+                </a>
+              </div>
+
             </mat-card-content>
 
-            <mat-card-actions>
-              <a mat-button color="accent" class="text-upper" [routerLink]="['/']">
-                <span>Añadir</span>
-              </a>
-            </mat-card-actions>
           </mat-card>
         </div>
-        <div flex-gt-sm="40">
+
+        <div flex-gt-sm="60">
           <mat-card>
             <mat-card-title>HTML</mat-card-title>
             <mat-divider></mat-divider>
@@ -57,11 +65,9 @@
           </mat-card>
         </div>
       </div>
+
     </mat-card-content>
-    <mat-divider></mat-divider>
-    <mat-card-actions>
-      <button mat-button color="accent" class="text-upper">Edit</button>
-    </mat-card-actions>
+
   </mat-card>
 </div>
 
