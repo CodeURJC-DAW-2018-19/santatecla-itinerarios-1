@@ -3,4 +3,17 @@
     "java.jdt.ls.vmargs": "-javaagent:./libs/lombok.jar -Xbootclasspath/a:./libs/lombok.jar",
     "editor.tabSize": 4,
     "editor.insertSpaces": true,
+    "sqltools.connections": [
+        {
+            "askForPassword": false,
+            "connectionTimeout": 30,
+            "database": "daw",
+            "dialect": "MySQL",
+            "name": "MySQL",
+            "password": "daw_grupo_7",
+            "port": 3306,
+            "server": "192.168.99.102",
+            "username": "daw"
+        }
+    ],
 }
