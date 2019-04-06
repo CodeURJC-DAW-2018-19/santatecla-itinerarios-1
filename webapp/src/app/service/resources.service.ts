@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { map, tap, shareReplay } from 'rxjs/operators';
+import { map, tap, shareReplay, mergeMap } from 'rxjs/operators';
 import { Resource } from '../model/resource';
 import { Unit } from '../model/unit';
 import { API_UNITS } from '../config';
@@ -72,5 +72,15 @@ export class ResourcesService {
 
     fetchFile(id: number): Observable<File> {
         return this.fetchResource('/api/forms/' + id, File);
+    }
+
+    saveFile(file: File): Observable<File> {
+        return this.http.post<File>('/api/forms', this.clone(file)).pipe(mergeMap(file => this.fetchFile(file.id)));
+    }
+
+    private clone<T>(entity: T): T {
+        const cloned = { ...entity };
+        delete cloned['rest'];
+        return cloned;
     }
 }

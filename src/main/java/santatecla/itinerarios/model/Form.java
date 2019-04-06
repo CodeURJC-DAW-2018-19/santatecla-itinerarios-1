@@ -1,6 +1,8 @@
 package santatecla.itinerarios.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -20,8 +22,8 @@ import java.util.Set;
 
 @Entity
 @Data
-@EqualsAndHashCode(exclude = {"unit", "images"})
-@ToString(exclude = {"unit", "images"})
+@EqualsAndHashCode(exclude = { "unit", "images" })
+@ToString(exclude = { "unit", "images" })
 @NoArgsConstructor
 public class Form {
     @Id
@@ -39,17 +41,12 @@ public class Form {
 
     @ManyToOne
     @JoinColumn(nullable = false)
-    @JsonIgnore
     @NotNull
     private Unit unit;
 
     public Form(String title, String description) {
         this.title = title;
         this.description = description;
-    }
-
-    public void setUnit(Unit unit) {
-        this.unit = unit;
     }
 
     public void addImage(Image image) {
@@ -61,5 +58,15 @@ public class Form {
 
     public Long getId() {
         return id;
+    }
+
+    @JsonIgnore
+    public Unit getUnit() {
+        return this.unit;
+    }
+
+    @JsonProperty
+    public void setUnit(Unit unit) {
+        this.unit = unit;
     }
 }

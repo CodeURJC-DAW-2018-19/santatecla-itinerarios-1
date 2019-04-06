@@ -5,7 +5,8 @@ import { ResourcesService } from '../service/resources.service';
 
 export interface FileDialogData {
     file: File;
-    rest: ResourcesService;
+    unit: number;
+    callback: (File) => void;
 }
 
 @Component({
@@ -13,25 +14,25 @@ export interface FileDialogData {
     templateUrl: './file-dialog.component.html',
 })
 export class FileDialogComponent {
-    file: File;
-
     constructor(
         private dialogRef: MatDialogRef<FileDialogComponent>,
-        @Inject(MAT_DIALOG_DATA) private data: FileDialogData,
-        private rest: ResourcesService
+        private rest: ResourcesService,
+        @Inject(MAT_DIALOG_DATA) public data: FileDialogData
     ) {
-        if (data.file) {
-            this.file = data.file;
-        } else {
-            this.file = new File({}, data.rest);
+        if (!data.file) {
+            data.file = new File({}, this.rest);
         }
+        data.file.unit = data.unit;
     }
 
     cancel(): void {
         this.dialogRef.close();
     }
 
-    public save() {
-        this.dialogRef.close();
+    save() {
+        this.rest.saveFile(this.data.file).subscribe(file => {
+            this.data.callback(file);
+            this.dialogRef.close();
+        });
     }
 }

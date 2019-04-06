@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -20,7 +22,7 @@ import lombok.NoArgsConstructor;
 public class Unit {
     @Id
     @GeneratedValue
-    private Long id; //  TODO: change id to title
+    private Long id; // TODO: change id to title
 
     @Column(nullable = false)
     private String title;
@@ -30,6 +32,11 @@ public class Unit {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "unit")
     private Set<Form> forms;
+
+    @JsonCreator
+    public Unit(Long id) {
+        this.id = id;
+    }
 
     public Unit(String title) {
         this.title = title;

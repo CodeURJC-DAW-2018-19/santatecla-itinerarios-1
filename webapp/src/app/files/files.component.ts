@@ -11,7 +11,9 @@ import { FileDialogComponent } from './file.dialog.component';
     styleUrls: ['./files.component.scss']
 })
 export class FilesComponent implements OnInit {
+    unit: number;
     files: File[];
+
     constructor(
         private rest: ResourcesService,
         private route: ActivatedRoute,
@@ -20,31 +22,39 @@ export class FilesComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.parent.params.subscribe(params => {
-            this.rest.fetchFiles(params.id).subscribe(files => {
+            this.unit = Number(params.id);
+            this.rest.fetchFiles(this.unit).subscribe(files => {
                 this.files = files;
             });
         });
     }
 
-    public deleteFile(file: File): void {
-        const index = this.files.indexOf(file);
-        if (index > -1) {
-            this.files.splice(index, 1);
-        }
-    }
-
-    public addFile(title: string, description: string) {
-        const id = 0; // TODO
-        const file = new File('/api/forms/' + id, this.rest);
-        file.description = description;
-        file.title = title;
-        this.files.push(file);
-    }
-
-
-    openDialog(): void {
+    createFile(): void {
         const dialogRef = this.dialog.open(FileDialogComponent, {
-            data: { files: this.files, rest: this.rest }
+            data: {
+                unit: this.unit,
+                callback: file => this.files.push(file)
+            }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+        });
+    }
+
+    editFile(file: File): void {
+        const dialogRef = this.dialog.open(FileDialogComponent, {
+            data: {
+                file,
+                unit: this.unit,
+                callback: file => {
+                    for (let i = 0; i < this.files.length; i++) {
+                        if (file.id === this.files[i].id) {
+                            this.files[i] = file;
+                        }
+                    }
+                }
+            }
         });
 
         dialogRef.afterClosed().subscribe(result => {

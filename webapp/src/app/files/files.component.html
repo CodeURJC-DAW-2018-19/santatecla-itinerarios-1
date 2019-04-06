@@ -1,6 +1,9 @@
-<mat-card *ngFor="let file of files">
-  <app-file [file]="file" (remove)="deleteFile(file)"></app-file>
-</mat-card>
-<button mat-fab color="accent" class="mat-fab-bottom-right fixed z-3" (click)="openDialog()">
+<ng-template tdLoading="files.list">
+  <ng-template let-file let-last="last" ngFor [ngForOf]="files">
+    <app-file [file]="file" (remove)="deleteFile(file)" (edit)="editFile(file)"></app-file>
+    <mat-divider *ngIf="!last" [inset]="true"></mat-divider>
+  </ng-template>
+</ng-template>
+<button mat-fab color="accent" class="mat-fab-bottom-right fixed z-3" (click)="createFile()">
   <mat-icon>add</mat-icon>
 </button>

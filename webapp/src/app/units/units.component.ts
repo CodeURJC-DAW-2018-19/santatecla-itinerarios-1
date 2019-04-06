@@ -1,10 +1,10 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Unit } from '../model/unit';
 import { ResourcesService } from '../service/resources.service';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material";
-import {DialogData} from "../file/file.component";
-import {File} from "../model/file";
-
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
+export interface UnitDialogData {
+    file: File;
+}
 @Component({
     selector: 'app-units',
     templateUrl: './units.component.html',
@@ -14,7 +14,7 @@ export class UnitsComponent implements OnInit {
     units: Unit[];
     searchInputTerm: string;
 
-    constructor(private rest: ResourcesService,public dialog: MatDialog) {
+    constructor(private rest: ResourcesService, public dialog: MatDialog) {
     }
     ngOnInit(): void {
         this.rest.fetchUnits().subscribe(units => this.units = units);
@@ -24,33 +24,33 @@ export class UnitsComponent implements OnInit {
 
     }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(AddUnitDialog, {
-      width: '250px',
-    });
+    openDialog(): void {
+        const dialogRef = this.dialog.open(AddUnitDialog, {
+            width: '250px',
+        });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
-  }
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+        });
+    }
 }
 
 @Component({
-  selector: 'app-add-unit',
-  templateUrl: './add-unit.component.html',
+    selector: 'app-add-unit',
+    templateUrl: './add-unit.component.html',
 })
 export class AddUnitDialog {
 
-  constructor(
-    public dialogRef: MatDialogRef<AddUnitDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    constructor(
+        public dialogRef: MatDialogRef<AddUnitDialog>,
+        @Inject(MAT_DIALOG_DATA) public data: UnitDialogData) { }
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
+    onNoClick(): void {
+        this.dialogRef.close();
+    }
 
-  public addUnit(title: string, unit: Unit) {
-    unit.title = title;
-    this.dialogRef.close();
-  }
+    public addUnit(title: string, unit: Unit) {
+        unit.title = title;
+        this.dialogRef.close();
+    }
 }

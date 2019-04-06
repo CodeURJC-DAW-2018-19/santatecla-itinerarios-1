@@ -1,9 +1,9 @@
-<h1 mat-dialog-title>{{(file.id == null || file.id == 0)?'Crear ficha':'Editar ficha'}}</h1>
+<h1 mat-dialog-title>{{(data.file.id == null || data.file.id == 0)?'Crear ficha':'Editar ficha'}}</h1>
 <mat-dialog-content class="mat-typography">
   <form #userForm="ngForm">
     <div layout="row">
       <mat-form-field flex>
-        <input matInput #titleElement #titleControl="ngModel" type="text" placeholder="Titulo" [(ngModel)]="file.title" name="title" required>
+        <input matInput #titleElement #titleControl="ngModel" type="text" placeholder="Titulo" [(ngModel)]="data.file.title" name="title" required>
         <mat-hint align="start">
           <span [hidden]="titleControl.pristine" class="tc-red-600">
             <span [hidden]="!titleControl.hasError('required')">Required</span>
@@ -12,7 +12,7 @@
       </mat-form-field>
     </div>
     <div layout="row" class="push-top">
-      <td-text-editor #descriptionElement [(ngModel)]="file.description"></td-text-editor>
+      <td-text-editor #descriptionElement [(ngModel)]="data.file.description" name="description"></td-text-editor>
     </div>
   </form>
 </mat-dialog-content>
