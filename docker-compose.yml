@@ -21,7 +21,7 @@ services:
       - app
 
   webapp:
-    image: hellodalao/daw:fase3
+    image: hellodalao/daw
     links:
       - db
     depends_on:
