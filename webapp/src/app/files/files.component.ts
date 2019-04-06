@@ -29,6 +29,12 @@ export class FilesComponent implements OnInit {
         });
     }
 
+    deleteFile(file: File) {
+        this.rest.deleteResource(file).subscribe(() => {
+            this.files = this.files.filter(f => f.id !== file.id);
+        });
+    }
+
     createFile(): void {
         const dialogRef = this.dialog.open(FileDialogComponent, {
             data: {
@@ -47,12 +53,7 @@ export class FilesComponent implements OnInit {
             data: {
                 file,
                 unit: this.unit,
-                callback: file => {
-                    for (let i = 0; i < this.files.length; i++) {
-                        if (file.id === this.files[i].id) {
-                            this.files[i] = file;
-                        }
-                    }
+                callback: () => {
                 }
             }
         });

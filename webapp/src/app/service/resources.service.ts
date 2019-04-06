@@ -54,6 +54,10 @@ export class ResourcesService {
         return this.cache.get(url);
     }
 
+    deleteResource<T extends Resource>(resource: T): Observable<T> {
+        return this.http.delete<T>(resource.self);
+    }
+
     fetchUnits(): Observable<Unit[]> {
         return this.fetchResources(API_UNITS, Unit, 'units');
     }
