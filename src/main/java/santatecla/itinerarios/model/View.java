@@ -1,18 +1,31 @@
 package santatecla.itinerarios.model;
 
-import lombok.Data;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.OneToOne;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
+
+import lombok.Data;
 
 @Entity
 @Data
 public class View extends Item {
     @ManyToMany(cascade = CascadeType.PERSIST)
     private Set<Form> forms;
+
+    @NotNull
+    @OneToOne
+    @JoinTable(name = "itinerary_item", joinColumns = { @JoinColumn(name = "item_id") }, inverseJoinColumns = {
+            @JoinColumn(name = "itinerary_id") }, uniqueConstraints = {
+                    @UniqueConstraint(columnNames = { "itinerary_id", "item_id" }) })
+    private Itinerary itinerary;
 
     public void addForm(Form form) {
         if (forms == null) {

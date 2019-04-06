@@ -29,8 +29,9 @@
                             {{#isAdmin}}
                             <td class="td-actions text-right">
                                 <button type="button"
-                                        class="btn btn-fab  btn-fab-mini btn-round" data-toggle="modal" data-target="#confirmationModal">
-                                    <i class="material-icons" onclick="$('#confirmButton').click(function() {removeForm($(this).parent().parent().parent().parent().data('id'),{{id}}, '{{token}}')})">delete</i>
+                                        class="btn btn-fab  btn-fab-mini btn-round" data-toggle="modal" data-target="#confirmationModal"
+                                        onclick="$('#confirmButton').click((function() {removeForm($(this).parent().parent().parent().data('id'),{{id}}, '{{token}}')}).bind(this));">
+                                    <i class="material-icons" >delete</i>
                                 </button>
                             </td>
                             {{/isAdmin}}

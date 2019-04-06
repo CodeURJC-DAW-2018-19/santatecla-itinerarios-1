@@ -14,6 +14,7 @@ import javax.persistence.PreRemove;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
@@ -31,7 +32,9 @@ public class Itinerary extends Item {
     private String title;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(uniqueConstraints = { @UniqueConstraint(columnNames = { "itinerary_id", "items_id" }) })
+    @JoinTable(name = "itinerary_item", joinColumns = { @JoinColumn(name = "itinerary_id") }, inverseJoinColumns = {
+            @JoinColumn(name = "item_id") }, uniqueConstraints = {
+                    @UniqueConstraint(columnNames = { "itinerary_id", "item_id" }) })
     private List<Item> items;
 
     @ManyToOne
@@ -46,6 +49,11 @@ public class Itinerary extends Item {
         if (this.items != null) {
             this.items.removeIf(item -> item instanceof Itinerary);
         }
+    }
+
+    @JsonCreator
+    public Itinerary(Long id) {
+        super(id);
     }
 
     public Itinerary(String title) {

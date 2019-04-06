@@ -29,7 +29,9 @@ function readURL(input) {
 
 function refreshMarkdown() {
     $(".mark-down").each(function (index, element) {
-        marked.setOptions({'baseUrl': '/api/forms/' + $(element).data("id") + '/images/'});
+        marked.setOptions({
+            'baseUrl': '/api/forms/' + $(element).data("id") + '/images/'
+        });
         $(element).data("description", $(element).text());
         $(element).html(marked($(element).text()));
     });
@@ -107,9 +109,10 @@ function updateItinerariesDropdown(id, element, itinerary_id, original_id, token
 function add_form_to_view(id, token, element) {
     var form_id = $(element).parents(".dropdown-group").find(".select_form").prev("input").val();
     $.ajax({
-        "url": "/views/" + id + "/forms",
+        "url": "/api/views/" + id + "/forms",
         "method": "POST",
-        "data": "_csrf=" + token + "&id=" + form_id
+        "data": "_csrf=" + token + "&id=" + form_id,
+        "error": refreshPage
     }).done(refreshPage);
 }
 
@@ -147,9 +150,10 @@ function deleteUnit(id, token) {
 
 function removeForm(view_id, id, token) {
     $.ajax({
-        "url": "/views/" + view_id + "/" + id,
+        "url": "/api/views/" + view_id + "/" + id,
         "method": "DELETE",
-        "data": "_csrf=" + token
+        "data": "_csrf=" + token,
+        "error": refreshPage
     }).done(refreshPage)
 }
 
@@ -164,8 +168,9 @@ function deleteByIdForm(id, token) {
 function addView(id, token) {
     $.ajax({
         "method": "POST",
-        "url": "/views/" + id,
-        "data": "_csrf=" + token
+        "url": "/api/views/",
+        "data": "_csrf=" + token + "&itinerary=" + id,
+        "error": refreshPage
     }).done(refreshPage);
 }
 

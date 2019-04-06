@@ -4,27 +4,29 @@
     <mat-card-title>{{itinerary?.title}}</mat-card-title>
   </mat-card-header>
 
+  <mat-divider></mat-divider>
+
   <mat-card-content>
-     <ng-container *ngFor="let item of items">
-       <ng-container *ngIf="item.isItinerary; then subItinerary else view"></ng-container>
-       <ng-template #subItinerary>
-         <app-sub-itinerary [itinerary]="item">
-         </app-sub-itinerary>
-       </ng-template>
-       <ng-template #view>
-         <app-view [view]="item"></app-view>
-       </ng-template>
-     </ng-container>
+    <ng-container *ngFor="let item of items">
+      <ng-container *ngIf="item.isItinerary; then subItinerary else view"></ng-container>
+      <ng-template #subItinerary>
+        <app-sub-itinerary [itinerary]="item">
+        </app-sub-itinerary>
+      </ng-template>
+      <ng-template #view>
+        <app-view [view]="item"></app-view>
+      </ng-template>
+    </ng-container>
   </mat-card-content>
 
   <mat-divider></mat-divider>
 
   <mat-card-actions align="end">
-    <mat-radio-group aria-label="Select an option">
-      <mat-radio-button value="1">Vista</mat-radio-button>
-      <mat-radio-button value="2">Itinerario</mat-radio-button>
+    <mat-radio-group [(ngModel)]="option">
+      <mat-radio-button [value]="1">Vista</mat-radio-button>
+      <mat-radio-button [value]="2">Itinerario</mat-radio-button>
     </mat-radio-group>
-    <button mat-button color="accent" class="text-upper">Añadir</button>
+    <button mat-button color="accent" (click)="create()">Añadir</button>
   </mat-card-actions>
 
 </mat-card>

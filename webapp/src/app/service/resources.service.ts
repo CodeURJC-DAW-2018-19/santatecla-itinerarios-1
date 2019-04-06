@@ -7,6 +7,7 @@ import { Unit } from '../model/unit';
 import { API_UNITS } from '../config';
 import { Itinerary } from '../model/itinerary';
 import { File } from '../model/file';
+import { View } from '../model/view';
 
 @Injectable({
     providedIn: 'root'
@@ -86,5 +87,10 @@ export class ResourcesService {
         const cloned = { ...entity };
         delete cloned['rest'];
         return cloned;
+    }
+
+    saveView(view: View): Observable<View> {
+        return this.http.post<File>('/api/views', this.clone(view))
+            .pipe(mergeMap(view => this.fetchResource('/api/views/' + view.id, View)));
     }
 }
