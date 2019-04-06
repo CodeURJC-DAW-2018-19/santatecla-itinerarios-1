@@ -9,4 +9,9 @@ public class AngularController {
     public String forwardSPA() {
         return "forward:/app/index.html";
     }
+
+    @GetMapping("app")
+    public String index() {
+        return "forward:/app/index.html";
+    }
 }
