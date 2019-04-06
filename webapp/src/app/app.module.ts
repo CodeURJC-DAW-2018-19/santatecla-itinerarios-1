@@ -13,13 +13,12 @@ import { AppComponent } from './app.component';
 import { UnitsComponent } from './units/units.component';
 import { ViewComponent } from './view/view.component';
 import { FileComponent, EditDialog } from './file/file.component';
-import { FilesComponent, EditFileDialog } from './files/files.component';
+import { FilesComponent } from './files/files.component';
 import { LoginComponent } from './login/login.component';
 import { ItineraryComponent } from './itinerary/itinerary.component';
 import { UnitComponent } from './unit/unit.component';
 import { ErrorComponent } from './error/error.component';
 import { SubItineraryComponent } from './sub-itinerary/sub-itinerary.component';
-//import { DialogAddFile } from './files/files.component';
 
 import {
     MatAutocompleteModule,
@@ -69,10 +68,12 @@ import {
 import { CovalentDynamicFormsModule } from '@covalent/dynamic-forms';
 import { CovalentMarkdownModule } from '@covalent/markdown';
 import { CovalentHighlightModule } from '@covalent/highlight';
+import { CovalentTextEditorModule } from '@covalent/text-editor';
 import { CovalentHttpModule } from '@covalent/http';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FileDialogComponent } from './files/file.dialog.component';
 
 
 @NgModule({
@@ -88,7 +89,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
         ErrorComponent,
         SubItineraryComponent,
         DashboardComponent,
-        EditFileDialog,
+        FileDialogComponent,
         EditDialog
     ],
     imports: [
@@ -150,7 +151,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
         CovalentJsonFormatterModule,
         CovalentDialogsModule,
         CovalentTabSelectModule,
-        CovalentSearchModule
+        CovalentSearchModule,
+        CovalentTextEditorModule
     ],
     providers: [{
         provide: HTTP_INTERCEPTORS,
@@ -159,7 +161,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
         deps: [CredentialService]
     }],
     bootstrap: [AppComponent],
-    entryComponents: [AppComponent, EditFileDialog, EditDialog],
+    entryComponents: [AppComponent, FileDialogComponent, EditDialog],
 })
 export class AppModule {
 }

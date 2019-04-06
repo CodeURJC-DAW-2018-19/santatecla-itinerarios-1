@@ -1,7 +1,6 @@
 <mat-card *ngFor="let file of files">
-    <app-file [file]="file" (remove)="deleteFile(file)"></app-file>
+  <app-file [file]="file" (remove)="deleteFile(file)"></app-file>
 </mat-card>
 <button mat-fab color="accent" class="mat-fab-bottom-right fixed z-3" (click)="openDialog()">
-    <mat-icon>add</mat-icon>
+  <mat-icon>add</mat-icon>
 </button>
-

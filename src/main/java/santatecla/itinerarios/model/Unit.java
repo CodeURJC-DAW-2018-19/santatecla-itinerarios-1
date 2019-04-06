@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 public class Unit {
     @Id
     @GeneratedValue
-    private Long id;
+    private Long id; //  TODO: change id to title
 
     @Column(nullable = false)
     private String title;
