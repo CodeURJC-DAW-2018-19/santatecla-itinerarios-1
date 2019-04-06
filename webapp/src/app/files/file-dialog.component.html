@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Ficha nueva</h1>
+<h1 mat-dialog-title>{{(file.id == null || file.id == 0)?'Crear ficha':'Editar ficha'}}</h1>
 <mat-dialog-content class="mat-typography">
   <form #userForm="ngForm">
     <div layout="row">
