@@ -12,7 +12,10 @@ export class Resource {
                     this._links = src._links;
                     for (const link in this._links) {
                         if (this._links.hasOwnProperty(link)) {
-                            this._links[link] = new URL(this._links[link].href).pathname;
+                            if (this._links[link].href) {
+                                const href = this._links[link].href.replace(/\{\?.+/, '');
+                                this._links[link] = new URL(href).pathname;
+                            }
                         }
                     }
                 }
