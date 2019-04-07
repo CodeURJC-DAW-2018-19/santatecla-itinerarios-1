@@ -38,10 +38,9 @@ export class ItineraryComponent implements OnInit {
             case 2:
                 break;
         }
-        console.log(this.option);
     }
 
-    delete(item: Item) {
+    deleteItem(item: Item) { // TODO: can't delete subitinerary
         this.rest.deleteResource(item).subscribe(() => this.items = this.items.filter(e => e.id !== item.id));
     }
 }

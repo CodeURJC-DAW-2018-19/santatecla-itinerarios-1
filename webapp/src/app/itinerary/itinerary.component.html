@@ -11,11 +11,11 @@
       <ng-template let-item let-last="last" ngFor [ngForOf]="items">
         <ng-container *ngIf="item.isItinerary; then subItinerary else view"></ng-container>
         <ng-template #subItinerary>
-          <app-sub-itinerary [itinerary]="item">
+          <app-sub-itinerary [itinerary]="item" (delete)="deleteItem(item)">
           </app-sub-itinerary>
         </ng-template>
         <ng-template #view>
-          <app-view [view]="item" (delete)="delete(item)"></app-view>
+          <app-view [view]="item" (delete)="deleteItem(item)"></app-view>
         </ng-template>
         <mat-divider *ngIf="!last" [inset]="true"></mat-divider>
       </ng-template>

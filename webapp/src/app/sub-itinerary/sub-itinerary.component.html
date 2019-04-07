@@ -1,7 +1,15 @@
 <mat-card>
 
   <mat-card-title>
-    Itinerary
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <h3>{{itinerary.title}}</h3>
+        <span flex></span>
+        <button mat-icon-button (click)="deleteSubItinerary()">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-toolbar-row>
+    </mat-toolbar>
   </mat-card-title>
 
   <mat-card-content>
@@ -24,9 +32,5 @@
         </mat-select>
       </mat-form-field>
     </div>
-    <div>
-      CERN-Introduccion-View 1
-    </div>
   </mat-card-content>
 </mat-card>
-
