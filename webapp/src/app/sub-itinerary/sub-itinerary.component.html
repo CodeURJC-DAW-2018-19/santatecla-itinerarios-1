@@ -17,7 +17,7 @@
 
         <mat-form-field>
           <mat-label>Itinerario</mat-label>
-          <mat-select [(ngModel)]="selectedItinerary">
+          <mat-select (selectionChange)="select($event.value)">
             <mat-option *ngFor="let itinerary of itineraries" [value]="itinerary">
               {{itinerary.title}}
             </mat-option>
