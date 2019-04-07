@@ -1,8 +1,6 @@
-import { Resource } from './resource';
 import { Observable } from 'rxjs';
 import { Item } from './item';
-export class Itinerary extends Resource {
-    id: number;
+export class Itinerary extends Item {
     title: string;
 
     get items(): Observable<Item[]> {

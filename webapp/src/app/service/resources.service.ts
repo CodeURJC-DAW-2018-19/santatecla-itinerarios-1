@@ -83,7 +83,7 @@ export class ResourcesService {
         return this.http.post<File>('/api/forms', this.clone(file)).pipe(mergeMap(file => this.fetchFile(file.id)));
     }
 
-    private clone<T>(entity: T): T {
+    private clone(entity) {
         const cloned = { ...entity };
         delete cloned['rest'];
         return cloned;
@@ -98,7 +98,7 @@ export class ResourcesService {
         return this.http.delete<T>(resource.self + relation);
     }
 
-    addResourceRelation<T extends Resource, R extends Resource>(resource: T, relatedResource: R, relation: string) {
+    addResourceRelation<T extends Resource>(resource: T, relatedResource, relation: string) {
         return this.http.post<T>(resource.self + '/' + relation, this.clone(relatedResource));
     }
 }

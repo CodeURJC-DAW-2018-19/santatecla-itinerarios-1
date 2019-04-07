@@ -36,6 +36,8 @@ export class ItineraryComponent implements OnInit {
                 this.rest.saveView(new View({ itinerary: this.itinerary.id }, this.rest)).subscribe(view => this.items.push(view));
                 break;
             case 2:
+                this.rest.addResourceRelation(this.itinerary, { id: this.itinerary.id }, 'items')
+                    .subscribe(() => this.items.push(this.itinerary));
                 break;
         }
     }
