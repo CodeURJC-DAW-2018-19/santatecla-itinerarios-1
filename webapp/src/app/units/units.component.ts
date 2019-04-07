@@ -55,7 +55,7 @@ export class UnitsComponent implements OnInit {
   }
 
   addItinerary(): void {
-    const dialogRef = this.dialog.open(AddUnitDialog, {
+    const dialogRef = this.dialog.open(AddItineraryDialog, {
       data: {
        itinerary: this.itinerary,
         callback: itinerary => this.units.push(itinerary)
