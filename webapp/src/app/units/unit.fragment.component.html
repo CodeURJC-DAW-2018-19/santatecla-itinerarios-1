@@ -1,7 +1,6 @@
  <div class="md-padding">
-   <mat-nav-list>
-     <div layout="row" *ngFor="let itinerary of itineraries">
-       {{itinerary.title}}
+   <mat-list>
+     <mat-list-item *ngFor="let itinerary of itineraries">{{itinerary.title}}
        <span>
          <button mat-icon-button [mat-menu-trigger-for]="menu">
            <mat-icon>more_vert</mat-icon>
@@ -15,12 +14,14 @@
            </button>
          </mat-menu>
        </span>
-     </div>
-     <button mat-menu-item (click)="deleteThis()">
-       <mat-icon>delete</mat-icon>Eliminar la unidad
-     </button>
-     <button mat-menu-item (click)="addItinerary()">
-       <mat-icon>add_circle</mat-icon>Añadir un itienrario
-     </button>
-   </mat-nav-list>
+     </mat-list-item>
+     <mat-list-item>
+       <button mat-button (click)="deleteThis()">
+         <mat-icon>delete</mat-icon>Eliminar la unidad
+       </button>
+       <button mat-button (click)="addItinerary()">
+         <mat-icon>add_circle</mat-icon>Añadir un itienrario
+       </button>
+     </mat-list-item>
+   </mat-list>
  </div>
