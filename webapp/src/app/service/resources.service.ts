@@ -95,7 +95,7 @@ export class ResourcesService {
   }
 
   saveUnit(unit:Unit): Observable<Unit> {
-    return this.http.post<File>('/api/views', this.clone(unit))
+    return this.http.post<File>('/api/units', this.clone(unit))
       .pipe(mergeMap(unit => this.fetchResource('/api/units/' + unit.id, Unit)));
   }
 
