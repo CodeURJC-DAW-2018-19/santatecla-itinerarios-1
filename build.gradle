@@ -56,6 +56,9 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
     testImplementation 'com.h2database:h2'
+
+    // https://mvnrepository.com/artifact/org.openqa.selenium/selenium
+    testImplementation group: 'org.openqa.selenium', name: 'selenium', version: '0.8.1', ext: 'pom'
 }
 
 tasks.withType(JavaCompile) {

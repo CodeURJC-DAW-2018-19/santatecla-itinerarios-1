@@ -24,7 +24,7 @@ Rubén Zarapuz Juárez | r.zarapuz.2016@alumnos.urjc.es | Ruben98Z
 For running the application, you need to download this folder, unzip them and run the application with some development environment wich one have implemented the libraries that Spring needs, later you musthave a BBDD with port 80 (default), when your BBDD server is up, just launch the application and open an URL like https://localhost OR https://localhost/api if you want to access to the API.
 
 The project must be imported like a new gradle project.
-You must create a database with the following parameters.
+You must create a database with the following parameters (if you dont will use Docker).
 
 # MySQL Configuration
 ## Start up
@@ -122,6 +122,7 @@ Documentation about API into URL: https://github.com/CodeURJC-DAW-2018-19/santat
 - Select in which folder will be installed docker toolbox
 - In settings, select components you need to install
 - Install it and docker will be ready to use
+- Now you can go to Docker folder and exec "docker-compose up" for have the system ready to work instead all we must do before.
 
 # Phase 4
 
@@ -134,6 +135,7 @@ cd into folder webapp run the following commands.
     npm install
     npm install -g @angular/cli
 
-run the Spring server then
+run the Spring server with
 
     ng serve
+    

@@ -94,6 +94,16 @@ export class ResourcesService {
             .pipe(mergeMap(view => this.fetchResource('/api/views/' + view.id, View)));
     }
 
+    saveUnit(unit: Unit): Observable<Unit> {
+        return this.http.post<File>('/api/units', this.clone(unit))
+            .pipe(mergeMap(unit => this.fetchResource('/api/units/' + unit.id, Unit)));
+    }
+
+    saveItinerary(itinerary: Itinerary): Observable<Itinerary> {
+        return this.http.post<File>('/api/itineraries', this.clone(itinerary))
+            .pipe(mergeMap(itinerary => this.fetchResource('/api/itineraries/' + itinerary.id, Itinerary)));
+    }
+
     deleteResourceRelation<T extends Resource>(resource: T, relation: string) {
         return this.http.delete<T>(resource.self + relation);
     }
