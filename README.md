@@ -24,7 +24,7 @@ Rubén Zarapuz Juárez | r.zarapuz.2016@alumnos.urjc.es | Ruben98Z
 For running the application, you need to download this folder, unzip them and run the application with some development environment wich one have implemented the libraries that Spring needs, later you musthave a BBDD with port 80 (default), when your BBDD server is up, just launch the application and open an URL like https://localhost OR https://localhost/api if you want to access to the API.
 
 The project must be imported like a new gradle project.
-You must create a database with the following parameters.
+You must create a database with the following parameters (if you dont will use Docker).
 
 # MySQL Configuration
 ## Start up
