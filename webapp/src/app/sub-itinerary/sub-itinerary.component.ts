@@ -48,7 +48,7 @@ export class SubItineraryComponent implements OnInit {
         unit.itineraries.subscribe(itineraries => this.itineraries = itineraries);
     }
 
-    change(itinerary: Itinerary) {
-
+    select(itinerary: Itinerary) {
+        this.update.emit(itinerary);
     }
 }

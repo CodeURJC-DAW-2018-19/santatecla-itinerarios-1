@@ -48,6 +48,12 @@ export class ItineraryComponent implements OnInit {
     }
 
     updateSubItinerary(item, subItinerary: Itinerary) {
-        this.items[this.items.findIndex(e => e.id === item.id)] = subItinerary;
+        this.rest.deleteResourceRelation(this.itinerary, '/items/' + item.id)
+            .subscribe(() => {
+                this.rest.addResourceRelation(this.itinerary, { id: subItinerary.id }, 'items')
+                    .subscribe(() => {
+                        this.items[this.items.findIndex(e => e.id === item.id)] = subItinerary;
+                    });
+            });
     }
 }
