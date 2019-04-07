@@ -8,8 +8,7 @@
                     <i class="material-icons">keyboard_arrow_down</i>
                 </a>
                 {{#isAdmin}}
-                <button type="button"
-                        class="btn btn-fab  btn-fab-mini btn-round" data-toggle="modal" data-target="#confirmationModal">
+                <button type="button" class="btn btn-fab  btn-fab-mini btn-round" data-toggle="modal" data-target="#confirmationModal">
                     <i class="material-icons" onclick="$('#confirmButton').click(function() {deleteUnit({{id}}, '{{token}}')})">delete</i>
                 </button>
                 {{/isAdmin}}
@@ -22,8 +21,7 @@
                     <li>
                         <a href="/units/{{unit.id}}/{{id}}">{{title}}</a>
                         {{#isAdmin}}
-                        <button type="button"
-                                class="btn btn-fab  btn-fab-mini btn-round" data-toggle="modal" data-target="#confirmationModal">
+                        <button type="button" class="btn btn-fab  btn-fab-mini btn-round" data-toggle="modal" data-target="#confirmationModal">
                             <i class="material-icons" onclick="$('#confirmButton').click(function() {deleteItinerary({{id}}, '{{token}}')})">delete</i>
                         </button>
                         {{/isAdmin}}
@@ -31,8 +29,7 @@
                     </li>
                     <!-- Add Element button -->
                     {{#isAdmin}}
-                    <button class="btn btn-primary btn-fab btn-fab-mini btn-round" data-toggle="modal"
-                            data-target="#new_itinerary" onclick="$('#new_itinerary form').attr('action', '/units/itineraries/{{id}}');">
+                    <button class="btn btn-primary btn-fab btn-fab-mini btn-round" data-toggle="modal" data-target="#new_itinerary" onclick="$('#new_itinerary form').attr('action', '/api/units/{{id}}/itineraries');">
                         <i class="material-icons" style="color:white">add</i>
                     </button>
                     {{/isAdmin}}

@@ -96,9 +96,9 @@ function updateItinerariesDropdown(id, element, itinerary_id, original_id, token
                 e.preventDefault();
                 var new_id = $(this).attr("href");
                 $.ajax({
-                    "url": "/itineraries/" + itinerary_id + "/items/" + original_id + "?newSubItinerary=" + new_id,
+                    "url": "/api/itineraries/" + itinerary_id + "/items/" + original_id,
                     "method": "PUT",
-                    "data": "_csrf=" + token,
+                    "data": "_csrf=" + token + "&newSubItinerary=" + new_id,
                     "success": refreshPage
                 });
             });
@@ -177,8 +177,8 @@ function addView(id, token) {
 function addSubitinerary(id, token) {
     $.ajax({
         "method": "POST",
-        "url": "/itineraries/" + id,
-        "data": "_csrf=" + token + "&id=" + id
+        "url": "/api/itineraries/" + id,
+        "data": "_csrf=" + token + "&subItinerary=" + id
     }).done(refreshPage);
 }
 

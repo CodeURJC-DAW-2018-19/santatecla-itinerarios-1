@@ -25,7 +25,7 @@ public class View extends Item {
 
     @NotNull
     @OneToOne
-    @JoinTable(name = "itinerary_item", joinColumns = { @JoinColumn(name = "item_id") }, inverseJoinColumns = {
+    @JoinTable(name = "itinerary_items", joinColumns = { @JoinColumn(name = "item_id") }, inverseJoinColumns = {
             @JoinColumn(name = "itinerary_id") }, uniqueConstraints = {
                     @UniqueConstraint(columnNames = { "itinerary_id", "item_id" }) })
     private Itinerary itinerary;

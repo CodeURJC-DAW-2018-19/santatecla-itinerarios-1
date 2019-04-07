@@ -1,5 +1,8 @@
 package santatecla.itinerarios.controller;
 
+import javax.validation.Valid;
+
+import org.springframework.data.rest.webmvc.RepositoryRestController;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -7,15 +10,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+
 import santatecla.itinerarios.model.Itinerary;
-import santatecla.itinerarios.model.Unit;
 import santatecla.itinerarios.repo.ItineraryRepository;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-
-@RestController
+@RepositoryRestController
 @RequestMapping("itineraries")
 public class ItineraryController {
     private ItineraryRepository repository;
@@ -25,23 +24,17 @@ public class ItineraryController {
     }
 
     @PostMapping("/{itinerary}")
-    public void addSubItinerary(@Valid @ModelAttribute Itinerary subItinerary, @PathVariable Itinerary itinerary) {
+    public ResponseEntity<Itinerary> addSubItinerary(@PathVariable Itinerary itinerary,
+            @Valid @RequestParam Itinerary subItinerary) {
         itinerary.addItem(subItinerary);
-        this.repository.save(itinerary);
+        return ResponseEntity.ok(this.repository.save(itinerary));
     }
 
     @PutMapping("/{itinerary}/items/{originalSubItinerary}")
-    public ResponseEntity<?> changeSubItinerary(@PathVariable Itinerary itinerary,
+    public ResponseEntity<Itinerary> changeSubItinerary(@PathVariable Itinerary itinerary,
             @PathVariable Itinerary originalSubItinerary, @RequestParam Itinerary newSubItinerary) {
         itinerary.removeItem(originalSubItinerary);
         itinerary.addItem(newSubItinerary);
-        this.repository.save(itinerary);
-        return ResponseEntity.ok().build();
-    }
-
-    @PostMapping("/itineraries/{unit}")
-    public void addItinerary(@ModelAttribute @Valid @NotNull Itinerary itinerary, @PathVariable @NotNull Unit unit) {
-        itinerary.setUnit(unit);
-        this.repository.save(itinerary);
+        return ResponseEntity.ok(this.repository.save(itinerary));
     }
 }

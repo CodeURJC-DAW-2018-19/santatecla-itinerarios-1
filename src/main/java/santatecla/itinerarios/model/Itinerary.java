@@ -16,6 +16,7 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -31,15 +32,16 @@ public class Itinerary extends Item {
     @Column(nullable = false)
     private String title;
 
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "itinerary_item", joinColumns = { @JoinColumn(name = "itinerary_id") }, inverseJoinColumns = {
-            @JoinColumn(name = "item_id") }, uniqueConstraints = {
-                    @UniqueConstraint(columnNames = { "itinerary_id", "item_id" }) })
-    private List<Item> items;
+    @JoinTable(name = "itinerary_items", joinColumns = {
+            @JoinColumn(name = "itinerary_id", nullable = false) }, inverseJoinColumns = {
+                    @JoinColumn(name = "item_id", nullable = false) }, uniqueConstraints = {
+                            @UniqueConstraint(columnNames = { "itinerary_id", "item_id" }) })
+    private List<Item> items; // TODO: composite primary key
 
     @ManyToOne
     @JoinColumn
-    @JsonIgnore
     @NotNull
     private Unit unit;
 
@@ -78,6 +80,12 @@ public class Itinerary extends Item {
         return true;
     }
 
+    @JsonIgnore
+    public Unit getUnit() {
+        return this.unit;
+    }
+
+    @JsonProperty
     public void setUnit(Unit unit) {
         this.unit = unit;
     }
