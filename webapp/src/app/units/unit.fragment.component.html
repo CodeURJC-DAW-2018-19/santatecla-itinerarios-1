@@ -11,13 +11,16 @@
              <mat-icon>send</mat-icon>Acceder
            </a>
            <button mat-menu-item (click)="deleteItinerary(itinerary)">
-             <mat-icon>delete</mat-icon> Delete
+             <mat-icon>delete</mat-icon>Eliminar
            </button>
          </mat-menu>
        </span>
      </div>
+     <button mat-menu-item (click)="deleteThis()">
+       <mat-icon>delete</mat-icon>Eliminar la unidad
+     </button>
      <button mat-menu-item (click)="addItinerary()">
-       <mat-icon>add_circle</mat-icon> Add Itinerary
+       <mat-icon>add_circle</mat-icon>Añadir un itienrario
      </button>
    </mat-nav-list>
  </div>

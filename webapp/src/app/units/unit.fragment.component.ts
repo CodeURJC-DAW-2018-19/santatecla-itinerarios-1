@@ -28,6 +28,9 @@ export class UnitsFragmentComponent implements OnInit {
         this.unit.itineraries.subscribe(itineraries => this.itineraries = itineraries);
     }
 
+    deleteThis() {
+        this.delete.emit();
+    }
 
     deleteItinerary(itinerary: Itinerary) {
         this.rest.deleteResource(itinerary).subscribe(() => this.itineraries = this.itineraries.filter(i => i.id !== itinerary.id));
