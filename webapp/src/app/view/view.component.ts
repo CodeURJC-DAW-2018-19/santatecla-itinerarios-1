@@ -36,4 +36,8 @@ export class ViewComponent implements OnInit {
 
     addFileReference() {
     }
+
+    deleteFileReference(file: File) {
+
+    }
 }

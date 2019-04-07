@@ -7,12 +7,31 @@
         <mat-card>
           <mat-card-content>
 
-            <mat-list>
-              <mat-list-item *ngFor="let file of files">
-                {{file.title}}
-              </mat-list-item>
-            </mat-list>
-
+            <mat-card>
+              <mat-card-title>Fichas</mat-card-title>
+              <mat-divider></mat-divider>
+              <mat-list class="will-load alert-list">
+                <ng-template tdLoading="files.load">
+                  <ng-template let-file let-last="last" ngFor [ngForOf]="files">
+                    <mat-list-item layout-align="row">
+                      <h3 matLine> {{file.title}}</h3>
+                      <p matLine> {{file.title}} </p>
+                      <span flex></span>
+                      <button mat-icon-button (click)="deleteFileReference(file)">
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                    </mat-list-item>
+                    <mat-divider *ngIf="!last" [inset]="true"></mat-divider>
+                  </ng-template>
+                </ng-template>
+              </mat-list>
+              <mat-divider></mat-divider>
+              <mat-card-actions>
+                <a mat-button color="accent" class="text-upper" [routerLink]="['/logs']">
+                  <span>View More</span>
+                </a>
+              </mat-card-actions>
+            </mat-card>
 
             <div align="center">
               <mat-form-field layout-padding="40px">
@@ -48,7 +67,20 @@
           <mat-card-title>HTML</mat-card-title>
           <mat-divider></mat-divider>
           <mat-card-content>
-            HTML text
+            <ng-template tdLoading="files.list">
+              <mat-card *ngFor="let file of files">
+                <mat-card-title>{{file.title}}</mat-card-title>
+                <mat-card-content>
+                  <td-markdown>{{file.descripiton}}</td-markdown>
+                </mat-card-content>
+              </mat-card>
+              <mat-divider></mat-divider>
+              <mat-card-actions>
+                <a mat-button color="accent" class="text-upper" [routerLink]="['/logs']">
+                  <span>View More</span>
+                </a>
+              </mat-card-actions>
+            </ng-template>
           </mat-card-content>
         </mat-card>
       </div>
