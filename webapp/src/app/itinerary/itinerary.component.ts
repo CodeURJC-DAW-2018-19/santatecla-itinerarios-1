@@ -24,7 +24,7 @@ export class ItineraryComponent implements OnInit {
     ngOnInit() {
         this.route.params.subscribe(params => {
             this.rest.fetchItinerary(params.id).subscribe(itinerary => {
-                this.itinerary = itinerary;
+                this.itinerary = new Itinerary(itinerary, this.rest);
                 itinerary.items.subscribe(items => this.items = items);
             });
         });
