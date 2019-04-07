@@ -93,4 +93,12 @@ export class ResourcesService {
         return this.http.post<File>('/api/views', this.clone(view))
             .pipe(mergeMap(view => this.fetchResource('/api/views/' + view.id, View)));
     }
+
+    deleteResourceRelation<T extends Resource>(resource: T, relation: string) {
+        return this.http.delete<T>(resource.self + relation);
+    }
+
+    addResourceRelation<T extends Resource, R extends Resource>(resource: T, relatedResource: R, relation: string) {
+        return this.http.post<T>(resource.self + '/' + relation, this.clone(relatedResource));
+    }
 }

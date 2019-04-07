@@ -47,4 +47,17 @@ public class ViewController {
     public ResponseEntity<View> postView(@RequestBody @NotNull View view) {
         return ResponseEntity.ok(this.repository.save(view));
     }
+
+    @DeleteMapping(path = "/{view}/forms/{form}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> deleteFileFromView(@PathVariable View view, @PathVariable Form form) {
+        view.removeForm(form);
+        this.repository.save(view);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping(path = "/{view}/forms", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<View> addFileToView(@PathVariable View view, @RequestBody Form form) {
+        view.addForm(form);
+        return ResponseEntity.ok(this.repository.save(view));
+    }
 }

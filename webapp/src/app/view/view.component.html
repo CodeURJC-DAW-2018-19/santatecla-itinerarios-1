@@ -5,61 +5,50 @@
     <div layout-gt-sm="row" tdMediaToggle="gt-xs">
       <div flex-gt-sm="40">
         <mat-card>
-          <mat-card-content>
-
-            <mat-card>
-              <mat-card-title>Fichas</mat-card-title>
-              <mat-divider></mat-divider>
-              <mat-list class="will-load alert-list">
-                <ng-template tdLoading="files.load">
-                  <ng-template let-file let-last="last" ngFor [ngForOf]="files">
-                    <mat-list-item layout-align="row">
-                      <h3 matLine> {{file.title}}</h3>
-                      <p matLine> {{file.title}} </p>
-                      <span flex></span>
-                      <button mat-icon-button (click)="deleteFileReference(file)">
-                        <mat-icon>delete</mat-icon>
-                      </button>
-                    </mat-list-item>
-                    <mat-divider *ngIf="!last" [inset]="true"></mat-divider>
-                  </ng-template>
-                </ng-template>
-              </mat-list>
-              <mat-divider></mat-divider>
-              <mat-card-actions>
-                <a mat-button color="accent" class="text-upper" [routerLink]="['/logs']">
-                  <span>View More</span>
-                </a>
-              </mat-card-actions>
-            </mat-card>
-
-            <div align="center">
-              <mat-form-field layout-padding="40px">
-                <mat-label>UNIDAD</mat-label>
-                <mat-select>
-                  <mat-option *ngFor="let unit of units" [value]="unit">
-                    {{unit}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-
-              <mat-form-field layout-padding="40px">
-                <mat-label>UNIDAD</mat-label>
-                <mat-select>
-                  <mat-option *ngFor="let unit of units" [value]="unit">
-                    {{unit}}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-
-              <a mat-button color="accent" class="text-upper" (click)="addFileReference">
-                <span>Añadir</span>
-              </a>
-            </div>
-
-          </mat-card-content>
-
+          <mat-card-title>Fichas</mat-card-title>
+          <mat-divider></mat-divider>
+          <mat-list class="will-load alert-list">
+            <ng-template tdLoading="files.load">
+              <ng-template let-file let-last="last" ngFor [ngForOf]="files">
+                <mat-list-item layout-align="row">
+                  <h3 matLine> {{file.title}}</h3>
+                  <p matLine> {{file.title}} </p>
+                  <span flex></span>
+                  <button mat-icon-button (click)="deleteFileReference(file)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </mat-list-item>
+                <mat-divider *ngIf="!last" [inset]="true"></mat-divider>
+              </ng-template>
+            </ng-template>
+          </mat-list>
+          <mat-divider></mat-divider>
+          <mat-card-actions>
+            <a mat-button color="accent" class="text-upper" [routerLink]="['/logs']">
+              <span>View More</span>
+            </a>
+          </mat-card-actions>
         </mat-card>
+
+        <div align="center" class="select-form">
+          <mat-form-field>
+            <mat-label>UNIDAD</mat-label>
+            <mat-select (selectionChange)="selectUnit($event.value)">
+              <mat-option *ngFor=" let unit of units" [value]="unit">
+                {{unit.title}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Ficha</mat-label>
+            <mat-select #selectFileRef>
+              <mat-option *ngFor="let file of candidates" [value]="file">
+                {{file.title}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-button color="accent" (click)="addFileReference(selectFileRef.value)">Añadir</button>
+        </div>
       </div>
 
       <div flex-gt-sm="60">
@@ -71,7 +60,7 @@
               <mat-card *ngFor="let file of files">
                 <mat-card-title>{{file.title}}</mat-card-title>
                 <mat-card-content>
-                  <td-markdown>{{file.descripiton}}</td-markdown>
+                  <td-markdown>{{file.description}}</td-markdown>
                 </mat-card-content>
               </mat-card>
               <mat-divider></mat-divider>

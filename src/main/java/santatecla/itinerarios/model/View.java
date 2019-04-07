@@ -12,6 +12,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
 
 @Entity
@@ -38,5 +41,15 @@ public class View extends Item {
         if (this.forms != null) {
             this.forms.remove(form);
         }
+    }
+
+    @JsonIgnore
+    public Itinerary getItinerary() {
+        return this.itinerary;
+    }
+
+    @JsonProperty
+    public void setItinerary(Itinerary itinerary) {
+        this.itinerary = itinerary;
     }
 }
