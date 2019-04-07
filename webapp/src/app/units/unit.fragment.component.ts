@@ -7,7 +7,7 @@ import { ResourcesService } from '../service/resources.service';
 @Component({
     selector: 'app-unit-fragment',
     templateUrl: './unit.fragment.component.html',
-    styleUrls: ['./units.component.scss']
+    styleUrls: ['./unit.fragment.component.scss']
 })
 export class UnitsFragmentComponent implements OnInit {
     @Input()
