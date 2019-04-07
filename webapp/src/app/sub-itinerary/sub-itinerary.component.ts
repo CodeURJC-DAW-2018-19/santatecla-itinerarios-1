@@ -1,5 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Itinerary } from '../model/itinerary';
+import { ResourcesService } from '../service/resources.service';
+import { Unit } from '../model/unit';
+import { Item } from '../model/item';
 
 @Component({
     selector: 'app-sub-itinerary',
@@ -13,20 +16,39 @@ export class SubItineraryComponent implements OnInit {
     @Output()
     delete: EventEmitter<any>;
 
-    units = [
-        { text: 'Javascript', atribute2: 1 },
-        { text: 'CERN', atribute2: 1 },
-    ];
+    @Output()
+    update: EventEmitter<Itinerary>;
 
+    units: Unit[];
 
-    constructor() {
+    itineraries: Itinerary[];
+
+    items: Item[];
+
+    constructor(
+        private rest: ResourcesService
+    ) {
         this.delete = new EventEmitter();
+        this.update = new EventEmitter();
     }
 
     ngOnInit() {
+        this.itinerary = new Itinerary(this.itinerary, this.rest);
+        this.rest.fetchUnits().subscribe(units => {
+            this.units = units;
+        });
+        this.itinerary.items.subscribe(items => this.items = items);
     }
 
     deleteSubItinerary() {
         this.delete.emit();
+    }
+
+    updateItineraries(unit: Unit) {
+        unit.itineraries.subscribe(itineraries => this.itineraries = itineraries);
+    }
+
+    change(itinerary: Itinerary) {
+
     }
 }

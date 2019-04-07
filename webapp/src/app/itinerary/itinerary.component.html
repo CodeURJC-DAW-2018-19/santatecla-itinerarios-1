@@ -11,7 +11,7 @@
       <ng-template let-item let-last="last" ngFor [ngForOf]="items">
         <ng-container *ngIf="item.isItinerary; then subItinerary else view"></ng-container>
         <ng-template #subItinerary>
-          <app-sub-itinerary [itinerary]="item" (delete)="deleteItem(item)">
+          <app-sub-itinerary [itinerary]="item" (delete)="deleteItem(item)" (update)="updateSubItinerary(item, $event.value)">
           </app-sub-itinerary>
         </ng-template>
         <ng-template #view>

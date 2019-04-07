@@ -4,7 +4,25 @@
     <mat-toolbar color="primary">
       <mat-toolbar-row>
         <h3>{{itinerary.title}}</h3>
+
         <span flex></span>
+        <mat-form-field>
+          <mat-label>Unidades</mat-label>
+          <mat-select (selectionChange)="updateItineraries($event.value)" [(ngModel)]="selectedUnit">
+            <mat-option *ngFor="let unit of units" [value]="unit">
+              {{unit.title}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Itinerario</mat-label>
+          <mat-select [(ngModel)]="selectedItinerary">
+            <mat-option *ngFor="let itinerary of itineraries" [value]="itinerary">
+              {{itinerary.title}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
         <button mat-icon-button (click)="deleteSubItinerary()">
           <mat-icon>delete</mat-icon>
         </button>
@@ -13,24 +31,12 @@
   </mat-card-title>
 
   <mat-card-content>
-    <div>
-      <mat-form-field layout-padding="40px">
-        <mat-label>UNIDAD</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let unit of units" [value]="unit">
-            {{unit.text}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
 
-      <mat-form-field layout-padding="40px">
-        <mat-label>ITINERARIO</mat-label>
-        <mat-select>
-          <mat-option>
-            {{itinerary.title}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+    Ruben
+
+    <div *ngFor="let item of items">
+      soy item {{item.id}}
     </div>
+
   </mat-card-content>
 </mat-card>
