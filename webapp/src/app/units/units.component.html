@@ -8,11 +8,20 @@
 <td-expansion-panel *ngFor="let unit of units" label="{{unit.title}}">
   <div class="md-padding">
     <mat-nav-list>
-      <a mat-list-item [routerLink]="'/units/' + unit.id + '/itineraries/' + itinerary.id"
-         *ngFor="let itinerary of unit.itineraries | async"> {{itinerary.title}} </a>
       <div layout="row">
-        <mat-button-toggle style="margin-left: auto"><i class="material-icons">add_circle</i></mat-button-toggle>
-        <mat-button-toggle><i class="material-icons" >delete</i></mat-button-toggle>
+        <a *ngFor="let itinerary of unit.itineraries | async"> {{itinerary.title}} </a>
+        <span>
+        <button mat-icon-button [mat-menu-trigger-for]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu x-position="before" #menu="matMenu">
+          <a [routerLink]="'/units/' + unit.id + '/itineraries/' + itinerary.id"
+             *ngFor="let itinerary of unit.itineraries | async" mat-menu-item><mat-icon>send</mat-icon>Acceder</a>
+          <button mat-menu-item (click)="deleteUnit(unit)">
+            <mat-icon>delete</mat-icon> Delete
+          </button>
+        </mat-menu>
+      </span>
       </div>
     </mat-nav-list>
   </div>

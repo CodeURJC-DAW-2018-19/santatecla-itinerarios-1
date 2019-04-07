@@ -43,6 +43,10 @@ export class UnitsComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
+
+  deleteUnit(unit:Unit){
+    this.rest.deleteResource(unit).subscribe(()=>this.units=this.units.filter(e=>e.id!==unit.id));
+  }
 }
 
 @Component({
