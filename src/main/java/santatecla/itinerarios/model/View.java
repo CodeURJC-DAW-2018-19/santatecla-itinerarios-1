@@ -30,6 +30,10 @@ public class View extends Item {
                     @UniqueConstraint(columnNames = { "itinerary_id", "item_id" }) })
     private Itinerary itinerary;
 
+    public View() {
+        super(null);
+    }
+
     public void addForm(Form form) {
         if (forms == null) {
             this.forms = new HashSet<>();

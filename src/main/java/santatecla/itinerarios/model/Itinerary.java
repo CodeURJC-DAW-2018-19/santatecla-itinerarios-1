@@ -59,6 +59,7 @@ public class Itinerary extends Item {
     }
 
     public Itinerary(String title) {
+        super(null);
         this.title = title;
     }
 
