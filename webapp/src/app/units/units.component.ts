@@ -54,7 +54,11 @@ export class AddUnitDialog {
     public dialogRef: MatDialogRef<AddUnitDialog>,
     private rest: ResourcesService,
     @Inject(MAT_DIALOG_DATA) public data: UnitDialogData) {
+    if(data.unit){
+      data.unit=new Unit({},this.rest)
+    }
   }
+
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -64,5 +68,4 @@ export class AddUnitDialog {
     this.rest.saveUnit(this.data.unit).subscribe(unit=>this.data.callback(unit));
     this.dialogRef.close();
   }
-
 }
