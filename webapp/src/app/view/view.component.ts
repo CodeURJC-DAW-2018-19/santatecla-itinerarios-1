@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { View } from '../model/view';
 import { File } from '../model/file';
 import { ResourcesService } from '../service/resources.service';
@@ -13,6 +13,10 @@ export class ViewComponent implements OnInit {
 
     @Input()
     view: View;
+
+    @Output()
+    delete: EventEmitter<any>;
+
     files: File[];
     units: Unit[];
     candidates: File[];
@@ -20,12 +24,17 @@ export class ViewComponent implements OnInit {
     constructor(
         private rest: ResourcesService
     ) {
+        this.delete = new EventEmitter();
     }
 
     ngOnInit() {
         this.view = new View(this.view, this.rest);
         this.view.files.subscribe(files => this.files = files);
         this.rest.fetchUnits().subscribe(units => this.units = units);
+    }
+
+    deleteView() {
+        this.delete.emit();
     }
 
     addFileReference(file: File) {

@@ -1,5 +1,15 @@
 <mat-card cardWidth="75">
-  <mat-card-title>VISTA</mat-card-title>
+  <mat-card-title>
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <h3>VISTA</h3>
+        <span flex></span>
+        <button mat-icon-button (click)="deleteView()">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </mat-card-title>
   <mat-card-content>
 
     <div layout-gt-sm="row" tdMediaToggle="gt-xs">

@@ -40,4 +40,8 @@ export class ItineraryComponent implements OnInit {
         }
         console.log(this.option);
     }
+
+    delete(item: Item) {
+        this.rest.deleteResource(item).subscribe(() => this.items = this.items.filter(e => e.id !== item.id));
+    }
 }
