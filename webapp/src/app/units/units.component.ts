@@ -3,10 +3,16 @@ import {Unit} from '../model/unit';
 import {ResourcesService} from '../service/resources.service';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 import {FileDialogComponent} from "../files/file.dialog.component";
+import {Itinerary} from "../model/itinerary";
 
 export interface UnitDialogData {
   unit:Unit;
   callback:(Unit)=>void;
+}
+
+export interface ItineraryDialogData {
+  itinerary:Itinerary;
+  callback:(Itinerary)=>void;
 }
 
 @Component({
@@ -18,6 +24,7 @@ export class UnitsComponent implements OnInit {
   units: Unit[];
   searchInputTerm: string;
   unit: number;
+  itinerary:number;
 
   constructor(private rest: ResourcesService, public dialog: MatDialog) {
   }
@@ -29,7 +36,6 @@ export class UnitsComponent implements OnInit {
   onBlurEvent() {
 
   }
-
 
   createUnit(): void {
     const dialogRef = this.dialog.open(AddUnitDialog, {
@@ -46,6 +52,19 @@ export class UnitsComponent implements OnInit {
 
   deleteUnit(unit:Unit){
     this.rest.deleteResource(unit).subscribe(()=>this.units=this.units.filter(e=>e.id!==unit.id));
+  }
+
+  addItinerary(): void {
+    const dialogRef = this.dialog.open(AddUnitDialog, {
+      data: {
+       itinerary: this.itinerary,
+        callback: itinerary => this.units.push(itinerary)
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 }
 
@@ -70,6 +89,31 @@ export class AddUnitDialog {
 
   addUnit() {
     this.rest.saveUnit(this.data.unit).subscribe(unit=>this.data.callback(unit));
+    this.dialogRef.close();
+  }
+}
+
+@Component({
+  selector: 'app-add-itinerary',
+  templateUrl: './add-itinerary.component.html',
+})
+export class AddItineraryDialog {
+  constructor(
+    public dialogRef: MatDialogRef<AddItineraryDialog>,
+    private rest: ResourcesService,
+    @Inject(MAT_DIALOG_DATA) public data: ItineraryDialogData) {
+    if(!data.itinerary){
+      data.itinerary=new Itinerary({},this.rest)
+    }
+  }
+
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  addItinerary() {
+    this.rest.saveItinerary(this.data.itinerary).subscribe(itinerary=>this.data.callback(itinerary));
     this.dialogRef.close();
   }
 }
