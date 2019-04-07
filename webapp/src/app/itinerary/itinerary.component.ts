@@ -42,7 +42,8 @@ export class ItineraryComponent implements OnInit {
         }
     }
 
-    deleteItem(item: Item) { // TODO: can't delete subitinerary
-        this.rest.deleteResource(item).subscribe(() => this.items = this.items.filter(e => e.id !== item.id));
+    deleteItem(item: Item) {
+        this.rest.deleteResourceRelation(this.itinerary, '/items/' + item.id)
+            .subscribe(() => this.items = this.items.filter(e => e.id !== item.id));
     }
 }
