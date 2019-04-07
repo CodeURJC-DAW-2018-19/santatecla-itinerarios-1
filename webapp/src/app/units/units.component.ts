@@ -54,7 +54,7 @@ export class AddUnitDialog {
     public dialogRef: MatDialogRef<AddUnitDialog>,
     private rest: ResourcesService,
     @Inject(MAT_DIALOG_DATA) public data: UnitDialogData) {
-    if(data.unit){
+    if(!data.unit){
       data.unit=new Unit({},this.rest)
     }
   }
