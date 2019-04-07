@@ -23,7 +23,7 @@
         </mat-menu>
       </span>
       </div>
-      <button mat-menu-item (click)="addItinerary()">
+      <button *ngFor="let itinerary of unit.itineraries | async" mat-menu-item (click)="addItinerary(unit)">
         <mat-icon>add_circle</mat-icon> Add Itinerary
       </button>
     </mat-nav-list>

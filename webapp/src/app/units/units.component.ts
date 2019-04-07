@@ -55,11 +55,11 @@ export class UnitsComponent implements OnInit {
     this.rest.deleteResource(unit).subscribe(() => this.units = this.units.filter(e => e.id !== unit.id));
   }
 
-  addItinerary(): void {
+  addItinerary(unit): void {
     const dialogRef = this.dialog.open(AddItineraryDialog, {
       data: {
         itinerary: this.itinerary,
-        unit: this.unit
+        unit: unit.id
       }
     });
 
