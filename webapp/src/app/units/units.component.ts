@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Itinerary } from "../model/itinerary";
+import { TdDialogService } from '@covalent/core';
+import { Itinerary } from '../model/itinerary';
 import { Unit } from '../model/unit';
 import { ResourcesService } from '../service/resources.service';
 
@@ -26,7 +27,11 @@ export class UnitsComponent implements OnInit {
     unit: number;
     itinerary: Itinerary;
 
-    constructor(private rest: ResourcesService, public dialog: MatDialog) {
+    constructor(
+        private rest: ResourcesService,
+        public dialog: MatDialog,
+        private dialogService: TdDialogService
+    ) {
     }
 
     ngOnInit(): void {
@@ -38,15 +43,15 @@ export class UnitsComponent implements OnInit {
     }
 
     createUnit(): void {
-        const dialogRef = this.dialog.open(AddUnitDialog, {
-            data: {
-                unit: this.unit,
-                callback: unit => this.units.push(unit)
+        this.dialogService.openPrompt({
+            message: 'Introduzca el título',
+            title: 'Añadir Nueva Unidad',
+            cancelButton: 'Cancelar',
+            acceptButton: 'Crear'
+        }).afterClosed().subscribe((title: string) => {
+            if (title) {
+                this.rest.saveUnit(new Unit({ title }, this.rest)).subscribe(unit => this.units.push(unit));
             }
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
         });
     }
 
@@ -65,31 +70,6 @@ export class UnitsComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
             console.log('The dialog was closed');
         });
-    }
-}
-
-@Component({
-    selector: 'app-add-unit',
-    templateUrl: './add-unit.component.html',
-})
-export class AddUnitDialog {
-    constructor(
-        public dialogRef: MatDialogRef<AddUnitDialog>,
-        private rest: ResourcesService,
-        @Inject(MAT_DIALOG_DATA) public data: UnitDialogData) {
-        if (!data.unit) {
-            data.unit = new Unit({}, this.rest)
-        }
-    }
-
-
-    onNoClick(): void {
-        this.dialogRef.close();
-    }
-
-    addUnit() {
-        this.rest.saveUnit(this.data.unit).subscribe(unit => this.data.callback(unit));
-        this.dialogRef.close();
     }
 }
 
@@ -114,7 +94,7 @@ export class AddItineraryDialog {
 
     addItinerary() {
         this.rest.fetchUnit(this.data.unit).subscribe(unit => {
-            this.rest.addResourceRelation(unit, this.data.itinerary, "itineraries").subscribe(itinerary => this.data.callback(itinerary))
+            this.rest.addResourceRelation(unit, this.data.itinerary, 'itineraries').subscribe(itinerary => this.data.callback(itinerary))
         });
         this.dialogRef.close();
     }
