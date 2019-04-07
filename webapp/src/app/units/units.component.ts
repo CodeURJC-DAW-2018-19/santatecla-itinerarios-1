@@ -1,56 +1,68 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { Unit } from '../model/unit';
-import { ResourcesService } from '../service/resources.service';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
+import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/core';
+import {Unit} from '../model/unit';
+import {ResourcesService} from '../service/resources.service';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
+import {FileDialogComponent} from "../files/file.dialog.component";
+
 export interface UnitDialogData {
-    file: File;
+  unit:Unit;
+  callback:(Unit)=>void;
 }
+
 @Component({
-    selector: 'app-units',
-    templateUrl: './units.component.html',
-    styleUrls: ['./units.component.scss']
+  selector: 'app-units',
+  templateUrl: './units.component.html',
+  styleUrls: ['./units.component.scss']
 })
 export class UnitsComponent implements OnInit {
-    units: Unit[];
-    searchInputTerm: string;
+  units: Unit[];
+  searchInputTerm: string;
+  unit: number;
 
-    constructor(private rest: ResourcesService, public dialog: MatDialog) {
-    }
-    ngOnInit(): void {
-        this.rest.fetchUnits().subscribe(units => this.units = units);
-    }
+  constructor(private rest: ResourcesService, public dialog: MatDialog) {
+  }
 
-    onBlurEvent() {
+  ngOnInit(): void {
+    this.rest.fetchUnits().subscribe(units => this.units = units);
+  }
 
-    }
+  onBlurEvent() {
 
-    openDialog(): void {
-        const dialogRef = this.dialog.open(AddUnitDialog, {
-            width: '250px',
-        });
+  }
 
-        dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
-        });
-    }
+
+  createUnit(): void {
+    const dialogRef = this.dialog.open(AddUnitDialog, {
+      data: {
+        unit: this.unit,
+        callback: unit => this.units.push(unit)
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
 }
 
 @Component({
-    selector: 'app-add-unit',
-    templateUrl: './add-unit.component.html',
+  selector: 'app-add-unit',
+  templateUrl: './add-unit.component.html',
 })
 export class AddUnitDialog {
+  constructor(
+    public dialogRef: MatDialogRef<AddUnitDialog>,
+    private rest: ResourcesService,
+    @Inject(MAT_DIALOG_DATA) public data: UnitDialogData) {
+  }
 
-    constructor(
-        public dialogRef: MatDialogRef<AddUnitDialog>,
-        @Inject(MAT_DIALOG_DATA) public data: UnitDialogData) { }
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 
-    onNoClick(): void {
-        this.dialogRef.close();
-    }
+  addUnit() {
+    this.rest.saveUnit(this.data.unit).subscribe(unit=>this.data.callback(unit));
+    this.dialogRef.close();
+  }
 
-    public addUnit(title: string, unit: Unit) {
-        unit.title = title;
-        this.dialogRef.close();
-    }
 }

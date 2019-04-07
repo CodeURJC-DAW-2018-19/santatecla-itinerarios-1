@@ -2,7 +2,9 @@
                [debounce]="500" [alwaysVisible]="true" (searchDebounce)="searchInputTerm = $event"
                (search)="searchInputTerm = $event" (clear)="searchInputTerm = ''" (blur)="onBlurEvent()">
 </td-search-box>
-<button mat-raised-button style="margin-left: 96%" (click)="openDialog()"><i class="material-icons">add_circle</i></button>
+<button mat-fab color="accent" class="mat-fab-bottom-right fixed z-3" (click)="createUnit()">
+  <mat-icon>add</mat-icon>
+</button>
 <td-expansion-panel *ngFor="let unit of units" label="{{unit.title}}">
   <div class="md-padding">
     <mat-nav-list>
@@ -10,7 +12,7 @@
          *ngFor="let itinerary of unit.itineraries | async"> {{itinerary.title}} </a>
       <div layout="row">
         <mat-button-toggle style="margin-left: auto"><i class="material-icons">add_circle</i></mat-button-toggle>
-        <mat-button-toggle><i class="material-icons">delete</i></mat-button-toggle>
+        <mat-button-toggle><i class="material-icons" >delete</i></mat-button-toggle>
       </div>
     </mat-nav-list>
   </div>

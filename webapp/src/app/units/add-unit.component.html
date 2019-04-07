@@ -2,10 +2,10 @@
 <mat-dialog-content class="mat-typography">
   <mat-form-field>
     <h1>Title</h1>
-    <input #title matInput [(ngModel)]="data.title" type='text'>
+    <input #title matInput [(ngModel)]="data.unit.title" type='text'>
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button (click)="onNoClick()">Cancelar</button>
-  <button mat-button >Add</button>
+  <button mat-button (click)="addUnit()">Add</button>
 </mat-dialog-actions>
