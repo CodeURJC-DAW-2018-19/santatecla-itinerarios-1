@@ -32,11 +32,11 @@
 
   <mat-card-content>
 
-    Ruben
-
-    <div *ngFor="let item of items">
-      soy item {{item.id}}
-    </div>
+      <div *ngFor="let item of items; let i =index">
+        <mat-card-content>
+             - {{item.title}} - view {{i+1}}
+        </mat-card-content>
+      </div>
 
   </mat-card-content>
 </mat-card>
