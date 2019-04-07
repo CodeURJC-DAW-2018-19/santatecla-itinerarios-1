@@ -6,13 +6,14 @@ import {FileDialogComponent} from "../files/file.dialog.component";
 import {Itinerary} from "../model/itinerary";
 
 export interface UnitDialogData {
-  unit:Unit;
-  callback:(Unit)=>void;
+  unit: Unit;
+  callback: (Unit) => void;
 }
 
 export interface ItineraryDialogData {
-  itinerary:Itinerary;
-  callback:(Itinerary)=>void;
+  itinerary: Itinerary;
+  callback: (Itinerary) => void;
+  unit: number
 }
 
 @Component({
@@ -24,7 +25,7 @@ export class UnitsComponent implements OnInit {
   units: Unit[];
   searchInputTerm: string;
   unit: number;
-  itinerary:number;
+  itinerary: Itinerary;
 
   constructor(private rest: ResourcesService, public dialog: MatDialog) {
   }
@@ -50,15 +51,15 @@ export class UnitsComponent implements OnInit {
     });
   }
 
-  deleteUnit(unit:Unit){
-    this.rest.deleteResource(unit).subscribe(()=>this.units=this.units.filter(e=>e.id!==unit.id));
+  deleteUnit(unit: Unit) {
+    this.rest.deleteResource(unit).subscribe(() => this.units = this.units.filter(e => e.id !== unit.id));
   }
 
   addItinerary(): void {
     const dialogRef = this.dialog.open(AddItineraryDialog, {
       data: {
-       itinerary: this.itinerary,
-        callback: itinerary => this.units.push(itinerary)
+        itinerary: this.itinerary,
+        unit: this.unit
       }
     });
 
@@ -77,8 +78,8 @@ export class AddUnitDialog {
     public dialogRef: MatDialogRef<AddUnitDialog>,
     private rest: ResourcesService,
     @Inject(MAT_DIALOG_DATA) public data: UnitDialogData) {
-    if(!data.unit){
-      data.unit=new Unit({},this.rest)
+    if (!data.unit) {
+      data.unit = new Unit({}, this.rest)
     }
   }
 
@@ -88,7 +89,7 @@ export class AddUnitDialog {
   }
 
   addUnit() {
-    this.rest.saveUnit(this.data.unit).subscribe(unit=>this.data.callback(unit));
+    this.rest.saveUnit(this.data.unit).subscribe(unit => this.data.callback(unit));
     this.dialogRef.close();
   }
 }
@@ -102,8 +103,8 @@ export class AddItineraryDialog {
     public dialogRef: MatDialogRef<AddItineraryDialog>,
     private rest: ResourcesService,
     @Inject(MAT_DIALOG_DATA) public data: ItineraryDialogData) {
-    if(!data.itinerary){
-      data.itinerary=new Itinerary({},this.rest)
+    if (!data.itinerary) {
+      data.itinerary = new Itinerary({}, this.rest)
     }
   }
 
@@ -113,7 +114,9 @@ export class AddItineraryDialog {
   }
 
   addItinerary() {
-    this.rest.saveItinerary(this.data.itinerary).subscribe(itinerary=>this.data.callback(itinerary));
+    this.rest.fetchUnit(this.data.unit).subscribe(unit => {
+      this.rest.addResourceRelation(unit, this.data.itinerary, "itineraries").subscribe(itinerary => this.data.callback(itinerary))
+    });
     this.dialogRef.close();
   }
 }
