@@ -1,32 +1,9 @@
-<td-search-box backIcon="arrow_back" placeholder="Search here" [(ngModel)]="searchInputTerm" [showUnderline]="true"
-               [debounce]="500" [alwaysVisible]="true" (searchDebounce)="searchInputTerm = $event"
-               (search)="searchInputTerm = $event" (clear)="searchInputTerm = ''" (blur)="onBlurEvent()">
+<td-search-box backIcon="arrow_back" placeholder="Search here" [(ngModel)]="searchInputTerm" [showUnderline]="true" [debounce]="500" [alwaysVisible]="true" (searchDebounce)="searchInputTerm = $event" (search)="searchInputTerm = $event" (clear)="searchInputTerm = ''" (blur)="onBlurEvent()">
 </td-search-box>
 <button mat-fab color="accent" class="mat-fab-bottom-right fixed z-3" (click)="createUnit()">
   <mat-icon>add</mat-icon>
 </button>
 <td-expansion-panel *ngFor="let unit of units" label="{{unit.title}}">
-  <div class="md-padding">
-    <mat-nav-list>
-      <div layout="row">
-        <a *ngFor="let itinerary of unit.itineraries | async"> {{itinerary.title}} </a>
-        <span>
-        <button mat-icon-button [mat-menu-trigger-for]="menu">
-          <mat-icon>more_vert</mat-icon>
-        </button>
-        <mat-menu x-position="before" #menu="matMenu">
-          <a [routerLink]="'/units/' + unit.id + '/itineraries/' + itinerary.id"
-             *ngFor="let itinerary of unit.itineraries | async" mat-menu-item><mat-icon>send</mat-icon>Acceder</a>
-          <button mat-menu-item (click)="deleteUnit(unit)">
-            <mat-icon>delete</mat-icon> Delete
-          </button>
-        </mat-menu>
-      </span>
-      </div>
-      <button *ngFor="let itinerary of unit.itineraries | async" mat-menu-item (click)="addItinerary(unit)">
-        <mat-icon>add_circle</mat-icon> Add Itinerary
-      </button>
-    </mat-nav-list>
-  </div>
+  <app-unit-fragment [unit]="unit" (delete)="deleteUnit(unit)"></app-unit-fragment>
 </td-expansion-panel>
 <router-outlet></router-outlet>

@@ -44,11 +44,4 @@ public class UnitController {
         itinerary.setUnit(unit);
         return ResponseEntity.ok(this.itineraryRepository.save(itinerary));
     }
-
-    @PostMapping(path = "/{unit}/itineraries", consumes = { MediaType.APPLICATION_JSON_VALUE })
-    public ResponseEntity<Itinerary> addItineraryToUnit(@PathVariable @NotNull Unit unit,
-            @RequestBody @Valid @NotNull Itinerary itinerary) {
-        itinerary.setUnit(unit);
-        return ResponseEntity.ok(this.itineraryRepository.save(itinerary));
-    }
 }

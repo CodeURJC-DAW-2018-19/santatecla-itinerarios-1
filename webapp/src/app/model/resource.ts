@@ -34,16 +34,7 @@ export class Resource {
         ...resources: string[]
     ): Observable<T[]> {
         if (this._links) {
-            if (typeof this._links[property] === 'string') {
-                this._links[property] = this.rest.fetchResources(this._links[property], Entity, property, ...resources)
-                    .pipe(
-                        catchError(err => {
-                            this._links[property] = null;
-                            return throwError(err);
-                        })
-                    );
-            }
-            return this._links[property];
+            return this.rest.fetchResources(this._links[property], Entity, property, ...resources);
         } else {
             return throwError('empty');
         }
@@ -51,5 +42,9 @@ export class Resource {
 
     public get self(): string {
         return this._links.self;
+    }
+
+    public link(resource: string) {
+        return this._links[resource];
     }
 }

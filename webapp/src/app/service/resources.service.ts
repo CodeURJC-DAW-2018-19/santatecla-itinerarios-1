@@ -18,39 +18,49 @@ export class ResourcesService {
     constructor(private http: HttpClient) {
     }
 
+    private pipe<T extends Resource>(raw: any, Entity: new (raw: any, rest: ResourcesService) => T) {
+        const entity = new Entity(raw, this);
+        this.cache.set(entity.self, of(entity));
+        return entity;
+    }
+
+    refreshResources<T extends Resource>(
+        url: string,
+        Entity: new (raw: any, rest: ResourcesService) => T,
+        ...resources: string[]
+    ): Observable<T[]> {
+        this.cache.set(url, this.http.get<{ _embedded: {} }>(url).pipe(
+            map<{ _embedded: {} }, T[]>(r => {
+                resources = resources.map(resource => r._embedded[resource] || []);
+                return [].concat(...resources);
+            }),
+            map(entities => entities.map(entity => this.pipe(entity, Entity))),
+            shareReplay(1)
+        ));
+        return this.cache.get(url);
+    }
+
+    refreshResource<T extends Resource>(url: string, Entity: new (raw: any, rest: ResourcesService) => T) {
+        this.cache.set(url, this.http.get<T>(url).pipe(
+            map(raw => this.pipe(raw, Entity)),
+            shareReplay(1)
+        ));
+    }
+
     fetchResources<T extends Resource>(
         url: string,
         Entity: new (raw: any, rest: ResourcesService) => T,
         ...resources: string[]
     ): Observable<T[]> {
         if (!this.cache.get(url)) {
-            this.cache.set(url, this.http.get<{ _embedded: {} }>(url).pipe(
-                map<{ _embedded: {} }, T[]>(r => {
-                    resources = resources.map(resource => {
-                        if (r._embedded[resource]) {
-                            return r._embedded[resource].map(raw => new Entity(raw, this));
-                        } else {
-                            return [];
-                        }
-                    });
-                    return [].concat(...resources);
-                }),
-                tap(entities => entities.forEach(entity => {
-                    this.cache.set(entity.self, of(entity));
-                })),
-                shareReplay(1)
-            ));
+            return this.refreshResources(url, Entity, ...resources);
         }
         return this.cache.get(url);
     }
 
     fetchResource<T extends Resource>(url: string, Entity: new (raw: any, rest: ResourcesService) => T): Observable<T> {
         if (!this.cache.get(url)) {
-            this.cache.set(url, this.http.get<T>(url).pipe(
-                map(raw => new Entity(raw, this)),
-                tap(entity => this.cache.set(entity.self, of(entity))),
-                shareReplay(1)
-            ));
+            this.refreshResource(url, Entity);
         }
         return this.cache.get(url);
     }
@@ -99,8 +109,8 @@ export class ResourcesService {
             .pipe(mergeMap(unit => this.fetchResource('/api/units/' + unit.id, Unit)));
     }
 
-    saveItinerary(itinerary: Itinerary): Observable<Itinerary> {
-        return this.http.post<File>('/api/itineraries', this.clone(itinerary))
+    saveItinerary(itinerary): Observable<Itinerary> {
+        return this.http.post<Itinerary>('/api/itineraries', this.clone(itinerary))
             .pipe(mergeMap(itinerary => this.fetchResource('/api/itineraries/' + itinerary.id, Itinerary)));
     }
 

@@ -10,7 +10,8 @@ import { CredentialService } from './service/credential.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AddItineraryDialog, UnitsComponent } from './units/units.component';
+import { UnitsComponent } from './units/units.component';
+import { UnitsFragmentComponent } from './units/unit.fragment.component';
 import { ViewComponent } from './view/view.component';
 import { FileComponent } from './file/file.component';
 import { FilesComponent } from './files/files.component';
@@ -90,7 +91,7 @@ import { FileDialogComponent } from './file-dialog/file-dialog.component';
         SubItineraryComponent,
         DashboardComponent,
         FileDialogComponent,
-        AddItineraryDialog
+        UnitsFragmentComponent
     ],
     imports: [
         BrowserModule,
@@ -161,7 +162,7 @@ import { FileDialogComponent } from './file-dialog/file-dialog.component';
         deps: [CredentialService]
     }],
     bootstrap: [AppComponent],
-    entryComponents: [AppComponent, FileDialogComponent, AddItineraryDialog]
+    entryComponents: [AppComponent, FileDialogComponent]
 })
 export class AppModule {
 }
