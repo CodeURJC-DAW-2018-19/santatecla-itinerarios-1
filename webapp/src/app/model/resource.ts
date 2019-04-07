@@ -33,16 +33,20 @@ export class Resource {
         Entity: new (raw: any, rest: ResourcesService) => T,
         ...resources: string[]
     ): Observable<T[]> {
-        if (typeof this._links[property] === 'string') {
-            this._links[property] = this.rest.fetchResources(this._links[property], Entity, property, ...resources)
-                .pipe(
-                    catchError(err => {
-                        this._links[property] = null;
-                        return throwError(err);
-                    })
-                );
+        if (this._links) {
+            if (typeof this._links[property] === 'string') {
+                this._links[property] = this.rest.fetchResources(this._links[property], Entity, property, ...resources)
+                    .pipe(
+                        catchError(err => {
+                            this._links[property] = null;
+                            return throwError(err);
+                        })
+                    );
+            }
+            return this._links[property];
+        } else {
+            return throwError('empty');
         }
-        return this._links[property];
     }
 
     public get self(): string {

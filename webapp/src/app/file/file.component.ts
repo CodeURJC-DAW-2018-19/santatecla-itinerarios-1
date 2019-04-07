@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { File } from '../model/file';
+import { FileDialogComponent } from '../file-dialog/file-dialog.component';
 
 @Component({
     selector: 'app-file',
@@ -14,9 +15,6 @@ export class FileComponent implements OnInit {
     @Output()
     private remove = new EventEmitter<any>();
 
-    @Output()
-    private edit = new EventEmitter<any>();
-
     constructor(public dialog: MatDialog) {
     }
 
@@ -28,7 +26,18 @@ export class FileComponent implements OnInit {
         this.remove.emit();
     }
 
-    editFile() {
-        this.edit.emit();
+    editFile(): void {
+        const dialogRef = this.dialog.open(FileDialogComponent, {
+            data: {
+                file: this.file,
+                callback: (f) => {
+                    this.file = f;
+                }
+            }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log('The dialog was closed');
+        });
     }
 }

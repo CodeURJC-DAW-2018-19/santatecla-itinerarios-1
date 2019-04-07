@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { File } from '../model/file';
 import { ResourcesService } from '../service/resources.service';
-import { FileDialogComponent } from './file.dialog.component';
+import { FileDialogComponent } from '../file-dialog/file-dialog.component';
 
 @Component({
     selector: 'app-files',
@@ -25,6 +25,7 @@ export class FilesComponent implements OnInit {
             this.unit = Number(params.id);
             this.rest.fetchFiles(this.unit).subscribe(files => {
                 this.files = files;
+                this.files.forEach(file => file.unit = this.unit);
             });
         });
     }
@@ -36,24 +37,14 @@ export class FilesComponent implements OnInit {
     }
 
     createFile(): void {
+        const newFile = new File({}, this.rest);
+        newFile.unit = this.unit;
         const dialogRef = this.dialog.open(FileDialogComponent, {
             data: {
-                unit: this.unit,
-                callback: file => this.files.push(file)
-            }
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
-        });
-    }
-
-    editFile(file: File): void {
-        const dialogRef = this.dialog.open(FileDialogComponent, {
-            data: {
-                file,
-                unit: this.unit,
-                callback: () => {
+                file: newFile,
+                callback: file => {
+                    file.unit = this.unit;
+                    this.files.push(file);
                 }
             }
         });

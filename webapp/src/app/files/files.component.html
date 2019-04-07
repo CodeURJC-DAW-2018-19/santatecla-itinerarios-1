@@ -1,6 +1,6 @@
 <ng-template tdLoading="files.list">
   <ng-template let-file let-last="last" ngFor [ngForOf]="files">
-    <app-file [file]="file" (remove)="deleteFile(file)" (edit)="editFile(file)"></app-file>
+    <app-file [file]="file" (remove)="deleteFile(file)"></app-file>
     <mat-divider *ngIf="!last" [inset]="true"></mat-divider>
   </ng-template>
 </ng-template>

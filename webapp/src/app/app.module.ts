@@ -73,7 +73,7 @@ import { CovalentHttpModule } from '@covalent/http';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FileDialogComponent } from './files/file.dialog.component';
+import { FileDialogComponent } from './file-dialog/file-dialog.component';
 
 
 @NgModule({

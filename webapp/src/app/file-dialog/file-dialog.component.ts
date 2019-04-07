@@ -2,10 +2,10 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { File } from '../model/file';
 import { ResourcesService } from '../service/resources.service';
+import { Resource } from '../model/resource';
 
 export interface FileDialogData {
     file: File;
-    unit: number;
     callback: (File) => void;
 }
 
@@ -14,15 +14,14 @@ export interface FileDialogData {
     templateUrl: './file-dialog.component.html',
 })
 export class FileDialogComponent {
+    images: Resource[] = [];
+
     constructor(
         private dialogRef: MatDialogRef<FileDialogComponent>,
         private rest: ResourcesService,
         @Inject(MAT_DIALOG_DATA) public data: FileDialogData
     ) {
-        if (!data.file) {
-            data.file = new File({}, this.rest);
-        }
-        data.file.unit = data.unit;
+        data.file.images.subscribe(images => this.images = images);
     }
 
     cancel(): void {

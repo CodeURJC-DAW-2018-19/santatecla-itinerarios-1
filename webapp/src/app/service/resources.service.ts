@@ -80,7 +80,7 @@ export class ResourcesService {
     }
 
     saveFile(file: File): Observable<File> {
-        return this.http.post<File>('/api/forms', this.clone(file)).pipe(mergeMap(file => this.fetchFile(file.id)));
+        return this.http.post<File>('/api/forms', file).pipe(mergeMap(file => this.fetchFile(file.id)));
     }
 
     private clone(entity) {

@@ -36,7 +36,8 @@ public class Form {
 
     private String description;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id.form")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "id.form")
+    @JsonIgnore
     private Set<Image> images;
 
     @ManyToOne

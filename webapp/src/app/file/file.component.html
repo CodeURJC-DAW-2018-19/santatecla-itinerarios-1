@@ -3,7 +3,7 @@
     <mat-card-title>{{file.title}}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <td-markdown>{{file.description}}</td-markdown>
+    <td-markdown [content]="file.description"></td-markdown>
   </mat-card-content>
   <mat-card-actions>
     <button mat-button (click)="editFile()">

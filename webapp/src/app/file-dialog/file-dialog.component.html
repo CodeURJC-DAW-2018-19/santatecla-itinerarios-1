@@ -1,6 +1,6 @@
-<h1 mat-dialog-title>{{(data.file.id == null || data.file.id == 0)?'Crear ficha':'Editar ficha'}}</h1>
+<h1 mat-dialog-title>{{!data.file.id?'Crear ficha':'Editar ficha'}}</h1>
 <mat-dialog-content class="mat-typography">
-  <form #userForm="ngForm">
+  <form #fileElement="ngForm">
     <div layout="row">
       <mat-form-field flex>
         <input matInput #titleElement #titleControl="ngModel" type="text" placeholder="Titulo" [(ngModel)]="data.file.title" name="title" required>
@@ -11,12 +11,13 @@
         </mat-hint>
       </mat-form-field>
     </div>
-    <div layout="row" class="push-top">
+    <div layout="row">
       <td-text-editor #descriptionElement [(ngModel)]="data.file.description" name="description"></td-text-editor>
     </div>
   </form>
+  <p *ngFor="let image of images">{{image.self}}</p>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button (click)="cancel()">Cancelar</button>
-  <button mat-button (click)="save()">Guardar</button>
+  <button mat-button (click)="save()" type="submit" [disabled]="!fileElement.valid" color="accent">Guardar</button>
 </mat-dialog-actions>

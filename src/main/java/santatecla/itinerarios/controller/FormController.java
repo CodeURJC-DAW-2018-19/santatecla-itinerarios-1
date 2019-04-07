@@ -2,6 +2,7 @@ package santatecla.itinerarios.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -20,27 +21,33 @@ import org.springframework.web.multipart.MultipartFile;
 import santatecla.itinerarios.model.Form;
 import santatecla.itinerarios.model.Image;
 import santatecla.itinerarios.repo.FormRepository;
+import santatecla.itinerarios.repo.ImageRepository;
 
 @RepositoryRestController
 @RequestMapping("forms")
 public class FormController {
     private final FormRepository repository;
+    private final ImageRepository imageRepository;
 
-    public FormController(FormRepository repository) {
+    public FormController(FormRepository repository, ImageRepository imageRepository) {
         this.repository = repository;
+        this.imageRepository = imageRepository;
     }
 
     @PostMapping(value = "{form}/images")
-    public ResponseEntity<Form> addImage(@Valid @PathVariable Form form, @RequestParam List<MultipartFile> images)
+    public ResponseEntity<Form> addImage(@Valid @PathVariable Form form, @RequestParam List<MultipartFile> multiparts)
             throws IOException {
-        for (MultipartFile image : images) {
-            if (image != null) {
-                if (image.getOriginalFilename() != null && !image.getOriginalFilename().equals("")
-                        && image.getBytes().length > 0) {
-                    form.addImage(new Image(image.getOriginalFilename(), form, image.getBytes()));
-                }
-            }
-        }
+        this.imageRepository
+                .saveAll(multiparts.stream()
+                        .filter(multipart -> multipart.getOriginalFilename() != null
+                                && !"".equals(multipart.getOriginalFilename()) && multipart.getSize() > 0)
+                        .map(multipart -> {
+                            try {
+                                return new Image(multipart.getOriginalFilename(), form, multipart.getBytes());
+                            } catch (IOException e) {
+                                return null;
+                            }
+                        }).collect(Collectors.toList()));
         return ResponseEntity.ok(this.repository.save(form));
     }
 
@@ -49,7 +56,8 @@ public class FormController {
             @RequestParam("upload_image") List<MultipartFile> images) throws IOException {
         if (form.getId() == null)
             form = this.repository.save(form);
-        return this.addImage(form, images);
+        this.addImage(form, images);
+        return ResponseEntity.ok(form);
     }
 
     @PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE })
