@@ -12,7 +12,7 @@ export class AuthenticationService {
     }
 
     hasRole(role: string) {
-        if (this.credential.user != null) {
+        if (this.credential.user != null && this.credential.user.roles) {
             return this.credential.user.roles.includes(role);
         }
         return false;
