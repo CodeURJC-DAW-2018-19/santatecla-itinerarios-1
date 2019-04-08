@@ -18,6 +18,10 @@ export class AuthenticationService {
         return false;
     }
 
+    get isAdmin() {
+        return this.hasRole('admin');
+    }
+
     private authenticate(callback?: () => void, error?: () => void): void {
         this.http.get<CredentialDTO>(API_AUTH).subscribe(auth => {
             this.credential.update(auth);

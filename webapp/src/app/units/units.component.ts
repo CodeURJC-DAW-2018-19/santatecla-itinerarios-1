@@ -3,6 +3,7 @@ import { TdDialogService } from '@covalent/core';
 import { Itinerary } from '../model/itinerary';
 import { Unit } from '../model/unit';
 import { ResourcesService } from '../service/resources.service';
+import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
     selector: 'app-units',
@@ -16,7 +17,8 @@ export class UnitsComponent implements OnInit {
 
     constructor(
         private rest: ResourcesService,
-        private dialogService: TdDialogService
+        private dialogService: TdDialogService,
+        private auth: AuthenticationService
     ) {
     }
 
@@ -43,5 +45,9 @@ export class UnitsComponent implements OnInit {
 
     deleteUnit(unit: Unit) {
         this.rest.deleteResource(unit).subscribe(() => this.units = this.units.filter(e => e.id !== unit.id));
+    }
+
+    get isAdmin() {
+        return this.auth.isAdmin;
     }
 }
