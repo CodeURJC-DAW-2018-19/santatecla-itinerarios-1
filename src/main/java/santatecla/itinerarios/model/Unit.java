@@ -38,8 +38,8 @@ public class Unit {
     private List<Form> forms;
 
     @JsonCreator
-    public Unit(Long id) {
-        this.id = id;
+    public Unit(Long unit) {
+        this.id = unit;
     }
 
     public Unit(String title) {
