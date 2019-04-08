@@ -135,17 +135,20 @@ cd into folder webapp run the following commands.
     npm install
     npm install -g @angular/cli
 
-run the Spring server with
+run Spring backend
 
-    ng start
+run the angular dev server with
+
+    npm start
 
 ## Angular diagram
+
 ![Angular diagram](doc/diagramaAngular.png)
 
-## Despliegue
+## Deployment
 
     docker run hellodalo/daw
-    
+
 ## Youtube video
 
     https://youtu.be/mSG0jfF7Fm4
