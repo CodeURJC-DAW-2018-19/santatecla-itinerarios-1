@@ -54,8 +54,8 @@ public class Itinerary extends Item {
     }
 
     @JsonCreator
-    public Itinerary(Long id) {
-        super(id);
+    public Itinerary(Long itinerary) {
+        super(itinerary);
     }
 
     public Itinerary(String title) {

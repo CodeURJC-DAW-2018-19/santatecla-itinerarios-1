@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
@@ -24,7 +24,7 @@ public class View extends Item {
     private Set<Form> forms;
 
     @NotNull
-    @OneToOne
+    @ManyToOne
     @JoinTable(name = "itinerary_items", joinColumns = { @JoinColumn(name = "item_id") }, inverseJoinColumns = {
             @JoinColumn(name = "itinerary_id") }, uniqueConstraints = {
                     @UniqueConstraint(columnNames = { "itinerary_id", "item_id" }) })
