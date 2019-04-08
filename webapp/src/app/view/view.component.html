@@ -4,7 +4,7 @@
       <mat-toolbar-row>
         <h3>VISTA</h3>
         <span flex></span>
-        <button mat-icon-button (click)="deleteView()">
+        <button mat-icon-button (click)="deleteView()" *ngIf="isAdmin">
           <mat-icon>delete</mat-icon>
         </button>
       </mat-toolbar-row>
@@ -24,7 +24,7 @@
                   <h3 matLine> {{file.title}}</h3>
                   <p matLine> {{file.title}} </p>
                   <span flex></span>
-                  <button mat-icon-button (click)="deleteFileReference(file)">
+                  <button mat-icon-button (click)="deleteFileReference(file)" *ngIf="isAdmin">
                     <mat-icon>delete</mat-icon>
                   </button>
                 </mat-list-item>
@@ -40,7 +40,7 @@
           </mat-card-actions>
         </mat-card>
 
-        <div align="center" class="select-form">
+        <div align="center" class="select-form" *ngIf="isAdmin">
           <mat-form-field>
             <mat-label>UNIDAD</mat-label>
             <mat-select (selectionChange)="selectUnit($event.value)">
@@ -57,7 +57,7 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
-          <button mat-button color="accent" (click)="addFileReference(selectFileRef.value)">Añadir</button>
+          <button mat-button color="accent" (click)="addFileReference(selectFileRef.value)" *ngIf="isAdmin">Añadir</button>
         </div>
       </div>
 

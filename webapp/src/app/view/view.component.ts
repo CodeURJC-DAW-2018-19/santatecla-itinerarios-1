@@ -3,6 +3,7 @@ import { View } from '../model/view';
 import { File } from '../model/file';
 import { ResourcesService } from '../service/resources.service';
 import { Unit } from '../model/unit';
+import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
     selector: 'app-view',
@@ -22,7 +23,8 @@ export class ViewComponent implements OnInit {
     candidates: File[];
 
     constructor(
-        private rest: ResourcesService
+        private rest: ResourcesService,
+        private auth: AuthenticationService
     ) {
         this.delete = new EventEmitter();
     }
@@ -52,5 +54,9 @@ export class ViewComponent implements OnInit {
 
     selectUnit(unit: Unit) {
         this.rest.fetchFiles(unit.id).subscribe(files => this.candidates = files);
+    }
+
+    get isAdmin() {
+        return this.auth.isAdmin;
     }
 }
