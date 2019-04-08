@@ -42,11 +42,6 @@ public class Unit {
         this.id = id;
     }
 
-    @JsonCreator
-    public Unit(Integer id) {
-        this.id = Long.valueOf(id);
-    }
-
     public Unit(String title) {
         this.title = title;
     }
