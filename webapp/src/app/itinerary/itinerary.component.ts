@@ -4,6 +4,7 @@ import { Itinerary } from '../model/itinerary';
 import { ResourcesService } from '../service/resources.service';
 import { Item } from '../model/item';
 import { View } from '../model/view';
+import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
     selector: 'app-itinerary',
@@ -17,7 +18,8 @@ export class ItineraryComponent implements OnInit {
 
     constructor(
         private rest: ResourcesService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private auth: AuthenticationService
     ) {
     }
 
@@ -55,5 +57,9 @@ export class ItineraryComponent implements OnInit {
                         this.items[this.items.findIndex(e => e.id === item.id)] = subItinerary;
                     });
             });
+    }
+
+    get isAdmin() {
+        return this.auth.isAdmin;
     }
 }
