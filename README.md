@@ -137,8 +137,11 @@ cd into folder webapp run the following commands.
 
 run the Spring server with
 
-    ng serve
-    
-##Angular diagram
+    ng start
+
+## Angular diagram
 ![Angular diagram](doc/diagramaAngular.png)
 
+## Despliegue
+
+    docker run hellodalo/daw
