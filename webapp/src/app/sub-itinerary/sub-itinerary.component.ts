@@ -3,6 +3,7 @@ import { Itinerary } from '../model/itinerary';
 import { ResourcesService } from '../service/resources.service';
 import { Unit } from '../model/unit';
 import { Item } from '../model/item';
+import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
     selector: 'app-sub-itinerary',
@@ -28,7 +29,8 @@ export class SubItineraryComponent implements OnInit {
     unit: Unit;
 
     constructor(
-        private rest: ResourcesService
+        private rest: ResourcesService,
+        private auth: AuthenticationService
     ) {
         this.delete = new EventEmitter();
         this.update = new EventEmitter();
@@ -53,5 +55,9 @@ export class SubItineraryComponent implements OnInit {
 
     select(itinerary: Itinerary) {
         this.update.emit(itinerary);
+    }
+
+    get isAdmin() {
+        return this.auth.isAdmin;
     }
 }

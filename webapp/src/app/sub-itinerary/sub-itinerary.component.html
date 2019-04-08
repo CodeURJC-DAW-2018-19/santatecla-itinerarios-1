@@ -6,7 +6,7 @@
         <h3>{{itinerary.title}}</h3>
 
         <span flex></span>
-        <mat-form-field>
+        <mat-form-field *ngIf="isAdmin">
           <mat-label>Unidades</mat-label>
           <mat-select (selectionChange)="updateItineraries($event.value)" [(ngModel)]="selectedUnit">
             <mat-option *ngFor="let unit of units" [value]="unit">
@@ -15,7 +15,7 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field *ngIf="isAdmin">
           <mat-label>Itinerario</mat-label>
           <mat-select (selectionChange)="select($event.value)">
             <mat-option *ngFor="let itinerary of itineraries" [value]="itinerary">
@@ -23,7 +23,7 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <button mat-icon-button (click)="deleteSubItinerary()">
+        <button mat-icon-button (click)="deleteSubItinerary()" *ngIf="isAdmin">
           <mat-icon>delete</mat-icon>
         </button>
       </mat-toolbar-row>
