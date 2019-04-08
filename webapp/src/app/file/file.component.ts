@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { File } from '../model/file';
 import { FileDialogComponent } from '../file-dialog/file-dialog.component';
+import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
     selector: 'app-file',
@@ -15,7 +16,10 @@ export class FileComponent implements OnInit {
     @Output()
     private remove = new EventEmitter<any>();
 
-    constructor(public dialog: MatDialog) {
+    constructor(
+        private auth: AuthenticationService,
+        public dialog: MatDialog
+    ) {
     }
 
     ngOnInit() {
@@ -39,5 +43,9 @@ export class FileComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
             console.log('The dialog was closed');
         });
+    }
+
+    get isAdmin() {
+        return this.auth.isAdmin;
     }
 }

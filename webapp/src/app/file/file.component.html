@@ -5,7 +5,7 @@
   <mat-card-content>
     <td-markdown [content]="file.description"></td-markdown>
   </mat-card-content>
-  <mat-card-actions>
+  <mat-card-actions *ngIf="isAdmin">
     <button mat-button (click)="editFile()">
       <mat-icon>edit</mat-icon> Edit
     </button>
