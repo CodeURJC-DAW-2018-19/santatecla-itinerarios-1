@@ -18,7 +18,7 @@
 
   <mat-nav-list>
     <mat-list-item *ngFor="let image of images">
-      <a matLine href="{{image.self}}">{{ image.id.filename }}</a>
+      <a matLine (click)="copy(image.self)">{{ image.id.filename }}</a>
       <button mat-icon-button (click)="deleteImage(image)">
         <mat-icon>delete</mat-icon>
       </button>

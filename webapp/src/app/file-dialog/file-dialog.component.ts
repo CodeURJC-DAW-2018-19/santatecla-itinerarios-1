@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { File as Model } from '../model/file';
 import { ResourcesService } from '../service/resources.service';
 import { Resource } from '../model/resource';
+import { ClipboardService } from 'ngx-clipboard';
 
 export interface FileDialogData {
     file: Model;
@@ -21,7 +22,8 @@ export class FileDialogComponent {
     constructor(
         private dialogRef: MatDialogRef<FileDialogComponent>,
         private rest: ResourcesService,
-        @Inject(MAT_DIALOG_DATA) public data: FileDialogData
+        @Inject(MAT_DIALOG_DATA) public data: FileDialogData,
+        private clipboardService: ClipboardService
     ) {
         data.file.images.subscribe(images => this.images = images);
     }
@@ -54,5 +56,9 @@ export class FileDialogComponent {
         this.rest.deleteResource(image).subscribe(() => {
             this.images = this.images.filter(img => img !== image);
         });
+    }
+
+    copy(content: string) {
+        this.clipboardService.copyFromContent(content);
     }
 }

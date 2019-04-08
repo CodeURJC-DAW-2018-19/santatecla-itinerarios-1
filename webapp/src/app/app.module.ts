@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AuthInterceptor } from './interceptor/AuthInterceptor';
 import { CredentialService } from './service/credential.service';
@@ -20,6 +21,8 @@ import { ItineraryComponent } from './itinerary/itinerary.component';
 import { UnitComponent } from './unit/unit.component';
 import { ErrorComponent } from './error/error.component';
 import { SubItineraryComponent } from './sub-itinerary/sub-itinerary.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { FileDialogComponent } from './file-dialog/file-dialog.component';
 
 import {
     MatAutocompleteModule,
@@ -73,10 +76,7 @@ import { CovalentHighlightModule } from '@covalent/highlight';
 import { CovalentTextEditorModule } from '@covalent/text-editor';
 import { CovalentHttpModule } from '@covalent/http';
 
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { FileDialogComponent } from './file-dialog/file-dialog.component';
-
+import { ClipboardModule } from 'ngx-clipboard';
 
 @NgModule({
     declarations: [
@@ -155,7 +155,9 @@ import { FileDialogComponent } from './file-dialog/file-dialog.component';
         CovalentDialogsModule,
         CovalentTabSelectModule,
         CovalentSearchModule,
-        CovalentTextEditorModule
+        CovalentTextEditorModule,
+
+        ClipboardModule
     ],
     providers: [{
         provide: HTTP_INTERCEPTORS,
