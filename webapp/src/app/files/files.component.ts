@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { File } from '../model/file';
 import { ResourcesService } from '../service/resources.service';
 import { FileDialogComponent } from '../file-dialog/file-dialog.component';
+import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
     selector: 'app-files',
@@ -17,7 +18,9 @@ export class FilesComponent implements OnInit {
     constructor(
         private rest: ResourcesService,
         private route: ActivatedRoute,
-        public dialog: MatDialog) {
+        public dialog: MatDialog,
+        private auth: AuthenticationService
+    ) {
     }
 
     ngOnInit(): void {
@@ -52,5 +55,9 @@ export class FilesComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
             console.log('The dialog was closed');
         });
+    }
+
+    get isAdmin() {
+        return this.auth.isAdmin;
     }
 }

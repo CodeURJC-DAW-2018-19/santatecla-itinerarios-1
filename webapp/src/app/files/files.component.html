@@ -4,6 +4,6 @@
     <mat-divider *ngIf="!last" [inset]="true"></mat-divider>
   </ng-template>
 </ng-template>
-<button mat-fab color="accent" class="mat-fab-bottom-right fixed z-3" (click)="createFile()">
+<button mat-fab color="accent" class="mat-fab-bottom-right fixed z-3" (click)="createFile()" *ngIf="isAdmin">
   <mat-icon>add</mat-icon>
 </button>
