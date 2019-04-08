@@ -1,12 +1,12 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { File } from '../model/file';
+import { File as Model } from '../model/file';
 import { ResourcesService } from '../service/resources.service';
 import { Resource } from '../model/resource';
 
 export interface FileDialogData {
-    file: File;
-    callback: (File) => void;
+    file: Model;
+    callback: (Model) => void;
 }
 
 @Component({
@@ -15,6 +15,8 @@ export interface FileDialogData {
 })
 export class FileDialogComponent {
     images: Resource[] = [];
+    file: File;
+    disabled = false;
 
     constructor(
         private dialogRef: MatDialogRef<FileDialogComponent>,
@@ -33,5 +35,18 @@ export class FileDialogComponent {
             this.data.callback(file);
             this.dialogRef.close();
         });
+    }
+
+    uploadEvent(file: File): void {
+        const formData: FormData = new FormData();
+        formData.append('multiparts', file, file.name);
+        this.disabled = true;
+        this.rest.addResourceRelation(this.data.file, formData, 'images')
+            .subscribe(() => {
+                this.rest.refreshResources(this.data.file.link('images'), Resource, 'images').subscribe(images => {
+                    this.images = images;
+                    this.disabled = false;
+                });
+            });
     }
 }

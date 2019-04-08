@@ -11,4 +11,11 @@ export class Itinerary extends Item {
     get unit(): Observable<Unit> {
         return super.lazyLoadResource('unit', Unit);
     }
+
+    toJSON() {
+        return {
+            id: this.id,
+            title: this.title
+        };
+    }
 }

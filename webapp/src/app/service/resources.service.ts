@@ -40,11 +40,16 @@ export class ResourcesService {
         return this.cache.get(url);
     }
 
-    refreshResource<T extends Resource>(url: string, Entity: new (raw: any, rest: ResourcesService) => T) {
+    refreshResource<T extends Resource>(url: string, Entity: new (raw: any, rest: ResourcesService) => T): Observable<T> {
         this.cache.set(url, this.http.get<T>(url).pipe(
             map(raw => this.pipe(raw, Entity)),
             shareReplay(1)
         ));
+        return this.cache.get(url);
+    }
+
+    refreshResourceByEntity<T extends Resource>(entity: T, Entity: new (raw: any, rest: ResourcesService) => T): Observable<T> {
+        return this.refreshResource(entity.self, Entity);
     }
 
     fetchResources<T extends Resource>(
@@ -60,7 +65,7 @@ export class ResourcesService {
 
     fetchResource<T extends Resource>(url: string, Entity: new (raw: any, rest: ResourcesService) => T): Observable<T> {
         if (!this.cache.get(url)) {
-            this.refreshResource(url, Entity);
+            return this.refreshResource(url, Entity);
         }
         return this.cache.get(url);
     }
@@ -119,6 +124,6 @@ export class ResourcesService {
     }
 
     addResourceRelation<T extends Resource>(resource: T, relatedResource, relation: string) {
-        return this.http.post<T>(resource.self + '/' + relation, this.clone(relatedResource));
+        return this.http.post<T>(resource.self + '/' + relation, relatedResource);
     }
 }

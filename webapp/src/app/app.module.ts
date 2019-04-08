@@ -63,7 +63,8 @@ import {
     CovalentPagingModule,
     CovalentSearchModule,
     CovalentStepsModule,
-    CovalentTabSelectModule
+    CovalentTabSelectModule,
+    CovalentFileModule
 } from '@covalent/core';
 // (optional) Additional Covalent Modules imports
 import { CovalentDynamicFormsModule } from '@covalent/dynamic-forms';
@@ -144,6 +145,7 @@ import { FileDialogComponent } from './file-dialog/file-dialog.component';
         CovalentMenuModule,
         CovalentDataTableModule,
         CovalentMessageModule,
+        CovalentFileModule,
         // (optional) Additional Covalent Modules imports
         CovalentHttpModule.forRoot(),
         CovalentHighlightModule,

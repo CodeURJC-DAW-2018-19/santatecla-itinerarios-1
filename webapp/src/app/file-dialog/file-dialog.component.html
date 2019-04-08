@@ -16,6 +16,17 @@
     </div>
   </form>
   <p *ngFor="let image of images">{{image.self}}</p>
+
+  <td-file-upload #fileUpload [(ngModel)]="file" defaultColor="accent" activeColor="warn" cancelColor="primary" (upload)="uploadEvent($event)" accept=".png,.jpg" *ngIf="data.file.id" [disabled]="disabled">
+    <mat-icon>file_upload</mat-icon><span>{{ file?.name }}</span>
+    <ng-template td-file-input-label>
+      <mat-icon>attach_file</mat-icon>
+      <span>
+        Subir una imagen...
+      </span>
+    </ng-template>
+  </td-file-upload>
+
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button (click)="cancel()">Cancelar</button>

@@ -36,7 +36,7 @@ export class ItineraryComponent implements OnInit {
                 this.rest.saveView(new View({ itinerary: this.itinerary.id }, this.rest)).subscribe(view => this.items.push(view));
                 break;
             case 2:
-                this.rest.addResourceRelation(this.itinerary, { id: this.itinerary.id }, 'items')
+                this.rest.addResourceRelation(this.itinerary, this.itinerary, 'items')
                     .subscribe(() => this.items.push(this.itinerary));
                 break;
         }
@@ -50,7 +50,7 @@ export class ItineraryComponent implements OnInit {
     updateSubItinerary(item, subItinerary: Itinerary) {
         this.rest.deleteResourceRelation(this.itinerary, '/items/' + item.id)
             .subscribe(() => {
-                this.rest.addResourceRelation(this.itinerary, { id: subItinerary.id }, 'items')
+                this.rest.addResourceRelation(this.itinerary, subItinerary, 'items')
                     .subscribe(() => {
                         this.items[this.items.findIndex(e => e.id === item.id)] = subItinerary;
                     });
