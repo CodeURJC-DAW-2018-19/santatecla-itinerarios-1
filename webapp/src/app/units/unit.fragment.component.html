@@ -1,5 +1,5 @@
  <div class="md-padding">
-   <mat-list>
+   <mat-nav-list>
      <mat-list-item *ngFor="let itinerary of itineraries">{{itinerary.title}}
        <span>
          <button mat-icon-button [mat-menu-trigger-for]="menu">
@@ -23,5 +23,5 @@
          <mat-icon>add_circle</mat-icon>Añadir un itienrario
        </button>
      </mat-list-item>
-   </mat-list>
+   </mat-nav-list>
  </div>
