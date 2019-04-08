@@ -3,6 +3,7 @@ import { TdDialogService } from '@covalent/core';
 import { Itinerary } from '../model/itinerary';
 import { Unit } from '../model/unit';
 import { ResourcesService } from '../service/resources.service';
+import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
     selector: 'app-unit-fragment',
@@ -19,7 +20,8 @@ export class UnitsFragmentComponent implements OnInit {
 
     constructor(
         private rest: ResourcesService,
-        private dialogService: TdDialogService
+        private dialogService: TdDialogService,
+        private auth: AuthenticationService
     ) {
         this.delete = new EventEmitter();
     }
@@ -49,5 +51,9 @@ export class UnitsFragmentComponent implements OnInit {
                 });
             }
         });
+    }
+
+    get isAdmin() {
+        return this.auth.isAdmin;
     }
 }

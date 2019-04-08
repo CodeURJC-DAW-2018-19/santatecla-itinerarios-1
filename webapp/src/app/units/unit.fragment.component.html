@@ -15,7 +15,7 @@
          </mat-menu>
        </span>
      </mat-list-item>
-     <mat-list-item>
+     <mat-list-item *ngIf="isAdmin">
        <button mat-button (click)="deleteThis()">
          <mat-icon>delete</mat-icon>Eliminar la unidad
        </button>
