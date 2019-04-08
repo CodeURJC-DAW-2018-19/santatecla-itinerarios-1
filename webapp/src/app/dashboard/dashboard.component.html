@@ -3,6 +3,7 @@
     <mat-nav-list>
       <a mat-list-item routerLink="/units" (click)="layout.close()">Unidades</a>
       <a mat-list-item *ngFor="let unit of units" [routerLink]="'/units/' + unit.id" (click)="layout.close()">{{unit.title}}</a>
+      <a mat-list-item routerLink="/chart" (click)="layout.close()">Chart</a>
     </mat-nav-list>
     <mat-nav-list td-navigation-drawer-menu>
       <a mat-list-item (click)="login()" *ngIf="isAnonymous">

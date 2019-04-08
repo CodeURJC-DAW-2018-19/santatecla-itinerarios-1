@@ -23,6 +23,7 @@ import { ErrorComponent } from './error/error.component';
 import { SubItineraryComponent } from './sub-itinerary/sub-itinerary.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FileDialogComponent } from './file-dialog/file-dialog.component';
+import { ChartComponent } from './chart/chart.component';
 
 import {
     MatAutocompleteModule,
@@ -76,8 +77,12 @@ import { CovalentHighlightModule } from '@covalent/highlight';
 import { CovalentTextEditorModule } from '@covalent/text-editor';
 import { CovalentHttpModule } from '@covalent/http';
 
-import { ClipboardModule } from 'ngx-clipboard';
+import { CovalentBaseEchartsModule } from '@covalent/echarts/base';
+import { CovalentBarEchartsModule } from '@covalent/echarts/bar';
+import { CovalentTooltipEchartsModule } from '@covalent/echarts/tooltip';
+import { CovalentToolboxEchartsModule } from '@covalent/echarts/toolbox';
 
+import { ClipboardModule } from 'ngx-clipboard';
 @NgModule({
     declarations: [
         AppComponent,
@@ -92,7 +97,8 @@ import { ClipboardModule } from 'ngx-clipboard';
         SubItineraryComponent,
         DashboardComponent,
         FileDialogComponent,
-        UnitsFragmentComponent
+        UnitsFragmentComponent,
+        ChartComponent
     ],
     imports: [
         BrowserModule,
@@ -156,6 +162,12 @@ import { ClipboardModule } from 'ngx-clipboard';
         CovalentTabSelectModule,
         CovalentSearchModule,
         CovalentTextEditorModule,
+
+        // charts
+        CovalentBaseEchartsModule,
+        CovalentBarEchartsModule,
+        CovalentTooltipEchartsModule,
+        CovalentToolboxEchartsModule,
 
         ClipboardModule
     ],

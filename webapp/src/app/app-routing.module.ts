@@ -9,6 +9,7 @@ import { ItineraryComponent } from './itinerary/itinerary.component';
 import { AccessGuard } from './guard/access.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { environment } from 'src/environments/environment';
+import { ChartComponent } from './chart/chart.component';
 
 const routes: Routes = [
     {
@@ -33,6 +34,10 @@ const routes: Routes = [
                 ],
                 canActivate: [AccessGuard]
             },
+            {
+                path: 'chart',
+                component: ChartComponent
+            }
         ]
     },
     { path: '**', component: ErrorComponent, data: { error: 404 } }
