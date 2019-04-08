@@ -151,4 +151,4 @@ run the angular dev server with
 
 ## Youtube video
 
-    https://youtu.be/mSG0jfF7Fm4
+    https://www.youtube.com/watch?v=aJt8WBUOVs8&t=43s
