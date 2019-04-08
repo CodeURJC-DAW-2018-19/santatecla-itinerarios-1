@@ -49,4 +49,10 @@ export class FileDialogComponent {
                 });
             });
     }
+
+    deleteImage(image: Resource) {
+        this.rest.deleteResource(image).subscribe(() => {
+            this.images = this.images.filter(img => img !== image);
+        });
+    }
 }

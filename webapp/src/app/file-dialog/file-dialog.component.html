@@ -15,7 +15,15 @@
       <td-text-editor #descriptionElement [(ngModel)]="data.file.description" name="description"></td-text-editor>
     </div>
   </form>
-  <p *ngFor="let image of images">{{image.self}}</p>
+
+  <mat-nav-list>
+    <mat-list-item *ngFor="let image of images">
+      <a matLine href="{{image.self}}">{{ image.id.filename }}</a>
+      <button mat-icon-button (click)="deleteImage(image)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-list-item>
+  </mat-nav-list>
 
   <td-file-upload #fileUpload [(ngModel)]="file" defaultColor="accent" activeColor="warn" cancelColor="primary" (upload)="uploadEvent($event)" accept=".png,.jpg" *ngIf="data.file.id" [disabled]="disabled">
     <mat-icon>file_upload</mat-icon><span>{{ file?.name }}</span>
