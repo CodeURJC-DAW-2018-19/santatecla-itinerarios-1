@@ -139,3 +139,6 @@ run the Spring server with
 
     ng serve
     
+##Angular diagram
+![Angular diagram](doc/diagramaAngular.png)
+
