@@ -25,6 +25,8 @@ export class SubItineraryComponent implements OnInit {
 
     items: Item[];
 
+    unit: Unit;
+
     constructor(
         private rest: ResourcesService
     ) {
@@ -38,6 +40,7 @@ export class SubItineraryComponent implements OnInit {
             this.units = units;
         });
         this.itinerary.items.subscribe(items => this.items = items);
+        this.itinerary.unit.subscribe(unit => this.unit = unit);
     }
 
     deleteSubItinerary() {

@@ -32,11 +32,15 @@
 
   <mat-card-content>
 
-      <div *ngFor="let item of items; let i =index">
-        <mat-card-content>
-             - {{item.title}} - view {{i+1}}
-        </mat-card-content>
-      </div>
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let item of items; index as i">
+        {{unit.title}}
+        <ng-container *ngIf="item.isItinerary; then thenBlock else elseBlock">
+        </ng-container>
+        <ng-template #thenBlock>{{item.title}}</ng-template>
+        <ng-template #elseBlock>Vista {{i}}</ng-template>
+      </mat-list-item>
+    </mat-list>
 
   </mat-card-content>
 </mat-card>
