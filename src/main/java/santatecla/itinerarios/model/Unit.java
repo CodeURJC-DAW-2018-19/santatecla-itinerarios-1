@@ -1,6 +1,8 @@
 package santatecla.itinerarios.model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -9,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.PrePersist;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -30,8 +33,9 @@ public class Unit {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "unit")
     private Set<Itinerary> itineraries;
 
+    @OrderBy("title")
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "unit")
-    private Set<Form> forms;
+    private List<Form> forms;
 
     @JsonCreator
     public Unit(Long id) {
@@ -56,7 +60,7 @@ public class Unit {
 
     public void addForm(Form form) {
         if (this.forms == null) {
-            this.forms = new HashSet<>();
+            this.forms = new ArrayList<>();
         }
         this.forms.add(form);
     }
