@@ -152,3 +152,20 @@ run the angular dev server with
 ## Youtube video
 
     https://www.youtube.com/watch?v=aJt8WBUOVs8&t=43s
+
+# Testing
+
+    We have implemented a series of automatic tests with selenium, using the driver for Chrome, so we have tested the different functionalities of our interface. For example:
+    
+    Logout
+    Login Teacher
+    Add unit
+    Delete unit
+    Add itinerary
+    Enter to Itinerary
+    Create View in Itinerary
+    Looking and Creating Ficha
+    Upping IMG to ficha
+    Removing Ficha
+    
+For probe this test suite you must install Katalon Recorder and open "DAWTest.html" there.
